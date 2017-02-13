@@ -1,0 +1,130 @@
+
+\ProvidesPackage{thesisUESTC}
+\usepackage[cm-default]{fontspec}
+\usepackage[usenames,dvipsnames,svgnames,table]{xcolor}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{array}
+\usepackage{setspace}
+\usepackage{multirow}
+\usepackage{bm}
+\usepackage[english]{babel}
+\usepackage{xunicode,xltxtra}
+\usepackage{xeCJK}
+\usepackage{CJKnumb}
+
+\definecolor{darkblue}{rgb}{0.0, 0.0, 0.55}
+\usepackage[colorlinks=true,linkcolor=black]{hyperref}
+\usepackage{indentfirst}
+\usepackage{tabularx}
+\usepackage{calc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{float}
+\usepackage{fancyvrb}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+\usepackage{setspace}
+\usepackage[titles]{tocloft}
+\addto\captionsenglish{%
+  \renewcommand{\contentsname}{目 \charspace 录}%
+}
+
+\usepackage[a4paper, inner=3cm, outer=3cm, top=3cm,
+bottom=3cm, bindingoffset=0cm]{geometry}
+
+\pagestyle{fancy}
+\linespread{1.3}
+\setlength\parindent{24pt}
+\titlespacing{\chapter}{0pt}{-16pt}{18pt}
+\titlespacing{\section}{0pt}{18pt}{6pt}
+\titlespacing{\subsection}{0pt}{12pt}{6pt}
+\titlespacing{\subsubsection}{0pt}{12pt}{6pt}
+
+\renewcommand\thechapter{第\CJKnumber{\arabic{chapter}}章}
+\renewcommand\thesection{\arabic{chapter}.\arabic{section}}
+\renewcommand{\theequation}{\arabic{chapter}-\arabic{equation}}
+\renewcommand{\thetable}{\arabic{chapter}-\arabic{table}}
+\renewcommand{\thefigure}{\arabic{chapter}-\arabic{figure}}
+
+\newcommand{\charspace}{ {} }
+
+\titleformat{\chapter}
+  {\Large\bfseries\centering\thispagestyle{fancy}}{\thechapter}{1em}{}
+\titleformat{\section}
+  {\large\bfseries}
+  {\thesection}{1em}{}
+
+
+\newenvironment{chineseabstract}{\pagenumbering{Roman}\chapter*{摘 \charspace 要}\thispagestyle{fancy}\fancyhead[C]{摘要}\begin{spacing}{1.5}}{\medskip\end{spacing}}
+
+\newcommand{\chinesekeyword}[1]{\begin{spacing}{1.5}\noindent
+\hskip-6pt\begin{tabularx}{\textwidth + 1em}{lX}\textbf{关键词}:& #1 \\ \end{tabularx}\end{spacing}}
+
+\newenvironment{englishabstract}{\pagenumbering{Roman}\chapter*{ABSTRACT}\thispagestyle{fancy}\fancyhead[C]{ABSTRACT}\begin{spacing}{1.5}}{\medskip\end{spacing}}
+
+\newcommand{\englishkeyword}[1]{\begin{spacing}{1.5}\noindent
+\hskip-6pt\begin{tabularx}{\textwidth + 1em}{lX}\textbf{Keywords}:& #1 \\ \end{tabularx}\end{spacing}}
+
+
+
+\tocloftpagestyle{fancy}
+\renewcommand{\cftchappagefont}{\normalfont}
+\renewcommand\cftchapleader{\cftdotfill{\cftdotsep}}
+
+\renewcommand{\cftdotsep}{1.2}
+
+\setlength{\cftbeforetoctitleskip}{0pt}
+\setlength{\cftaftertoctitleskip}{18pt}
+\setlength{\cftbeforechapskip}{0pt}
+
+\addtolength{\cftchapnumwidth}{25pt}
+\addtolength{\cftsecnumwidth}{-5pt}
+\addtolength{\cftsubsecnumwidth}{-5pt}
+\addtolength{\cftsubsubsecnumwidth}{-5pt}
+
+\renewcommand{\cfttoctitlefont}{\hfil\bfseries\Large}
+\renewcommand{\contentsname}{目 \charspace 录}
+
+\newcommand{\standardhead}{
+\fancyhf{}
+\fancyhead[CO]{\leftmark}
+\fancyhead[CE]{电子科技大学硕士学位论文}
+\fancyfoot[CE,CO]{\thepage}
+}
+
+\newcommand{\thesistableofcontents}{\fancyhead[C]{目录}\tableofcontents\newpage
+\standardhead
+\pagenumbering{arabic}
+\setcounter{page}{1}}
+
+\standardhead
+
+\renewcommand{\chaptermark}[1]{\markboth{第\CJKnumber{\arabic{chapter}}章 \hspace{0.5em} #1}{}}
+
+\newcommand{\thesisacknowledgement}{\chapter*{致 \charspace 谢}\addcontentsline{toc}{chapter}{致 \charspace 谢}\markboth{致 \charspace 谢}{致 \charspace 谢}}
+
+\newcommand{\thesisachievement}{\chapter*{攻读博士学位期间取得的成果}\addcontentsline{toc}{chapter}{攻读博士学位期间取得的成果}\markboth{攻读博士学位期间取得的成果}{攻读博士学位期间取得的成果}}
+
+\defaultfontfeatures{Mapping=tex-text}
+\XeTeXlinebreaklocale "zh"
+\XeTeXlinebreakskip = 0pt plus 1pt minus 0.1pt
+
+\newcommand\fontnamehei{simhei.ttf}
+\newcommand\fontnamesong{simsun.ttf}
+
+\usepackage{mathptmx}
+
+\setCJKmainfont[BoldFont=\fontnamehei]{\fontnamesong}
+\setmainfont[
+BoldFont=timesbd.ttf,
+ItalicFont=timesi.ttf,
+BoldItalicFont=timesbi.ttf,
+]{times.ttf}
+
+\setCJKfamilyfont{song}{\fontnamesong}
+\newcommand{\song}{\CJKfamily{song}}
+
+\setCJKfamilyfont{hei}{\fontnamehei}
+\newcommand{\hei}{\CJKfamily{hei}}

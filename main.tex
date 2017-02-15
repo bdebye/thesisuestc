@@ -14,14 +14,19 @@
 \setcounter{page}{1}
 \begin{chineseabstract}
 为了适应日益增长的宽带信号和非线性系统的工程应用，用于分析瞬态电磁散射问题的时域积分方程方法研究日趋活跃。本文以时域积分方程时间步进算法及其快速算法为研究课题，重点研究了时间步进算法的数值实现技术、后时稳定性问题以及两层平面波算法加速计算等，主要研究内容分为四部分。
-\end{chineseabstract}
-\chinesekeyword{时域电磁散射，时域积分方程，时间步进算法，后时不稳定性，时域平面波算法}
 
+\chinesekeyword{时域电磁散射，时域积分方程，时间步进算法，后时不稳定性，时域平面波算法}
+\end{chineseabstract}
+
+
+\newpage
 \begin{englishabstract}
 With the widespread engineering applications ranging from broadband signals and non-linear systems, time-domain integral equations (TDIE) methods for analyzing transient electromagnetic scattering problems are becoming widely used nowadays. TDIE-based marching-on-in-time (MOT) scheme and its fast algorithm are researched in this dissertation, including the numerical techniques of MOT scheme, late-time stability of MOT scheme, and two-level PWTD-enhanced MOT scheme. The contents are divided into four parts shown as follows.
-\end{englishabstract}
 
 \englishkeyword{time-domain electromagnetic scattering, time-domain integral equation (TDIE), marching-on in-time (MOT) scheme, late-time instability, plane wave time-domain (PWTD) algorithm}
+\end{englishabstract}
+
+
 
 \newpage
 \thesistableofcontents
@@ -31,10 +36,24 @@ With the widespread engineering applications ranging from broadband signals and 
 
 \chapter{绪 \charspace 论}
 \section{研究工作的背景与意义}
-计算电磁学方法[1-6]从时、频域角度划分可以分为频域方法与时域方法两大类。频域方法的研究开展较早，目前应用广泛的包括：矩量法（MOM）[7-8]及其快速算法多层快速多极子（MLFMA）[9]方法、有限元（FEM）[10-11]方法、自适应积分（AIM）[12]方法等，这些方法是目前计算电磁学商用软件 （例如：FEKO、Ansys等）的核心算法。由文献[10,12-13]可知
+计算电磁学方法\cite{wang1999sanwei,
+liuxf2006,
+zhu1973wulixue,
+chen2001hao,
+gu2012lao,
+feng997he}
+从时、频域角度划分可以分为频域方法与时域方法两大类。
+频域方法的研究开展较早，目前应用广泛的包括：矩量法（MOM）\cite{lamport1994latex,marais1992}及其快速算
+法多层快速多极子（MLFMA）\cite{hewitt1984}方法、有限元（FEM）\cite{lixiaodong1999,liruimu2000}方法、自适应积分（AIM）
+\cite{gu2012lao}方法等，这些方法是目前计算电磁学商用软件
+\footnote{脚注序号“①，……，⑩”的字体是“正文”，不是“上标”，序号与脚注内容文字之间空1个半角字符，脚注的段落格式为：单倍行距，段前空0磅，段后空0磅，悬挂缩进1.5字符；中文用宋体，字号为小五号，英文和数字用Times New Roman字体，字号为9磅；中英文混排时，所有标点符号（例如逗号“，”、括号“（）”等）一律使用中文输入状态下的标点符号，但小数点采用英文状态下的样式“.”。}
+（例如：FEKO、Ansys 等）的
+核心算法。由文献\cite{feng997he,clerc2010discrete,xiao2012yi}可知
 
 \section{时域积分方程方法的国内外研究历史与现状}
-时域积分方程方法的研究始于上世纪60年代，C.L.Bennet等学者针对导体目标的瞬态电磁散射问题提出了求解时域积分方程的时间步进（marching-on in-time, MOT）算法
+时域积分方程方法的研究始于上世纪60 年代，C.L.Bennet 等学者针对导体目
+标的瞬态电磁散射问题提出了求解时域积分方程的时间步进（marching-on in-time,
+MOT）算法\cite{zhong1994zhong}。
 
 \section{本文的主要贡献与创新}
 本论文以时域积分方程时间步进算法的数值实现技术、后时稳定性问题以及两层平面波加速算法为重点研究内容，主要创新点与贡献如下：
@@ -48,15 +67,42 @@ With the widespread engineering applications ranging from broadband signals and 
 \section{时域积分方程的类型}
 
 \section{空间基函数与时间基函数}
-利用数值算法求解时域积分方程，首先需要选取适当的空间基函数与时间基函数对待求感应电流进行离散。
+利用数值算法求解时域积分方程，首先需要选取适当的空间基函数与时间基
+函数对待求感应电流进行离散\footnote{脚注序号“①，……，⑩”的字体是“正文”，不是“上标”，序号与脚注内容文字之间空1个半角字符，脚注的段落格式为：单倍行距，段前空0磅，段后空0磅，悬挂缩进1.5字符；中文用宋体，字号为小五号，英文和数字用Times New Roman字体，字号为9磅；中英文混排时，所有标点符号（例如逗号“，”、括号“（）”等）一律使用中文输入状态下的标点符号，但小数点采用英文状态下的样式“.”。}。
 
 \subsection{空间基函数}
-RWG基函数是定义在三角形单元上的最具代表性的基函数。它的具体定义如下：
+RWG 基函数是定义在三角形单元上的最具代表性的基函数。它的具体定义如
+下：
 \begin{equation}
-    E = mc^2
+f_n(r)=
+\begin{cases}
+\frac{l_n}{2A_n^+}\rho_n^+=\frac{l_n}{2A_n^+}(r-r_+)&r\in T_n^+\\
+\frac{l_n}{2A_n^-}\rho_n^-=\frac{l_n}{2A_n^-}(r_--r)&r\in T_n^-\\
+0&\text{其它}\\
+\end{cases}
 \end{equation}
+其中，$l_n$为三角形单元$T_n^+$和$T_n^-$公共边的长度，$A_n^+$和$A_n^-$分别为三角形单元$T_n^+$和$T_n^-$的面积（如图\ref{pica}所示）。
+
+\begin{figure}[h]\label{pica}
+\centering
+\includegraphics{pica.pdf}
+\caption{RWG 基函数几何参数示意图}
+\end{figure}
 
 \subsection{时间基函数}
+
+\subsubsection{时域方法特有的展开函数}
+
+\subsubsection{频域方法特有的展开函数}
+
+\section{入射波}
+
+
+如图\ref{picb}和图\ref{picc}所示分别给出了参数$E_0=\hat{x}$，$a_n=-\hat{z}$，$f_0=250MHz$，$f_w=50MHz$，$t_w=4.2\sigma$时，调制高斯脉冲的时域与频域归一化波形图。
+%\begin{pics}[h]{调制高斯脉冲时域与频率波形}{picbc}
+%\addsubpic{调制高斯脉冲时域波形}{keepaspectratio=false,height=5.95cm,width=7.3cm}{picb}
+%\addsubpic{调制高斯脉冲频域波形}{keepaspectratio=false,height=5.65cm,width=6.41cm}{picc}
+%\end{pics}
 
 \section{本章小结}
 本章首先从时域麦克斯韦方程组出发推导得到了时域电场、磁场以及混合场积分方程。
@@ -81,6 +127,58 @@ RWG基函数是定义在三角形单元上的最具代表性的基函数。它�
 \section{本章小结}
 本章首先研究了时域积分方程时间步进算法的阻抗元素精确计算技术，分别采用DUFFY变换法与卷积积分精度计算法计算时域阻抗元素，通过算例验证了计算方法的高精度。
 
+\chapter{时域积分方程数值方法研究}
+\section{时域积分方程时间步进算法的阻抗元素精确计算}
+时域积分方程时间步进算法的阻抗元素直接影响算法的后时稳定性，因此阻
+抗元素的计算是算法的关键之一，采用精度高效的方法计算时域阻抗元素是时域
+积分方程时间步进算法研究的重点之一。
+
+\section{时域积分方程时间步进算法阻抗矩阵的存储}
+时域阻抗元素的存储技术也是时间步进算法并行化的关键技术之一\cite{xiao2012yi}，采用
+合适的阻抗元素存储方式可以很大的提高并行时间步进算法的计算效率。
+
+\subsection{时域积分方程时间步进算法产生的阻抗矩阵的特征}
+
+由于时域混合场积分方程是时域电场积分方程与时域磁场积分方程的线性组
+合，因此时域混合场积分方程时间步进算法的阻抗矩阵特征与时域电场积分方程
+时间步进算法的阻抗矩阵特征相同。
+\subsection{数值算例与分析}。如表\ref{tablea}所示给出了时间步长分别取0.4ns、0.5ns、0.6ns 时的三种存储
+方式的存储量大小。
+
+\begin{figure}[h]\label{tablea}
+\centering
+\includegraphics{tablea.pdf}
+\caption{计算$2m*2m$理想导体平板时域感应电流采用的三种存储方式的存储量比较}
+\end{figure}
+
+如图\ref{picd}所示给出了时间步长选取为0.5ns 时采用三种不同存储方式计算的
+平板中心处$x$方向的感应电流值与IDFT 方法计算结果的比较，……。如图\ref{pice}
+所示给出了存储方式为基权函数压缩存储方式，时间步长分别取0.4ns、0.5ns、0.6ns
+时平板中心处$x$方向的感应电流计算结果，从图中可以看出不同时间步长的计算结果基本相同。
+
+%\begin{pics}[h]{$2m*2m$的理想导体平板中心处感应电流$x$分量随时间的变化关系}{picde}
+%\addsubpic{不同存储方式的计算结果与IDFT方法的结果比较}{keepaspectratio,height=5.58cm,width=6.77cm}{picd}
+%\addsubpic{不同时间步长的计算结果比较}{keepaspectratio=false,height=5.48cm,width=7.04cm}{pice}
+%\end{pics}
+%
+由于时域混合场积分方程是时域电场积分方程与时域磁场积分方程的线性组
+合，因此时域混合场积分方程时间步进算法的阻抗矩阵特征与时域电场积分方程
+时间步进算法的阻抗矩阵特征相同。
+\section{时域积分方程时间步进算法矩阵方程的求解}
+
+\begin{theorem}
+如果时域混合场积分方程是时域电场积分方程与时域磁场积分方程
+的线性组合
+\end{theorem}
+\begin{proof}
+首先，由于\\
+根据，结论得证。
+\end{proof}
+\section{本章小结}
+本章首先研究了时域积分方程时间步进算法的阻抗元素精确计算技术，分别
+采用DUFFY 变换法与卷积积分精度计算法计算时域阻抗元素，通过算例验证了计
+算方法的高精度。
+
 \chapter{全文总结与展望}
 
 \section{全文总结}
@@ -91,6 +189,12 @@ RWG基函数是定义在三角形单元上的最具代表性的基函数。它�
 
 \thesisacknowledgement
 在攻读博士学位期间，首先衷心感谢我的导师XXX教授
+
+\begin{small}
+\bibliographystyle{unsrt}
+\bibliography{test}
+\addcontentsline{toc}{chapter}{参考文献}
+\end{small}
 
 \thesisachievement
 

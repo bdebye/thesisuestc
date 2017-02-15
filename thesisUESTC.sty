@@ -1,10 +1,9 @@
 
 \ProvidesPackage{thesisUESTC}
-\usepackage[cm-default]{fontspec}
+\usepackage[cm-default]{fontspec} %[cm-default]选项主要用来解决使用数学环境时数学符号不能正常显示的问题
 \usepackage[usenames,dvipsnames,svgnames,table]{xcolor}
 \usepackage{graphicx}
-\usepackage{caption}
-\usepackage{subcaption}
+\usepackage[font=small, labelsep=space]{caption}
 \usepackage{array}
 \usepackage{setspace}
 \usepackage{multirow}
@@ -13,59 +12,108 @@
 \usepackage{xunicode,xltxtra}
 \usepackage{xeCJK}
 \usepackage{CJKnumb}
+\usepackage{tikz}
 
 \definecolor{darkblue}{rgb}{0.0, 0.0, 0.55}
-\usepackage[colorlinks=true,linkcolor=black]{hyperref}
+\usepackage[hyperfootnotes=false]{hyperref}
+\hypersetup{
+ colorlinks=true,
+ citecolor=black,
+ linkcolor=black,
+ urlcolor=darkblue}
+ 
 \usepackage{indentfirst}
 \usepackage{tabularx}
 \usepackage{calc}
 \usepackage{amsmath}
 \usepackage{amssymb}
+\usepackage{amsthm}
 \usepackage{float}
 \usepackage{fancyvrb}
 \usepackage{fancyhdr}
 \usepackage{titlesec}
 \usepackage{setspace}
+%\usepackage{natbib}
+\usepackage{cite}
+
 \usepackage[titles]{tocloft}
 \addto\captionsenglish{%
   \renewcommand{\contentsname}{目 \charspace 录}%
 }
+\addto\captionsenglish{%
+  \renewcommand{\proofname}{证明}%
+}
+\addto\captionsenglish{%
+  \renewcommand{\bibname}{参考文献}%
+}
+\addto\captionsenglish{%
+  \renewcommand{\figurename}{图}%
+}
+
+\addto\captionsenglish{%
+  \renewcommand{\tablename}{表}%
+}
+
+
 
 \usepackage[a4paper, inner=3cm, outer=3cm, top=3cm,
 bottom=3cm, bindingoffset=0cm]{geometry}
 
 \pagestyle{fancy}
 \linespread{1.3}
+%\setlength\baselineskip{40pt}
 \setlength\parindent{24pt}
-\titlespacing{\chapter}{0pt}{-16pt}{18pt}
-\titlespacing{\section}{0pt}{18pt}{6pt}
+\titlespacing{\chapter}{0pt}{0pt}{0.7cm}
+\titlespacing{\section}{0pt}{16pt}{6pt}
 \titlespacing{\subsection}{0pt}{12pt}{6pt}
 \titlespacing{\subsubsection}{0pt}{12pt}{6pt}
 
+
 \renewcommand\thechapter{第\CJKnumber{\arabic{chapter}}章}
 \renewcommand\thesection{\arabic{chapter}.\arabic{section}}
+
 \renewcommand{\theequation}{\arabic{chapter}-\arabic{equation}}
 \renewcommand{\thetable}{\arabic{chapter}-\arabic{table}}
 \renewcommand{\thefigure}{\arabic{chapter}-\arabic{figure}}
 
 \newcommand{\charspace}{ {} }
 
+\setcounter{secnumdepth}{4}
+\setcounter{tocdepth}{4}
+
 \titleformat{\chapter}
-  {\Large\bfseries\centering\thispagestyle{fancy}}{\thechapter}{1em}{}
+  {\centering\fontsize{15pt}{15pt}\selectfont\bfseries\thispagestyle{fancy}}{\thechapter}{1em}{}
+  
 \titleformat{\section}
-  {\large\bfseries}
-  {\thesection}{1em}{}
+  {\fontsize{14pt}{14pt}\selectfont\bfseries}
+  {\thesection}{7pt}{}
+  
+\titleformat{\subsection}
+  {\fontsize{14pt}{14pt}\selectfont\bfseries}
+  {\thesubsection}{7pt}{}
 
+\titleformat{\subsubsection}
+  {\fontsize{12pt}{12pt}\selectfont\bfseries}
+  {\thesubsubsection}{6pt}{}
 
-\newenvironment{chineseabstract}{\pagenumbering{Roman}\chapter*{摘 \charspace 要}\thispagestyle{fancy}\fancyhead[C]{摘要}\begin{spacing}{1.5}}{\medskip\end{spacing}}
+\usepackage[hang]{footmisc}
+\addtolength{\footnotesep}{1mm}
+\setlength{\footnotemargin}{4mm}
 
-\newcommand{\chinesekeyword}[1]{\begin{spacing}{1.5}\noindent
-\hskip-6pt\begin{tabularx}{\textwidth + 1em}{lX}\textbf{关键词}:& #1 \\ \end{tabularx}\end{spacing}}
+\renewcommand{\footnotesize}{\fontsize{9pt}{11pt}\selectfont}
+\renewcommand{\small}{\fontsize{10.5pt}{12.3pt}\selectfont}
 
-\newenvironment{englishabstract}{\pagenumbering{Roman}\chapter*{ABSTRACT}\thispagestyle{fancy}\fancyhead[C]{ABSTRACT}\begin{spacing}{1.5}}{\medskip\end{spacing}}
+\newcommand\circled[1]{\tikz[baseline=(char.base)]{\node[shape=circle,draw,inner sep=2pt] (char) {#1};}}
+\renewcommand{\thefootnote}{\textcircled{\arabic{footnote}}}
 
-\newcommand{\englishkeyword}[1]{\begin{spacing}{1.5}\noindent
-\hskip-6pt\begin{tabularx}{\textwidth + 1em}{lX}\textbf{Keywords}:& #1 \\ \end{tabularx}\end{spacing}}
+  
+\newenvironment{chineseabstract}{\pagenumbering{Roman}\chapter*{摘 \charspace 要}\thispagestyle{fancy}\fancyhead[C]{摘要}\begin{spacing}{1.25}}{\end{spacing}}
+
+\newcommand{\chinesekeyword}[1]{\noindent\begin{minipage}[t]{1.5cm}\noindent\textbf{关键词:}\end{minipage} \begin{minipage}[t]{\linewidth - 1.5cm}#1 \end{minipage}}
+  
+\newenvironment{englishabstract}{\pagenumbering{Roman}\chapter*{ABSTRACT}\thispagestyle{fancy}\fancyhead[C]{ABSTRACT}\begin{spacing}{1.25}}{\end{spacing}}
+  
+\newcommand{\englishkeyword}[1]{\noindent\begin{minipage}[t]{2.1cm}\noindent\textbf{Keywords:}\end{minipage} \begin{minipage}[t]{\linewidth - 2.1cm}#1 \end{minipage}}
 
 
 
@@ -73,7 +121,7 @@ bottom=3cm, bindingoffset=0cm]{geometry}
 \renewcommand{\cftchappagefont}{\normalfont}
 \renewcommand\cftchapleader{\cftdotfill{\cftdotsep}}
 
-\renewcommand{\cftdotsep}{1.2}
+\renewcommand{\cftdotsep}{0.8}
 
 \setlength{\cftbeforetoctitleskip}{0pt}
 \setlength{\cftaftertoctitleskip}{18pt}
@@ -84,16 +132,16 @@ bottom=3cm, bindingoffset=0cm]{geometry}
 \addtolength{\cftsubsecnumwidth}{-5pt}
 \addtolength{\cftsubsubsecnumwidth}{-5pt}
 
-\renewcommand{\cfttoctitlefont}{\hfil\bfseries\Large}
+\renewcommand{\cfttoctitlefont}{\fontsize{15pt}{15pt}\selectfont\bfseries}
 \renewcommand{\contentsname}{目 \charspace 录}
 
 \newcommand{\standardhead}{
 \fancyhf{}
-\fancyhead[CO]{\leftmark}
-\fancyhead[CE]{电子科技大学硕士学位论文}
-\fancyfoot[CE,CO]{\thepage}
+\fancyhead[CO]{\fontsize{10.5pt}{12pt}\selectfont\leftmark}
+\fancyhead[CE]{\fontsize{10.5pt}{12pt}\selectfont 电子科技大学硕士学位论文}
+\fancyfoot[CE,CO]{\fontsize{9pt}{11pt}\selectfont\thepage}
 }
-
+ 
 \newcommand{\thesistableofcontents}{\fancyhead[C]{目录}\tableofcontents\newpage
 \standardhead
 \pagenumbering{arabic}
@@ -106,6 +154,32 @@ bottom=3cm, bindingoffset=0cm]{geometry}
 \newcommand{\thesisacknowledgement}{\chapter*{致 \charspace 谢}\addcontentsline{toc}{chapter}{致 \charspace 谢}\markboth{致 \charspace 谢}{致 \charspace 谢}}
 
 \newcommand{\thesisachievement}{\chapter*{攻读博士学位期间取得的成果}\addcontentsline{toc}{chapter}{攻读博士学位期间取得的成果}\markboth{攻读博士学位期间取得的成果}{攻读博士学位期间取得的成果}}
+
+\let\OLDthebibliography\thebibliography
+\renewcommand\thebibliography[1]{
+  \OLDthebibliography{#1}
+  \setlength{\parskip}{0pt}
+  \setlength{\itemsep}{3pt}
+}
+
+%\setlength{\bibsep}{6pt}
+\newcommand{\thesisbibliography}{\bibliographystyle{thesisUESTC}\addcontentsline{toc}{chapter}{参考文献}
+\bibliography{reference}}
+
+\newtheorem{theorem}{定理}
+\newtheorem{corollary}{推论}[theorem]
+\newtheorem{lemma}[theorem]{引理}
+\renewenvironment{proof}[1][\proofname]{%
+   \par\pushQED{\qed}\normalfont%
+   \topsep6\p@\@plus6\p@\relax
+   \trivlist\item[\hskip\labelsep\bfseries#1\@addpunct{:}]%
+   \ignorespaces
+}{%
+   \popQED\endtrivlist\@endpefalse
+}
+
+\renewcommand\bibname{参考文献}
+
 
 \defaultfontfeatures{Mapping=tex-text}
 \XeTeXlinebreaklocale "zh"

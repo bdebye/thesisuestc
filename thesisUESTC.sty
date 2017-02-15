@@ -8,11 +8,11 @@
 \usepackage{setspace}
 \usepackage{multirow}
 \usepackage{bm}
-\usepackage[english]{babel}
+%\usepackage[english]{babel}
 \usepackage{xunicode,xltxtra}
 \usepackage{xeCJK}
 \usepackage{CJKnumb}
-\usepackage{tikz}
+\usepackage{pifont}
 
 \definecolor{darkblue}{rgb}{0.0, 0.0, 0.55}
 \usepackage[hyperfootnotes=false]{hyperref}
@@ -23,7 +23,6 @@
  urlcolor=darkblue}
  
 \usepackage{indentfirst}
-\usepackage{tabularx}
 \usepackage{calc}
 \usepackage{amsmath}
 \usepackage{amssymb}
@@ -33,35 +32,25 @@
 \usepackage{fancyhdr}
 \usepackage{titlesec}
 \usepackage{setspace}
-%\usepackage{natbib}
-\usepackage{cite}
-
-\usepackage[titles]{tocloft}
-\addto\captionsenglish{%
-  \renewcommand{\contentsname}{目 \charspace 录}%
-}
-\addto\captionsenglish{%
-  \renewcommand{\proofname}{证明}%
-}
-\addto\captionsenglish{%
-  \renewcommand{\bibname}{参考文献}%
-}
-\addto\captionsenglish{%
-  \renewcommand{\figurename}{图}%
-}
-
-\addto\captionsenglish{%
-  \renewcommand{\tablename}{表}%
-}
+\usepackage[superscript]{cite}
 
 
+\graphicspath{{./pic/}}
+
+\usepackage[titles, subfigure]{tocloft}
+\usepackage{subfigure}
+
+\renewcommand{\contentsname}{目 \charspace 录}%
+\renewcommand{\proofname}{证明}%
+\renewcommand{\bibname}{参考文献}%
+\renewcommand{\figurename}{图}%
+\renewcommand{\tablename}{表}%
 
 \usepackage[a4paper, inner=3cm, outer=3cm, top=3cm,
 bottom=3cm, bindingoffset=0cm]{geometry}
 
 \pagestyle{fancy}
-\linespread{1.3}
-%\setlength\baselineskip{40pt}
+\linespread{1.391}
 \setlength\parindent{24pt}
 \titlespacing{\chapter}{0pt}{0pt}{0.7cm}
 \titlespacing{\section}{0pt}{16pt}{6pt}
@@ -75,8 +64,15 @@ bottom=3cm, bindingoffset=0cm]{geometry}
 \renewcommand{\theequation}{\arabic{chapter}-\arabic{equation}}
 \renewcommand{\thetable}{\arabic{chapter}-\arabic{table}}
 \renewcommand{\thefigure}{\arabic{chapter}-\arabic{figure}}
+%\renewcommand{\thesubfigure}{\arabic{chapter}-\arabic{figure}(\alph{subfigure})}
+%\renewcommand{\thesubfigure}{(\alph{subfigure})}
+\makeatletter
+\renewcommand{\p@subfigure}{\arabic{chapter}-\arabic{figure}}
+%\renewcommand{\@thesubfigure}{\thesubfigure:\hskip\subfiglabelskip}
+\makeatother
 
 \newcommand{\charspace}{ {} }
+\newcommand{\chinesecolon}{\char"FF1A}
 
 \setcounter{secnumdepth}{4}
 \setcounter{tocdepth}{4}
@@ -98,20 +94,35 @@ bottom=3cm, bindingoffset=0cm]{geometry}
 
 \usepackage[hang]{footmisc}
 \addtolength{\footnotesep}{1mm}
-\setlength{\footnotemargin}{4mm}
+\setlength{\footnotemargin}{4.5mm}
 
 \renewcommand{\footnotesize}{\fontsize{9pt}{11pt}\selectfont}
 \renewcommand{\small}{\fontsize{10.5pt}{12.3pt}\selectfont}
+\renewcommand\footnotelayout{\fontsize{9}{12}\selectfont}
 
-\newcommand\circled[1]{\tikz[baseline=(char.base)]{\node[shape=circle,draw,inner sep=2pt] (char) {#1};}}
-\renewcommand{\thefootnote}{\textcircled{\arabic{footnote}}}
+\renewcommand{\thefootnote}{\ifcase\value{footnote}\or\ding{172}\or
+\ding{173}\or\ding{174}\or\ding{175}\or\ding{176}\or\ding{177}\or\ding{178}\or\ding{179}\or\ding{180\or\ding{181}}\fi}
+\renewcommand{\footnoterule}{\vfill\noindent\vspace*{0.9mm}\hspace{7.4mm}\rule{5.05cm}{0.02cm}\vspace*{2.6pt}}
 
+\makeatletter
+\def\@makefntext #1{\ifFN@hangfoot \bgroup \setbox \@tempboxa \hbox {\ifdim
+\footnotemargin >0pt \hb@xt@ \footnotemargin {\hbox { \normalfont \@thefnmark}
+\hss }\else \hbox { \normalfont \@thefnmark} \fi }\leftmargin \wd \@tempboxa
+\rightmargin \z@ \linewidth \columnwidth \advance \linewidth -\leftmargin
+\parshape \@ne \leftmargin \linewidth \footnotesize \@setpar {{\@@par }}
+\leavevmode \llap {\box \@tempboxa }\parskip \hangfootparskip \relax \parindent
+\hangfootparindent \relax \else \parindent 1em \noindent \ifdim \footnotemargin
+ >\z@ \hb@xt@ \footnotemargin {\hss \hbox { \normalfont \@thefnmark} }\else
+ \ifdim \footnotemargin =\z@ \llap {\hbox { \normalfont \@thefnmark} }\else
+ \llap {\hb@xt@ -\footnotemargin {\hbox { \normalfont \@thefnmark} \hss }}
+ \fi \fi \fi \footnotelayout #1\ifFN@hangfoot \par \egroup \fi}
+\makeatother
+
+\newenvironment{chineseabstract}{\pagenumbering{Roman}\chapter*{摘 \charspace 要}\thispagestyle{fancy}\fancyhead[C]{摘要}}{}
+
+\newcommand{\chinesekeyword}[1]{\noindent\begin{minipage}[t]{1.5cm}\noindent\textbf{关键词\chinesecolon}\end{minipage} \begin{minipage}[t]{\linewidth - 1.5cm}#1 \end{minipage}}
   
-\newenvironment{chineseabstract}{\pagenumbering{Roman}\chapter*{摘 \charspace 要}\thispagestyle{fancy}\fancyhead[C]{摘要}\begin{spacing}{1.25}}{\end{spacing}}
-
-\newcommand{\chinesekeyword}[1]{\noindent\begin{minipage}[t]{1.5cm}\noindent\textbf{关键词:}\end{minipage} \begin{minipage}[t]{\linewidth - 1.5cm}#1 \end{minipage}}
-  
-\newenvironment{englishabstract}{\pagenumbering{Roman}\chapter*{ABSTRACT}\thispagestyle{fancy}\fancyhead[C]{ABSTRACT}\begin{spacing}{1.25}}{\end{spacing}}
+\newenvironment{englishabstract}{\pagenumbering{Roman}\chapter*{ABSTRACT}\thispagestyle{fancy}\fancyhead[C]{ABSTRACT}}{}
   
 \newcommand{\englishkeyword}[1]{\noindent\begin{minipage}[t]{2.1cm}\noindent\textbf{Keywords:}\end{minipage} \begin{minipage}[t]{\linewidth - 2.1cm}#1 \end{minipage}}
 
@@ -133,7 +144,6 @@ bottom=3cm, bindingoffset=0cm]{geometry}
 \addtolength{\cftsubsubsecnumwidth}{-5pt}
 
 \renewcommand{\cfttoctitlefont}{\fontsize{15pt}{15pt}\selectfont\bfseries}
-\renewcommand{\contentsname}{目 \charspace 录}
 
 \newcommand{\standardhead}{
 \fancyhf{}
@@ -151,9 +161,11 @@ bottom=3cm, bindingoffset=0cm]{geometry}
 
 \renewcommand{\chaptermark}[1]{\markboth{第\CJKnumber{\arabic{chapter}}章 \hspace{0.5em} #1}{}}
 
-\newcommand{\thesisacknowledgement}{\chapter*{致 \charspace 谢}\addcontentsline{toc}{chapter}{致 \charspace 谢}\markboth{致 \charspace 谢}{致 \charspace 谢}}
+\newcommand{\thesisacknowledgement}{\chapter*{致 \charspace 谢}\addcontentsline{toc}{chapter}{致 \charspace 谢}\markboth{致 \charspace 谢}{致 \charspace 谢}\thispagestyle{fancy}\fancyhead[C]{致谢}}
 
-\newcommand{\thesisachievement}{\chapter*{攻读博士学位期间取得的成果}\addcontentsline{toc}{chapter}{攻读博士学位期间取得的成果}\markboth{攻读博士学位期间取得的成果}{攻读博士学位期间取得的成果}}
+%\newcommand{\thesisachievement}{\chapter*{攻读硕士学位期间取得的成果}\addcontentsline{toc}{chapter}{攻读硕士学位期间取得的成果}\markboth{攻读硕士学位期间取得的成果}{攻读硕士学位期间取得的成果}}
+
+\newenvironment{thesisachievement}{\renewcommand{\bibname}{攻读硕士学位期间取得的成果}\begin{thebibliography}{9}\begin{spacing}{1.5}\addcontentsline{toc}{chapter}{攻读硕士学位期间取得的成果}\thispagestyle{fancy}\fancyhead[C]{攻读硕士学位期间取得的成果}\small}{\end{spacing}\end{thebibliography}\renewcommand{\bibname}{参考文献}}
 
 \let\OLDthebibliography\thebibliography
 \renewcommand\thebibliography[1]{
@@ -161,24 +173,39 @@ bottom=3cm, bindingoffset=0cm]{geometry}
   \setlength{\parskip}{0pt}
   \setlength{\itemsep}{3pt}
 }
-
+\makeatletter
+\renewcommand{\@biblabel}[1]{[#1]\hfill}
+\makeatother
 %\setlength{\bibsep}{6pt}
-\newcommand{\thesisbibliography}{\bibliographystyle{thesisUESTC}\addcontentsline{toc}{chapter}{参考文献}
-\bibliography{reference}}
+\newenvironment{thesisbibliography}{\begin{thebibliography}{9}\begin{spacing}{1.5}\addcontentsline{toc}{chapter}{参考文献}\small}{\end{spacing}\end{thebibliography}}
 
+\newtheoremstyle{dotless}{}{}{\normalfont}{24pt}{\bfseries}{}{ }{}
+\theoremstyle{dotless}
 \newtheorem{theorem}{定理}
 \newtheorem{corollary}{推论}[theorem]
 \newtheorem{lemma}[theorem]{引理}
-\renewenvironment{proof}[1][\proofname]{%
-   \par\pushQED{\qed}\normalfont%
-   \topsep6\p@\@plus6\p@\relax
-   \trivlist\item[\hskip\labelsep\bfseries#1\@addpunct{:}]%
-   \ignorespaces
-}{%
-   \popQED\endtrivlist\@endpefalse
-}
+\renewcommand{\thetheorem}{\arabic{chapter}.\arabic{theorem}}
+\renewcommand{\qedsymbol}{$\blacksquare$}
 
-\renewcommand\bibname{参考文献}
+\makeatletter
+\renewenvironment{proof}[1][\proofname]{\par
+  \vspace{-\topsep}% remove the space after the theorem
+  \pushQED{\qed}%
+  \normalfont
+  \topsep0pt \partopsep0pt % no space before
+  \trivlist
+  \item[\hskip5\labelsep
+        \bfseries
+    #1\@addpunct{\chinesecolon}]\ignorespaces
+}{%
+  \popQED\endtrivlist\@endpefalse
+  \addvspace{6pt plus 6pt} % some space after
+}
+\makeatother
+
+\makeatletter \renewcommand{\@citess}[1]{\textsuperscript{\,[#1]}} \makeatother
+
+\renewcommand\arraystretch{1.6}
 
 
 \defaultfontfeatures{Mapping=tex-text}

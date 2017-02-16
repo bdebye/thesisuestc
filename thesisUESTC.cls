@@ -11,7 +11,6 @@
 \RequirePackage{setspace}
 \RequirePackage{multirow}
 \RequirePackage{bm}
-%\RequirePackage[english]{babel}
 \RequirePackage{xunicode,xltxtra}
 \RequirePackage{xeCJK}
 \RequirePackage{CJKnumb}
@@ -68,11 +67,9 @@ bottom=3cm, bindingoffset=0cm]{geometry}
 \renewcommand{\theequation}{\arabic{chapter}-\arabic{equation}}
 \renewcommand{\thetable}{\arabic{chapter}-\arabic{table}}
 \renewcommand{\thefigure}{\arabic{chapter}-\arabic{figure}}
-%\renewcommand{\thesubfigure}{\arabic{chapter}-\arabic{figure}(\alph{subfigure})}
-%\renewcommand{\thesubfigure}{(\alph{subfigure})}
+
 \makeatletter
 \renewcommand{\p@subfigure}{\arabic{chapter}-\arabic{figure}}
-%\renewcommand{\@thesubfigure}{\thesubfigure:\hskip\subfiglabelskip}
 \makeatother
 
 \newcommand{\chinesecolon}{\char"FF1A}
@@ -105,38 +102,90 @@ bottom=3cm, bindingoffset=0cm]{geometry}
 \renewcommand\footnotelayout{\fontsize{9}{12}\selectfont}
 
 \renewcommand{\thefootnote}{\ifcase\value{footnote}\or\ding{172}\or
-\ding{173}\or\ding{174}\or\ding{175}\or\ding{176}\or\ding{177}\or\ding{178}\or\ding{179}\or\ding{180\or\ding{181}}\fi}
+\ding{173}\or\ding{174}\or\ding{175}\or\ding{176}\or\ding{177}\or
+\ding{178}\or\ding{179}\or\ding{180\or\ding{181}}\fi}
 
 \renewcommand{\footnoterule}{\vfill\noindent\vspace*{0.9mm}\hspace{8.2mm}\rule{5.05cm}{0.02cm}\vspace*{2.6pt}}
 
 \makeatletter
-\def\@makefntext #1{\ifFN@hangfoot \bgroup \setbox \@tempboxa \hbox {\ifdim
-\footnotemargin >0pt \hb@xt@ \footnotemargin {\hbox { \normalfont \@thefnmark}
-\hss }\else \hbox { \normalfont \@thefnmark} \fi }\leftmargin \wd \@tempboxa
-\rightmargin \z@ \linewidth \columnwidth \advance \linewidth -\leftmargin
-\parshape \@ne \leftmargin \linewidth \footnotesize \@setpar {{\@@par }}
-\leavevmode \llap {\box \@tempboxa }\parskip \hangfootparskip \relax \parindent
-\hangfootparindent \relax \else \parindent 1em \noindent \ifdim \footnotemargin
- >\z@ \hb@xt@ \footnotemargin {\hss \hbox { \normalfont \@thefnmark} }\else
- \ifdim \footnotemargin =\z@ \llap {\hbox { \normalfont \@thefnmark} }\else
- \llap {\hb@xt@ -\footnotemargin {\hbox { \normalfont \@thefnmark} \hss }}
- \fi \fi \fi \footnotelayout #1\ifFN@hangfoot \par \egroup \fi}
+\def\@makefntext #1{
+	\ifFN@hangfoot 
+    	\bgroup \setbox \@tempboxa \hbox {
+        	\ifdim
+				\footnotemargin >0pt \hb@xt@ 
+                \footnotemargin {\hbox { \normalfont \@thefnmark}\hss }
+            \else 
+            	\hbox { \normalfont \@thefnmark} 
+			\fi 
+		}
+        \leftmargin \wd \@tempboxa 
+        \rightmargin \z@ \linewidth \columnwidth 
+        	\advance \linewidth -\leftmargin\parshape \@ne 
+		\leftmargin \linewidth \footnotesize \@setpar {{\@@par }}
+		\leavevmode \llap {\box \@tempboxa }\parskip 
+        \hangfootparskip \relax \parindent
+		\hangfootparindent \relax 
+        \else 
+        	\parindent 1em \noindent 
+            \ifdim 
+                \footnotemargin >\z@ \hb@xt@ 
+                \footnotemargin {\hss \hbox { \normalfont \@thefnmark} }
+            \else
+				\ifdim \footnotemargin =\z@ 
+                    \llap {\hbox { \normalfont \@thefnmark} }
+                \else
+ 					\llap {\hb@xt@ -\footnotemargin {\hbox { \normalfont \@thefnmark} \hss }}
+ 				\fi 
+            \fi
+		\fi 
+        \footnotelayout #1\ifFN@hangfoot \par \egroup 
+	\fi
+}
 \makeatother
 
 
-\newenvironment{chineseabstract}{\pagenumbering{Roman}\chapter*{摘\chinesespace 要}\thispagestyle{fancy}\fancyhead[C]{摘要}}{\clearpage{\pagestyle{empty}\cleardoublepage}}
+\newenvironment{chineseabstract}{
+	\pagenumbering{Roman}
+    \chapter*{摘\chinesespace 要}
+    \thispagestyle{fancy}
+    \fancyhead[C]{摘要}
+}{
+	\clearpage{\pagestyle{empty}\cleardoublepage}
+}
 
-\newcommand{\chinesekeyword}[1]{\noindent\begin{minipage}[t]{1.5cm}\noindent\textbf{关键词\chinesecolon}\end{minipage} \begin{minipage}[t]{\linewidth - 1.5cm}#1 \end{minipage}}
+\newcommand{\chinesekeyword}[1]{
+	\noindent
+    \begin{minipage}[t]{1.5cm}
+    	\noindent\textbf{关键词\chinesecolon}
+    \end{minipage}
+    \begin{minipage}[t]{\linewidth - 1.5cm}
+    	#1
+    \end{minipage}
+}
   
-\newenvironment{englishabstract}{\chapter*{ABSTRACT}\thispagestyle{fancy}\fancyhead[C]{ABSTRACT}}{\clearpage{\pagestyle{empty}\cleardoublepage}}
+\newenvironment{englishabstract}{
+	\chapter*{ABSTRACT}
+    \thispagestyle{fancy}
+    \fancyhead[C]{ABSTRACT}
+}{
+    \clearpage{\pagestyle{empty}\cleardoublepage}
+}
   
-\newcommand{\englishkeyword}[1]{\noindent\begin{minipage}[t]{2.1cm}\noindent\textbf{Keywords:}\end{minipage} \begin{minipage}[t]{\linewidth - 2.1cm}#1 \end{minipage}}
+\newcommand{\englishkeyword}[1]{
+	\noindent\begin{minipage}[t]{2.1cm}
+    	\noindent\textbf{Keywords:}
+    \end{minipage}
+    \begin{minipage}[t]{
+    	\linewidth - 2.1cm}
+        #1
+    \end{minipage}
+}
 
 
 \RequirePackage{everypage}
 \tocloftpagestyle{fancy}
 \AddEverypageHook{\addtocontents{toc}{
-\protect\cftsetpnumwidth{\widthof{\thepage}-1pt}
+	\protect\cftsetpnumwidth{\widthof{\thepage}-1pt}
 }}
 \renewcommand{\cftchappagefont}{\normalfont}
 \renewcommand\cftchapleader{\cftdotfill{\cftdotsep}}
@@ -170,34 +219,62 @@ bottom=3cm, bindingoffset=0cm]{geometry}
 \ProcessOptions\relax
 
 \newcommand{\standardhead}{
-\fancyhf{}
-\fancyhead[CO]{\fontsize{10.5pt}{12pt}\selectfont\leftmark}
-\fancyhead[CE]{\fontsize{10.5pt}{12pt}\selectfont 电子科技大学\chinesedegreename{}学位论文}
-\fancyfoot[CE,CO]{\fontsize{9pt}{11pt}\selectfont\thepage}
+	\fancyhf{}
+	\fancyhead[CO]{\fontsize{10.5pt}{12pt}\selectfont\leftmark}
+	\fancyhead[CE]{\fontsize{10.5pt}{12pt}\selectfont 电子科技大学\chinesedegreename{}学位论文}
+	\fancyfoot[CE,CO]{\fontsize{9pt}{11pt}\selectfont\thepage}
 }
  
-\newcommand{\thesistableofcontents}{\fancyhead[C]{目录}\tableofcontents\clearpage{\pagestyle{empty}\cleardoublepage}
-\standardhead
-\pagenumbering{arabic}
-\setcounter{page}{1}}
-
-\standardhead
+\newcommand{\thesistableofcontents}{
+	\fancyhf{}
+	\fancyhead[C]{目录}
+    \tableofcontents
+    \clearpage{\pagestyle{empty}\cleardoublepage}
+	\standardhead
+	\pagenumbering{arabic}
+	\setcounter{page}{1}
+}
 
 \renewcommand{\chaptermark}[1]{\markboth{第\CJKnumber{\arabic{chapter}}章 \hspace{0.5em} #1}{}}
 
-\newcommand{\thesisacknowledgement}{\chapter*{致\chinesespace 谢}\addcontentsline{toc}{chapter}{致\chinesespace  谢}\markboth{致\chinesespace  谢}{致\chinesespace  谢}\thispagestyle{fancy}\fancyhead[C]{致谢}}
+\newcommand{\thesisacknowledgement}{
+	\chapter*{致\chinesespace 谢}
+    \addcontentsline{toc}{chapter}{致\chinesespace  谢}
+    \markboth{致\chinesespace  谢}{致\chinesespace  谢}
+    \thispagestyle{fancy}\fancyhead[C]{致谢}
+}
 
 
-\newenvironment{exordium}{\chapter{绪\chinesespace 论}\fancyhf{}
-\fancyhead[CO]{\fontsize{10.5pt}{12pt}\selectfont \thechapter\chinesespace 绪论}
-\fancyhead[CE]{\fontsize{10.5pt}{12pt}\selectfont 电子科技大学\chinesedegreename{}学位论文}
-\fancyfoot[CE,CO]{\fontsize{9pt}{11pt}\selectfont\thepage}}{\newpage\standardhead}
+\newenvironment{exordium}{
+	\chapter{绪\chinesespace 论}
+    \fancyhf{}
+	\fancyhead[CO]{\fontsize{10.5pt}{12pt}\selectfont \thechapter\chinesespace 绪论}
+	\fancyhead[CE]{\fontsize{10.5pt}{12pt}\selectfont 电子科技大学\chinesedegreename{}学位论文}
+	\fancyfoot[CE,CO]{\fontsize{9pt}{11pt}\selectfont\thepage}
+}{
+	\newpage\standardhead
+}
 
-\newcommand{\thesisappendix}{\chapter*{附\chinesespace 录}\addcontentsline{toc}{chapter}{附录}\markboth{附录}{附录}\thispagestyle{fancy}\fancyhead[C]{附录}}
+\newcommand{\thesisappendix}{
+	\chapter*{附\chinesespace 录}
+    \addcontentsline{toc}{chapter}{附录}
+    \markboth{附录}{附录}
+    \thispagestyle{fancy}
+    \fancyhead[C]{附录}
+}
 
-%\newcommand{\thesisachievement}{\chapter*{攻读硕士学位期间取得的成果}\addcontentsline{toc}{chapter}{攻读硕士学位期间取得的成果}\markboth{攻读硕士学位期间取得的成果}{攻读硕士学位期间取得的成果}}
-
-\newenvironment{thesisachievement}{\renewcommand{\bibname}{攻读\chinesedegreename{}学位期间取得的成果}\begin{thebibliography}{lo}\begin{spacing}{1.5}\addcontentsline{toc}{chapter}{攻读\chinesedegreename{}学位期间取得的成果}\thispagestyle{fancy}\fancyhead[C]{攻读\chinesedegreename{}学位期间取得的成果}\small}{\end{spacing}\end{thebibliography}\renewcommand{\bibname}{参考文献}}
+\newenvironment{thesisachievement}{
+	\renewcommand{\bibname}{攻读\chinesedegreename{}学位期间取得的成果}
+    \begin{thebibliography}{lo}
+    \begin{spacing}{1.5}
+    \addcontentsline{toc}{chapter}{攻读\chinesedegreename{}学位期间取得的成果}
+    \thispagestyle{fancy}
+    \fancyhead[C]{攻读\chinesedegreename{}学位期间取得的成果}
+    \small
+}{
+    \end{spacing}\end{thebibliography}
+    \renewcommand{\bibname}{参考文献}
+}
 
 \let\OLDthebibliography\thebibliography
 \renewcommand\thebibliography[1]{
@@ -209,8 +286,17 @@ bottom=3cm, bindingoffset=0cm]{geometry}
 \renewcommand{\@biblabel}[1]{[#1]\hfill}
 \makeatother
 
-%\setlength{\bibsep}{6pt}
-\newenvironment{thesisbibliography}{\begin{thebibliography}{lo}\begin{spacing}{1.5}\addcontentsline{toc}{chapter}{参考文献}\thispagestyle{fancy}\fancyhead[C]{参考文献}\small}{\end{spacing}\end{thebibliography}}
+\newenvironment{thesisbibliography}{
+	\begin{thebibliography}{lo}
+    \begin{spacing}{1.5}
+    \addcontentsline{toc}{chapter}{参考文献}
+    \thispagestyle{fancy}
+    \fancyhead[C]{参考文献}
+    \small
+}{
+    \end{spacing}
+    \end{thebibliography}
+}
 
 \newtheoremstyle{dotless}{}{}{\normalfont}{24pt}{\bfseries}{}{ }{}
 \theoremstyle{dotless}
@@ -246,21 +332,12 @@ bottom=3cm, bindingoffset=0cm]{geometry}
 \XeTeXlinebreaklocale "zh"
 \XeTeXlinebreakskip = 0pt plus 1pt minus 0.1pt
 
-\newcommand\fontnamehei{simhei.ttf}
-\newcommand\fontnamesong{simsun.ttf}
-
-\setCJKmainfont[BoldFont=\fontnamehei]{\fontnamesong}
+\setCJKmainfont[BoldFont=simhei.ttf]{simsun.ttf}
 \setmainfont[
-BoldFont=timesbd.ttf,
-ItalicFont=timesi.ttf,
-BoldItalicFont=timesbi.ttf,
+	BoldFont=timesbd.ttf,
+	ItalicFont=timesi.ttf,
+	BoldItalicFont=timesbi.ttf,
 ]{times.ttf}
-
-\setCJKfamilyfont{song}{\fontnamesong}
-\newcommand{\song}{\CJKfamily{song}}
-
-\setCJKfamilyfont{hei}{\fontnamehei}
-\newcommand{\hei}{\CJKfamily{hei}}
 
 
 \endinput

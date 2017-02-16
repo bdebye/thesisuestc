@@ -5,7 +5,7 @@
 \RequirePackage[cm-default]{fontspec}
 \RequirePackage[usenames,dvipsnames,svgnames,table]{xcolor}
 \RequirePackage{graphicx}
-\RequirePackage[font=small, labelsep=space]{caption}
+\RequirePackage[font={onehalfspacing, small}, labelsep=space]{caption}
 \RequirePackage{array}
 \RequirePackage{setspace}
 \RequirePackage{multirow}
@@ -42,11 +42,10 @@
 \RequirePackage[titles, subfigure]{tocloft}
 \RequirePackage{subfigure}
 
-\renewcommand{\contentsname}{目\chinesespace 录}%
-\renewcommand{\proofname}{证明}%
-\renewcommand{\bibname}{参考文献}%
-\renewcommand{\figurename}{图}%
-\renewcommand{\tablename}{表}%
+\renewcommand{\contentsname}{目\chinesespace 录}
+\renewcommand{\bibname}{参考文献}
+\renewcommand{\figurename}{图}
+\renewcommand{\tablename}{表}
 
 \RequirePackage[a4paper, inner=3cm, outer=3cm, top=3cm,
 bottom=3cm, bindingoffset=0cm]{geometry}
@@ -66,6 +65,8 @@ bottom=3cm, bindingoffset=0cm]{geometry}
 \renewcommand{\theequation}{\arabic{chapter}-\arabic{equation}}
 \renewcommand{\thetable}{\arabic{chapter}-\arabic{table}}
 \renewcommand{\thefigure}{\arabic{chapter}-\arabic{figure}}
+
+\captionsetup{format=hang}
 
 \makeatletter
 \renewcommand{\p@subfigure}{\arabic{chapter}-\arabic{figure}}
@@ -97,7 +98,7 @@ bottom=3cm, bindingoffset=0cm]{geometry}
 \setlength{\footnotemargin}{4.5mm}
 
 \renewcommand{\footnotesize}{\fontsize{9pt}{11pt}\selectfont}
-\renewcommand{\small}{\fontsize{10.5pt}{12.3pt}\selectfont}
+\renewcommand{\small}{\fontsize{10.5pt}{12.6pt}\selectfont}
 \renewcommand\footnotelayout{\fontsize{9}{12}\selectfont}
 
 \renewcommand{\thefootnote}{\ifcase\value{footnote}\or\ding{172}\or
@@ -144,6 +145,7 @@ bottom=3cm, bindingoffset=0cm]{geometry}
 
 
 \newenvironment{chineseabstract}{
+	\fancyfoot[CE,CO]{\fontsize{9pt}{11pt}\selectfont\thepage}
 	\pagenumbering{Roman}
     \chapter*{摘\chinesespace 要}
     \thispagestyle{fancy}
@@ -182,10 +184,11 @@ bottom=3cm, bindingoffset=0cm]{geometry}
 
 
 \RequirePackage{everypage}
-\tocloftpagestyle{fancy}
 \AddEverypageHook{\addtocontents{toc}{
 	\protect\cftsetpnumwidth{\widthof{\thepage}-1pt}
 }}
+
+\tocloftpagestyle{fancy}
 \renewcommand{\cftchappagefont}{\normalfont}
 \renewcommand\cftchapleader{\cftdotfill{\cftdotsep}}
 
@@ -196,9 +199,10 @@ bottom=3cm, bindingoffset=0cm]{geometry}
 \setlength{\cftbeforechapskip}{0pt}
 
 \addtolength{\cftchapnumwidth}{25pt}
-\addtolength{\cftsecnumwidth}{-5pt}
-\addtolength{\cftsubsecnumwidth}{-5pt}
-\addtolength{\cftsubsubsecnumwidth}{-5pt}
+
+\cftsetindents{section}{21pt}{22pt}
+\cftsetindents{subsection}{36pt}{31pt}
+\cftsetindents{subsubsection}{60pt}{41pt}
 
 \renewcommand{\cfttoctitlefont}{\fontsize{15pt}{15pt}\selectfont\bfseries}
 
@@ -227,6 +231,7 @@ bottom=3cm, bindingoffset=0cm]{geometry}
 \newcommand{\thesistableofcontents}{
 	\fancyhf{}
 	\fancyhead[C]{目录}
+    \fancyfoot[CE,CO]{\fontsize{9pt}{11pt}\selectfont\thepage}
     \tableofcontents
     \clearpage{\pagestyle{empty}\cleardoublepage}
 	\standardhead
@@ -312,30 +317,31 @@ bottom=3cm, bindingoffset=0cm]{geometry}
     \end{thebibliography}
 }
 
-\newtheoremstyle{dotless}{}{}{\normalfont}{24pt}{\bfseries}{}{ }{}
+\newtheoremstyle{dotless}{0pt}{0pt}{\normalfont}{24pt}{\bfseries}{}{ }{}
 \theoremstyle{dotless}
 \newtheorem{theorem}{定理}
-\newtheorem{corollary}{推论}[theorem]
+\newtheorem{corollary}[theorem]{推论}
 \newtheorem{lemma}[theorem]{引理}
+
+
 
 \renewcommand{\thetheorem}{\arabic{chapter}.\arabic{theorem}}
 \renewcommand{\thecorollary}{\arabic{chapter}.\arabic{corollary}}
 \renewcommand{\thelemma}{\arabic{chapter}.\arabic{lemma}}
 \renewcommand{\qedsymbol}{$\blacksquare$}
+\renewcommand{\proofname}{证明}
 
 \makeatletter
 \renewenvironment{proof}[1][\proofname]{\par
-  \vspace{-\topsep}% remove the space after the theorem
-  \pushQED{\qed}%
+  \pushQED{\qed}
   \normalfont
-  \topsep0pt \partopsep0pt % no space before
+  \topsep0pt \partopsep0pt
   \trivlist
   \item[\hskip5\labelsep
         \bfseries
-    #1\@addpunct{\chinesecolon}]\ignorespaces
-}{%
+    #1\@addpunct{:}]\ignorespaces
+}{
   \popQED\endtrivlist\@endpefalse
-  \addvspace{6pt plus 6pt} % some space after
 }
 \makeatother
 

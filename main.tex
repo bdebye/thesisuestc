@@ -1,9 +1,5 @@
 
-\documentclass[12pt, openany, twoside]{book}
-
-
-\usepackage{thesisUESTC}
-
+\documentclass[doctor]{thesisUESTC}
 
 \title{Thesis Template of UESTC}
 \author{王稳}
@@ -28,18 +24,18 @@ With the widespread engineering applications ranging from broadband signals and 
 
 \thesistableofcontents
 
-\chapter{绪 \charspace 论}
+\begin{exordium}
 \section{研究工作的背景与意义}
-计算电磁学方法\cite{fastcem,
+计算电磁学方法\citing{fastcem,
 shengxinqing,
 bzwang,
 lvyinghua,
 wangchangqing,
 panxiaomin}
 从时、频域角度划分可以分为频域方法与时域方法两大类。
-频域方法的研究开展较早，目前应用广泛的包括：矩量法（MOM）\cite{bibson,martin}及其快速算
-法多层快速多极子（MLFMA）\cite{wangchangqing}方法、有限元（FEM）\cite{hujun,jianmingjin}方法、自适应积分（AIM）
-\cite{jianmingjin}方法等，这些方法是目前计算电磁学商用软件
+频域方法的研究开展较早，目前应用广泛的包括：矩量法（MOM）\citing{bibson,martin}及其快速算
+法多层快速多极子（MLFMA）\citing{wangchangqing}方法、有限元（FEM）\citing{hujun,jianmingjin}方法、自适应积分（AIM）
+\citing{jianmingjin}方法等，这些方法是目前计算电磁学商用软件
 \footnote{脚注序号“①，……，⑩”的字体是“正文”，不是“上标”，序号与脚注内容文字之间空1个半角字符，脚注的段落格式为：单倍行距，段前空0磅，段后空0磅，悬挂缩进1.5字符；中文用宋体，字号为小五号，英文和数字用Times New Roman字体，字号为9磅；中英文混排时，所有标点符号（例如逗号“，”、括号“（）”等）一律使用中文输入状态下的标点符号，但小数点采用英文状态下的样式“.”。}
 （例如：FEKO、Ansys 等）的
 核心算法。由文献\cite{bibson}可知
@@ -47,13 +43,15 @@ panxiaomin}
 \section{时域积分方程方法的国内外研究历史与现状}
 时域积分方程方法的研究始于上世纪60 年代，C.L.Bennet 等学者针对导体目
 标的瞬态电磁散射问题提出了求解时域积分方程的时间步进（marching-on in-time,
-MOT）算法\cite{zhong1994zhong}。
+MOT）算法\citing{bzwang}。
 
 \section{本文的主要贡献与创新}
 本论文以时域积分方程时间步进算法的数值实现技术、后时稳定性问题以及两层平面波加速算法为重点研究内容，主要创新点与贡献如下：
 
 \section{本论文的结构安排}
 本文的章节结构安排如下：
+
+\end{exordium}
 
 \chapter{时域积分方程基础}
 时域积分方程（TDIE）方法作为分析瞬态电磁波动现象最主要的数值算法之一，常用于求解均匀散射体和表面散射体的瞬态电磁散射问题。
@@ -142,7 +140,7 @@ f_n(r)=
 积分方程时间步进算法研究的重点之一。
 
 \section{时域积分方程时间步进算法阻抗矩阵的存储}
-时域阻抗元素的存储技术也是时间步进算法并行化的关键技术之一\cite{bibson}，采用
+时域阻抗元素的存储技术也是时间步进算法并行化的关键技术之一\citing{bibson}，采用
 合适的阻抗元素存储方式可以很大的提高并行时间步进算法的计算效率。
 
 \subsection{时域积分方程时间步进算法产生的阻抗矩阵的特征}
@@ -233,6 +231,8 @@ f_n(r)=
 \bibitem{jianmingjin} 金建铭（著）, 王建国（译）.电磁场有限元方法[M]. 西安: 西安电子科技大学出版社, 1998
 
 \end{thesisbibliography}
+
+\thesisappendix
 
 \begin{thesisachievement}
 \bibitem{ac1} 盛新庆. 计算电磁学要论[M]. 北京: 科学出版社, 2004

@@ -1,52 +1,56 @@
 
-\ProvidesPackage{thesisUESTC}
-\usepackage[cm-default]{fontspec} %[cm-default]选项主要用来解决使用数学环境时数学符号不能正常显示的问题
-\usepackage[usenames,dvipsnames,svgnames,table]{xcolor}
-\usepackage{graphicx}
-\usepackage[font=small, labelsep=space]{caption}
-\usepackage{array}
-\usepackage{setspace}
-\usepackage{multirow}
-\usepackage{bm}
-%\usepackage[english]{babel}
-\usepackage{xunicode,xltxtra}
-\usepackage{xeCJK}
-\usepackage{CJKnumb}
-\usepackage{pifont}
+\ProvidesClass{thesisUESTC}
+
+\LoadClass[12pt, openany, twoside]{book}
+
+\RequirePackage[cm-default]{fontspec}
+\RequirePackage[usenames,dvipsnames,svgnames,table]{xcolor}
+\RequirePackage{graphicx}
+\RequirePackage[font=small, labelsep=space]{caption}
+\RequirePackage{array}
+\RequirePackage{setspace}
+\RequirePackage{multirow}
+\RequirePackage{bm}
+%\RequirePackage[english]{babel}
+\RequirePackage{xunicode,xltxtra}
+\RequirePackage{xeCJK}
+\RequirePackage{CJKnumb}
+\RequirePackage{pifont}
+\RequirePackage{mathptmx}
 
 \definecolor{darkblue}{rgb}{0.0, 0.0, 0.55}
-\usepackage[hyperfootnotes=false]{hyperref}
+\RequirePackage[hyperfootnotes=false]{hyperref}
 \hypersetup{
  colorlinks=true,
  citecolor=black,
  linkcolor=black,
  urlcolor=darkblue}
  
-\usepackage{indentfirst}
-\usepackage{calc}
-\usepackage{amsmath}
-\usepackage{amssymb}
-\usepackage{amsthm}
-\usepackage{float}
-\usepackage{fancyvrb}
-\usepackage{fancyhdr}
-\usepackage{titlesec}
-\usepackage{setspace}
-\usepackage[superscript]{cite}
+\RequirePackage{indentfirst}
+\RequirePackage{calc}
+\RequirePackage{amsmath}
+\RequirePackage{amssymb}
+\RequirePackage{amsthm}
+\RequirePackage{float}
+\RequirePackage{fancyvrb}
+\RequirePackage{fancyhdr}
+\RequirePackage{titlesec}
+\RequirePackage{setspace}
+\RequirePackage{cite}
 
 
 \graphicspath{{./pic/}}
 
-\usepackage[titles, subfigure]{tocloft}
-\usepackage{subfigure}
+\RequirePackage[titles, subfigure]{tocloft}
+\RequirePackage{subfigure}
 
-\renewcommand{\contentsname}{目 \charspace 录}%
+\renewcommand{\contentsname}{目\chinesespace 录}%
 \renewcommand{\proofname}{证明}%
 \renewcommand{\bibname}{参考文献}%
 \renewcommand{\figurename}{图}%
 \renewcommand{\tablename}{表}%
 
-\usepackage[a4paper, inner=3cm, outer=3cm, top=3cm,
+\RequirePackage[a4paper, inner=3cm, outer=3cm, top=3cm,
 bottom=3cm, bindingoffset=0cm]{geometry}
 
 \pagestyle{fancy}
@@ -71,8 +75,8 @@ bottom=3cm, bindingoffset=0cm]{geometry}
 %\renewcommand{\@thesubfigure}{\thesubfigure:\hskip\subfiglabelskip}
 \makeatother
 
-\newcommand{\charspace}{ {} }
 \newcommand{\chinesecolon}{\char"FF1A}
+\newcommand{\chinesespace}{\char"3000}
 
 \setcounter{secnumdepth}{4}
 \setcounter{tocdepth}{4}
@@ -92,8 +96,8 @@ bottom=3cm, bindingoffset=0cm]{geometry}
   {\fontsize{12pt}{12pt}\selectfont\bfseries}
   {\thesubsubsection}{6pt}{}
 
-\usepackage[hang]{footmisc}
-\addtolength{\footnotesep}{1mm}
+\RequirePackage[hang]{footmisc}
+\addtolength{\footnotesep}{0mm}
 \setlength{\footnotemargin}{4.5mm}
 
 \renewcommand{\footnotesize}{\fontsize{9pt}{11pt}\selectfont}
@@ -102,7 +106,8 @@ bottom=3cm, bindingoffset=0cm]{geometry}
 
 \renewcommand{\thefootnote}{\ifcase\value{footnote}\or\ding{172}\or
 \ding{173}\or\ding{174}\or\ding{175}\or\ding{176}\or\ding{177}\or\ding{178}\or\ding{179}\or\ding{180\or\ding{181}}\fi}
-\renewcommand{\footnoterule}{\vfill\noindent\vspace*{0.9mm}\hspace{7.4mm}\rule{5.05cm}{0.02cm}\vspace*{2.6pt}}
+
+\renewcommand{\footnoterule}{\vfill\noindent\vspace*{0.9mm}\hspace{8.2mm}\rule{5.05cm}{0.02cm}\vspace*{2.6pt}}
 
 \makeatletter
 \def\@makefntext #1{\ifFN@hangfoot \bgroup \setbox \@tempboxa \hbox {\ifdim
@@ -118,17 +123,21 @@ bottom=3cm, bindingoffset=0cm]{geometry}
  \fi \fi \fi \footnotelayout #1\ifFN@hangfoot \par \egroup \fi}
 \makeatother
 
-\newenvironment{chineseabstract}{\pagenumbering{Roman}\chapter*{摘 \charspace 要}\thispagestyle{fancy}\fancyhead[C]{摘要}}{}
+
+\newenvironment{chineseabstract}{\pagenumbering{Roman}\chapter*{摘\chinesespace 要}\thispagestyle{fancy}\fancyhead[C]{摘要}}{\clearpage{\pagestyle{empty}\cleardoublepage}}
 
 \newcommand{\chinesekeyword}[1]{\noindent\begin{minipage}[t]{1.5cm}\noindent\textbf{关键词\chinesecolon}\end{minipage} \begin{minipage}[t]{\linewidth - 1.5cm}#1 \end{minipage}}
   
-\newenvironment{englishabstract}{\pagenumbering{Roman}\chapter*{ABSTRACT}\thispagestyle{fancy}\fancyhead[C]{ABSTRACT}}{}
+\newenvironment{englishabstract}{\chapter*{ABSTRACT}\thispagestyle{fancy}\fancyhead[C]{ABSTRACT}}{\clearpage{\pagestyle{empty}\cleardoublepage}}
   
 \newcommand{\englishkeyword}[1]{\noindent\begin{minipage}[t]{2.1cm}\noindent\textbf{Keywords:}\end{minipage} \begin{minipage}[t]{\linewidth - 2.1cm}#1 \end{minipage}}
 
 
-
+\RequirePackage{everypage}
 \tocloftpagestyle{fancy}
+\AddEverypageHook{\addtocontents{toc}{
+\protect\cftsetpnumwidth{\widthof{\thepage}-1pt}
+}}
 \renewcommand{\cftchappagefont}{\normalfont}
 \renewcommand\cftchapleader{\cftdotfill{\cftdotsep}}
 
@@ -145,14 +154,29 @@ bottom=3cm, bindingoffset=0cm]{geometry}
 
 \renewcommand{\cfttoctitlefont}{\fontsize{15pt}{15pt}\selectfont\bfseries}
 
+\newcommand{\chinesedegreename}{硕士}
+\DeclareOption{bachelor}{
+  \renewcommand{\chinesedegreename}{本科}
+}
+
+\DeclareOption{master}{
+  \renewcommand{\chinesedegreename}{硕士}
+}
+
+\DeclareOption{doctor}{
+  \renewcommand{\chinesedegreename}{博士}
+}
+
+\ProcessOptions\relax
+
 \newcommand{\standardhead}{
 \fancyhf{}
 \fancyhead[CO]{\fontsize{10.5pt}{12pt}\selectfont\leftmark}
-\fancyhead[CE]{\fontsize{10.5pt}{12pt}\selectfont 电子科技大学硕士学位论文}
+\fancyhead[CE]{\fontsize{10.5pt}{12pt}\selectfont 电子科技大学\chinesedegreename{}学位论文}
 \fancyfoot[CE,CO]{\fontsize{9pt}{11pt}\selectfont\thepage}
 }
  
-\newcommand{\thesistableofcontents}{\fancyhead[C]{目录}\tableofcontents\newpage
+\newcommand{\thesistableofcontents}{\fancyhead[C]{目录}\tableofcontents\clearpage{\pagestyle{empty}\cleardoublepage}
 \standardhead
 \pagenumbering{arabic}
 \setcounter{page}{1}}
@@ -161,11 +185,19 @@ bottom=3cm, bindingoffset=0cm]{geometry}
 
 \renewcommand{\chaptermark}[1]{\markboth{第\CJKnumber{\arabic{chapter}}章 \hspace{0.5em} #1}{}}
 
-\newcommand{\thesisacknowledgement}{\chapter*{致 \charspace 谢}\addcontentsline{toc}{chapter}{致 \charspace 谢}\markboth{致 \charspace 谢}{致 \charspace 谢}\thispagestyle{fancy}\fancyhead[C]{致谢}}
+\newcommand{\thesisacknowledgement}{\chapter*{致\chinesespace 谢}\addcontentsline{toc}{chapter}{致\chinesespace  谢}\markboth{致\chinesespace  谢}{致\chinesespace  谢}\thispagestyle{fancy}\fancyhead[C]{致谢}}
+
+
+\newenvironment{exordium}{\chapter{绪\chinesespace 论}\fancyhf{}
+\fancyhead[CO]{\fontsize{10.5pt}{12pt}\selectfont \thechapter\chinesespace 绪论}
+\fancyhead[CE]{\fontsize{10.5pt}{12pt}\selectfont 电子科技大学\chinesedegreename{}学位论文}
+\fancyfoot[CE,CO]{\fontsize{9pt}{11pt}\selectfont\thepage}}{\newpage\standardhead}
+
+\newcommand{\thesisappendix}{\chapter*{附\chinesespace 录}\addcontentsline{toc}{chapter}{附录}\markboth{附录}{附录}\thispagestyle{fancy}\fancyhead[C]{附录}}
 
 %\newcommand{\thesisachievement}{\chapter*{攻读硕士学位期间取得的成果}\addcontentsline{toc}{chapter}{攻读硕士学位期间取得的成果}\markboth{攻读硕士学位期间取得的成果}{攻读硕士学位期间取得的成果}}
 
-\newenvironment{thesisachievement}{\renewcommand{\bibname}{攻读硕士学位期间取得的成果}\begin{thebibliography}{9}\begin{spacing}{1.5}\addcontentsline{toc}{chapter}{攻读硕士学位期间取得的成果}\thispagestyle{fancy}\fancyhead[C]{攻读硕士学位期间取得的成果}\small}{\end{spacing}\end{thebibliography}\renewcommand{\bibname}{参考文献}}
+\newenvironment{thesisachievement}{\renewcommand{\bibname}{攻读\chinesedegreename{}学位期间取得的成果}\begin{thebibliography}{lo}\begin{spacing}{1.5}\addcontentsline{toc}{chapter}{攻读\chinesedegreename{}学位期间取得的成果}\thispagestyle{fancy}\fancyhead[C]{攻读\chinesedegreename{}学位期间取得的成果}\small}{\end{spacing}\end{thebibliography}\renewcommand{\bibname}{参考文献}}
 
 \let\OLDthebibliography\thebibliography
 \renewcommand\thebibliography[1]{
@@ -176,8 +208,9 @@ bottom=3cm, bindingoffset=0cm]{geometry}
 \makeatletter
 \renewcommand{\@biblabel}[1]{[#1]\hfill}
 \makeatother
+
 %\setlength{\bibsep}{6pt}
-\newenvironment{thesisbibliography}{\begin{thebibliography}{9}\begin{spacing}{1.5}\addcontentsline{toc}{chapter}{参考文献}\small}{\end{spacing}\end{thebibliography}}
+\newenvironment{thesisbibliography}{\begin{thebibliography}{lo}\begin{spacing}{1.5}\addcontentsline{toc}{chapter}{参考文献}\thispagestyle{fancy}\fancyhead[C]{参考文献}\small}{\end{spacing}\end{thebibliography}}
 
 \newtheoremstyle{dotless}{}{}{\normalfont}{24pt}{\bfseries}{}{ }{}
 \theoremstyle{dotless}
@@ -185,6 +218,8 @@ bottom=3cm, bindingoffset=0cm]{geometry}
 \newtheorem{corollary}{推论}[theorem]
 \newtheorem{lemma}[theorem]{引理}
 \renewcommand{\thetheorem}{\arabic{chapter}.\arabic{theorem}}
+\renewcommand{\thecorollary}{\arabic{chapter}.\arabic{corollary}}
+\renewcommand{\thelemma}{\arabic{chapter}.\arabic{lemma}}
 \renewcommand{\qedsymbol}{$\blacksquare$}
 
 \makeatletter
@@ -203,8 +238,7 @@ bottom=3cm, bindingoffset=0cm]{geometry}
 }
 \makeatother
 
-\makeatletter \renewcommand{\@citess}[1]{\textsuperscript{\,[#1]}} \makeatother
-
+\newcommand{\citing}[1]{\textsuperscript{\cite{#1}}}
 \renewcommand\arraystretch{1.6}
 
 
@@ -214,8 +248,6 @@ bottom=3cm, bindingoffset=0cm]{geometry}
 
 \newcommand\fontnamehei{simhei.ttf}
 \newcommand\fontnamesong{simsun.ttf}
-
-\usepackage{mathptmx}
 
 \setCJKmainfont[BoldFont=\fontnamehei]{\fontnamesong}
 \setmainfont[
@@ -229,3 +261,6 @@ BoldItalicFont=timesbi.ttf,
 
 \setCJKfamilyfont{hei}{\fontnamehei}
 \newcommand{\hei}{\CJKfamily{hei}}
+
+
+\endinput

@@ -399,7 +399,7 @@ bottom=3cm, bindingoffset=0cm]{geometry}
 % If you want to use this template in online editing system like Overleaf
 % or ShareLaTeX, upload the font files to the root folder of your project, 
 % delete above two lines and uncomment the configurations below. Remember
-% to make the names of font files the same as used below.
+% to make the names of font files same as used below.
 %
 % \setCJKmainfont[BoldFont=simhei.ttf]{simsun.ttf} % SimSun and SimHei
 % \setmainfont[

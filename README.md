@@ -17,7 +17,7 @@
 
 %
 % If you want to use this template in online editing system like Overleaf
-% or ShareLaTeX, upload the font files to the root folder of your project, 
+% or ShareLaTeX, upload the font files to the root folder of your project,
 % delete above two lines and uncomment the configurations below. Remember
 % to make the names of font files same as used below.
 %
@@ -68,11 +68,11 @@
 
 ### 外文资料原文
 
-本科毕业论文要求翻译一篇外文资料，资料原文应由命令`\thesistranslationoriginal`开始。为了书写方便，附录中可以继续分小节，只不过附录中的小节不会在目录中显示。
+本科毕业论文要求翻译一篇外文资料，资料原文应由命令`\thesistranslationoriginal`开始。为了书写方便可以继续分小节，只不过这部分中的小节不会在目录中显示。
 
 ### 外文资料译文
 
-资料译文应由命令`\thesistranslationchinese`开始。为了书写方便，附录中可以继续分小节，只不过附录中的小节不会在目录中显示。
+资料译文应由命令`\thesistranslationchinese`开始。为了书写方便可以继续分小节，只不过这部分中的小节不会在目录中显示。
 
 ### 插入图片和表格
 

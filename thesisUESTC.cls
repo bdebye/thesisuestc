@@ -11,7 +11,7 @@
 %% 
 %%  This work has the LPPL maintenance status `maintained'.
 %% 
-%%  The Current Maintainer of this work is M. Y. Name.
+%%  The Current Maintainer of this work is Wen Wang <wanygen@gmail.com>.
 %% 
 %%  This work consists of the file thesisUESTC.cls. Other files in
 %%  this work's package are belongs to the respective owners.

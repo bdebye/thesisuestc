@@ -1,8 +1,3 @@
-% TODO list:
-% 1) Space surrounding the tables, figures and formulas.
-% 2) Line spacing in captions of table and figure.
-% 3) Compitability with the uestcthesis.bst file.
-
 
 \documentclass[doctor]{thesisUESTC}
 
@@ -78,14 +73,22 @@ f_n(r)=
 \end{equation}
 其中，$l_n$为三角形单元$T_n^+$和$T_n^-$公共边的长度，$A_n^+$和$A_n^-$分别为三角形单元$T_n^+$和$T_n^-$的面积（如图\ref{pica}所示）。
 
-\begin{figure}[h]
-\centering
+\begin{graphic}[h]
 \includegraphics{pica.pdf}
 \caption{RWG 基函数几何参数示意图}
 \label{pica}
-\end{figure}
+\end{graphic}
 由于时域混合场积分方程是时域电场积分方程与时域磁场积分方程的线性组合，因此时域混合场积分方程时间步进算法的阻抗矩阵特征与时域电场积分方程时间步进算法的阻抗矩阵特征相同。
-
+\begin{equation}
+\begin{aligned}\label{latent_binary_variable}
+\mathbf{r}_{i,j}=
+\begin{cases}
+1,f(\mathbf{x}^{i};\mathbf{w})\cdot f(\mathbf{x}^{j};\mathbf{w})\geq u(\lambda),\\
+0,f(\mathbf{x}^{i};\mathbf{w})\cdot f(\mathbf{x}^{j};\mathbf{w})< l(\lambda), 1\leq i,j\leq n.\\
+f(\mathbf{x}^{i};\mathbf{w})\cdot f(\mathbf{x}^{j};\mathbf{w}),\text{otherwise},
+\end{cases}
+\end{aligned}
+\end{equation}
 时域积分方程时间步进算法的阻抗元素直接影响算法的后时稳定性，因此阻抗元素的计算是算法的关键之一，采用精度高效的方法计算时域阻抗元素是时域积分方程时间步进算法研究的重点之一。
 
 
@@ -99,8 +102,7 @@ f_n(r)=
 
 如图\ref{picb}和图\ref{picc}所示分别给出了参数$E_0=\hat{x}$，$a_n=-\hat{z}$，$f_0=250MHz$，$f_w=50MHz$，$t_w=4.2\sigma$时，调制高斯脉冲的时域与频域归一化波形图。
 
-\begin{figure}[h]
-\centering
+\begin{graphic}[h]
 \subfigure[]{
 \label{picb}
 \includegraphics[width=7.3cm]{picb.pdf}}
@@ -109,7 +111,7 @@ f_n(r)=
 \includegraphics[width=6.41cm]{picc.pdf}}
 \caption{调制高斯脉冲时域与频率波形，时域阻抗元素的存储技术也是时间步进算法并行化的关键技术之一，采用合适的阻抗元素存储方式可以很大的提高并行时间步进算法的计算效率。}
 \label{fig1}
-\end{figure}
+\end{graphic}
 时域阻抗元素的存储技术也是时间步进算法并行化的关键技术之一，采用合适的阻抗元素存储方式可以很大的提高并行时间步进算法的计算效率。
 
 \section{本章小结}
@@ -155,8 +157,7 @@ f_n(r)=
 如表\ref{tablea}所示给出了时间步长分别取0.4ns、0.5ns、0.6ns 时的三种存储
 方式的存储量大小。
 
-\begin{table}[h]
-\centering\small
+\begin{form}[h]
 \caption{计算$2m\times 2m$理想导体平板时域感应电流采用的三种存储方式的存储量比较。} 
 \begin{tabular}{|c|c|c|c|} 
 \hline  
@@ -170,15 +171,16 @@ f_n(r)=
 \hline  
 \end{tabular}
 \label{tablea}
-\end{table}
+\end{form}
 
 如图\ref{picd}所示给出了时间步长选取为0.5ns 时采用三种不同存储方式计算的
 平板中心处$x$方向的感应电流值与IDFT 方法计算结果的比较，……。如图\ref{pice}
 所示给出了存储方式为基权函数压缩存储方式，时间步长分别取0.4ns、0.5ns、0.6ns
 时平板中心处$x$方向的感应电流计算结果，从图中可以看出不同时间步长的计算结果基本相同。
 
-\begin{figure}[h]
-\centering
+由于时域混合场积分方程是时域电场积分方程与时域磁场积分方程的线性组合，因此时域混合场积分方程时间步进算法的阻抗矩阵特征与时域电场积分方程时间步进算法的阻抗矩阵特征相同。
+
+\begin{graphic}[h]
 \subfigure[]{
 \label{picd}
 \includegraphics[width=6.77cm]{picd.pdf}}
@@ -187,7 +189,7 @@ f_n(r)=
 \includegraphics[width=7.04cm]{pice.pdf}}
 \caption{$2m\times 2m$的理想导体平板中心处感应电流$x$分量随时间的变化关系}
 \label{fig2}
-\end{figure}
+\end{graphic}
 
 
 由于时域混合场积分方程是时域电场积分方程与时域磁场积分方程的线性组

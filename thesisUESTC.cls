@@ -5,7 +5,7 @@
 \RequirePackage[cm-default]{fontspec}
 \RequirePackage[usenames,dvipsnames,svgnames,table]{xcolor}
 \RequirePackage{graphicx}
-\RequirePackage[font={onehalfspacing, small}, labelsep=space]{caption}
+\RequirePackage[font={doublespacing, small}, labelsep=space, skip=6pt]{caption}
 \RequirePackage{array}
 \RequirePackage{setspace}
 \RequirePackage{multirow}
@@ -35,7 +35,7 @@
 \RequirePackage{titlesec}
 \RequirePackage{setspace}
 \RequirePackage{cite}
-
+\RequirePackage{flafter}
 
 \graphicspath{{./pic/}}
 
@@ -54,7 +54,7 @@ bottom=3cm, bindingoffset=0cm]{geometry}
 \linespread{1.391}
 \setlength\parindent{24pt}
 \titlespacing{\chapter}{0pt}{0pt}{0.7cm}
-\titlespacing{\section}{0pt}{16pt}{6pt}
+\titlespacing{\section}{0pt}{20pt}{6pt}
 \titlespacing{\subsection}{0pt}{12pt}{6pt}
 \titlespacing{\subsubsection}{0pt}{12pt}{6pt}
 
@@ -67,6 +67,26 @@ bottom=3cm, bindingoffset=0cm]{geometry}
 \renewcommand{\thefigure}{\arabic{chapter}-\arabic{figure}}
 
 \captionsetup{format=hang}
+\captionsetup[figure]{aboveskip=2pt,belowskip=-4pt}
+\captionsetup[table]{belowskip=6pt}
+\setlength{\subfigcapskip}{-3pt}
+
+\newenvironment{graphic}[1][h]{
+	\vspace{-10pt}
+	\begin{figure}[#1]
+    \centering
+}{
+	\end{figure}
+}
+
+\newenvironment{form}[1][h]{
+	\begin{table}[#1]
+    \centering
+    \small
+}{
+	\end{table}
+    \vspace{-16pt}
+}
 
 \makeatletter
 \renewcommand{\p@subfigure}{\arabic{chapter}-\arabic{figure}}
@@ -99,7 +119,7 @@ bottom=3cm, bindingoffset=0cm]{geometry}
 
 \renewcommand{\footnotesize}{\fontsize{9pt}{11pt}\selectfont}
 \renewcommand{\small}{\fontsize{10.5pt}{12.6pt}\selectfont}
-\renewcommand\footnotelayout{\fontsize{9}{12}\selectfont}
+\renewcommand\footnotelayout{\fontsize{9}{12.5}\selectfont}
 
 \renewcommand{\thefootnote}{\ifcase\value{footnote}\or\ding{172}\or
 \ding{173}\or\ding{174}\or\ding{175}\or\ding{176}\or\ding{177}\or
@@ -286,7 +306,7 @@ bottom=3cm, bindingoffset=0cm]{geometry}
 	\renewcommand{\bibname}{攻读\chinesedegreename{}学位期间取得的成果}
     \setcounter{section}{0}
     \begin{thebibliography}{lo}
-    \begin{spacing}{1.5}
+    \begin{spacing}{1.667}
     \addcontentsline{toc}{chapter}{攻读\chinesedegreename{}学位期间取得的成果}
     \thispagestyle{fancy}
     \small
@@ -299,7 +319,7 @@ bottom=3cm, bindingoffset=0cm]{geometry}
 \renewcommand\thebibliography[1]{
   \OLDthebibliography{#1}
   \setlength{\parskip}{0pt}
-  \setlength{\itemsep}{3pt}
+  \setlength{\itemsep}{0pt}
 }
 \makeatletter
 \renewcommand{\@biblabel}[1]{[#1]\hfill}
@@ -308,7 +328,7 @@ bottom=3cm, bindingoffset=0cm]{geometry}
 \newenvironment{thesisbibliography}{
     \setcounter{section}{0}
 	\begin{thebibliography}{lo}
-    \begin{spacing}{1.5}
+    \begin{spacing}{1.667}
     \addcontentsline{toc}{chapter}{参考文献}
     \thispagestyle{fancy}
     \small
@@ -346,7 +366,7 @@ bottom=3cm, bindingoffset=0cm]{geometry}
 \makeatother
 
 \newcommand{\citing}[1]{\textsuperscript{\cite{#1}}}
-\renewcommand\arraystretch{1.6}
+\setlength{\extrarowheight}{5pt}
 
 
 \defaultfontfeatures{Mapping=tex-text}

@@ -69,6 +69,7 @@ bottom=3cm, bindingoffset=0cm]{geometry}
 \captionsetup{format=hang}
 \captionsetup[figure]{aboveskip=2pt,belowskip=-4pt}
 \captionsetup[table]{belowskip=6pt}
+\setlength{\extrarowheight}{5pt}
 \setlength{\subfigcapskip}{-3pt}
 
 \newenvironment{graphic}[1][h]{
@@ -212,7 +213,7 @@ bottom=3cm, bindingoffset=0cm]{geometry}
 \renewcommand{\cftchappagefont}{\normalfont}
 \renewcommand\cftchapleader{\cftdotfill{\cftdotsep}}
 
-\renewcommand{\cftdotsep}{0.8}
+\renewcommand{\cftdotsep}{0.4}
 
 \setlength{\cftbeforetoctitleskip}{0pt}
 \setlength{\cftaftertoctitleskip}{18pt}
@@ -366,7 +367,6 @@ bottom=3cm, bindingoffset=0cm]{geometry}
 \makeatother
 
 \newcommand{\citing}[1]{\textsuperscript{\cite{#1}}}
-\setlength{\extrarowheight}{5pt}
 
 
 \defaultfontfeatures{Mapping=tex-text}

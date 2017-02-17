@@ -9,7 +9,7 @@
 
 编译文档请使用XeLaTeX引擎。使用WinEdt、Texmaker或Texpad等编辑环境直接使用操作界面提供的编译按钮即可，不需要复杂的编译脚本，但是记得将编译引擎设置成XeLaTeX。命令编译如`xelatex main.tex`即可，文档内部有引用或参考文献的情况下需要多次编译。
 
-使用在线编辑环境如Overleaf或ShareLaTeX的情况下需要上传字体文件到项目的根目录，修改模板最后的字体设置，直接制定所使用的字体文件。详细做法参考模板代码末尾的注释。
+使用在线编辑环境如Overleaf或ShareLaTeX的情况下需要上传字体文件到项目的根目录，修改模板最后的字体设置，直接指定所使用的字体文件。详细做法参考模板代码末尾的注释。
 
 ```latex
 \setCJKmainfont[BoldFont=SimHei]{SimSun}

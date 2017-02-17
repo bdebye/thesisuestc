@@ -5,7 +5,7 @@
 模板由电子科技大学物理电子学院2014级硕士研究生王稳编写，由于在毕业论文写作中遇到各种问题，希望有一个理想的解决方案，所以决定写一个模板出来。希望此项目能继续发展，解决各位同学毕业论文排版中的困难。
 
 ## 使用方法
-使用模板需要系统安装任意一种TeX环境，如TeXLive、MacTeX和MiKTeX，但是不推荐CTeX。模板采用LaTeX类的形式封装，导入模板只需要把thesisUESTC.cls文件放在文档所在目录，在文档开头使用`\documentclass{thesisUESTC}`命令将文档的类设置成thesisUESTC即可。
+使用模板需要系统安装任意一种TeX环境，如TeXLive、MacTeX和MiKTeX，自动带有XeLaTeX引擎，但是不推荐CTeX。模板采用LaTeX类的形式封装，导入模板只需要把thesisUESTC.cls文件放在文档所在目录，在文档开头使用`\documentclass{thesisUESTC}`命令将文档的类设置成thesisUESTC即可。
 
 编译文档请使用XeLaTeX引擎。使用WinEdt、Texmaker或Texpad等编辑环境直接使用操作界面提供的编译按钮即可，不需要复杂的编译脚本，但是记得将编译引擎设置成XeLaTeX。命令编译如`xelatex main.tex`即可，文档内部有引用或参考文献的情况下需要多次编译。
 

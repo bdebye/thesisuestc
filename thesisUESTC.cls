@@ -13,8 +13,7 @@
 %% 
 %%  The Current Maintainer of this work is Wen Wang <wanygen@gmail.com>.
 %% 
-%%  This work consists of the file thesisUESTC.cls. Other files in
-%%  this work's package are belongs to the respective owners.
+%%  This work consists of the file thesisUESTC.cls.
 %% 
 
 

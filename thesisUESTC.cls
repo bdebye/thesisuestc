@@ -1,6 +1,6 @@
 %%
 %%  Copyright 2017 Wen Wang <wanygen@gmail.com>
-%% 
+%%
 %%  This work may be distributed and/or modified under the
 %%  conditions of the LaTeX Project Public License, either version 1.3
 %%  of this license or (at your option) any later version.
@@ -8,13 +8,13 @@
 %%    http://www.latex-project.org/lppl.txt
 %%  and version 1.3 or later is part of all distributions of LaTeX
 %%  version 2005/12/01 or later.
-%% 
+%%
 %%  This work has the LPPL maintenance status `maintained'.
-%% 
+%%
 %%  The Current Maintainer of this work is Wen Wang <wanygen@gmail.com>.
-%% 
+%%
 %%  This work consists of the file thesisUESTC.cls.
-%% 
+%%
 
 
 \ProvidesClass{thesisUESTC}
@@ -42,7 +42,7 @@
  citecolor=black,
  linkcolor=black,
  urlcolor=darkblue}
- 
+
 \RequirePackage{indentfirst}
 \RequirePackage{calc}
 \RequirePackage{amsmath}
@@ -54,7 +54,7 @@
 \RequirePackage{titlesec}
 \RequirePackage{setspace}
 \RequirePackage{cite}
-\RequirePackage{flafter}
+\RequirePackage{enumitem}
 
 \graphicspath{{./pic/}}
 
@@ -120,11 +120,11 @@ bottom=3cm, bindingoffset=0cm]{geometry}
 
 \titleformat{\chapter}
   {\centering\fontsize{15pt}{15pt}\selectfont\bfseries\thispagestyle{fancy}}{\thechapter}{1em}{}
-  
+
 \titleformat{\section}
   {\fontsize{14pt}{14pt}\selectfont\bfseries}
   {\thesection}{7pt}{}
-  
+
 \titleformat{\subsection}
   {\fontsize{14pt}{14pt}\selectfont\bfseries}
   {\thesubsection}{7pt}{}
@@ -149,36 +149,36 @@ bottom=3cm, bindingoffset=0cm]{geometry}
 
 \makeatletter
 \def\@makefntext #1{
-	\ifFN@hangfoot 
+	\ifFN@hangfoot
     	\bgroup \setbox \@tempboxa \hbox {
         	\ifdim
-				\footnotemargin >0pt \hb@xt@ 
+				\footnotemargin >0pt \hb@xt@
                 \footnotemargin {\hbox { \normalfont \@thefnmark}\hss }
-            \else 
-            	\hbox { \normalfont \@thefnmark} 
-			\fi 
+            \else
+            	\hbox { \normalfont \@thefnmark}
+			\fi
 		}
-        \leftmargin \wd \@tempboxa 
-        \rightmargin \z@ \linewidth \columnwidth 
-        	\advance \linewidth -\leftmargin\parshape \@ne 
+        \leftmargin \wd \@tempboxa
+        \rightmargin \z@ \linewidth \columnwidth
+        	\advance \linewidth -\leftmargin\parshape \@ne
 		\leftmargin \linewidth \footnotesize \@setpar {{\@@par }}
-		\leavevmode \llap {\box \@tempboxa }\parskip 
+		\leavevmode \llap {\box \@tempboxa }\parskip
         \hangfootparskip \relax \parindent
-		\hangfootparindent \relax 
-        \else 
-        	\parindent 1em \noindent 
-            \ifdim 
-                \footnotemargin >\z@ \hb@xt@ 
+		\hangfootparindent \relax
+        \else
+        	\parindent 1em \noindent
+            \ifdim
+                \footnotemargin >\z@ \hb@xt@
                 \footnotemargin {\hss \hbox { \normalfont \@thefnmark} }
             \else
-				\ifdim \footnotemargin =\z@ 
+				\ifdim \footnotemargin =\z@
                     \llap {\hbox { \normalfont \@thefnmark} }
                 \else
  					\llap {\hb@xt@ -\footnotemargin {\hbox { \normalfont \@thefnmark} \hss }}
- 				\fi 
+ 				\fi
             \fi
-		\fi 
-        \footnotelayout #1\ifFN@hangfoot \par \egroup 
+		\fi
+        \footnotelayout #1\ifFN@hangfoot \par \egroup
 	\fi
 }
 \makeatother
@@ -203,7 +203,7 @@ bottom=3cm, bindingoffset=0cm]{geometry}
     	#1
     \end{minipage}
 }
-  
+
 \newenvironment{englishabstract}{
 	\chapter*{ABSTRACT}
     \thispagestyle{fancy}
@@ -211,7 +211,7 @@ bottom=3cm, bindingoffset=0cm]{geometry}
 }{
     \clearpage{\pagestyle{empty}\cleardoublepage}
 }
-  
+
 \newcommand{\englishkeyword}[1]{
 	\noindent\begin{minipage}[t]{2.1cm}
     	\noindent\textbf{Keywords:}
@@ -267,7 +267,7 @@ bottom=3cm, bindingoffset=0cm]{geometry}
 	\fancyhead[CE]{\fontsize{10.5pt}{12pt}\selectfont 电子科技大学\chinesedegreename{}学位论文}
 	\fancyfoot[CE,CO]{\fontsize{9pt}{11pt}\selectfont\thepage}
 }
- 
+
 \newcommand{\thesistableofcontents}{
 	\fancyhf{}
 	\fancyhead[C]{目录}
@@ -283,7 +283,7 @@ bottom=3cm, bindingoffset=0cm]{geometry}
 
 \newcommand{\thesisacknowledgement}{
     \renewcommand\thesection{\arabic{section}}
-	\addtocontents{toc}{\protect\setcounter{tocdepth}{0}} 
+	\addtocontents{toc}{\protect\setcounter{tocdepth}{0}}
     \setcounter{section}{0}
 	\chapter*{致\chinesespace 谢}
     \addcontentsline{toc}{chapter}{致\chinesespace  谢}
@@ -362,12 +362,15 @@ bottom=3cm, bindingoffset=0cm]{geometry}
 \newtheorem{theorem}{定理}
 \newtheorem{corollary}[theorem]{推论}
 \newtheorem{lemma}[theorem]{引理}
-
+\newtheorem{definition}[theorem]{定义}
+\newtheorem{example}[theorem]{例子}
 
 
 \renewcommand{\thetheorem}{\arabic{chapter}.\arabic{theorem}}
 \renewcommand{\thecorollary}{\arabic{chapter}.\arabic{corollary}}
 \renewcommand{\thelemma}{\arabic{chapter}.\arabic{lemma}}
+\renewcommand{\thedefinition}{\arabic{chapter}.\arabic{definition}}
+\renewcommand{\theexample}{\arabic{chapter}.\arabic{example}}
 \renewcommand{\qedsymbol}{$\blacksquare$}
 \renewcommand{\proofname}{证明}
 
@@ -386,7 +389,7 @@ bottom=3cm, bindingoffset=0cm]{geometry}
 \makeatother
 
 \newcommand{\citing}[1]{\textsuperscript{\cite{#1}}}
-
+\setlist{noitemsep}
 
 \defaultfontfeatures{Mapping=tex-text}
 \XeTeXlinebreaklocale "zh"
@@ -397,9 +400,9 @@ bottom=3cm, bindingoffset=0cm]{geometry}
 
 %
 % If you want to use this template in online editing system like Overleaf
-% or ShareLaTeX, upload the font files to the root folder of your project, 
+% or ShareLaTeX, upload the font files to the root folder of your project,
 % delete above two lines and uncomment the configurations below. Remember
-% to make the names of font files same as used below.
+% to make the names of font files the same as used below.
 %
 % \setCJKmainfont[BoldFont=simhei.ttf]{simsun.ttf} % SimSun and SimHei
 % \setmainfont[

@@ -373,12 +373,21 @@ bottom=3cm, bindingoffset=0cm]{geometry}
 \XeTeXlinebreaklocale "zh"
 \XeTeXlinebreakskip = 0pt plus 1pt minus 0.1pt
 
-\setCJKmainfont[BoldFont=simhei.ttf]{simsun.ttf}
-\setmainfont[
-	BoldFont=timesbd.ttf,
-	ItalicFont=timesi.ttf,
-	BoldItalicFont=timesbi.ttf,
-]{times.ttf}
+\setCJKmainfont[BoldFont=SimHei]{SimSun}
+\setmainfont{Times New Roman}
 
+%
+% If you want to use this template in online editing system like Overleaf
+% or ShareLaTeX, upload the font files to the root folder of your project, 
+% delete above two lines and uncomment the configurations below. Remember
+% to make the names of font files the same as used below.
+%
+% \setCJKmainfont[BoldFont=simhei.ttf]{simsun.ttf} % SimSun and SimHei
+% \setmainfont[
+%     BoldFont=timesbd.ttf,     % Times New Roman Bold
+%     ItalicFont=timesi.ttf,     % Times New Roman Italic
+%     BoldItalicFont=timesbi.ttf,     % Times New Roman Bold Italic
+% ]{times.ttf} % Times New Roman Normal Font
+%
 
 \endinput

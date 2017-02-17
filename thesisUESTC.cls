@@ -387,7 +387,7 @@ bottom=3cm, bindingoffset=0cm]{geometry}
 %     BoldFont=timesbd.ttf,     % Times New Roman Bold
 %     ItalicFont=timesi.ttf,     % Times New Roman Italic
 %     BoldItalicFont=timesbi.ttf,     % Times New Roman Bold Italic
-% ]{times.ttf} % Times New Roman Normal Font
+% ]{times.ttf}     % Times New Roman Normal Font
 %
 
 \endinput

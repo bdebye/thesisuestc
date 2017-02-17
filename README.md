@@ -52,7 +52,7 @@
 
 ### 致谢
 
-致谢由命令·`\thesisacknowledgement`开始，实际上是重新开始了一个无编号的章节。
+致谢由命令`\thesisacknowledgement`开始，实际上是重新开始了一个无编号的章节。
 
 ### 参考文献
 

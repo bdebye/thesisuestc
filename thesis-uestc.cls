@@ -13,11 +13,11 @@
 %%
 %%  The Current Maintainer of this work is Wen Wang <wanygen@gmail.com>.
 %%
-%%  This work consists of the file thesisUESTC.cls.
+%%  This work consists of the file thesis-uestc.cls.
 %%
 
 
-\ProvidesClass{thesisUESTC}
+\ProvidesClass{thesis-uestc}
 
 \LoadClass[12pt, openany, twoside]{book}
 

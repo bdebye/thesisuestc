@@ -19,7 +19,7 @@
 % If you want to use this template in online editing system like Overleaf
 % or ShareLaTeX, upload the font files to the root folder of your project,
 % delete above two lines and uncomment the configurations below. Remember
-% to make the names of font files same as used below.
+% to keep the names of font files the same as specified in the code.
 %
 % \setCJKmainfont[BoldFont=simhei.ttf]{simsun.ttf} % SimSun and SimHei
 % \setmainfont[
@@ -76,7 +76,7 @@
 
 ### 插入图片和表格
 
-插入图片使用`graphic`环境，用法与`figure`环境相同，主要是调整了图片上下的间距。插入表格使用`form`环境，用法与`table`环境相同，主要是调整了表格上下的间距，还有默认的字体大小。具体插入图片和表格代码的写法参考书写范例`main.tex`。
+插入图片使用`figure`环境，自动调整图片上下的间距。图片文件可以统一放在`\pic`目录下。插入表格使用`table`环境，自动调整表格上下的间距，还有默认的字体大小。具体插入图片和表格代码的写法参考书写范例`main.tex`。
 
 ### 定理环境
 

@@ -55,16 +55,26 @@
 \RequirePackage{setspace}
 \RequirePackage{cite}
 \RequirePackage{enumitem}
+\usepackage{algorithm2e}
+\usepackage{etoolbox}
+
+\AtBeginEnvironment{algorithm}{\vspace{12pt}}
+\AfterEndEnvironment{algorithm}{\vspace{16pt}}
 
 \graphicspath{{./pic/}}
 
 \RequirePackage[titles, subfigure]{tocloft}
 \RequirePackage{subfigure}
 
+
+
+\raggedbottom
+
 \renewcommand{\contentsname}{目\chinesespace 录}
 \renewcommand{\bibname}{参考文献}
 \renewcommand{\figurename}{图}
 \renewcommand{\tablename}{表}
+\renewcommand{\algorithmcfname}{算法}
 
 \RequirePackage[a4paper, inner=3cm, outer=3cm, top=3cm,
 bottom=3cm, bindingoffset=0cm]{geometry}
@@ -76,7 +86,6 @@ bottom=3cm, bindingoffset=0cm]{geometry}
 \titlespacing{\section}{0pt}{20pt}{6pt}
 \titlespacing{\subsection}{0pt}{12pt}{6pt}
 \titlespacing{\subsubsection}{0pt}{12pt}{6pt}
-
 
 \renewcommand\thechapter{第\CJKnumber{\arabic{chapter}}章}
 \renewcommand\thesection{\arabic{chapter}.\arabic{section}}
@@ -91,22 +100,22 @@ bottom=3cm, bindingoffset=0cm]{geometry}
 \setlength{\extrarowheight}{5pt}
 \setlength{\subfigcapskip}{-3pt}
 
-\newenvironment{graphic}[1][h]{
-	\vspace{-10pt}
-	\begin{figure}[#1]
-    \centering
-}{
-	\end{figure}
+\BeforeBeginEnvironment{figure}{\vspace{-10pt}}
+\makeatletter
+\AtBeginEnvironment{figure}{%
+  \def\@floatboxreset{\centering}%
 }
+\makeatother
 
-\newenvironment{form}[1][h]{
-	\begin{table}[#1]
-    \centering
-    \small
-}{
-	\end{table}
-    \vspace{-16pt}
+\AtBeginEnvironment{figure}{\centering}
+
+\makeatletter
+\AtBeginEnvironment{table}{%
+    \def\@floatboxreset{\centering}%
 }
+\makeatother
+\AtBeginEnvironment{tabular}{\small}
+\AfterEndEnvironment{table}{\vspace{-16pt}}
 
 \makeatletter
 \renewcommand{\p@subfigure}{\arabic{chapter}-\arabic{figure}}
@@ -189,7 +198,7 @@ bottom=3cm, bindingoffset=0cm]{geometry}
 	\pagenumbering{Roman}
     \chapter*{摘\chinesespace 要}
     \thispagestyle{fancy}
-    \fancyhead[C]{摘要}
+    \fancyhead[C]{\fontsize{10.5pt}{12pt}\selectfont 摘要}
 }{
 	\clearpage{\pagestyle{empty}\cleardoublepage}
 }
@@ -207,7 +216,7 @@ bottom=3cm, bindingoffset=0cm]{geometry}
 \newenvironment{englishabstract}{
 	\chapter*{ABSTRACT}
     \thispagestyle{fancy}
-    \fancyhead[C]{ABSTRACT}
+    \fancyhead[C]{\fontsize{10.5pt}{12pt}\selectfont  ABSTRACT}
 }{
     \clearpage{\pagestyle{empty}\cleardoublepage}
 }
@@ -270,7 +279,7 @@ bottom=3cm, bindingoffset=0cm]{geometry}
 
 \newcommand{\thesistableofcontents}{
 	\fancyhf{}
-	\fancyhead[C]{目录}
+	\fancyhead[C]{\fontsize{10.5pt}{12pt}\selectfont 目录}
     \fancyfoot[CE,CO]{\fontsize{9pt}{11pt}\selectfont\thepage}
     \tableofcontents
     \clearpage{\pagestyle{empty}\cleardoublepage}
@@ -404,7 +413,7 @@ bottom=3cm, bindingoffset=0cm]{geometry}
 % If you want to use this template in online editing system like Overleaf
 % or ShareLaTeX, upload the font files to the root folder of your project,
 % delete above two lines and uncomment the configurations below. Remember
-% to make the names of font files the same as used below.
+% to keep the names of font files the same as specified in the code.
 %
 % \setCJKmainfont[BoldFont=simhei.ttf]{simsun.ttf} % SimSun and SimHei
 % \setmainfont[
@@ -413,5 +422,6 @@ bottom=3cm, bindingoffset=0cm]{geometry}
 %     BoldItalicFont=timesbi.ttf,     % Times New Roman Bold Italic
 % ]{times.ttf}     % Times New Roman Normal Font
 %
+
 
 \endinput

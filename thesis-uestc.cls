@@ -25,12 +25,47 @@
 \RequirePackage[usenames,dvipsnames,svgnames,table]{xcolor}
 \RequirePackage{graphicx}
 \RequirePackage[font={doublespacing, small}, labelsep=space, skip=6pt]{caption}
+
 \RequirePackage{array}
 \RequirePackage{setspace}
 \RequirePackage{multirow}
 \RequirePackage{bm}
 \RequirePackage{xunicode,xltxtra}
 \RequirePackage{xeCJK}
+
+
+% value > 0
+\def\xeCJKembold{0.4}
+
+% hack into xeCJK, you don't need to understand it
+\def\saveCJKnode{\dimen255\lastkern}
+\def\restoreCJKnode{\kern-\dimen255\kern\dimen255}
+
+% save old definition of \CJKsymbol and \CJKpunctsymbol for CJK output
+\let\CJKoldsymbol\CJKsymbol
+\let\CJKoldpunctsymbol\CJKpunctsymbol
+
+% apply pdf literal fake bold
+\def\CJKfakeboldsymbol#1{%
+  \special{pdf:literal direct 2 Tr \xeCJKembold\space w}%
+  \CJKoldsymbol{#1}%
+  \saveCJKnode
+  \special{pdf:literal direct 0 Tr}%
+  \restoreCJKnode}
+\def\CJKfakeboldpunctsymbol#1{%
+  \special{pdf:literal direct 2 Tr \xeCJKembold\space w}%
+  \CJKoldpunctsymbol{#1}%
+  \saveCJKnode
+  \special{pdf:literal direct 0 Tr}%
+  \restoreCJKnode}
+\newcommand\CJKfakebold[1]{%
+  \let\CJKsymbol\CJKfakeboldsymbol
+  \let\CJKpunctsymbol\CJKfakeboldpunctsymbol
+  #1%
+  \let\CJKsymbol\CJKoldsymbol
+  \let\CJKpunctsymbol\CJKoldpunctsymbol}
+
+
 \RequirePackage{CJKnumb}
 \RequirePackage{pifont}
 \RequirePackage{mathptmx}
@@ -58,8 +93,9 @@
 \usepackage{algorithm2e}
 \usepackage{etoolbox}
 
+\SetAlgoCaptionLayout{small}
 \AtBeginEnvironment{algorithm}{\vspace{12pt}}
-\AfterEndEnvironment{algorithm}{\vspace{16pt}}
+\AfterEndEnvironment{algorithm}{\vspace{17pt}}
 
 \graphicspath{{./pic/}}
 
@@ -70,7 +106,7 @@
 
 \raggedbottom
 
-\renewcommand{\contentsname}{目\chinesespace 录}
+\renewcommand{\contentsname}{目\hspace{6pt}录}
 \renewcommand{\bibname}{参考文献}
 \renewcommand{\figurename}{图}
 \renewcommand{\tablename}{表}
@@ -83,7 +119,7 @@ bottom=3cm, bindingoffset=0cm]{geometry}
 \linespread{1.391}
 \setlength\parindent{24pt}
 \titlespacing{\chapter}{0pt}{0pt}{0.7cm}
-\titlespacing{\section}{0pt}{20pt}{6pt}
+\titlespacing{\section}{0pt}{18pt}{6pt}
 \titlespacing{\subsection}{0pt}{12pt}{6pt}
 \titlespacing{\subsubsection}{0pt}{12pt}{6pt}
 
@@ -128,7 +164,7 @@ bottom=3cm, bindingoffset=0cm]{geometry}
 \setcounter{tocdepth}{4}
 
 \titleformat{\chapter}
-  {\centering\fontsize{15pt}{15pt}\selectfont\bfseries\thispagestyle{fancy}}{\thechapter}{1em}{}
+  {\centering\fontsize{15pt}{15pt}\selectfont\bfseries\thispagestyle{fancy}}{\thechapter}{6pt}{}
 
 \titleformat{\section}
   {\fontsize{14pt}{14pt}\selectfont\bfseries}
@@ -144,17 +180,17 @@ bottom=3cm, bindingoffset=0cm]{geometry}
 
 \RequirePackage[hang]{footmisc}
 \addtolength{\footnotesep}{0mm}
-\setlength{\footnotemargin}{4.5mm}
+\setlength{\footnotemargin}{12pt}
 
 \renewcommand{\footnotesize}{\fontsize{9pt}{11pt}\selectfont}
 \renewcommand{\small}{\fontsize{10.5pt}{12.6pt}\selectfont}
-\renewcommand\footnotelayout{\fontsize{9}{12.5}\selectfont}
+\renewcommand\footnotelayout{\fontsize{9}{11.7}\selectfont}
 
 \renewcommand{\thefootnote}{\ifcase\value{footnote}\or\ding{172}\or
 \ding{173}\or\ding{174}\or\ding{175}\or\ding{176}\or\ding{177}\or
 \ding{178}\or\ding{179}\or\ding{180\or\ding{181}}\fi}
 
-\renewcommand{\footnoterule}{\vfill\noindent\vspace*{0.9mm}\hspace{8.2mm}\rule{5.05cm}{0.02cm}\vspace*{2.6pt}}
+\renewcommand{\footnoterule}{\vfill\noindent\vspace*{0.9mm}\hspace{9.4mm}\rule{5.05cm}{0.02cm}\vspace*{2.6pt}}
 
 \makeatletter
 \def\@makefntext #1{
@@ -206,7 +242,7 @@ bottom=3cm, bindingoffset=0cm]{geometry}
 \newcommand{\chinesekeyword}[1]{
 	\noindent
     \begin{minipage}[t]{1.5cm}
-    	\noindent\textbf{关键词\chinesecolon}
+    	\noindent\CJKfakebold{关键词\chinesecolon}
     \end{minipage}
     \begin{minipage}[t]{\linewidth - 1.5cm}
     	#1
@@ -294,17 +330,16 @@ bottom=3cm, bindingoffset=0cm]{geometry}
     \renewcommand\thesection{\arabic{section}}
 	\addtocontents{toc}{\protect\setcounter{tocdepth}{0}}
     \setcounter{section}{0}
-	\chapter*{致\chinesespace 谢}
-    \addcontentsline{toc}{chapter}{致\chinesespace  谢}
+	\chapter*{致\hspace{12pt}谢}
+    \addcontentsline{toc}{chapter}{致\hspace{12pt}谢}
     \markboth{致谢}{致谢}
-    \markboth{致\chinesespace  谢}{致\chinesespace  谢}
     \thispagestyle{fancy}
 }
 
 
 \newcommand{\thesischapterexordium}{
-	\chapter{绪\chinesespace 论}
-    \markboth{\thechapter\chinesespace 绪论}{绪\thechapter\chinesespace 论}
+	\chapter{绪\hspace{6pt}论}
+    \markboth{绪论}{绪论}
 }
 
 \newcommand{\thesisappendix}{
@@ -313,6 +348,9 @@ bottom=3cm, bindingoffset=0cm]{geometry}
     \addcontentsline{toc}{chapter}{附录}
     \markboth{附录}{附录}
     \thispagestyle{fancy}
+    \renewcommand{\theequation}{a-\arabic{equation}}
+    \renewcommand{\thetable}{a-\arabic{table}}
+    \renewcommand{\thefigure}{a-\arabic{figure}}
 }
 
 \newcommand{\thesistranslationoriginal}{
@@ -321,6 +359,9 @@ bottom=3cm, bindingoffset=0cm]{geometry}
     \addcontentsline{toc}{chapter}{外文资料原文}
     \markboth{外文资料原文}{外文资料原文}
     \thispagestyle{fancy}
+    \renewcommand{\theequation}{\arabic{equation}}
+    \renewcommand{\thetable}{\arabic{table}}
+    \renewcommand{\thefigure}{\arabic{figure}}
 }
 
 \newcommand{\thesistranslationchinese}{
@@ -329,6 +370,9 @@ bottom=3cm, bindingoffset=0cm]{geometry}
     \addcontentsline{toc}{chapter}{外文资料译文}
     \markboth{外文资料译文}{外文资料译文}
     \thispagestyle{fancy}
+    \renewcommand{\theequation}{\arabic{equation}}
+    \renewcommand{\thetable}{\arabic{table}}
+    \renewcommand{\thefigure}{\arabic{figure}}
 }
 
 \newenvironment{thesisachievement}{
@@ -405,6 +449,8 @@ bottom=3cm, bindingoffset=0cm]{geometry}
 \defaultfontfeatures{Mapping=tex-text}
 \XeTeXlinebreaklocale "zh"
 \XeTeXlinebreakskip = 0pt plus 1pt minus 0.1pt
+
+
 
 \setCJKmainfont[BoldFont=SimHei]{SimSun}
 \setmainfont{Times New Roman}

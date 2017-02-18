@@ -82,6 +82,10 @@
 
 请使用模板类提供的定义（definition）、公理（axiom）、证明（proof）、定理（theorem）、推论（corollary）和引理（lemma）环境。
 
+### 算法描述
+
+算法描述使用`algorithm`环境，具体写法参考书写范例`main.tex`。模板类自动加载的`algorithm2e`宏包，详细的使用方法请参考[文档](http://mirrors.ustc.edu.cn/CTAN/macros/latex/contrib/algorithm2e/doc/algorithm2e.pdf)。
+
 ### 枚举环境和脚注
 
 枚举环境使用标准的`enumerate`、`itemize`以及`description`环境。脚注用标准的`\footnote`命令插入。

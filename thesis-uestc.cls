@@ -360,6 +360,7 @@ bottom=3cm, bindingoffset=0cm]{geometry}
 \newtheoremstyle{dotless}{0pt}{0pt}{\normalfont}{24pt}{\bfseries}{}{ }{}
 \theoremstyle{dotless}
 \newtheorem{theorem}{定理}
+\newtheorem{axiom}[theorem]{公理}
 \newtheorem{corollary}[theorem]{推论}
 \newtheorem{lemma}[theorem]{引理}
 \newtheorem{definition}[theorem]{定义}
@@ -367,6 +368,7 @@ bottom=3cm, bindingoffset=0cm]{geometry}
 
 
 \renewcommand{\thetheorem}{\arabic{chapter}.\arabic{theorem}}
+\renewcommand{\theaxiom}{\arabic{chapter}.\arabic{axiom}}
 \renewcommand{\thecorollary}{\arabic{chapter}.\arabic{corollary}}
 \renewcommand{\thelemma}{\arabic{chapter}.\arabic{lemma}}
 \renewcommand{\thedefinition}{\arabic{chapter}.\arabic{definition}}

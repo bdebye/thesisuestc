@@ -21,7 +21,6 @@
 
 \LoadClass[12pt, openany, twoside]{book}
 
-\RequirePackage[cm-default]{fontspec}
 \RequirePackage[usenames,dvipsnames,svgnames,table]{xcolor}
 \RequirePackage{graphicx}
 \RequirePackage[font={doublespacing, small}, labelsep=space, skip=6pt]{caption}
@@ -30,7 +29,11 @@
 \RequirePackage{setspace}
 \RequirePackage{multirow}
 \RequirePackage{bm}
-\RequirePackage{xunicode,xltxtra}
+\RequirePackage[tbtags]{amsmath}
+\RequirePackage{amssymb}
+\RequirePackage{amsthm}
+\RequirePackage{mathspec}
+
 \RequirePackage{xeCJK}
 
 
@@ -68,7 +71,7 @@
 
 \RequirePackage{CJKnumb}
 \RequirePackage{pifont}
-\RequirePackage{mathptmx}
+%\RequirePackage{mathptmx}
 
 \definecolor{darkblue}{rgb}{0.0, 0.0, 0.55}
 \RequirePackage[hyperfootnotes=false]{hyperref}
@@ -80,9 +83,6 @@
 
 \RequirePackage{indentfirst}
 \RequirePackage{calc}
-\RequirePackage{amsmath}
-\RequirePackage{amssymb}
-\RequirePackage{amsthm}
 \RequirePackage{float}
 \RequirePackage{fancyvrb}
 \RequirePackage{fancyhdr}
@@ -158,6 +158,7 @@ bottom=3cm, bindingoffset=0cm]{geometry}
 \renewcommand{\thefigure}{\arabic{chapter}-\arabic{figure}}
 
 \captionsetup{format=hang}
+\captionsetup{width=\textwidth - 48pt}
 \captionsetup[figure]{aboveskip=6pt,belowskip=0pt}
 \captionsetup[table]{belowskip=6pt}
 \setlength{\extrarowheight}{5pt}
@@ -265,6 +266,7 @@ bottom=3cm, bindingoffset=0cm]{geometry}
 }
 
 \newcommand{\chinesekeyword}[1]{
+	\vspace{\baselineskip}
 	\noindent
     \begin{minipage}[t]{1.5cm}
     	\noindent\CJKfakebold{关键词\chinesecolon}
@@ -283,6 +285,7 @@ bottom=3cm, bindingoffset=0cm]{geometry}
 }
 
 \newcommand{\englishkeyword}[1]{
+	\vspace{\baselineskip}
 	\noindent\begin{minipage}[t]{2.1cm}
     	\noindent\textbf{Keywords:}
     \end{minipage}
@@ -476,9 +479,8 @@ bottom=3cm, bindingoffset=0cm]{geometry}
 \XeTeXlinebreakskip = 0pt plus 1pt minus 0.1pt
 
 
-
+\setallmainfonts{Times New Roman}
 \setCJKmainfont[BoldFont=SimHei]{SimSun}
-\setmainfont{Times New Roman}
 
 %
 % If you want to use this template in online editing system like Overleaf
@@ -487,7 +489,7 @@ bottom=3cm, bindingoffset=0cm]{geometry}
 % to keep the names of font files the same as specified in the code.
 %
 % \setCJKmainfont[BoldFont=simhei.ttf]{simsun.ttf} % SimSun and SimHei
-% \setmainfont[
+% \setallmainfonts[
 %     BoldFont=timesbd.ttf,     % Times New Roman Bold
 %     ItalicFont=timesi.ttf,     % Times New Roman Italic
 %     BoldItalicFont=timesbi.ttf,     % Times New Roman Bold Italic

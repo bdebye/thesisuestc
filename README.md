@@ -12,8 +12,9 @@
 使用在线编辑环境如Overleaf或ShareLaTeX的情况下需要上传字体文件到项目的根目录，修改模板最后的字体设置，直接指定所使用的字体文件。详细做法参考模板代码末尾的注释。
 
 ```latex
+
+\setallmainfonts{Times New Roman}
 \setCJKmainfont[BoldFont=SimHei]{SimSun}
-\setmainfont{Times New Roman}
 
 %
 % If you want to use this template in online editing system like Overleaf
@@ -22,7 +23,7 @@
 % to keep the names of font files the same as specified in the code.
 %
 % \setCJKmainfont[BoldFont=simhei.ttf]{simsun.ttf} % SimSun and SimHei
-% \setmainfont[
+% \setallmainfonts[
 %     BoldFont=timesbd.ttf,     % Times New Roman Bold
 %     ItalicFont=timesi.ttf,     % Times New Roman Italic
 %     BoldItalicFont=timesbi.ttf,     % Times New Roman Bold Italic

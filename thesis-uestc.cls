@@ -158,7 +158,7 @@ bottom=3cm, bindingoffset=0cm]{geometry}
 \renewcommand{\thefigure}{\arabic{chapter}-\arabic{figure}}
 
 \captionsetup{format=hang}
-\captionsetup{width=\textwidth - 48pt}
+\captionsetup{width=\textwidth - 42pt}
 \captionsetup[figure]{aboveskip=6pt,belowskip=0pt}
 \captionsetup[table]{belowskip=6pt}
 \setlength{\extrarowheight}{5pt}

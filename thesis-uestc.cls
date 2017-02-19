@@ -92,10 +92,38 @@
 \RequirePackage{enumitem}
 \usepackage{algorithm2e}
 \usepackage{etoolbox}
+\usepackage{newfloat}
 
-\SetAlgoCaptionLayout{small}
-\AtBeginEnvironment{algorithm}{\vspace{12pt}}
-\AfterEndEnvironment{algorithm}{\vspace{17pt}}
+\let\algorithm\relax
+\let\endalgorithm\relax
+\expandafter\let\csname algorithm*\endcsname\relax
+\expandafter\let\csname endalgorithm*\endcsname\relax
+\let\listofalgorithms\relax
+
+% Define the new algorithm environment
+\DeclareFloatingEnvironment{algorithm}
+
+\makeatletter
+% Definition for the style ruled
+% First add the rules enclosing the captiom
+\DeclareCaptionFormat{algrule}{%
+  {\@hangfrom{#1#2}%
+  	 \doublespacing
+     \small
+     \advance\caption@parindent\hangindent
+     \advance\caption@hangindent\hangindent
+     \caption@@par#3\par}%
+}
+
+% Apply the new format to the algorithm environment
+\captionsetup[algorithm]{format=algrule}
+
+\makeatletter
+
+\renewcommand{\algorithmname}{算法}
+\renewcommand{\thealgorithm}{\arabic{chapter}-\arabic{algorithm}}
+\captionsetup[algorithm]{aboveskip=6pt}
+\AtBeginEnvironment{algorithm}{\vspace{6pt}}
 
 \graphicspath{{./pic/}}
 
@@ -110,7 +138,6 @@
 \renewcommand{\bibname}{参考文献}
 \renewcommand{\figurename}{图}
 \renewcommand{\tablename}{表}
-\renewcommand{\algorithmcfname}{算法}
 
 \RequirePackage[a4paper, inner=3cm, outer=3cm, top=3cm,
 bottom=3cm, bindingoffset=0cm]{geometry}
@@ -131,27 +158,25 @@ bottom=3cm, bindingoffset=0cm]{geometry}
 \renewcommand{\thefigure}{\arabic{chapter}-\arabic{figure}}
 
 \captionsetup{format=hang}
-\captionsetup[figure]{aboveskip=2pt,belowskip=-4pt}
+\captionsetup[figure]{aboveskip=6pt,belowskip=0pt}
 \captionsetup[table]{belowskip=6pt}
 \setlength{\extrarowheight}{5pt}
-\setlength{\subfigcapskip}{-3pt}
+\setlength{\subfigcapskip}{0pt}
 
-\BeforeBeginEnvironment{figure}{\vspace{-10pt}}
 \makeatletter
-\AtBeginEnvironment{figure}{%
-  \def\@floatboxreset{\centering}%
+\AtBeginEnvironment{figure}{
+  \def\@floatboxreset{\centering}
 }
 \makeatother
 
 \AtBeginEnvironment{figure}{\centering}
 
 \makeatletter
-\AtBeginEnvironment{table}{%
-    \def\@floatboxreset{\centering}%
+\AtBeginEnvironment{table}{
+    \def\@floatboxreset{\centering}
 }
 \makeatother
 \AtBeginEnvironment{tabular}{\small}
-\AfterEndEnvironment{table}{\vspace{-16pt}}
 
 \makeatletter
 \renewcommand{\p@subfigure}{\arabic{chapter}-\arabic{figure}}
@@ -182,7 +207,7 @@ bottom=3cm, bindingoffset=0cm]{geometry}
 \addtolength{\footnotesep}{0mm}
 \setlength{\footnotemargin}{12pt}
 
-\renewcommand{\footnotesize}{\fontsize{9pt}{11pt}\selectfont}
+\renewcommand{\footnotesize}{\fontsize{9pt}{10.8pt}\selectfont}
 \renewcommand{\small}{\fontsize{10.5pt}{12.6pt}\selectfont}
 \renewcommand\footnotelayout{\fontsize{9}{11.7}\selectfont}
 

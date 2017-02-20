@@ -145,7 +145,7 @@ bottom=3cm, bindingoffset=0cm]{geometry}
 \pagestyle{fancy}
 \linespread{1.391}
 \setlength\parindent{24pt}
-\titlespacing{\chapter}{0pt}{0pt}{0.7cm}
+\titlespacing{\chapter}{0pt}{0pt}{18pt}
 \titlespacing{\section}{0pt}{18pt}{6pt}
 \titlespacing{\subsection}{0pt}{12pt}{6pt}
 \titlespacing{\subsubsection}{0pt}{12pt}{6pt}
@@ -177,6 +177,7 @@ bottom=3cm, bindingoffset=0cm]{geometry}
     \def\@floatboxreset{\centering}
 }
 \makeatother
+\AfterEndEnvironment{table}{\vspace{-6pt}}
 \AtBeginEnvironment{tabular}{\small}
 
 \makeatletter
@@ -190,7 +191,7 @@ bottom=3cm, bindingoffset=0cm]{geometry}
 \setcounter{tocdepth}{4}
 
 \titleformat{\chapter}
-  {\centering\fontsize{15pt}{15pt}\selectfont\bfseries\thispagestyle{fancy}}{\thechapter}{6pt}{}
+  {\centering\fontsize{15pt}{15pt}\selectfont\bfseries\thispagestyle{fancy}}{\thechapter}{7.5pt}{}
 
 \titleformat{\section}
   {\fontsize{14pt}{14pt}\selectfont\bfseries}
@@ -205,8 +206,8 @@ bottom=3cm, bindingoffset=0cm]{geometry}
   {\thesubsubsection}{6pt}{}
 
 \RequirePackage[hang]{footmisc}
-\addtolength{\footnotesep}{0mm}
-\setlength{\footnotemargin}{12pt}
+\addtolength{\footnotesep}{0pt}
+\setlength{\footnotemargin}{13.5pt}
 
 \renewcommand{\footnotesize}{\fontsize{9pt}{10.8pt}\selectfont}
 \renewcommand{\small}{\fontsize{10.5pt}{12.6pt}\selectfont}
@@ -216,7 +217,7 @@ bottom=3cm, bindingoffset=0cm]{geometry}
 \ding{173}\or\ding{174}\or\ding{175}\or\ding{176}\or\ding{177}\or
 \ding{178}\or\ding{179}\or\ding{180\or\ding{181}}\fi}
 
-\renewcommand{\footnoterule}{\vfill\noindent\vspace*{0.9mm}\hspace{9.4mm}\rule{5.05cm}{0.02cm}\vspace*{2.6pt}}
+\renewcommand{\footnoterule}{\vfill\noindent\vspace{0.9mm}\hspace{27pt}\rule{5.05cm}{0.02cm}\vspace*{2.6pt}}
 
 \makeatletter
 \def\@makefntext #1{
@@ -256,11 +257,11 @@ bottom=3cm, bindingoffset=0cm]{geometry}
 
 
 \newenvironment{chineseabstract}{
-	\fancyfoot[CE,CO]{\fontsize{9pt}{11pt}\selectfont\thepage}
+	\fancyfoot[CE,CO]{\fontsize{9pt}{10.8pt}\selectfont\thepage}
 	\pagenumbering{Roman}
     \chapter*{摘\chinesespace 要}
     \thispagestyle{fancy}
-    \fancyhead[C]{\fontsize{10.5pt}{12pt}\selectfont 摘要}
+    \fancyhead[C]{\fontsize{10.5pt}{12.6pt}\selectfont 摘要}
 }{
 	\clearpage{\pagestyle{empty}\cleardoublepage}
 }
@@ -279,7 +280,7 @@ bottom=3cm, bindingoffset=0cm]{geometry}
 \newenvironment{englishabstract}{
 	\chapter*{ABSTRACT}
     \thispagestyle{fancy}
-    \fancyhead[C]{\fontsize{10.5pt}{12pt}\selectfont  ABSTRACT}
+    \fancyhead[C]{\fontsize{10.5pt}{12.6pt}\selectfont  ABSTRACT}
 }{
     \clearpage{\pagestyle{empty}\cleardoublepage}
 }
@@ -336,15 +337,15 @@ bottom=3cm, bindingoffset=0cm]{geometry}
 
 \newcommand{\standardhead}{
 	\fancyhf{}
-	\fancyhead[CO]{\fontsize{10.5pt}{12pt}\selectfont\leftmark}
-	\fancyhead[CE]{\fontsize{10.5pt}{12pt}\selectfont 电子科技大学\chinesedegreename{}学位论文}
-	\fancyfoot[CE,CO]{\fontsize{9pt}{11pt}\selectfont\thepage}
+	\fancyhead[CO]{\fontsize{10.5pt}{12.6pt}\selectfont\leftmark}
+	\fancyhead[CE]{\fontsize{10.5pt}{12.6pt}\selectfont 电子科技大学\chinesedegreename{}学位论文}
+	\fancyfoot[CE,CO]{\fontsize{9pt}{10.8pt}\selectfont\thepage}
 }
 
 \newcommand{\thesistableofcontents}{
 	\fancyhf{}
-	\fancyhead[C]{\fontsize{10.5pt}{12pt}\selectfont 目录}
-    \fancyfoot[CE,CO]{\fontsize{9pt}{11pt}\selectfont\thepage}
+	\fancyhead[C]{\fontsize{10.5pt}{12.6pt}\selectfont 目录}
+    \fancyfoot[CE,CO]{\fontsize{9pt}{10.8pt}\selectfont\thepage}
     \tableofcontents
     \clearpage{\pagestyle{empty}\cleardoublepage}
 	\standardhead
@@ -352,7 +353,7 @@ bottom=3cm, bindingoffset=0cm]{geometry}
 	\setcounter{page}{1}
 }
 
-\renewcommand{\chaptermark}[1]{\markboth{第\CJKnumber{\arabic{chapter}}章 \hspace{0.5em} #1}{}}
+\renewcommand{\chaptermark}[1]{\markboth{第\CJKnumber{\arabic{chapter}}章 \hspace{5.25pt}#1}{}}
 
 \newcommand{\thesisacknowledgement}{
     \renewcommand\thesection{\arabic{section}}
@@ -390,6 +391,8 @@ bottom=3cm, bindingoffset=0cm]{geometry}
     \renewcommand{\theequation}{\arabic{equation}}
     \renewcommand{\thetable}{\arabic{table}}
     \renewcommand{\thefigure}{\arabic{figure}}
+    \renewcommand{\figurename}{Figure}
+	\renewcommand{\tablename}{Table}
 }
 
 \newcommand{\thesistranslationchinese}{
@@ -401,6 +404,8 @@ bottom=3cm, bindingoffset=0cm]{geometry}
     \renewcommand{\theequation}{\arabic{equation}}
     \renewcommand{\thetable}{\arabic{table}}
     \renewcommand{\thefigure}{\arabic{figure}}
+    \renewcommand{\figurename}{图}
+	\renewcommand{\tablename}{表}
 }
 
 \newenvironment{thesisachievement}{

@@ -89,7 +89,7 @@
 
 ### 枚举环境和脚注
 
-枚举环境使用标准的`enumerate`、`itemize`以及`description`环境。脚注用标准的`\footnote`命令插入。
+枚举使用标准的`enumerate`、`itemize`以及`description`环境。脚注用标准的`\footnote`命令插入。
 
 ### 主要符号表和缩略词表
 

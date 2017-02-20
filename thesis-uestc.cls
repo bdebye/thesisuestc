@@ -172,8 +172,6 @@ bottom=3cm, bindingoffset=0cm]{geometry}
 }
 \makeatother
 
-\AtBeginEnvironment{figure}{\centering}
-
 \makeatletter
 \AtBeginEnvironment{table}{
     \def\@floatboxreset{\centering}
@@ -506,6 +504,5 @@ bottom=3cm, bindingoffset=0cm]{geometry}
 %     BoldItalicFont=timesbi.ttf,     % Times New Roman Bold Italic
 % ]{times.ttf}     % Times New Roman Normal Font
 %
-
 
 \endinput

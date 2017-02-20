@@ -28,11 +28,12 @@
 \RequirePackage{array}
 \RequirePackage{setspace}
 \RequirePackage{multirow}
-\RequirePackage{bm}
 \RequirePackage[tbtags]{amsmath}
 \RequirePackage{amssymb}
 \RequirePackage{amsthm}
+\RequirePackage{lmodern}
 \RequirePackage{mathspec}
+\RequirePackage{bm}
 
 \RequirePackage{xeCJK}
 
@@ -141,6 +142,7 @@
 
 \RequirePackage[a4paper, inner=3cm, outer=3cm, top=3cm,
 bottom=3cm, bindingoffset=0cm]{geometry}
+\setlength{\headheight}{15pt}
 
 \pagestyle{fancy}
 \linespread{1.391}
@@ -342,15 +344,21 @@ bottom=3cm, bindingoffset=0cm]{geometry}
 	\fancyfoot[CE,CO]{\fontsize{9pt}{10.8pt}\selectfont\thepage}
 }
 
-\newcommand{\thesistableofcontents}{
+\pretocmd{\tableofcontents}{
 	\fancyhf{}
 	\fancyhead[C]{\fontsize{10.5pt}{12.6pt}\selectfont 目录}
     \fancyfoot[CE,CO]{\fontsize{9pt}{10.8pt}\selectfont\thepage}
-    \tableofcontents
+}{}{}
+
+\apptocmd{\tableofcontents}{
     \clearpage{\pagestyle{empty}\cleardoublepage}
 	\standardhead
 	\pagenumbering{arabic}
 	\setcounter{page}{1}
+}{}{}
+
+\newcommand{\thesistableofcontents}{
+	\tableofcontents
 }
 
 \renewcommand{\chaptermark}[1]{\markboth{第\CJKnumber{\arabic{chapter}}章 \hspace{5.25pt}#1}{}}
@@ -412,6 +420,8 @@ bottom=3cm, bindingoffset=0cm]{geometry}
 	\renewcommand{\bibname}{攻读\chinesedegreename{}学位期间取得的成果}
     \setcounter{section}{0}
     \begin{thebibliography}{lo}
+    \setlength{\parskip}{0pt}
+    \setlength{\itemsep}{0pt}
     \begin{spacing}{1.667}
     \addcontentsline{toc}{chapter}{攻读\chinesedegreename{}学位期间取得的成果}
     \thispagestyle{fancy}
@@ -421,12 +431,6 @@ bottom=3cm, bindingoffset=0cm]{geometry}
     \renewcommand{\bibname}{参考文献}
 }
 
-\let\OLDthebibliography\thebibliography
-\renewcommand\thebibliography[1]{
-  \OLDthebibliography{#1}
-  \setlength{\parskip}{0pt}
-  \setlength{\itemsep}{0pt}
-}
 \makeatletter
 \renewcommand{\@biblabel}[1]{[#1]\hfill}
 \makeatother
@@ -434,6 +438,8 @@ bottom=3cm, bindingoffset=0cm]{geometry}
 \newenvironment{thesisbibliography}{
     \setcounter{section}{0}
 	\begin{thebibliography}{lo}
+    \setlength{\parskip}{0pt}
+    \setlength{\itemsep}{0pt}
     \begin{spacing}{1.667}
     \addcontentsline{toc}{chapter}{参考文献}
     \thispagestyle{fancy}

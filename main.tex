@@ -26,24 +26,19 @@ With the widespread engineering applications ranging from broadband signals and 
 
 \thesischapterexordium
 \section{研究工作的背景与意义}
-计算电磁学方法\citing{fastcem,
-shengxinqing,
-bzwang,
-lvyinghua,
-wangchangqing,
-panxiaomin}
+计算电磁学方法
 从时、频域角度划分可以分为频域方法与时域方法两大类。
-频域方法的研究开展较早，目前应用广泛的包括：矩量法（MOM）\citing{bibson,martin}及其快速算
-法多层快速多极子（MLFMA）\citing{wangchangqing}方法、有限元（FEM）\citing{hujun,jianmingjin}方法、自适应积分（AIM）
-\citing{jianmingjin}方法等，这些方法是目前计算电磁学商用软件
+频域方法的研究开展较早，目前应用广泛的包括：矩量法（MOM）及其快速算
+法多层快速多极子（MLFMA）方法、有限元（FEM）方法、自适应积分（AIM）
+方法等，这些方法是目前计算电磁学商用软件
 \footnote{脚注序号“\ding{172}，……，\ding{180}”的字体是“正文”，不是“上标”，序号与脚注内容文字之间空1个半角字符，脚注的段落格式为：单倍行距，段前空0磅，段后空0磅，悬挂缩进1.5字符；中文用宋体，字号为小五号，英文和数字用Times New Roman字体，字号为9磅；中英文混排时，所有标点符号（例如逗号“，”、括号“（）”等）一律使用中文输入状态下的标点符号，但小数点采用英文状态下的样式“.”。}
 （例如：FEKO、Ansys 等）的
-核心算法。由文献\cite{bibson}可知
+核心算法。由文献可知
 
 \section{时域积分方程方法的国内外研究历史与现状}
 时域积分方程方法的研究始于上世纪60 年代，C.L.Bennet 等学者针对导体目
 标的瞬态电磁散射问题提出了求解时域积分方程的时间步进（marching-on in-time,
-MOT）算法\citing{bzwang}。
+MOT）算法。
 
 \section{本文的主要贡献与创新}
 本论文以时域积分方程时间步进算法的数值实现技术、后时稳定性问题以及两层平面波加速算法为重点研究内容，主要创新点与贡献如下：
@@ -72,6 +67,7 @@ f_n(r)=
 0&\text{其它}
 \end{cases}
 \end{equation}
+
 其中，$l_n$为三角形单元$T_n^+$和$T_n^-$公共边的长度，$A_n^+$和$A_n^-$分别为三角形单元$T_n^+$和$T_n^-$的面积（如图\ref{pica}所示）。
 
 \begin{figure}[h]
@@ -89,6 +85,7 @@ f_n(r)=
 f(\mathbf{x}^{i};\mathbf{w})\cdot f(\mathbf{x}^{j};\mathbf{w}),\text{otherwise},
 \end{cases}
 \end{equation}
+
 时域积分方程时间步进算法的阻抗元素直接影响算法的后时稳定性，因此阻抗元素的计算是算法的关键之一，采用精度高效的方法计算时域阻抗元素是时域积分方程时间步进算法研究的重点之一。
 
 
@@ -161,7 +158,7 @@ f(\mathbf{x}^{i};\mathbf{w})\cdot f(\mathbf{x}^{j};\mathbf{w}),\text{otherwise},
 积分方程时间步进算法研究的重点之一。
 
 \section{时域积分方程时间步进算法阻抗矩阵的存储}
-时域阻抗元素的存储技术也是时间步进算法并行化的关键技术之一\citing{bibson}，采用
+时域阻抗元素的存储技术也是时间步进算法并行化的关键技术之一，采用
 合适的阻抗元素存储方式可以很大的提高并行时间步进算法的计算效率。
 
 \subsection{时域积分方程时间步进算法产生的阻抗矩阵的特征}
@@ -246,31 +243,14 @@ f(\mathbf{x}^{i};\mathbf{w})\cdot f(\mathbf{x}^{j};\mathbf{w}),\text{otherwise},
 \thesisacknowledgement
 在攻读博士学位期间，首先衷心感谢我的导师XXX教授
 
-\begin{thesisbibliography}
 
-\bibitem{fastcem} W. C. Chew, J. M. Jin, E. Michielssen, et al. Fast and efficient algorithm in computational electromagnetics[M]. Boston: Artech House, 2000
-\bibitem{shengxinqing} 盛新庆. 计算电磁学要论[M]. 北京: 科学出版社, 2004
-\bibitem{bzwang} 王秉中. 计算电磁学[M]. 北京: 科学出版社, 2004
-\bibitem{lvyinghua} 吕英华. 计算电磁学的数值方法[M]. 北京. 清华大学出版社, 2006
-\bibitem{wangchangqing} 王长清. 现代计算电磁学基础[M]. 北京: 北京大学出版社, 2005
-\bibitem{panxiaomin} 潘小敏. 计算电磁学中的并行技术及应用[D]. 北京: 中国科学院电子学研究所, 2006
-\bibitem{GB3100} 中华人民共和国国家技术监督局. GB3100-3102. 中华人民共和国国家标准--量与单位[S]. 北京: 中国标准出版社, 1994年11月1日
-\bibitem{bibson} W. C. Gibson. The method of moment in electromagnetics[M]. New York: Chapman and Hall/CRC, 2008
-\bibitem{hujun} 胡俊. 复杂目标矢量电磁散射的高效算法--快速多极子方法及应用[D]. 成都: 电子科技大学, 2000
-\bibitem{martin} H. C. Martin, G. F. Carey. Introduction to finite element analysis: theory and application[M]. New York: McGraw Hill, 1973
-\bibitem{jianmingjin} 金建铭（著）, 王建国（译）.电磁场有限元方法[M]. 西安: 西安电子科技大学出版社, 1998
+\thesisloadbibliography[nocite]{reference}
 
-\end{thesisbibliography}
 
 \thesisappendix
 
-\begin{thesisachievement}
-\bibitem{ac1} 盛新庆. 计算电磁学要论[M]. 北京: 科学出版社, 2004
-\bibitem{ac2} 王秉中. 计算电磁学[M]. 北京: 科学出版社, 2004
-\bibitem{ac3} 吕英华. 计算电磁学的数值方法[M]. 北京. 清华大学出版社, 2006
-\bibitem{ac4} 王长清. 现代计算电磁学基础[M]. 北京: 北京大学出版社, 2005
-\bibitem{ac5} 潘小敏. 计算电磁学中的并行技术及应用[D]. 北京: 中国科学院电子学研究所, 2006
-\end{thesisachievement}
+\thesisloadachievement{publications}
+
 
 \thesistranslationoriginal
 \section{A Tight Upper Bound on Bit Error Rate}

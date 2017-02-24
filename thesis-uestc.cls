@@ -1,20 +1,20 @@
-%%
-%%  Copyright 2017 Wen Wang <wanygen@gmail.com>
-%%
-%%  This work may be distributed and/or modified under the
-%%  conditions of the LaTeX Project Public License, either version 1.3
-%%  of this license or (at your option) any later version.
-%%  The latest version of this license is in
-%%    http://www.latex-project.org/lppl.txt
-%%  and version 1.3 or later is part of all distributions of LaTeX
-%%  version 2005/12/01 or later.
-%%
-%%  This work has the LPPL maintenance status `maintained'.
-%%
-%%  The Current Maintainer of this work is Wen Wang <wanygen@gmail.com>.
-%%
-%%  This work consists of the file thesis-uestc.cls.
-%%
+%
+%  Copyright 2017 Wen Wang <wanygen@gmail.com>
+%
+%  This work may be distributed and/or modified under the
+%  conditions of the LaTeX Project Public License, either version 1.3
+%  of this license or (at your option) any later version.
+%  The latest version of this license is in
+%    http://www.latex-project.org/lppl.txt
+%  and version 1.3 or later is part of all distributions of LaTeX
+%  version 2005/12/01 or later.
+%
+%  This work has the LPPL maintenance status `maintained'.
+%
+%  The Current Maintainer of this work is Wen Wang <wanygen@gmail.com>.
+%
+%  This work consists of the files thesis-uestc.cls, thesis-uestc.bst.
+%
 
 
 \ProvidesClass{thesis-uestc}
@@ -33,10 +33,10 @@
 \RequirePackage{amsthm}
 \RequirePackage{lmodern}
 \RequirePackage{mathspec}
+\RequirePackage{fontspec}
 \RequirePackage{bm}
 
 \RequirePackage{xeCJK}
-
 
 % value > 0
 \def\xeCJKembold{0.4}
@@ -77,10 +77,11 @@
 \definecolor{darkblue}{rgb}{0.0, 0.0, 0.55}
 \RequirePackage[hyperfootnotes=false]{hyperref}
 \hypersetup{
- colorlinks=true,
- citecolor=black,
- linkcolor=black,
- urlcolor=darkblue}
+ 	colorlinks=true,
+ 	citecolor=black,
+ 	linkcolor=black,
+ 	urlcolor=black
+}
 
 \RequirePackage{indentfirst}
 \RequirePackage{calc}
@@ -91,9 +92,11 @@
 \RequirePackage{setspace}
 \RequirePackage{cite}
 \RequirePackage{enumitem}
-\usepackage{algorithm2e}
-\usepackage{etoolbox}
-\usepackage{newfloat}
+\RequirePackage{algorithm2e}
+\RequirePackage{etoolbox}
+\RequirePackage{newfloat}
+\RequirePackage[resetlabels]{multibib}
+\RequirePackage[nottoc]{tocbibind}
 
 \let\algorithm\relax
 \let\endalgorithm\relax
@@ -132,7 +135,7 @@
 \RequirePackage{subfigure}
 
 
-
+\urlstyle{rm}
 \raggedbottom
 
 \renewcommand{\contentsname}{目\hspace{6pt}录}
@@ -414,14 +417,45 @@ bottom=3cm, bindingoffset=0cm]{geometry}
 	\renewcommand{\tablename}{表}
 }
 
+\makeatletter
+\renewcommand{\@biblabel}[1]{[#1]\hfill}
+\makeatother
+
+\patchcmd\thebibliography
+    {\labelsep}
+    {\labelsep\itemsep=0pt\parsep=0pt\relax}
+    {}
+    {\typeout{Couldn't patch the command}}
+
+\newenvironment{thesisbibliography}{
+	\begin{thebibliography}{lo}
+    \begin{spacing}{1.667}
+    \thispagestyle{fancy}
+    \small
+}{
+    \end{spacing}
+    \end{thebibliography}
+}
+
+\newcommand{\thesisloadbibliography}[2][]{%
+	\ifthenelse{
+    	\equal{#1}{nocite}
+    }{
+    	\nocite{*}
+    }{}
+    \thispagestyle{fancy}
+    \begin{spacing}{1.667}
+	\bibliographystyle{thesis-uestc}
+	\bibliography{#2.bib}
+	\end{spacing}
+}
+
+\newcites{achievement}{攻读\chinesedegreename{}学位期间取得的成果}
+
 \newenvironment{thesisachievement}{
 	\renewcommand{\bibname}{攻读\chinesedegreename{}学位期间取得的成果}
-    \setcounter{section}{0}
     \begin{thebibliography}{lo}
-    \setlength{\parskip}{0pt}
-    \setlength{\itemsep}{0pt}
     \begin{spacing}{1.667}
-    \addcontentsline{toc}{chapter}{攻读\chinesedegreename{}学位期间取得的成果}
     \thispagestyle{fancy}
     \small
 }{
@@ -429,23 +463,18 @@ bottom=3cm, bindingoffset=0cm]{geometry}
     \renewcommand{\bibname}{参考文献}
 }
 
-\makeatletter
-\renewcommand{\@biblabel}[1]{[#1]\hfill}
-\makeatother
-
-\newenvironment{thesisbibliography}{
-    \setcounter{section}{0}
-	\begin{thebibliography}{lo}
-    \setlength{\parskip}{0pt}
-    \setlength{\itemsep}{0pt}
-    \begin{spacing}{1.667}
-    \addcontentsline{toc}{chapter}{参考文献}
+\newcommand{\thesisloadachievement}[1]{%
+    \nociteachievement{*}
+	\renewcommand{\bibname}{攻读\chinesedegreename{}学位期间取得的成果}
     \thispagestyle{fancy}
-    \small
-}{
-    \end{spacing}
-    \end{thebibliography}
+    \begin{spacing}{1.667}
+	\bibliographystyleachievement{thesis-uestc}
+	\bibliographyachievement{#1}
+	\end{spacing}
+    \renewcommand{\bibname}{参考文献}
 }
+
+
 
 \newtheoremstyle{dotless}{0pt}{0pt}{\normalfont}{24pt}{\bfseries}{}{ }{}
 \theoremstyle{dotless}

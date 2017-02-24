@@ -70,7 +70,7 @@
   \let\CJKpunctsymbol\CJKoldpunctsymbol}
 
 
-\RequirePackage{CJKnumb}
+\RequirePackage{zhnumber}
 \RequirePackage{pifont}
 %\RequirePackage{mathptmx}
 
@@ -155,7 +155,7 @@ bottom=3cm, bindingoffset=0cm]{geometry}
 \titlespacing{\subsection}{0pt}{12pt}{6pt}
 \titlespacing{\subsubsection}{0pt}{12pt}{6pt}
 
-\renewcommand\thechapter{第\CJKnumber{\arabic{chapter}}章}
+\renewcommand\thechapter{第\zhnumber{\arabic{chapter}}章}
 \renewcommand\thesection{\arabic{chapter}.\arabic{section}}
 
 \renewcommand{\theequation}{\arabic{chapter}-\arabic{equation}}
@@ -362,7 +362,7 @@ bottom=3cm, bindingoffset=0cm]{geometry}
 	\tableofcontents
 }
 
-\renewcommand{\chaptermark}[1]{\markboth{第\CJKnumber{\arabic{chapter}}章 \hspace{5.25pt}#1}{}}
+\renewcommand{\chaptermark}[1]{\markboth{第\zhnumber{\arabic{chapter}}章 \hspace{5.25pt}#1}{}}
 
 \newcommand{\thesisacknowledgement}{
     \renewcommand\thesection{\arabic{section}}
@@ -533,5 +533,6 @@ bottom=3cm, bindingoffset=0cm]{geometry}
 %     BoldItalicFont=timesbi.ttf,     % Times New Roman Bold Italic
 % ]{times.ttf}     % Times New Roman Normal Font
 %
+
 
 \endinput

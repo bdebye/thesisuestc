@@ -72,7 +72,6 @@
 
 \RequirePackage{zhnumber}
 \RequirePackage{pifont}
-%\RequirePackage{mathptmx}
 
 \definecolor{darkblue}{rgb}{0.0, 0.0, 0.55}
 \RequirePackage[hyperfootnotes=false]{hyperref}
@@ -272,10 +271,10 @@ bottom=3cm, bindingoffset=0cm]{geometry}
 \newcommand{\chinesekeyword}[1]{
 	\vspace{\baselineskip}
 	\noindent
-    \begin{minipage}[t]{1.5cm}
+    \begin{minipage}[t]{48pt}
     	\noindent\CJKfakebold{关键词\chinesecolon}
     \end{minipage}
-    \begin{minipage}[t]{\linewidth - 1.5cm}
+    \begin{minipage}[t]{\linewidth - 48pt}
     	#1
     \end{minipage}
 }
@@ -526,7 +525,7 @@ bottom=3cm, bindingoffset=0cm]{geometry}
 % delete above two lines and uncomment the configurations below. Remember
 % to keep the names of font files the same as specified in the code.
 %
-% \setCJKmainfont[BoldFont=simhei.ttf]{simsun.ttf} % SimSun and SimHei
+% \setCJKmainfont[BoldFont=simhei.ttf]{simsun.ttc} % SimSun and SimHei
 % \setallmainfonts[
 %     BoldFont=timesbd.ttf,     % Times New Roman Bold
 %     ItalicFont=timesi.ttf,     % Times New Roman Italic

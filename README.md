@@ -17,7 +17,7 @@ xelatex main.tex
 xelatex main.tex
 ```
 
-注意使用某些编辑环境如WinEdt、Texmaker编译文档，编辑器的bibtex编译按钮可能会忽略编译研究成果的文献列表（个人认为这是编辑器设计的一个漏洞），这种情况下编译出来的文档没有列出研究成果，仍需要两次`xelatex mnain.tex`命令之前手动运行`bibtex achievement.aux`。
+注意使用某些编辑环境如WinEdt、Texmaker编译文档，编辑器的bibtex编译按钮可能会忽略编译研究成果的文献列表（个人认为这是编辑器设计的一个漏洞），这种情况下编译出来的文档没有列出研究成果，仍需要两次`xelatex main.tex`命令之前手动运行`bibtex achievement.aux`。
 
 使用在线编辑环境Overleaf只需打开发布在Overleaf Gallery里的[模板](https://www.overleaf.com/latex/templates/uestc-thesis-template/nwpkhtrtjhrg)，点击OPEN AS TEMPLATE即可使用，在线自动编译和预览。Overleaf模板唯一的区别在于直接使用放置在项目根目录的字体文件。
 

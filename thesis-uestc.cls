@@ -82,6 +82,7 @@
  	urlcolor=black
 }
 
+\RequirePackage{standalone}
 \RequirePackage{indentfirst}
 \RequirePackage{calc}
 \RequirePackage{float}

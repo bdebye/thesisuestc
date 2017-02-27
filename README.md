@@ -7,31 +7,19 @@
 ## 使用方法
 使用模板需要系统安装任意一种TeX环境，如TeXLive、MacTeX和MiKTeX（都自动带有XeLaTeX引擎，但是不推荐CTeX），安装有SimSun和SimHei字体（其实就是宋体和黑体）以及Times New Roman英文字体。字体方面也可以像在线编辑环境那样指定所使用的字体文件。模板采用LaTeX类的形式封装，导入模板只需要把thesis-uestc.cls文件放在文档所在目录，在文档开头使用`\documentclass{thesis-uestc}`命令将文档的类设置成thesis-uestc即可。模板类有bachelor、master和doctor三个选项，对应本科、硕士和博士的毕业论文。默认选项为master。文档内容的书写参考范例`main.tex`。
 
-编译文档请使用XeLaTeX引擎。使用WinEdt、Texmaker或Texpad等编辑环境直接使用操作界面提供的编译按钮即可，不需要复杂的编译脚本，但是记得将编译引擎设置成XeLaTeX。命令编译如`xelatex main.tex`即可，文档内部有引用或参考文献的情况下需要编译两次。
+编译文档请使用XeLaTeX引擎。使用WinEdt、Texmaker或Texpad等编辑环境记得将编译引擎设置成XeLaTeX。命令编译如`xelatex main.tex`即可，文档内部有引用或参考文献的情况下需要编译两次。使用BibTeX形式的参考文献需要先运行一次xelatex，运行一次bibtex，再运行两次xelatex。使用BibTeX录入攻读学问期间的研究成果的情况下还需要额外运行一次`bibtex achievement.aux`。所以完整地编译包含两个BibTeX的文献列表（一个是参考文献，一个是攻读学位期间的研究成果）需要按顺序运行以下命令：
 
-使用在线编辑环境如Overleaf或ShareLaTeX的情况下需要上传字体文件到项目的根目录，修改模板最后的字体设置，直接指定所使用的字体文件。详细做法参考模板代码末尾的注释。
-
-```latex
-
-\setallmainfonts{Times New Roman}
-\setCJKmainfont[BoldFont=SimHei]{SimSun}
-
-%
-% If you want to use this template in online editing system like Overleaf
-% or ShareLaTeX, upload the font files to the root folder of your project,
-% delete above two lines and uncomment the configurations below. Remember
-% to keep the names of font files the same as specified in the code.
-%
-% \setCJKmainfont[BoldFont=simhei.ttf]{simsun.ttf} % SimSun and SimHei
-% \setallmainfonts[
-%     BoldFont=timesbd.ttf,     % Times New Roman Bold
-%     ItalicFont=timesi.ttf,     % Times New Roman Italic
-%     BoldItalicFont=timesbi.ttf,     % Times New Roman Bold Italic
-% ]{times.ttf}     % Times New Roman Normal Font
-%
+```bash
+xelatex main.tex
+bibtex main.aux
+bibtex achievement.aux
+xelatex main.tex
+xelatex main.tex
 ```
 
-模板目前还不支持bibtex参考文献，作者目前正积极解决这一问题。
+注意使用某些编辑环境如WinEdt、Texmaker编译文档，编辑器的bibtex编译按钮可能会忽略编译研究成果的文献列表（个人认为这是编辑器设计的一个漏洞），这种情况下编译出来的文档没有列出研究成果，仍需要两次`xelatex mnain.tex`命令之前手动运行`bibtex achievement.aux`。
+
+使用在线编辑环境Overleaf只需打开发布在Overleaf Gallery里的[模板](https://www.overleaf.com/latex/templates/uestc-thesis-template/nwpkhtrtjhrg)，点击OPEN AS TEMPLATE即可使用，在线自动编译和预览。Overleaf模板唯一的区别在于直接使用放置在项目根目录的字体文件。
 
 ## 论文写作指南
 
@@ -57,7 +45,7 @@
 
 ### 参考文献
 
-参考文献使用`thesisbibliography`环境，在其中使用`\bibitem`命令加入文献条目。引用分直接引用`\cite`命令和上标引用命令`\citing`两种。直接引用在正文中的标号显示为正常字体，上标引用显示为上标字体。暂时不支持bibtex方式的参考文献。
+参考文献使用`thesisbibliography`环境，在其中使用`\bibitem`命令加入文献条目。引用分直接引用`\cite`命令和上标引用命令`\citing`两种。直接引用在正文中的标号显示为正常字体，上标引用显示为上标字体。使用BibTeX录入参考文献由`\thesisloadbibliography`命令导入所使用的数据库，参考文献风格自动设置为thesis-uestc。这个命令有一个可选参数，在为`nocite`的情况下会在文档中列出数据库中的所有条目，无论是否引用。其他情况下只列出引用过的条目。
 
 ### 附录
 
@@ -65,7 +53,7 @@
 
 ### 攻读学位期间取得的成果
 
-将文章条目放在`thesisachievement`环境下，方法与参考文献相同。
+将文章条目放在`thesisachievement`环境下，方法与参考文献相同。使用BibTeX录入研究成果的情况下使用`thesisloadachievement`导入文献列表，风格自动设置为thesis-uestc，但是没有可选参数，自动在文档中列出数据库中的所有条目。
 
 ### 外文资料原文
 
@@ -90,6 +78,22 @@
 ### 枚举环境和脚注
 
 枚举使用标准的`enumerate`、`itemize`以及`description`环境。脚注用标准的`\footnote`命令插入。
+
+### 分割文件
+
+模板提供的样例将所有内容写在同一个主文档里，使用者认为方便的话也可以将项目分割成文件，将不同的章节写在不同的子文档内，最后统一包含。模板自动导入了standalone包用于对多文件的项目进行管理。子文档的写法应遵守以下格式：
+
+```latex
+\documentclass{standalone}
+% preamble: usepackage, etc.
+\begin{document}
+%% my chapter 1 content
+%%
+%% more of my chapter 1 content
+\end{document}
+```
+
+然后使用`\input`或`\include`命令包含到主文档。更详细的说明请参考standalone宏包的[文档](https://mirrors.tuna.tsinghua.edu.cn/CTAN/macros/latex/contrib/standalone/standalone.pdf)。
 
 ### 主要符号表和缩略词表
 

@@ -7,7 +7,7 @@
 ## 使用方法
 使用模板需要系统安装任意一种TeX环境，如TeXLive、MacTeX和MiKTeX（都自动带有XeLaTeX引擎，但是不推荐CTeX），安装有SimSun和SimHei字体（其实就是宋体和黑体）以及Times New Roman英文字体。字体方面也可以像在线编辑环境那样指定所使用的字体文件。模板采用LaTeX类的形式封装，导入模板只需要把thesis-uestc.cls文件放在文档所在目录，在文档开头使用`\documentclass{thesis-uestc}`命令将文档的类设置成thesis-uestc即可。模板类有bachelor、master和doctor三个选项，对应本科、硕士和博士的毕业论文。默认选项为master。文档内容的书写参考范例`main.tex`。
 
-编译文档请使用XeLaTeX引擎。使用WinEdt、Texmaker或Texpad等编辑环境记得将编译引擎设置成XeLaTeX。命令编译如`xelatex main.tex`即可，文档内部有引用或参考文献的情况下需要编译两次。使用BibTeX形式的参考文献需要先运行一次xelatex，运行一次bibtex，再运行两次xelatex。使用BibTeX录入攻读学问期间的研究成果的情况下还需要额外运行一次`bibtex achievement.aux`。所以完整地编译包含两个BibTeX的文献列表（一个是参考文献，一个是攻读学位期间的研究成果）需要按顺序运行以下命令：
+编译文档请使用XeLaTeX引擎。使用WinEdt、Texmaker或Texpad等编辑环境记得将编译引擎设置成XeLaTeX。命令编译如`xelatex main.tex`即可，文档内部有引用或参考文献的情况下需要编译两次。使用BibTeX形式的参考文献需要先运行一次xelatex，运行一次bibtex，再运行两次xelatex。使用BibTeX录入攻读学问期间的研究成果的情况下还需要额外运行一次`bibtex achievement.aux`。所以完整地编译包含两个BibTeX文献列表（一个是参考文献，一个是攻读学位期间的研究成果）的文档需要按顺序运行以下命令：
 
 ```bash
 xelatex main.tex
@@ -93,7 +93,7 @@ xelatex main.tex
 \end{document}
 ```
 
-然后使用`\input`或`\include`命令包含到主文档。更详细的说明请参考standalone宏包的[文档](https://mirrors.tuna.tsinghua.edu.cn/CTAN/macros/latex/contrib/standalone/standalone.pdf)。
+然后使用`\input`或`\include`命令包含到主文档。编译方法与单个文件的情况相同。更详细的说明请参考standalone宏包的[文档](https://mirrors.tuna.tsinghua.edu.cn/CTAN/macros/latex/contrib/standalone/standalone.pdf)。
 
 ### 主要符号表和缩略词表
 

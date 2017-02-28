@@ -5,7 +5,7 @@
 模板由电子科技大学物理电子学院2014级硕士研究生王稳编写，由于在毕业论文写作中遇到各种问题，希望有一个理想的解决方案，所以决定写一个模板出来。祝愿此项目能继续发展，解决各位同学毕业论文写作中的困难。
 
 ## 使用方法
-使用模板需要系统安装任意一种TeX环境，如TeXLive、MacTeX和MiKTeX（都自动带有XeLaTeX引擎，但是不推荐CTeX），安装有SimSun和SimHei字体（其实就是宋体和黑体）以及Times New Roman英文字体。字体方面也可以像在线编辑环境那样指定所使用的字体文件。模板采用LaTeX类的形式封装，导入模板只需要把thesis-uestc.cls文件放在文档所在目录，在文档开头使用`\documentclass{thesis-uestc}`命令将文档的类设置成thesis-uestc即可。模板类有bachelor、master和doctor三个选项，对应本科、硕士和博士的毕业论文。默认选项为master。文档内容的书写参考范例`main.tex`。
+使用模板需要系统安装任意一种TeX环境，如TeXLive、MacTeX和MiKTeX（都自动带有XeLaTeX引擎，但是不推荐CTeX），安装有SimSun和SimHei字体（其实就是宋体和黑体）以及Times New Roman英文字体。字体方面也可以像在线编辑环境那样指定所使用的字体文件。模板采用LaTeX类的形式封装，导入模板只需要把thesis-uestc.cls文件放在文档所在目录，在文档开头使用`\documentclass{thesis-uestc}`命令将文档的类设置成thesis-uestc即可。使用BibTeX录入参考文献还需要thesis-uestc.bst风格定义文件。模板类有bachelor、master和doctor三个选项，对应本科、硕士和博士的毕业论文，默认选项为master。文档内容的书写参考范例`main.tex`。
 
 编译文档请使用XeLaTeX引擎。使用WinEdt、Texmaker或Texpad等编辑环境记得将编译引擎设置成XeLaTeX。命令编译如`xelatex main.tex`即可，文档内部有引用或参考文献的情况下需要编译两次。使用BibTeX形式的参考文献需要先运行一次xelatex，运行一次bibtex，再运行两次xelatex。使用BibTeX录入攻读学问期间的研究成果的情况下还需要额外运行一次`bibtex achievement.aux`。所以完整地编译包含两个BibTeX文献列表（一个是参考文献，一个是攻读学位期间的研究成果）的文档需要按顺序运行以下命令：
 
@@ -37,7 +37,7 @@ xelatex main.tex
 
 ### 论文主体
 
-论文主体的写作参考一般的LaTeX教程，可以自由添加章节，章节内自由加入所需要的内容，分小节，插入公式、表格和图片。
+论文主体的写作参考一般的LaTeX教程，可以自由添加章节，章节内加入所需要的内容，分小节，插入公式、表格和图片。
 
 ### 致谢
 
@@ -45,7 +45,7 @@ xelatex main.tex
 
 ### 参考文献
 
-参考文献使用`thesisbibliography`环境，在其中使用`\bibitem`命令加入文献条目。引用分直接引用`\cite`命令和上标引用命令`\citing`两种。直接引用在正文中的标号显示为正常字体，上标引用显示为上标字体。使用BibTeX录入参考文献由`\thesisloadbibliography`命令导入所使用的数据库，参考文献风格自动设置为thesis-uestc。这个命令有一个可选参数，在为`nocite`的情况下会在文档中列出数据库中的所有条目，无论是否引用。其他情况下只列出引用过的条目。
+参考文献使用`thesisbibliography`环境，在其中使用`\bibitem`命令加入文献条目。引用分直接引用`\cite`命令和上标引用命令`\citing`两种。直接引用在正文中的标号显示为正常字体，上标引用显示为上标字体。使用BibTeX录入参考文献由`\thesisloadbibliography`命令导入所使用的数据库，参考文献风格为thesis-uestc。这个命令有一个可选参数，在为`nocite`的情况下会在文档中列出数据库中的所有条目，无论是否引用。其他情况下只列出引用过的条目。
 
 ### 附录
 
@@ -53,7 +53,7 @@ xelatex main.tex
 
 ### 攻读学位期间取得的成果
 
-将文章条目放在`thesisachievement`环境下，方法与参考文献相同。使用BibTeX录入研究成果的情况下使用`thesisloadachievement`导入文献列表，风格自动设置为thesis-uestc，但是没有可选参数，自动在文档中列出数据库中的所有条目。
+将文章条目放在`thesisachievement`环境下，方法与参考文献相同。使用BibTeX录入研究成果的情况下由`\thesisloadachievement`导入文献列表，风格设置为thesis-uestc。此命令没有可选参数，自动在文档中列出数据库中的所有条目。
 
 ### 外文资料原文
 

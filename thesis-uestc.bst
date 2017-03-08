@@ -317,7 +317,11 @@ FUNCTION {book}
         ")" * write$
         add.period
     } if$
-    format.location write$ ": " write$
+    location missing$
+    'skip$
+    {
+    	format.location write$ ": " write$
+    } if$
     format.publisher write$ add.comma
     format.year write$ add.comma
     format.pages write$
@@ -337,7 +341,11 @@ FUNCTION {conference}
     } if$
 
     add.comma
-    format.location write$ add.comma
+    location missing$
+    'skip$
+    {
+    	format.location write$ add.comma
+    } if$
     format.year write$ add.comma
     format.pages write$
     newline$
@@ -360,10 +368,15 @@ FUNCTION {article}
     format.title "[J]" * write$ add.period
     format.journal write$ add.comma
     format.year write$ add.comma
-
-    volume "(" *
-    number *
-    "): " * write$
+	
+    number missing$
+	{
+    	volume ": " * write$
+    } {
+    	volume "(" *
+    	number *
+    	"): " * write$
+    } if$
     format.pages write$
     newline$
 }
@@ -373,7 +386,11 @@ FUNCTION {thesis}
     bibitem.begin
     format.authors write$ add.period
     format.title "[D]" * write$ add.period
-    format.location write$ ": " write$
+    location missing$
+    'skip$
+    {
+    	format.location write$ ": " write$
+    } if$
     format.institution write$ add.comma
     format.year write$ add.comma
     format.pages write$
@@ -412,7 +429,11 @@ FUNCTION {techreport}
     bibitem.begin
     format.authors write$ add.period
     format.title "[R]" * write$ add.period
-    format.location write$ ": " write$
+    location missing$
+    'skip$
+    {
+    	format.location write$ ": " write$
+    } if$
     format.institution write$ add.comma
     format.date write$
     newline$

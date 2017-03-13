@@ -318,8 +318,8 @@ bottom=3cm, bindingoffset=0cm]{geometry}
 \addtolength{\cftchapnumwidth}{25pt}
 
 \cftsetindents{section}{21pt}{22pt}
-\cftsetindents{subsection}{36pt}{31pt}
-\cftsetindents{subsubsection}{60pt}{41pt}
+\cftsetindents{subsection}{44pt}{31pt}
+\cftsetindents{subsubsection}{76pt}{41pt}
 
 \renewcommand{\cfttoctitlefont}{\fontsize{15pt}{15pt}\selectfont\bfseries}
 

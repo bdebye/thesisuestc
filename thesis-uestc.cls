@@ -376,8 +376,8 @@ bottom=3cm, bindingoffset=0cm]{geometry}
 
 
 \newcommand{\thesischapterexordium}{
-	\chapter{绪\hspace{6pt}论}
-    \markboth{绪论}{绪论}
+    \chapter{绪\hspace{6pt}论}
+    \chaptermark{绪论}
 }
 
 \newcommand{\thesisappendix}{

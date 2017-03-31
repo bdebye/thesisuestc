@@ -107,6 +107,8 @@ FUNCTION {bib.begin}
 {
     "\begin{thebibliography}{lo}"
     write$ newline$
+    "\interlinepenalty=10000"
+    write$ newline$
     "\setlength{\itemsep}{0bp}\setlength{\parskip}{0pt}\small"
     write$
     newline$
@@ -323,8 +325,13 @@ FUNCTION {book}
     	format.location write$ ": " write$
     } if$
     format.publisher write$ add.comma
-    format.year write$ add.comma
-    format.pages write$
+    format.year write$
+    pages missing$
+    'skip$
+    {
+    	add.comma
+    	format.pages write$
+    } if$
     newline$
 }
 

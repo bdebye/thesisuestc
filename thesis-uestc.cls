@@ -446,7 +446,7 @@ bottom=3cm, bindingoffset=0cm]{geometry}
     \thispagestyle{fancy}
     \begin{spacing}{1.667}
 	\bibliographystyle{thesis-uestc}
-	\bibliography{#2.bib}
+	\bibliography{#2}
 	\end{spacing}
 }
 

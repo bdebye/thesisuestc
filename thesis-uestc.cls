@@ -38,6 +38,10 @@
 
 \RequirePackage{xeCJK}
 
+\setallmainfonts{Times New Roman}
+\setCJKmainfont{SimSun}
+\newCJKfontfamily{\heiti}{SimHei}
+
 % value > 0
 \def\xeCJKembold{0.4}
 
@@ -74,7 +78,7 @@
 \RequirePackage{pifont}
 
 \definecolor{darkblue}{rgb}{0.0, 0.0, 0.55}
-\RequirePackage[hyperfootnotes=false]{hyperref}
+\RequirePackage[hyperfootnotes=false, bookmarksdepth=4]{hyperref}
 \hypersetup{
  	colorlinks=true,
  	citecolor=black,
@@ -97,6 +101,9 @@
 \RequirePackage{newfloat}
 \RequirePackage[resetlabels]{multibib}
 \RequirePackage[nottoc]{tocbibind}
+\RequirePackage{everypage}
+\RequirePackage{ifoddpage}
+\RequirePackage{afterpage}
 
 \let\algorithm\relax
 \let\endalgorithm\relax
@@ -164,7 +171,7 @@ bottom=3cm, bindingoffset=0cm]{geometry}
 
 \captionsetup{format=hang}
 \captionsetup{width=\textwidth - 42pt}
-\captionsetup[figure]{aboveskip=6pt,belowskip=0pt}
+\captionsetup[figure]{aboveskip=6pt,belowskip=-6pt}
 \captionsetup[table]{belowskip=6pt}
 \setlength{\extrarowheight}{5pt}
 \setlength{\subfigcapskip}{0pt}
@@ -194,18 +201,18 @@ bottom=3cm, bindingoffset=0cm]{geometry}
 \setcounter{tocdepth}{4}
 
 \titleformat{\chapter}
-  {\centering\fontsize{15pt}{15pt}\selectfont\bfseries\thispagestyle{fancy}}{\thechapter}{7.5pt}{}
+  {\centering\fontsize{15pt}{15pt}\selectfont\heiti\thispagestyle{fancy}}{\thechapter}{7.5pt}{}
 
 \titleformat{\section}
-  {\fontsize{14pt}{14pt}\selectfont\bfseries}
+  {\fontsize{14pt}{14pt}\selectfont\heiti}
   {\thesection}{7pt}{}
 
 \titleformat{\subsection}
-  {\fontsize{14pt}{14pt}\selectfont\bfseries}
+  {\fontsize{14pt}{14pt}\selectfont\heiti}
   {\thesubsection}{7pt}{}
 
 \titleformat{\subsubsection}
-  {\fontsize{12pt}{12pt}\selectfont\bfseries}
+  {\fontsize{12pt}{12pt}\selectfont\heiti}
   {\thesubsubsection}{6pt}{}
 
 \RequirePackage[hang]{footmisc}
@@ -258,15 +265,29 @@ bottom=3cm, bindingoffset=0cm]{geometry}
 }
 \makeatother
 
+\newcounter{pseudopage}
+\setcounter{pseudopage}{0}
+\AddEverypageHook{\stepcounter{pseudopage}}
+
+\newcommand\blankpage{%
+    \null
+    \thispagestyle{empty}%
+    \addtocounter{pseudopage}{-1}%
+    \newpage}
 
 \newenvironment{chineseabstract}{
-	\fancyfoot[CE,CO]{\fontsize{9pt}{10.8pt}\selectfont\thepage}
+	\fancyfoot[CE,CO]{\fontsize{9pt}{10.8pt}\selectfont\Roman{pseudopage}}
 	\pagenumbering{Roman}
     \chapter*{摘\chinesespace 要}
     \thispagestyle{fancy}
     \fancyhead[C]{\fontsize{10.5pt}{12.6pt}\selectfont 摘要}
 }{
-	\clearpage{\pagestyle{empty}\cleardoublepage}
+	\checkoddpage
+	\ifoddpage
+    	\afterpage{\blankpage}
+    \else
+    	\newpage
+    \fi
 }
 
 \newcommand{\chinesekeyword}[1]{
@@ -285,7 +306,12 @@ bottom=3cm, bindingoffset=0cm]{geometry}
     \thispagestyle{fancy}
     \fancyhead[C]{\fontsize{10.5pt}{12.6pt}\selectfont  ABSTRACT}
 }{
-    \clearpage{\pagestyle{empty}\cleardoublepage}
+	\checkoddpage
+	\ifoddpage
+    	\afterpage{\blankpage}
+    \else
+    	\newpage
+    \fi
 }
 
 \newcommand{\englishkeyword}[1]{
@@ -299,8 +325,6 @@ bottom=3cm, bindingoffset=0cm]{geometry}
     \end{minipage}
 }
 
-
-\RequirePackage{everypage}
 \AddEverypageHook{\addtocontents{toc}{
 	\protect\cftsetpnumwidth{\widthof{\thepage}-1pt}
 }}
@@ -321,7 +345,8 @@ bottom=3cm, bindingoffset=0cm]{geometry}
 \cftsetindents{subsection}{44pt}{31pt}
 \cftsetindents{subsubsection}{76pt}{41pt}
 
-\renewcommand{\cfttoctitlefont}{\fontsize{15pt}{15pt}\selectfont\bfseries}
+\renewcommand{\cfttoctitlefont}{\fontsize{15pt}{15pt}\selectfont\heiti}
+\renewcommand\cftchapfont{\heiti}
 
 \newcommand{\chinesedegreename}{硕士}
 \DeclareOption{bachelor}{
@@ -348,11 +373,17 @@ bottom=3cm, bindingoffset=0cm]{geometry}
 \pretocmd{\tableofcontents}{
 	\fancyhf{}
 	\fancyhead[C]{\fontsize{10.5pt}{12.6pt}\selectfont 目录}
-    \fancyfoot[CE,CO]{\fontsize{9pt}{10.8pt}\selectfont\thepage}
+    \fancyfoot[CE,CO]{\fontsize{9pt}{10.8pt}\selectfont\Roman{pseudopage}}
 }{}{}
 
 \apptocmd{\tableofcontents}{
-    \clearpage{\pagestyle{empty}\cleardoublepage}
+    \checkoddpage
+	\ifoddpage
+    	\afterpage{\blankpage}
+    \else
+    	\newpage
+    \fi
+    \newpage
 	\standardhead
 	\pagenumbering{arabic}
 	\setcounter{page}{1}
@@ -376,7 +407,7 @@ bottom=3cm, bindingoffset=0cm]{geometry}
 
 
 \newcommand{\thesischapterexordium}{
-    \chapter{绪\hspace{6pt}论}
+	\chapter{绪\hspace{6pt}论}
     \chaptermark{绪论}
 }
 
@@ -429,6 +460,7 @@ bottom=3cm, bindingoffset=0cm]{geometry}
 
 \newenvironment{thesisbibliography}{
 	\begin{thebibliography}{lo}
+    \interlinepenalty=10000
     \begin{spacing}{1.667}
     \thispagestyle{fancy}
     \small
@@ -455,6 +487,7 @@ bottom=3cm, bindingoffset=0cm]{geometry}
 \newenvironment{thesisachievement}{
 	\renewcommand{\bibname}{攻读\chinesedegreename{}学位期间取得的成果}
     \begin{thebibliography}{lo}
+    \interlinepenalty=10000
     \begin{spacing}{1.667}
     \thispagestyle{fancy}
     \small
@@ -476,7 +509,7 @@ bottom=3cm, bindingoffset=0cm]{geometry}
 
 
 
-\newtheoremstyle{dotless}{0pt}{0pt}{\normalfont}{24pt}{\bfseries}{}{ }{}
+\newtheoremstyle{dotless}{0pt}{0pt}{\normalfont}{24pt}{\heiti}{}{ }{}
 \theoremstyle{dotless}
 \newtheorem{theorem}{定理}
 \newtheorem{axiom}[theorem]{公理}
@@ -502,7 +535,7 @@ bottom=3cm, bindingoffset=0cm]{geometry}
   \topsep0pt \partopsep0pt
   \trivlist
   \item[\hskip5\labelsep
-        \bfseries
+        \heiti
     #1\@addpunct{:}]\ignorespaces
 }{
   \popQED\endtrivlist\@endpefalse
@@ -511,28 +544,6 @@ bottom=3cm, bindingoffset=0cm]{geometry}
 
 \newcommand{\citing}[1]{\textsuperscript{\cite{#1}}}
 \setlist{noitemsep}
-
-\defaultfontfeatures{Mapping=tex-text}
-\XeTeXlinebreaklocale "zh"
-\XeTeXlinebreakskip = 0pt plus 1pt minus 0.1pt
-
-
-\setallmainfonts{Times New Roman}
-\setCJKmainfont[BoldFont=SimHei]{SimSun}
-
-%
-% If you want to use this template in online editing system like Overleaf
-% or ShareLaTeX, upload the font files to the root folder of your project,
-% delete above two lines and uncomment the configurations below. Remember
-% to keep the names of font files the same as specified in the code.
-%
-% \setCJKmainfont[BoldFont=simhei.ttf]{simsun.ttc} % SimSun and SimHei
-% \setallmainfonts[
-%     BoldFont=timesbd.ttf,     % Times New Roman Bold
-%     ItalicFont=timesi.ttf,     % Times New Roman Italic
-%     BoldItalicFont=timesbi.ttf,     % Times New Roman Bold Italic
-% ]{times.ttf}     % Times New Roman Normal Font
-%
 
 
 \endinput

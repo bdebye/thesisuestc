@@ -23,7 +23,7 @@ ENTRY
   title
   publisher
   journal
-  location
+  address
   year
   date
   pages
@@ -228,9 +228,9 @@ FUNCTION {format.journal}
     journal
 }
 
-FUNCTION {format.location}
+FUNCTION {format.address}
 {
-    location
+    address
 }
 
 FUNCTION {format.year}
@@ -319,10 +319,10 @@ FUNCTION {book}
         ")" * write$
         add.period
     } if$
-    location missing$
+    address missing$
     'skip$
     {
-    	format.location write$ ": " write$
+    	format.address write$ ": " write$
     } if$
     format.publisher write$ add.comma
     format.year write$
@@ -348,10 +348,10 @@ FUNCTION {conference}
     } if$
 
     add.comma
-    location missing$
+    address missing$
     'skip$
     {
-    	format.location write$ add.comma
+    	format.address write$ add.comma
     } if$
     format.year write$ add.comma
     format.pages write$
@@ -393,10 +393,10 @@ FUNCTION {thesis}
     bibitem.begin
     format.authors write$ add.period
     format.title "[D]" * write$ add.period
-    location missing$
+    address missing$
     'skip$
     {
-    	format.location write$ ": " write$
+    	format.address write$ ": " write$
     } if$
     format.institution write$ add.comma
     format.year write$ add.comma
@@ -436,10 +436,10 @@ FUNCTION {techreport}
     bibitem.begin
     format.authors write$ add.period
     format.title "[R]" * write$ add.period
-    location missing$
+    address missing$
     'skip$
     {
-    	format.location write$ ": " write$
+    	format.address write$ ": " write$
     } if$
     format.institution write$ add.comma
     format.date write$
@@ -464,7 +464,7 @@ FUNCTION {standard}
     format.institution write$ add.period
     format.id write$ add.period
     format.title "[S]" * write$ add.period
-    format.location write$ ": " write$
+    format.address write$ ": " write$
     format.publisher write$ add.comma
     format.date write$
     newline$

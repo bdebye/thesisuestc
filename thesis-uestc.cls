@@ -1,6 +1,6 @@
 %
 %  Copyright 2017 Wen Wang <wanygen@gmail.com>
-%
+% 
 %  This work may be distributed and/or modified under the
 %  conditions of the LaTeX Project Public License, either version 1.3
 %  of this license or (at your option) any later version.
@@ -8,13 +8,13 @@
 %    http://www.latex-project.org/lppl.txt
 %  and version 1.3 or later is part of all distributions of LaTeX
 %  version 2005/12/01 or later.
-%
+% 
 %  This work has the LPPL maintenance status `maintained'.
-%
+% 
 %  The Current Maintainer of this work is Wen Wang <wanygen@gmail.com>.
-%
+% 
 %  This work consists of the files thesis-uestc.cls, thesis-uestc.bst.
-%
+% 
 
 
 \ProvidesClass{thesis-uestc}
@@ -37,10 +37,27 @@
 \RequirePackage{bm}
 
 \RequirePackage{xeCJK}
+\RequirePackage{ifplatform}
 
-\setallmainfonts{Times New Roman}
-\setCJKmainfont{SimSun}
-\newCJKfontfamily{\heiti}{SimHei}
+\ifwindows
+	\setallmainfonts{Times New Roman}
+	\setCJKmainfont{SimSun}
+	\newCJKfontfamily{\heiti}{SimHei}
+\else
+\ifmacosx
+	\setallmainfonts{Times New Roman}
+	\setCJKmainfont{Songti SC}
+	\newCJKfontfamily{\heiti}{Heiti SC}
+\else
+	\setCJKmainfont{simsun.ttc}
+	\newCJKfontfamily{\heiti}{simhei.ttf}
+	\setallmainfonts[
+		BoldFont=timesbd.ttf,
+		ItalicFont=timesi.ttf,
+		BoldItalicFont=timesbi.ttf,
+	]{times.ttf}
+\fi
+\fi
 
 % value > 0
 \def\xeCJKembold{0.4}
@@ -103,7 +120,6 @@
 \RequirePackage[nottoc]{tocbibind}
 \RequirePackage{everypage}
 \RequirePackage{ifoddpage}
-\RequirePackage{afterpage}
 
 \let\algorithm\relax
 \let\endalgorithm\relax
@@ -123,7 +139,7 @@
      \small
      \advance\caption@parindent\hangindent
      \advance\caption@hangindent\hangindent
-     \caption@@par#3\par}%
+     \caption@@par#3\par}% 
 }
 
 % Apply the new format to the algorithm environment
@@ -202,11 +218,11 @@ bottom=3cm, bindingoffset=0cm]{geometry}
 
 \titleformat{\chapter}
   {\centering\fontsize{15pt}{15pt}\selectfont\heiti\thispagestyle{fancy}}{\thechapter}{7.5pt}{}
-
+  
 \titleformat{\section}
   {\fontsize{14pt}{14pt}\selectfont\heiti}
   {\thesection}{7pt}{}
-
+  
 \titleformat{\subsection}
   {\fontsize{14pt}{14pt}\selectfont\heiti}
   {\thesubsection}{7pt}{}
@@ -231,36 +247,36 @@ bottom=3cm, bindingoffset=0cm]{geometry}
 
 \makeatletter
 \def\@makefntext #1{
-	\ifFN@hangfoot
+	\ifFN@hangfoot 
     	\bgroup \setbox \@tempboxa \hbox {
         	\ifdim
-				\footnotemargin >0pt \hb@xt@
+				\footnotemargin >0pt \hb@xt@ 
                 \footnotemargin {\hbox { \normalfont \@thefnmark}\hss }
-            \else
-            	\hbox { \normalfont \@thefnmark}
-			\fi
+            \else 
+            	\hbox { \normalfont \@thefnmark} 
+			\fi 
 		}
-        \leftmargin \wd \@tempboxa
-        \rightmargin \z@ \linewidth \columnwidth
-        	\advance \linewidth -\leftmargin\parshape \@ne
+        \leftmargin \wd \@tempboxa 
+        \rightmargin \z@ \linewidth \columnwidth 
+        	\advance \linewidth -\leftmargin\parshape \@ne 
 		\leftmargin \linewidth \footnotesize \@setpar {{\@@par }}
-		\leavevmode \llap {\box \@tempboxa }\parskip
+		\leavevmode \llap {\box \@tempboxa }\parskip 
         \hangfootparskip \relax \parindent
-		\hangfootparindent \relax
-        \else
-        	\parindent 1em \noindent
-            \ifdim
-                \footnotemargin >\z@ \hb@xt@
+		\hangfootparindent \relax 
+        \else 
+        	\parindent 1em \noindent 
+            \ifdim 
+                \footnotemargin >\z@ \hb@xt@ 
                 \footnotemargin {\hss \hbox { \normalfont \@thefnmark} }
             \else
-				\ifdim \footnotemargin =\z@
+				\ifdim \footnotemargin =\z@ 
                     \llap {\hbox { \normalfont \@thefnmark} }
                 \else
  					\llap {\hb@xt@ -\footnotemargin {\hbox { \normalfont \@thefnmark} \hss }}
- 				\fi
+ 				\fi 
             \fi
-		\fi
-        \footnotelayout #1\ifFN@hangfoot \par \egroup
+		\fi 
+        \footnotelayout #1\ifFN@hangfoot \par \egroup 
 	\fi
 }
 \makeatother
@@ -270,10 +286,12 @@ bottom=3cm, bindingoffset=0cm]{geometry}
 \AddEverypageHook{\stepcounter{pseudopage}}
 
 \newcommand\blankpage{%
-    \null
-    \thispagestyle{empty}%
-    \addtocounter{pseudopage}{-1}%
-    \newpage}
+	\newpage
+	\null
+	\thispagestyle{empty}%
+	\addtocounter{pseudopage}{-1}%
+	\newpage
+}
 
 \newenvironment{chineseabstract}{
 	\fancyfoot[CE,CO]{\fontsize{9pt}{10.8pt}\selectfont\Roman{pseudopage}}
@@ -284,7 +302,7 @@ bottom=3cm, bindingoffset=0cm]{geometry}
 }{
 	\checkoddpage
 	\ifoddpage
-    	\afterpage{\blankpage}
+    	\blankpage
     \else
     	\newpage
     \fi
@@ -300,7 +318,7 @@ bottom=3cm, bindingoffset=0cm]{geometry}
     	#1
     \end{minipage}
 }
-
+  
 \newenvironment{englishabstract}{
 	\chapter*{ABSTRACT}
     \thispagestyle{fancy}
@@ -308,12 +326,12 @@ bottom=3cm, bindingoffset=0cm]{geometry}
 }{
 	\checkoddpage
 	\ifoddpage
-    	\afterpage{\blankpage}
+    	\blankpage
     \else
     	\newpage
     \fi
 }
-
+  
 \newcommand{\englishkeyword}[1]{
 	\vspace{\baselineskip}
 	\noindent\begin{minipage}[t]{2.1cm}
@@ -379,7 +397,7 @@ bottom=3cm, bindingoffset=0cm]{geometry}
 \apptocmd{\tableofcontents}{
     \checkoddpage
 	\ifoddpage
-    	\afterpage{\blankpage}
+    	\blankpage
     \else
     	\newpage
     \fi
@@ -397,7 +415,7 @@ bottom=3cm, bindingoffset=0cm]{geometry}
 
 \newcommand{\thesisacknowledgement}{
     \renewcommand\thesection{\arabic{section}}
-	\addtocontents{toc}{\protect\setcounter{tocdepth}{0}}
+	\addtocontents{toc}{\protect\setcounter{tocdepth}{0}} 
     \setcounter{section}{0}
 	\chapter*{致\hspace{12pt}谢}
     \addcontentsline{toc}{chapter}{致\hspace{12pt}谢}
@@ -543,7 +561,7 @@ bottom=3cm, bindingoffset=0cm]{geometry}
 \makeatother
 
 \newcommand{\citing}[1]{\textsuperscript{\cite{#1}}}
-\setlist{noitemsep}
+\setlist{noitemsep} 
 
 
 \endinput

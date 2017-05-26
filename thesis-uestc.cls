@@ -320,7 +320,7 @@ bottom=3cm, bindingoffset=0cm]{geometry}
 }
   
 \newenvironment{englishabstract}{
-	\chapter*{ABSTRACT}
+	\chapter*{\bfseries ABSTRACT}
     \thispagestyle{fancy}
     \fancyhead[C]{\fontsize{10.5pt}{12.6pt}\selectfont  ABSTRACT}
 }{

@@ -561,7 +561,15 @@ bottom=3cm, bindingoffset=0cm]{geometry}
 \makeatother
 
 \newcommand{\citing}[1]{\textsuperscript{\cite{#1}}}
-\setlist{noitemsep} 
+\setlist{noitemsep}
+\setlist{nolistsep}
+
+\AtBeginDocument{
+	\setlength{\abovedisplayskip}{8pt}
+	\setlength{\belowdisplayskip}{8pt}
+	\setlength{\belowdisplayshortskip}{8pt}
+	\setlength{\abovedisplayshortskip}{8pt}
+}
 
 
 \endinput

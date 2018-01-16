@@ -1,5 +1,5 @@
 %
-%  Copyright 2017 Wen Wang <wanygen@gmail.com>
+%  Copyright 2018 Wen Wang <wwzvd@mst.edu>
 % 
 %  This work may be distributed and/or modified under the
 %  conditions of the LaTeX Project Public License, either version 1.3
@@ -11,7 +11,7 @@
 % 
 %  This work has the LPPL maintenance status `maintained'.
 % 
-%  The Current Maintainer of this work is Wen Wang <wanygen@gmail.com>.
+%  The Current Maintainer of this work is Wen Wang <wwzvd@mst.edu>.
 % 
 %  This work consists of the files thesis-uestc.cls, thesis-uestc.bst.
 % 

@@ -219,15 +219,15 @@ bottom=3cm, bindingoffset=0cm]{geometry}
 \titleformat{\chapter}[block]
   {\centering\fontsize{15pt}{15pt}\selectfont\heiti\thispagestyle{fancy}}{\thechapter}{7.5pt}{}
   
-\titleformat{\section}
+\titleformat{\section}[block]
   {\fontsize{14pt}{14pt}\selectfont\heiti}
   {\thesection}{7pt}{}
   
-\titleformat{\subsection}
+\titleformat{\subsection}[block]
   {\fontsize{14pt}{14pt}\selectfont\heiti}
   {\thesubsection}{7pt}{}
 
-\titleformat{\subsubsection}
+\titleformat{\subsubsection}[block]
   {\fontsize{12pt}{12pt}\selectfont\heiti}
   {\thesubsubsection}{6pt}{}
 

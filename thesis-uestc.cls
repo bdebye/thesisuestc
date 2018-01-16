@@ -47,7 +47,7 @@
 \ifmacosx
 	\setallmainfonts{Times New Roman}
 	\setCJKmainfont{Songti SC}
-	\newCJKfontfamily{\heiti}{Heiti SC}
+	\newCJKfontfamily{\heiti}{STHeiti}
 \else
 	\setCJKmainfont{simsun.ttc}
 	\newCJKfontfamily{\heiti}{simhei.ttf}
@@ -187,10 +187,11 @@ bottom=3cm, bindingoffset=0cm]{geometry}
 
 \captionsetup{format=hang}
 \captionsetup{width=\textwidth - 42pt}
-\captionsetup[figure]{aboveskip=6pt,belowskip=-6pt}
+\captionsetup[figure]{aboveskip=6pt,belowskip=0pt}
 \captionsetup[table]{belowskip=6pt}
 \setlength{\extrarowheight}{5pt}
 \setlength{\subfigcapskip}{0pt}
+\setlength{\intextsep}{9pt}
 
 \makeatletter
 \AtBeginEnvironment{figure}{
@@ -203,7 +204,6 @@ bottom=3cm, bindingoffset=0cm]{geometry}
     \def\@floatboxreset{\centering}
 }
 \makeatother
-\AfterEndEnvironment{table}{\vspace{-6pt}}
 \AtBeginEnvironment{tabular}{\small}
 
 \makeatletter
@@ -216,7 +216,7 @@ bottom=3cm, bindingoffset=0cm]{geometry}
 \setcounter{secnumdepth}{4}
 \setcounter{tocdepth}{4}
 
-\titleformat{\chapter}
+\titleformat{\chapter}[block]
   {\centering\fontsize{15pt}{15pt}\selectfont\heiti\thispagestyle{fancy}}{\thechapter}{7.5pt}{}
   
 \titleformat{\section}

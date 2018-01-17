@@ -96,9 +96,36 @@ xelatex main.tex
 
 然后使用`\input`或`\include`命令包含到主文档。编译方法与单个文件的情况相同。更详细的说明请参考standalone宏包的[文档](https://mirrors.tuna.tsinghua.edu.cn/CTAN/macros/latex/contrib/standalone/standalone.pdf)。
 
-### 主要符号表和缩略词表
+### 图表目录和缩略词
 
-由于学校没有给出清楚的格式说明，暂时不提供此功能。
+图目录和表目录使用`\thesisfigurelist`和`\thesistablelist`添加在目录后面。
+
+缩略词表使用glossaries宏包实现，定义缩略词可以使用`\newglossaryentry{<label>}{<description>}`命令，例如：
+```latex
+\newglossaryentry{Linux}
+{
+  name=Linux,
+  description={is a generic term referring to the family of Unix-like
+               computer operating systems that use the Linux kernel},
+  plural=Linuces
+}
+```
+或者`\newacronym{<label>}{<abbrv>}{<full>}`命令，例如：
+
+```latex
+\newacronym{lvm}{LVM}{Logical Volume Manager}
+```
+在正文中引用缩略词使用glossaries提供的`\gls`、`\Gls`（首字母大写）和`\glspl`（复数形式）等命令。
+
+在目录后面添加缩略词表使用`\thesisglossarylist`。在编译包含有缩略词表的文档时，在执行`xelatex`编译命令后需要运行`makeglossaries main`（注意没有.tex后缀）创建缩略词索引，再运行`xelatex`命令编译完成。所以编译一个完整的包含参考文献，研究成果和缩略词表的文档完整的命令是：
+```bash
+xelatex main.tex
+bibtex main.aux
+bibtex achievement.aux
+makeglossaries main
+xelatex main.tex
+xelatex main.tex
+```
 
 ## 技术交流
 

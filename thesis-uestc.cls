@@ -103,6 +103,22 @@
  	urlcolor=black
 }
 
+\makeatletter % undo the wrong changes made by mathspec
+\let\RequirePackage\original@RequirePackage
+\let\usepackage\RequirePackage
+\makeatother
+\RequirePackage{glossaries}
+
+\newcommand{\thesisglossarylist}{
+  \newpage
+  \fancyhf{}
+  \fancyhead[C]{\fontsize{10.5pt}{12.6pt}\selectfont  缩略词表}
+  \fancyfoot[CE,CO]{\fontsize{9pt}{10.8pt}\selectfont\Roman{pseudopage}}
+  \setlength\glsdescwidth{.7\textwidth}
+  \printglossary[style=long, title={\protect\centering 缩略词表}, nonumberlist, nogroupskip]
+}
+\makeglossaries
+
 \RequirePackage{standalone}
 \RequirePackage{indentfirst}
 \RequirePackage{calc}
@@ -120,6 +136,7 @@
 \RequirePackage[nottoc]{tocbibind}
 \RequirePackage{everypage}
 \RequirePackage{ifoddpage}
+
 
 \let\algorithm\relax
 \let\endalgorithm\relax
@@ -165,6 +182,29 @@
 \renewcommand{\bibname}{参考文献}
 \renewcommand{\figurename}{图}
 \renewcommand{\tablename}{表}
+\renewcommand{\listfigurename}{图目录}
+\renewcommand{\listtablename}{表目录}
+
+\newcommand{\thesisfigurelist}{
+  \newpage
+  \fancyhf{}
+  \fancyhead[C]{\fontsize{10.5pt}{12.6pt}\selectfont 图目录}
+  \fancyfoot[CE,CO]{\fontsize{9pt}{10.8pt}\selectfont\Roman{pseudopage}}
+  \renewcommand{\cftfigpresnum}{图}
+  \addtolength{\cftfignumwidth}{12pt}
+  \addtocontents{toc}{\protect\setcounter{tocdepth}{-1}} 
+  \listoffigures
+}
+\newcommand{\thesistablelist}{
+    \newpage
+  \fancyhf{}
+  \fancyhead[C]{\fontsize{10.5pt}{12.6pt}\selectfont 表目录}
+  \fancyfoot[CE,CO]{\fontsize{9pt}{10.8pt}\selectfont\Roman{pseudopage}}
+  \renewcommand{\cfttabpresnum}{表}
+  \addtolength{\cfttabnumwidth}{12pt}
+  \addtocontents{toc}{\protect\setcounter{tocdepth}{-1}} 
+  \listoftables
+}
 
 \RequirePackage[a4paper, inner=3cm, outer=3cm, top=3cm,
 bottom=3cm, bindingoffset=0cm]{geometry}
@@ -322,7 +362,7 @@ bottom=3cm, bindingoffset=0cm]{geometry}
 \newenvironment{englishabstract}{
 	\chapter*{\bfseries ABSTRACT}
     \thispagestyle{fancy}
-    \fancyhead[C]{\fontsize{10.5pt}{12.6pt}\selectfont  ABSTRACT}
+    \fancyhead[C]{\fontsize{10.5pt}{12.6pt}\selectfont ABSTRACT}
 }{
 	\checkoddpage
 	\ifoddpage
@@ -345,6 +385,14 @@ bottom=3cm, bindingoffset=0cm]{geometry}
 
 \AddEverypageHook{\addtocontents{toc}{
 	\protect\cftsetpnumwidth{\widthof{\thepage}-1pt}
+}}
+
+\AddEverypageHook{\addtocontents{lof}{
+  \protect\cftsetpnumwidth{\widthof{\thepage}-1pt}
+}}
+
+\AddEverypageHook{\addtocontents{lot}{
+  \protect\cftsetpnumwidth{\widthof{\thepage}-1pt}
 }}
 
 \tocloftpagestyle{fancy}
@@ -394,19 +442,6 @@ bottom=3cm, bindingoffset=0cm]{geometry}
     \fancyfoot[CE,CO]{\fontsize{9pt}{10.8pt}\selectfont\Roman{pseudopage}}
 }{}{}
 
-\apptocmd{\tableofcontents}{
-    \checkoddpage
-	\ifoddpage
-    	\blankpage
-    \else
-    	\newpage
-    \fi
-    \newpage
-	\standardhead
-	\pagenumbering{arabic}
-	\setcounter{page}{1}
-}{}{}
-
 \newcommand{\thesistableofcontents}{
 	\tableofcontents
 }
@@ -425,6 +460,17 @@ bottom=3cm, bindingoffset=0cm]{geometry}
 
 
 \newcommand{\thesischapterexordium}{
+  \checkoddpage
+  \ifoddpage
+      \blankpage
+    \else
+      \newpage
+  \fi
+    \newpage
+  \addtocontents{toc}{\protect\setcounter{tocdepth}{4}} 
+  \standardhead
+  \pagenumbering{arabic}
+  \setcounter{page}{1}
 	\chapter{绪\hspace{6pt}论}
     \chaptermark{绪论}
 }

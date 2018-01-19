@@ -107,15 +107,47 @@
 \let\RequirePackage\original@RequirePackage
 \let\usepackage\RequirePackage
 \makeatother
-\RequirePackage{glossaries}
+\RequirePackage[nopostdot]{glossaries}
+\defglsdisplayfirst[\glsdefaulttype]{\textit{#1}\ignorespaces}
+\renewcommand*{\glossarypreamble}{\vspace{-9pt}}
+
+\newacronymstyle{acronym-uestc}{
+  \ifglshaslong{\glslabel}{\glsgenacfmt}{\glsgenentryfmt}
+}{
+  \renewcommand*{\GenericAcronymFields}{
+    first={\the\glslongtok\space\protect\paren{\the\glsshorttok}},
+    description={\the\glslongtok}}
+  \renewcommand*{\genacrfullformat}[2]{
+    \glsentrydesc{##1}~(\glsentrylong{##1},
+    \glsentryshort{##1})
+  }
+  \renewcommand*{\acronymentry}[1]{\acronymfont{\glsentryshort{##1}}}
+}
+\setacronymstyle{acronym-uestc}
+
+\newglossarystyle{long-uestc}{
+\renewenvironment{theglossary}%
+  {\begin{longtable}{lp{.7\textwidth}}}%
+  {\end{longtable}}%
+
+\renewcommand*{\glossaryheader}{}%
+\renewcommand*{\glsgroupheading}[1]{}%
+\renewcommand{\glossentry}[2]{
+  \glsentryitem{##1}\glstarget{##1}{\glossentryname{##1}} &
+  \ifglshaslong{##1}{\glsentrylong{##1}\ifglshasdesc{##1}{, \glsentrydesc{##1}}{}}
+  {\glsentrydesc{##1}} \\
+  }
+\renewcommand*{\subglossentry}[3]{
+\glossentry{##2}{##3}}
+}
 
 \newcommand{\thesisglossarylist}{
   \newpage
   \fancyhf{}
-  \fancyhead[C]{\fontsize{10.5pt}{12.6pt}\selectfont  缩略词表}
+  \fancyhead[C]{\fontsize{10.5pt}{12.6pt}\selectfont 缩略词表}
   \fancyfoot[CE,CO]{\fontsize{9pt}{10.8pt}\selectfont\Roman{pseudopage}}
   \setlength\glsdescwidth{.7\textwidth}
-  \printglossary[style=long, title={\protect\centering 缩略词表}, nonumberlist, nogroupskip]
+  \printglossary[style=long-uestc, title={\protect\centering 缩略词表}, nonumberlist, nogroupskip]
 }
 \makeglossaries
 
@@ -252,6 +284,13 @@ bottom=3cm, bindingoffset=0cm]{geometry}
 
 \newcommand{\chinesecolon}{\char"FF1A}
 \newcommand{\chinesespace}{\char"3000}
+\newcommand{\chineseperiod}{\char"3002}
+\newcommand{\chinesequestion}{\char"FF1F}
+\newcommand{\chineseexclamation}{\char"FF01}
+\newcommand{\chineseecomma}{\char"FF0C}
+\newcommand{\chinesesemicolon}{\char"FF1B}
+\newcommand{\chineseleftparenthesis}{\char"FF08}
+\newcommand{\chineserightparenthesis}{\char"FF09}
 
 \setcounter{secnumdepth}{4}
 \setcounter{tocdepth}{4}

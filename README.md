@@ -110,14 +110,14 @@ xelatex main.tex
   plural=Linuces
 }
 ```
-或者`\newacronym{<label>}{<abbrv>}{<full>}`命令，例如：
+或者`\newacronym[description=<chinese>]{<label>}{<abbrv>}{<full>}`命令，例如：
 
 ```latex
-\newacronym{lvm}{LVM}{Logical Volume Manager}
+\newacronym[description=逻辑卷管理器]{lvm}{LVM}{Logical Volume Manager}
 ```
-在正文中引用缩略词使用glossaries提供的`\gls`、`\Gls`（首字母大写）和`\glspl`（复数形式）等命令。
+在正文中引用缩略词使用glossaries提供的`\gls`、`\Gls`（首字母大写）和`\glspl`（复数形式）等命令。具体使用方法参考[文档](https://www.ctan.org/tex-archive/macros/latex/contrib/glossaries/)。
 
-在目录后面添加缩略词表使用`\thesisglossarylist`。在编译包含有缩略词表的文档时，在执行`xelatex`编译命令后需要运行`makeglossaries main`（注意没有.tex后缀）创建缩略词索引，再运行`xelatex`命令编译完成。所以编译一个完整的包含参考文献，研究成果和缩略词表的文档完整的命令是：
+在目录后面添加缩略词表使用`\thesisglossarylist`。在编译包含有缩略词表的文档时，执行`xelatex`编译命令后需要运行`makeglossaries main`（注意没有.tex后缀）创建缩略词索引，再运行`xelatex`命令编译完成。所以编译一个完整的包含参考文献，研究成果和缩略词表的文档完整的命令是：
 ```bash
 xelatex main.tex
 bibtex main.aux

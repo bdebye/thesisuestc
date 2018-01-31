@@ -48,6 +48,8 @@ xelatex main.tex
 
 参考文献使用`thesisbibliography`环境，在其中使用`\bibitem`命令加入文献条目。引用分直接引用`\cite`命令和上标引用命令`\citing`两种。直接引用在正文中的标号显示为正常字体，上标引用显示为上标字体。使用BibTeX录入参考文献由`\thesisloadbibliography`命令导入所使用的数据库，参考文献风格为thesis-uestc。这个命令有一个可选参数，在为`nocite`的情况下会在文档中列出数据库中的所有条目，无论是否引用。其他情况下只列出引用过的条目。
 
+有些编辑器会识别`\bibliography`命令载入的数据库文件，并提供更好的编辑支持。所以模板也支持使用原生的`\bibliography`命令载入文献列表，只需要载入之前指定参考文献风格样式为`\bibliographystyle{thesis-uestc}`即可。
+
 ### 附录
 
 附录由命令`\thesisappendix`开始，实际上是重新开始了一个无编号的章节。为了书写方便，附录中可以继续分小节，只不过附录中的小节不会在目录中显示。

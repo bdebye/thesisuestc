@@ -322,17 +322,22 @@ FUNCTION {book}
     address missing$
     'skip$
     {
-    	format.address write$ ": " write$
+        format.address write$ ": " write$
     } if$
     format.publisher write$ add.comma
     format.year write$
     pages missing$
     'skip$
     {
-    	add.comma
-    	format.pages write$
+        add.comma
+        format.pages write$
     } if$
     newline$
+}
+
+FUNCTION {incollection}
+{
+    book
 }
 
 FUNCTION {conference}
@@ -351,7 +356,7 @@ FUNCTION {conference}
     address missing$
     'skip$
     {
-    	format.address write$ add.comma
+        format.address write$ add.comma
     } if$
     format.year write$ add.comma
     format.pages write$
@@ -375,14 +380,14 @@ FUNCTION {article}
     format.title "[J]" * write$ add.period
     format.journal write$ add.comma
     format.year write$ add.comma
-	
+    
     number missing$
-	{
-    	volume ": " * write$
+    {
+        volume ": " * write$
     } {
-    	volume "(" *
-    	number *
-    	"): " * write$
+        volume "(" *
+        number *
+        "): " * write$
     } if$
     format.pages write$
     newline$
@@ -396,7 +401,7 @@ FUNCTION {thesis}
     address missing$
     'skip$
     {
-    	format.address write$ ": " write$
+        format.address write$ ": " write$
     } if$
     format.institution write$ add.comma
     format.year write$ add.comma
@@ -439,7 +444,7 @@ FUNCTION {techreport}
     address missing$
     'skip$
     {
-    	format.address write$ ": " write$
+        format.address write$ ": " write$
     } if$
     format.institution write$ add.comma
     format.date write$
@@ -483,7 +488,7 @@ FUNCTION {digital}
 
 FUNCTION {onlynote}
 {
-	bibitem.begin
+    bibitem.begin
     note write$
     newline$
 }

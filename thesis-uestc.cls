@@ -108,7 +108,6 @@
 \let\usepackage\RequirePackage
 \makeatother
 \RequirePackage[nopostdot]{glossaries}
-\defglsdisplayfirst[\glsdefaulttype]{\textit{#1}\ignorespaces}
 \renewcommand*{\glossarypreamble}{\vspace{-9pt}}
 
 \newacronymstyle{acronym-uestc}{
@@ -139,6 +138,14 @@
   }
 \renewcommand*{\subglossentry}[3]{
 \glossentry{##2}{##3}}
+}
+
+\defglsentryfmt{%
+  \ifglsused{\glslabel}{%
+    \glsgenentryfmt%
+  }{%
+    \textit{\glsgenentryfmt}%
+  }%
 }
 
 \newcommand{\thesisglossarylist}{

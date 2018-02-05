@@ -18,7 +18,7 @@
 
 
 ENTRY
-  {
+{
   author
   title
   publisher

@@ -116,35 +116,41 @@
   \renewcommand*{\GenericAcronymFields}{
     first={\the\glslongtok\space\protect\paren{\the\glsshorttok}},
     description={\the\glslongtok}}
-  \renewcommand*{\genacrfullformat}[2]{
-    \glsentrydesc{##1}~(\glsentrylong{##1},
-    \glsentryshort{##1})
+  \renewcommand*{\genacrfullformat}[2]{%
+    \glsentrydesc{##1}~(\glsentrylong{##1},\space%
+    \glsentryshort{##1})%
   }
-  \renewcommand*{\acronymentry}[1]{\acronymfont{\glsentryshort{##1}}}
+  \renewcommand*{\acronymentry}[1]{%
+    \acronymfont{\glsentryshort{##1}}%
+  }
 }
 \setacronymstyle{acronym-uestc}
 
 \newglossarystyle{long-uestc}{
-\renewenvironment{theglossary}%
-  {\begin{longtable}{lp{.7\textwidth}}}%
-  {\end{longtable}}%
+  \renewenvironment{theglossary}%
+    {\begin{longtable}{lp{.7\textwidth}}}%
+    {\end{longtable}}%
 
-\renewcommand*{\glossaryheader}{}%
-\renewcommand*{\glsgroupheading}[1]{}%
-\renewcommand{\glossentry}[2]{
-  \glsentryitem{##1}\glstarget{##1}{\glossentryname{##1}} &
-  \ifglshaslong{##1}{\glsentrylong{##1}\ifglshasdesc{##1}{, \glsentrydesc{##1}}{}}
-  {\glsentrydesc{##1}} \\
+  \renewcommand*{\glossaryheader}{}%
+  \renewcommand*{\glsgroupheading}[1]{}%
+  \renewcommand{\glossentry}[2]{
+    \glsentryitem{##1}\glstarget{##1}{\glossentryname{##1}} &
+    \ifglshaslong{##1}{\glsentrylong{##1}\ifglshasdesc{##1}{, \glsentrydesc{##1}}{}}
+    {\glsentrydesc{##1}} \\
   }
-\renewcommand*{\subglossentry}[3]{
-\glossentry{##2}{##3}}
+  \renewcommand*{\subglossentry}[3]{
+  \glossentry{##2}{##3}}
 }
 
 \defglsentryfmt{%
-  \ifglsused{\glslabel}{%
-    \glsgenentryfmt%
+  \ifglshaslong{\glslabel}{%
+    \glsgenacfmt%
   }{%
-    \textit{\glsgenentryfmt}%
+    \ifglsused{\glslabel}{%
+      \glsgenentryfmt%
+    }{%
+      \glsgenentryfmt%
+    }%
   }%
 }
 

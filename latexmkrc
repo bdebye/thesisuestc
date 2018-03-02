@@ -1,6 +1,6 @@
 
-$pdf_mode = 1;
-$pdflatex = "xelatex --shell-escape %O %S";
+$pdf_mode = 5;
+$xelatex = "xelatex --shell-escape %O %S";
 $bibtex_use = 1.5;
 $preview_mode = 1;
 

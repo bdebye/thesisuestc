@@ -11,7 +11,7 @@
 ```bash
 latexmk
 ```
-命令即可自动调用相关程序进行编译，处理各种文件依赖并自动预览。执行`latexmk -c`命令清理所有缓存文件。使用TeXstudio、Texmaker或Texpad等编辑环境记得将编译引擎设置成latexmk。
+命令即可自动调用相关程序进行编译，处理各种文件依赖并自动预览。执行`latexmk -c`命令清理所有缓存文件。使用TeXstudio、Texmaker或Texpad等编辑环境记得将编译引擎设置成latexmk。Windows平台下使用MikTeX还需要安装[Perl](http://strawberryperl.com/)解释器。
 
 手动编译如`xelatex main.tex`命令即可，文档内部有引用或参考文献的情况下需要编译两次。使用BibTeX形式的参考文献需要先运行一次xelatex，运行一次bibtex，再运行两次xelatex。使用BibTeX录入攻读学问期间的研究成果的情况下还需要额外运行一次`bibtex achievement.aux`。所以完整地编译包含两个BibTeX文献列表（一个是参考文献，一个是攻读学位期间的研究成果）的文档需要按顺序运行以下命令：
 

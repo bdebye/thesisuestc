@@ -7,7 +7,13 @@
 ## 使用方法
 使用模板需要系统安装任意一种TeX环境，如TeXLive、MacTeX和MiKTeX（都自动带有XeLaTeX引擎，但是不推荐CTeX），安装有SimSun和SimHei字体（其实就是宋体和黑体）以及Times New Roman英文字体。字体方面也可以像在线编辑环境那样指定所使用的字体文件。在MacOS下编译会自动识别操作系统，使用Sonti SC和STHeiti字体，但需要启用`--shell-escape`编译选项。模板采用LaTeX类的形式封装，导入模板只需要把thesis-uestc.cls文件放在文档所在目录，在文档开头使用`\documentclass{thesis-uestc}`命令将文档的类设置成thesis-uestc即可。使用BibTeX录入参考文献还需要thesis-uestc.bst风格定义文件。模板类有bachelor、master和doctor三个选项，对应本科、硕士和博士的毕业论文，默认选项为master。文档内容的书写参考范例`main.tex`。
 
-编译文档请使用XeLaTeX引擎。使用WinEdt、Texmaker或Texpad等编辑环境记得将编译引擎设置成XeLaTeX。命令编译如`xelatex main.tex`即可，文档内部有引用或参考文献的情况下需要编译两次。使用BibTeX形式的参考文献需要先运行一次xelatex，运行一次bibtex，再运行两次xelatex。使用BibTeX录入攻读学问期间的研究成果的情况下还需要额外运行一次`bibtex achievement.aux`。所以完整地编译包含两个BibTeX文献列表（一个是参考文献，一个是攻读学位期间的研究成果）的文档需要按顺序运行以下命令：
+编译文档请使用XeLaTeX引擎。模版包含了latexmk设置文件，将命令行工作目录切换到项目文件夹下，执行
+```bash
+latexmk
+```
+命令即可自动调用相关程序进行编译，处理各种文件依赖并自动预览。执行`latexmk -c`命令清理所有缓存文件。使用TeXstudio、Texmaker或Texpad等编辑环境记得将编译引擎设置成latexmk。
+
+手动编译如`xelatex main.tex`命令即可，文档内部有引用或参考文献的情况下需要编译两次。使用BibTeX形式的参考文献需要先运行一次xelatex，运行一次bibtex，再运行两次xelatex。使用BibTeX录入攻读学问期间的研究成果的情况下还需要额外运行一次`bibtex achievement.aux`。所以完整地编译包含两个BibTeX文献列表（一个是参考文献，一个是攻读学位期间的研究成果）的文档需要按顺序运行以下命令：
 
 ```bash
 xelatex main.tex
@@ -16,8 +22,6 @@ bibtex achievement.aux
 xelatex main.tex
 xelatex main.tex
 ```
-
-注意使用某些编辑环境如WinEdt、Texmaker编译文档，编辑器的bibtex编译按钮可能会忽略编译研究成果的文献列表（个人认为这是编辑器设计的一个漏洞），这种情况下编译出来的文档没有列出研究成果，仍需要两次`xelatex main.tex`命令之前手动运行`bibtex achievement.aux`。
 
 使用在线编辑环境Overleaf只需打开发布在Overleaf Gallery里的[模板](https://www.overleaf.com/latex/templates/uestc-thesis-template/nwpkhtrtjhrg)，点击OPEN AS TEMPLATE即可使用，在线自动编译和预览。Overleaf模板唯一的区别在于直接使用放置在项目根目录的字体文件。
 
@@ -118,7 +122,7 @@ xelatex main.tex
 ```
 在正文中引用缩略词使用glossaries提供的`\gls`、`\Gls`（首字母大写）和`\glspl`（复数形式）等命令。具体使用方法参考[文档](https://www.ctan.org/tex-archive/macros/latex/contrib/glossaries/)。
 
-在目录后面添加缩略词表使用`\thesisglossarylist`。在编译包含有缩略词表的文档时，执行`xelatex`编译命令后需要运行`makeglossaries main`（注意没有.tex后缀）创建缩略词索引，再运行`xelatex`命令编译完成。所以编译一个完整的包含参考文献，研究成果和缩略词表的文档完整的命令是：
+在目录后面添加缩略词表使用`\thesisglossarylist`。手动编译包含有缩略词表的文档时，执行`xelatex`编译命令后需要运行`makeglossaries main`（注意没有.tex后缀）创建缩略词索引，再运行`xelatex`命令编译完成。所以编译一个完整的包含参考文献，研究成果和缩略词表的文档完整的命令是：
 ```bash
 xelatex main.tex
 bibtex main.aux
@@ -127,6 +131,7 @@ makeglossaries main
 xelatex main.tex
 xelatex main.tex
 ```
+使用latexmk编译会自动处理这些问题。
 
 ## 技术交流
 

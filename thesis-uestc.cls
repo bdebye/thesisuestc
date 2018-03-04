@@ -95,7 +95,10 @@
 \RequirePackage{pifont}
 
 \definecolor{darkblue}{rgb}{0.0, 0.0, 0.55}
-\RequirePackage[hyperfootnotes=false, bookmarksdepth=4]{hyperref}
+\RequirePackage[hyperfootnotes=false,
+    bookmarksnumbered,
+    bookmarksdepth=4
+]{hyperref}
 \hypersetup{
   colorlinks=true,
   citecolor=black,
@@ -160,6 +163,7 @@
   \fancyhead[C]{\fontsize{10.5pt}{12.6pt}\selectfont 缩略词表}
   \fancyfoot[CE,CO]{\fontsize{9pt}{10.8pt}\selectfont\Roman{pseudopage}}
   \setlength\glsdescwidth{.7\textwidth}
+  \pdfbookmark{缩略词表}{glossary}
   \printglossary[style=long-uestc, title={\protect\centering 缩略词表}, nonumberlist, nogroupskip]
 }
 \makeglossaries
@@ -238,6 +242,7 @@
   \renewcommand{\cftfigpresnum}{图}
   \addtolength{\cftfignumwidth}{12pt}
   \addtocontents{toc}{\protect\setcounter{tocdepth}{-1}} 
+  \pdfbookmark{图目录}{figurelist}
   \listoffigures
 }
 \newcommand{\thesistablelist}{
@@ -247,7 +252,8 @@
   \fancyfoot[CE,CO]{\fontsize{9pt}{10.8pt}\selectfont\Roman{pseudopage}}
   \renewcommand{\cfttabpresnum}{表}
   \addtolength{\cfttabnumwidth}{12pt}
-  \addtocontents{toc}{\protect\setcounter{tocdepth}{-1}} 
+  \addtocontents{toc}{\protect\setcounter{tocdepth}{-1}}
+  \pdfbookmark{表目录}{tablelist}
   \listoftables
 }
 
@@ -300,7 +306,7 @@ bottom=3cm, bindingoffset=0cm]{geometry}
 \newcommand{\chineseperiod}{\char"3002}
 \newcommand{\chinesequestion}{\char"FF1F}
 \newcommand{\chineseexclamation}{\char"FF01}
-\newcommand{\chineseecomma}{\char"FF0C}
+\newcommand{\chinesecomma}{\char"FF0C}
 \newcommand{\chinesesemicolon}{\char"FF1B}
 \newcommand{\chineseleftparenthesis}{\char"FF08}
 \newcommand{\chineserightparenthesis}{\char"FF09}
@@ -388,6 +394,7 @@ bottom=3cm, bindingoffset=0cm]{geometry}
 \newenvironment{chineseabstract}{
   \fancyfoot[CE,CO]{\fontsize{9pt}{10.8pt}\selectfont\Roman{pseudopage}}
   \pagenumbering{Roman}
+    \pdfbookmark{中文摘要}{chineseabstract}
     \chapter*{摘\chinesespace 要}
     \thispagestyle{fancy}
     \fancyhead[C]{\fontsize{10.5pt}{12.6pt}\selectfont 摘要}
@@ -412,6 +419,7 @@ bottom=3cm, bindingoffset=0cm]{geometry}
 }
   
 \newenvironment{englishabstract}{
+  \pdfbookmark{英文摘要}{englishabstract}
   \chapter*{\bfseries ABSTRACT}
     \thispagestyle{fancy}
     \fancyhead[C]{\fontsize{10.5pt}{12.6pt}\selectfont ABSTRACT}
@@ -492,6 +500,7 @@ bottom=3cm, bindingoffset=0cm]{geometry}
   \fancyhf{}
   \fancyhead[C]{\fontsize{10.5pt}{12.6pt}\selectfont 目录}
   \fancyfoot[CE,CO]{\fontsize{9pt}{10.8pt}\selectfont\Roman{pseudopage}}
+  \pdfbookmark{目录}{toc}
 }{}{}
 
 \newcommand{\thesistableofcontents}{

@@ -242,7 +242,6 @@
   \renewcommand{\cftfigpresnum}{图}
   \addtolength{\cftfignumwidth}{12pt}
   \addtocontents{toc}{\protect\setcounter{tocdepth}{-1}} 
-  \pdfbookmark{图目录}{figurelist}
   \listoffigures
 }
 \newcommand{\thesistablelist}{
@@ -253,7 +252,6 @@
   \renewcommand{\cfttabpresnum}{表}
   \addtolength{\cfttabnumwidth}{12pt}
   \addtocontents{toc}{\protect\setcounter{tocdepth}{-1}}
-  \pdfbookmark{表目录}{tablelist}
   \listoftables
 }
 

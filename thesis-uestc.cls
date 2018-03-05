@@ -234,7 +234,7 @@
 \renewcommand{\listfigurename}{图目录}
 \renewcommand{\listtablename}{表目录}
 
-\newcommand{\thesisfigurelist}{
+\pretocmd{\listoffigures}{
     \newpage
   \fancyhf{}
   \fancyhead[C]{\fontsize{10.5pt}{12.6pt}\selectfont 图目录}
@@ -242,9 +242,13 @@
   \renewcommand{\cftfigpresnum}{图}
   \addtolength{\cftfignumwidth}{12pt}
   \addtocontents{toc}{\protect\setcounter{tocdepth}{-1}} 
+}{}{}
+
+\newcommand{\thesisfigurelist}{
   \listoffigures
 }
-\newcommand{\thesistablelist}{
+
+\pretocmd{\listoftables}{
     \newpage
   \fancyhf{}
   \fancyhead[C]{\fontsize{10.5pt}{12.6pt}\selectfont 表目录}
@@ -252,11 +256,16 @@
   \renewcommand{\cfttabpresnum}{表}
   \addtolength{\cfttabnumwidth}{12pt}
   \addtocontents{toc}{\protect\setcounter{tocdepth}{-1}}
+}{}{}
+
+\newcommand{\thesistablelist}{
   \listoftables
 }
 
-\RequirePackage[a4paper, inner=3cm, outer=3cm, top=3cm,
-bottom=3cm, bindingoffset=0cm]{geometry}
+\RequirePackage[a4paper,
+  inner=3cm, outer=3cm, top=3cm, bottom=3cm,
+  bindingoffset=0cm]{geometry}
+
 \setlength{\headheight}{15pt}
 
 \pagestyle{fancy}

@@ -24,7 +24,7 @@
 
 自动编译：模版提供latexmk设置文件用于自动编译。将命令行工作目录切换到项目文件夹下，执行
 ```bash
-latexmk
+latexmk main.tex
 ```
 命令即可自动调用相关程序进行编译，处理各种文件依赖并自动预览。执行`latexmk -c`命令清理所有缓存文件。使用TeXstudio、Texmaker或WinEdt等编辑环境请将编译引擎设置成latexmk。Windows平台下使用MikTeX还需要安装[Perl语言解释器](http://strawberryperl.com/)。
 

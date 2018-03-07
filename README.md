@@ -133,9 +133,9 @@ xelatex main.tex
 
 模板提供的样例（`main.tex`）将所有内容写在同一个主文档里，若使用者认为将论文分割成多个文件更便于编辑和管理，也可以将各个章节写在不同的子文档内，最后统一包含。
 
-模板提供的另一个样例（`main_standalone.tex`）演示了如何进行论文的分割，可以用其替换`main.tex`，或者执行：
+模板提供的另一个样例（`main_multifile.tex`）演示了如何进行论文的分割，可以用其替换`main.tex`，或者执行：
 ```bash
-latexmk main_standalone.tex
+latexmk main_multifile.tex
 ```
 
 模板自动导入了standalone包用于多文件项目的管理，并要求子文档遵守以下格式（也可参见`chapter/template.tex`）：
@@ -150,7 +150,7 @@ latexmk main_standalone.tex
 \end{document}
 ```
 
-分割出的文件需要使用`\input`或`\include`命令包含到主文档（参见`main_standalone.tex`），编译方法则保持不变。
+分割出的文件需要使用`\input`或`\include`命令包含到主文档（参见`main_multifile.tex`），编译方法则保持不变。
 
 更详细的说明请参考[standalone宏包文档](https://mirrors.tuna.tsinghua.edu.cn/CTAN/macros/latex/contrib/standalone/standalone.pdf)。
 

@@ -1,0 +1,49 @@
+%!TEX options = --shell-escape
+
+
+\documentclass[master]{thesis-uestc}
+
+\title{UESTC Thesis Template}
+\author{FengYouzheng}
+
+\begin{document}
+
+% this is a thesis template with mutiple files: the chapters and the misc in standalone mode
+% to avoid too many files in current folder, template add extra direcotry: chapter and misc
+% please do not change the sequence of each one except the chapters themselves.
+
+% abstract
+\include{misc/chinese_abstract}
+\include{misc/english_abstract}
+
+% table of contents
+\thesistableofcontents
+
+% thesis contents
+\include{chapter/exordium}
+\include{chapter/c2}
+\include{chapter/c3}
+\include{chapter/c4}
+\include{chapter/c5}
+%\include{chapter/template}
+
+% misc
+\include{misc/acknowledgement}
+\thesisloadbibliography[nocite]{reference}
+
+%
+% Uncomment following codes to load bibliography database with native
+% \bibliography command.
+%
+% \nocite{*}
+% \bibliographystyle{thesis-uestc}
+% \bibliography{reference}
+%
+
+% comment while no need
+\include{misc/appendix}
+\thesisloadachievement{publications}
+\include{misc/translate_original}
+\include{misc/translate_chinese}
+
+\end{document}

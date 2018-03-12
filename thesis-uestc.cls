@@ -41,15 +41,15 @@
 
 \ifwindows
   \setallmainfonts{Times New Roman}
-  \setCJKmainfont{SimSun}
+  \setCJKmainfont[AutoFakeBold=true]{SimSun}
   \newCJKfontfamily{\heiti}{SimHei}
 \else
 \ifmacosx
   \setallmainfonts{Times New Roman}
-  \setCJKmainfont{Songti SC}
+  \setCJKmainfont[AutoFakeBold=true]{Songti SC}
   \newCJKfontfamily{\heiti}{STHeiti}
 \else
-  \setCJKmainfont{simsun.ttc}
+  \setCJKmainfont[AutoFakeBold=true]{simsun.ttc}
   \newCJKfontfamily{\heiti}{simhei.ttf}
   \setallmainfonts[
     BoldFont=timesbd.ttf,
@@ -58,38 +58,6 @@
   ]{times.ttf}
 \fi
 \fi
-
-% value > 0
-\def\xeCJKembold{0.4}
-
-% hack into xeCJK, you don't need to understand it
-\def\saveCJKnode{\dimen255\lastkern}
-\def\restoreCJKnode{\kern-\dimen255\kern\dimen255}
-
-% save old definition of \CJKsymbol and \CJKpunctsymbol for CJK output
-\let\CJKoldsymbol\CJKsymbol
-\let\CJKoldpunctsymbol\CJKpunctsymbol
-
-% apply pdf literal fake bold
-\def\CJKfakeboldsymbol#1{%
-  \special{pdf:literal direct 2 Tr \xeCJKembold\space w}%
-  \CJKoldsymbol{#1}%
-  \saveCJKnode
-  \special{pdf:literal direct 0 Tr}%
-  \restoreCJKnode}
-\def\CJKfakeboldpunctsymbol#1{%
-  \special{pdf:literal direct 2 Tr \xeCJKembold\space w}%
-  \CJKoldpunctsymbol{#1}%
-  \saveCJKnode
-  \special{pdf:literal direct 0 Tr}%
-  \restoreCJKnode}
-\newcommand\CJKfakebold[1]{%
-  \let\CJKsymbol\CJKfakeboldsymbol
-  \let\CJKpunctsymbol\CJKfakeboldpunctsymbol
-  #1%
-  \let\CJKsymbol\CJKoldsymbol
-  \let\CJKpunctsymbol\CJKoldpunctsymbol}
-
 
 \RequirePackage{zhnumber}
 \RequirePackage{pifont}
@@ -233,6 +201,10 @@
 \renewcommand{\tablename}{表}
 \renewcommand{\listfigurename}{图目录}
 \renewcommand{\listtablename}{表目录}
+
+% \newcommand*{\noaddvspace}{\renewcommand*{\addvspace}[1]{}}
+% \addtocontents{lof}{\protect\noaddvspace}
+% \addtocontents{lot}{\protect\noaddvspace}
 
 \pretocmd{\listoffigures}{
     \newpage
@@ -418,7 +390,7 @@
   \vspace{\baselineskip}
   \noindent
     \begin{minipage}[t]{48pt}
-      \noindent\CJKfakebold{关键词\chinesecolon}
+      \noindent\textbf{关键词\chinesecolon}
     \end{minipage}
     \begin{minipage}[t]{\linewidth - 48pt}
       #1
@@ -525,7 +497,6 @@
   \markboth{致谢}{致谢}
   \thispagestyle{fancy}
 }
-
 
 \newcommand{\thesischapterexordium}{
   \checkoddpage

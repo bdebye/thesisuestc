@@ -62,7 +62,7 @@
 \RequirePackage{zhnumber}
 \RequirePackage{pifont}
 
-\definecolor{darkblue}{rgb}{0.0, 0.0, 0.55}
+\RequirePackage[hyphens]{url}
 \RequirePackage[hyperfootnotes=false,
     bookmarksnumbered,
     bookmarksdepth=4

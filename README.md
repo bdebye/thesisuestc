@@ -17,7 +17,7 @@
 
 使用BibTeX录入参考文献还需要`thesis-uestc.bst`风格定义文件。
 
-模板类有bachelor、master和doctor三个选项，对应本科、硕士和博士的毕业论文，默认选项为`master`。文档内容的书写参考范例`main.tex`。
+模板类有bachelor、master、promaster和doctor四个选项，对应本科、硕士、专业硕士和博士的毕业论文，默认选项为`master`。文档内容的书写参考范例`main.tex`。
 
 ### 文档编译
 编译文档请使用XeLaTeX引擎。
@@ -44,11 +44,15 @@ xelatex main.tex
 xelatex main.tex
 ```
 
-在线编辑环境：使用Overleaf只需打开发布在Overleaf Gallery里的[模板](https://www.overleaf.com/latex/templates/uestc-thesis-template/nwpkhtrtjhrg)，点击OPEN AS TEMPLATE即可使用，在线自动编译和预览。
+在线编辑环境：使用Overleaf只需打开发布在Overleaf Gallery里的[模板](https://www.overleaf.com/latex/templates/uestc-thesis-template/nwpkhtrtjhrg)，点击OPEN AS TEMPLATE即可使用，在线自动编译和预览。
 
 > Overleaf模板唯一的区别在于直接使用放置在项目根目录的字体文件。
 
 ## 论文写作指南
+
+### 论文封面
+
+论文封面和扉页由`\makecover`命令添加，可以显示论文题目，作者，指导老师等。
 
 ### 中英文摘要
 

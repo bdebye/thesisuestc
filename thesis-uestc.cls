@@ -21,6 +21,9 @@
 
 \LoadClass[12pt, openany, twoside]{book}
 
+\RequirePackage{ifxetex}
+\RequireXeTeX
+
 \RequirePackage[usenames,dvipsnames,svgnames,table]{xcolor}
 \RequirePackage{graphicx}
 \RequirePackage[font={doublespacing, small}, labelsep=space, skip=6pt]{caption}
@@ -145,6 +148,7 @@
 \RequirePackage{titlesec}
 \RequirePackage{setspace}
 \RequirePackage{cite}
+\RequirePackage{ulem}
 \RequirePackage{enumitem}
 \RequirePackage{algorithm2e}
 \RequirePackage{etoolbox}
@@ -454,16 +458,198 @@
 \renewcommand\cftchapfont{\heiti}
 
 \newcommand{\chinesedegreename}{硕士}
+\newcommand{\chinesebooktitle}{硕士学位论文}
+\newcommand{\englishbooktitle}{Master Thesis}
+\newcommand{\thetitle}{}
+\newcommand{\theauthor}{}
+\newcommand{\thedate}{}
+\newcommand{\theschool}{}
+\newcommand{\themajor}{}
+\newcommand{\theadvisor}{}
+\newcommand{\thestudentid}{}
+
+\renewcommand{\title}[1]{
+  \renewcommand{\thetitle}{#1}
+}
+
+\renewcommand{\author}[1]{
+  \renewcommand{\theauthor}{#1}
+}
+
+\renewcommand{\date}[1]{
+  \renewcommand{\thedate}{#1}
+}
+
+\newcommand{\major}[1]{
+  \renewcommand{\themajor}{#1}
+}
+
+\newcommand{\school}[1]{
+  \renewcommand{\theschool}{#1}
+}
+
+\newcommand{\advisor}[1]{
+  \renewcommand{\theadvisor}{#1}
+}
+
+\newcommand{\studentid}[1]{
+  \renewcommand{\thestudentid}{#1}
+}
+
+
+
+
 \DeclareOption{bachelor}{
   \renewcommand{\chinesedegreename}{本科}
+  \renewcommand{\chinesebooktitle}{本科学位论文}
+  \renewcommand{\englishbooktitle}{Bachelor Thesis}
 }
 
 \DeclareOption{master}{
   \renewcommand{\chinesedegreename}{硕士}
+  \renewcommand{\chinesebooktitle}{硕士学位论文}
+  \renewcommand{\englishbooktitle}{Master Thesis}
+}
+
+\DeclareOption{promaster}{
+  \renewcommand{\chinesedegreename}{硕士}
+  \renewcommand{\chinesebooktitle}{专业学位硕士学位论文}
+  \renewcommand{\englishbooktitle}{Master Thesis for Professional Degree}
 }
 
 \DeclareOption{doctor}{
   \renewcommand{\chinesedegreename}{博士}
+  \renewcommand{\chinesebooktitle}{博士学位论文}
+  \renewcommand{\englishbooktitle}{Doctoral Dissertation}
+}
+
+
+\newcommand{\makecover}{
+\thispagestyle{empty}
+\setlength{\extrarowheight}{9pt}
+\begin{center}
+  \fontsize{22pt}{22pt}\selectfont 电子科技大学 \\[7bp]
+  \fontsize{12pt}{12pt}\selectfont UNIVERSITY OF ELECTRONIC SCIENCE
+    AND TECHNOLOGY OF CHINA \\[36bp]
+  \fontsize{42pt}{42pt}\selectfont\chinesebooktitle \\[24bp]
+  \fontsize{16pt}{16pt}\selectfont
+    \textbf{\MakeUppercase{\englishbooktitle}} \\[48bp]
+  \includegraphics[width=221bp]{logo.pdf} \\[48bp]
+  \begin{tabular}{lp{4.6in}}
+    \fontsize{16pt}{16pt}\selectfont 论文题目 & \multirow[t]{2}{4.6in}{
+        \centering
+          \fontsize{16pt}{19pt}\selectfont
+          \thetitle
+    } \\
+    \cline{2-2}
+            & \\
+    \cline{2-2}
+  \end{tabular} \\[\baselineskip]
+  \begin{tabular}{>{\fontsize{16pt}{16pt}\selectfont}l
+      >{\centering\arraybackslash\fontsize{16pt}{16pt}\selectfont}
+      p{3.77in}}
+    学科专业 & \themajor \\
+    \cline{2-2}
+    学\chinesespace\chinesespace 号 & \thestudentid \\
+    \cline{2-2}
+    作者姓名 & \theauthor \\
+    \cline{2-2}
+    指导老师 & \theadvisor \\
+    \cline{2-2}
+  \end{tabular}
+\end{center}
+
+\newpage
+\thispagestyle{empty}
+\noindent
+%\begin{tabular}{lp{2.5in}lp{2.5in}}
+%  分类号 & & 密级 &  \\
+%  \cline{2-2}
+%  \cline{4-4}
+%  UDC\textsuperscript{ 注1} & & & \\
+%  \cline{2-2}
+%\end{tabular} \\[48bp]
+
+\noindent
+分类号 \uline{\hspace{2.5in}} 密级 \uline{\hspace{2.5in}} \\[12bp]
+UDC\textsuperscript{ 注1} \uline{\hspace{2.5in}} \\[12bp]
+
+\begin{center}
+  \fontsize{36pt}{36pt}\selectfont{\heiti
+    学\chinesespace 位\chinesespace 论\chinesespace 文
+  } \\[48bp]
+    
+    \fontsize{16pt}{16pt}\selectfont
+    \thetitle \\
+    \vspace{-54pt} \\
+    \rule{5.9in}{.4pt} \\
+    \fontsize{12pt}{12pt}\selectfont（题名和副题名） \\[48bp]
+   
+    \fontsize{16pt}{16pt}\selectfont
+    \theauthor \\
+    \vspace{-36pt} \\
+    \rule{1.63in}{.4pt} \\
+    \fontsize{12pt}{12pt}\selectfont（作者姓名） \\[48bp]
+    
+  \begin{tabular}{>{\fontsize{16pt}{16pt}\selectfont}l
+      >{\centering\arraybackslash\fontsize{16pt}{16pt}\selectfont}
+      p{4.45in}}
+      指导老师 & \theadvisor \\
+    \cline{2-2}
+    & \fontsize{12pt}{12pt}\selectfont（姓名、职称、单位名称）
+  \end{tabular}  \\[48bp]
+\end{center}
+  
+  \noindent
+  \begin{tabular}{>{\fontsize{16pt}{16pt}\selectfont}l
+      >{\centering\arraybackslash\fontsize{16pt}{16pt}\selectfont}
+      p{0.96in}
+      >{\fontsize{16pt}{16pt}\selectfont}l
+      >{\centering\arraybackslash\fontsize{16pt}{16pt}\selectfont}
+      p{2.48in}}
+      申请学位级别 & \chinesedegreename{} &
+      学科专业 & \themajor \\
+    \cline{2-2}
+    \cline{4-4}
+  \end{tabular} \\
+  \begin{tabular}{>{\fontsize{16pt}{16pt}\selectfont}l
+      >{\centering\arraybackslash\fontsize{16pt}{16pt}\selectfont}
+      p{1.0in}
+      >{\fontsize{16pt}{16pt}\selectfont}l
+      >{\centering\arraybackslash\fontsize{16pt}{16pt}\selectfont}
+      p{2.0in}}
+      提交论文日期 &  &
+      论文答辩日期 & \\
+    \cline{2-2}
+    \cline{4-4}
+  \end{tabular} \\
+  \begin{tabular}{>{\fontsize{16pt}{16pt}\selectfont}l
+      >{\centering\arraybackslash\fontsize{16pt}{16pt}\selectfont}
+      p{3.97in}}
+      学位授予单位和日期 & 电子科技大学 \\
+    \cline{2-2}
+  \end{tabular} \\
+  \begin{tabular}{>{\fontsize{16pt}{16pt}\selectfont}l
+      >{\centering\arraybackslash\fontsize{16pt}{16pt}\selectfont}
+      p{2.26in}}
+      答辩委员会主席 & \\
+    \cline{2-2}
+  \end{tabular} \\
+  \begin{tabular}{>{\fontsize{16pt}{16pt}\selectfont}l
+      >{\centering\arraybackslash\fontsize{16pt}{16pt}\selectfont}
+      p{4.89in}}
+      评阅人 & \\
+    \cline{2-2}
+  \end{tabular}
+  
+\vspace{0.54in}
+\noindent
+注1：注明《国际十进分类法UDC》的类号。
+
+
+\newpage
+\setcounter{page}{0}
+\setcounter{pseudopage}{0}
 }
 
 \ProcessOptions\relax
@@ -621,7 +807,7 @@
 
 \newtheoremstyle{dotless}{0pt}{0pt}{\normalfont}{24pt}{\heiti}{}{ }{}
 \theoremstyle{dotless}
-\newtheorem{theorem}{定理}
+\newtheorem{theorem}{定理}[chapter]
 \newtheorem{axiom}[theorem]{公理}
 \newtheorem{corollary}[theorem]{推论}
 \newtheorem{lemma}[theorem]{引理}

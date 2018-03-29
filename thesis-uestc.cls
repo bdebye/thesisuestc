@@ -148,7 +148,7 @@
 \RequirePackage{titlesec}
 \RequirePackage{setspace}
 \RequirePackage{cite}
-\RequirePackage{ulem}
+\RequirePackage[normalem]{ulem}
 \RequirePackage{enumitem}
 \RequirePackage{algorithm2e}
 \RequirePackage{etoolbox}

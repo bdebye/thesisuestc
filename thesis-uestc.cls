@@ -561,14 +561,6 @@
 
 \newpage
 \thispagestyle{empty}
-\noindent
-%\begin{tabular}{lp{2.5in}lp{2.5in}}
-%  分类号 & & 密级 &  \\
-%  \cline{2-2}
-%  \cline{4-4}
-%  UDC\textsuperscript{ 注1} & & & \\
-%  \cline{2-2}
-%\end{tabular} \\[48bp]
 
 \noindent
 分类号 \uline{\hspace{2.5in}} 密级 \uline{\hspace{2.5in}} \\[12bp]
@@ -578,18 +570,15 @@ UDC\textsuperscript{ 注1} \uline{\hspace{2.5in}} \\[12bp]
   \fontsize{36pt}{36pt}\selectfont{\heiti
     学\chinesespace 位\chinesespace 论\chinesespace 文
   } \\[48bp]
-    
-    \fontsize{16pt}{16pt}\selectfont
-    \thetitle \\
-    \vspace{-54pt} \\
-    \rule{5.9in}{.4pt} \\
-    \fontsize{12pt}{12pt}\selectfont（题名和副题名） \\[48bp]
-   
-    \fontsize{16pt}{16pt}\selectfont
-    \theauthor \\
-    \vspace{-36pt} \\
-    \rule{1.63in}{.4pt} \\
-    \fontsize{12pt}{12pt}\selectfont（作者姓名） \\[48bp]
+
+  \fontsize{16pt}{16pt}\selectfont\thetitle \\
+  \vspace{-15pt}
+  \rule{5.9in}{.4pt} \\
+  \fontsize{12pt}{12pt}\selectfont（题名和副题名）\\[48bp]
+  \fontsize{16pt}{16pt}\selectfont\theauthor \\
+  \vspace{-15pt}
+  \rule{1.63in}{.4pt} \\
+  \fontsize{12pt}{12pt}\selectfont（作者姓名） \\[48bp]
     
   \begin{tabular}{>{\fontsize{16pt}{16pt}\selectfont}l
       >{\centering\arraybackslash\fontsize{16pt}{16pt}\selectfont}

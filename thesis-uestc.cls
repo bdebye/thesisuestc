@@ -1,6 +1,6 @@
 %
 %  Copyright 2018 Wen Wang <wwzvd@mst.edu>
-% 
+%
 %  This work may be distributed and/or modified under the
 %  conditions of the LaTeX Project Public License, either version 1.3
 %  of this license or (at your option) any later version.
@@ -8,13 +8,13 @@
 %    http://www.latex-project.org/lppl.txt
 %  and version 1.3 or later is part of all distributions of LaTeX
 %  version 2005/12/01 or later.
-% 
+%
 %  This work has the LPPL maintenance status `maintained'.
-% 
+%
 %  The Current Maintainer of this work is Wen Wang <wwzvd@mst.edu>.
-% 
+%
 %  This work consists of the files thesis-uestc.cls, thesis-uestc.bst.
-% 
+%
 
 
 \ProvidesClass{thesis-uestc}
@@ -177,7 +177,7 @@
      \small
      \advance\caption@parindent\hangindent
      \advance\caption@hangindent\hangindent
-     \caption@@par#3\par}% 
+     \caption@@par#3\par}%
 }
 
 % Apply the new format to the algorithm environment
@@ -217,7 +217,7 @@
   \fancyfoot[CE,CO]{\fontsize{9pt}{10.8pt}\selectfont\Roman{pseudopage}}
   \renewcommand{\cftfigpresnum}{图}
   \addtolength{\cftfignumwidth}{12pt}
-  \addtocontents{toc}{\protect\setcounter{tocdepth}{-1}} 
+  \addtocontents{toc}{\protect\setcounter{tocdepth}{-1}}
 }{}{}
 
 \newcommand{\thesisfigurelist}{
@@ -299,11 +299,11 @@
 
 \titleformat{\chapter}[block]
   {\centering\fontsize{15pt}{15pt}\selectfont\heiti\thispagestyle{fancy}}{\thechapter}{7.5pt}{}
-  
+
 \titleformat{\section}[block]
   {\fontsize{14pt}{14pt}\selectfont\heiti}
   {\thesection}{7pt}{}
-  
+
 \titleformat{\subsection}[block]
   {\fontsize{14pt}{14pt}\selectfont\heiti}
   {\thesubsection}{7pt}{}
@@ -312,7 +312,7 @@
   {\fontsize{12pt}{12pt}\selectfont\heiti}
   {\thesubsubsection}{6pt}{}
 
-\RequirePackage[hang]{footmisc}
+\RequirePackage[hang, perpage]{footmisc}
 \addtolength{\footnotesep}{0pt}
 \setlength{\footnotemargin}{13.5pt}
 
@@ -328,36 +328,36 @@
 
 \makeatletter
 \def\@makefntext #1{
-  \ifFN@hangfoot 
+  \ifFN@hangfoot
       \bgroup \setbox \@tempboxa \hbox {
           \ifdim
-        \footnotemargin >0pt \hb@xt@ 
+        \footnotemargin >0pt \hb@xt@
                 \footnotemargin {\hbox { \normalfont \@thefnmark}\hss }
-            \else 
-              \hbox { \normalfont \@thefnmark} 
-      \fi 
+            \else
+              \hbox { \normalfont \@thefnmark}
+      \fi
     }
-        \leftmargin \wd \@tempboxa 
-        \rightmargin \z@ \linewidth \columnwidth 
-          \advance \linewidth -\leftmargin\parshape \@ne 
+        \leftmargin \wd \@tempboxa
+        \rightmargin \z@ \linewidth \columnwidth
+          \advance \linewidth -\leftmargin\parshape \@ne
     \leftmargin \linewidth \footnotesize \@setpar {{\@@par }}
-    \leavevmode \llap {\box \@tempboxa }\parskip 
+    \leavevmode \llap {\box \@tempboxa }\parskip
         \hangfootparskip \relax \parindent
-    \hangfootparindent \relax 
-        \else 
-          \parindent 1em \noindent 
-            \ifdim 
-                \footnotemargin >\z@ \hb@xt@ 
+    \hangfootparindent \relax
+        \else
+          \parindent 1em \noindent
+            \ifdim
+                \footnotemargin >\z@ \hb@xt@
                 \footnotemargin {\hss \hbox { \normalfont \@thefnmark} }
             \else
-        \ifdim \footnotemargin =\z@ 
+        \ifdim \footnotemargin =\z@
                     \llap {\hbox { \normalfont \@thefnmark} }
                 \else
           \llap {\hb@xt@ -\footnotemargin {\hbox { \normalfont \@thefnmark} \hss }}
-        \fi 
+        \fi
             \fi
-    \fi 
-        \footnotelayout #1\ifFN@hangfoot \par \egroup 
+    \fi
+        \footnotelayout #1\ifFN@hangfoot \par \egroup
   \fi
 }
 \makeatother
@@ -400,7 +400,7 @@
       #1
     \end{minipage}
 }
-  
+
 \newenvironment{englishabstract}{
   \pdfbookmark{英文摘要}{englishabstract}
   \chapter*{\bfseries ABSTRACT}
@@ -414,7 +414,7 @@
       \newpage
     \fi
 }
-  
+
 \newcommand{\englishkeyword}[1]{
   \vspace{\baselineskip}
   \noindent\begin{minipage}[t]{2.1cm}
@@ -579,7 +579,7 @@ UDC\textsuperscript{ 注1} \uline{\hspace{2.5in}} \\[12bp]
   \vspace{-15pt}
   \rule{1.63in}{.4pt} \\
   \fontsize{12pt}{12pt}\selectfont（作者姓名） \\[48bp]
-    
+
   \begin{tabular}{>{\fontsize{16pt}{16pt}\selectfont}l
       >{\centering\arraybackslash\fontsize{16pt}{16pt}\selectfont}
       p{4.45in}}
@@ -588,7 +588,7 @@ UDC\textsuperscript{ 注1} \uline{\hspace{2.5in}} \\[12bp]
     & \fontsize{12pt}{12pt}\selectfont（姓名、职称、单位名称）
   \end{tabular}  \\[48bp]
 \end{center}
-  
+
   \noindent
   \begin{tabular}{>{\fontsize{16pt}{16pt}\selectfont}l
       >{\centering\arraybackslash\fontsize{16pt}{16pt}\selectfont}
@@ -630,7 +630,7 @@ UDC\textsuperscript{ 注1} \uline{\hspace{2.5in}} \\[12bp]
       评阅人 & \\
     \cline{2-2}
   \end{tabular}
-  
+
 \vspace{0.54in}
 \noindent
 注1：注明《国际十进分类法UDC》的类号。
@@ -639,6 +639,7 @@ UDC\textsuperscript{ 注1} \uline{\hspace{2.5in}} \\[12bp]
 \newpage
 \setcounter{page}{0}
 \setcounter{pseudopage}{0}
+\setlength{\extrarowheight}{5pt}
 }
 
 \ProcessOptions\relax
@@ -665,7 +666,7 @@ UDC\textsuperscript{ 注1} \uline{\hspace{2.5in}} \\[12bp]
 
 \newcommand{\thesisacknowledgement}{
   \renewcommand\thesection{\arabic{section}}
-  \addtocontents{toc}{\protect\setcounter{tocdepth}{0}} 
+  \addtocontents{toc}{\protect\setcounter{tocdepth}{0}}
   \setcounter{section}{0}
   \chapter*{致\hspace{12pt}谢}
   \addcontentsline{toc}{chapter}{致\hspace{12pt}谢}
@@ -681,7 +682,7 @@ UDC\textsuperscript{ 注1} \uline{\hspace{2.5in}} \\[12bp]
       \newpage
   \fi
     \newpage
-  \addtocontents{toc}{\protect\setcounter{tocdepth}{4}} 
+  \addtocontents{toc}{\protect\setcounter{tocdepth}{4}}
   \standardhead
   \pagenumbering{arabic}
   \setcounter{page}{1}

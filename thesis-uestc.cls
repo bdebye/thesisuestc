@@ -169,6 +169,13 @@
 \DeclareFloatingEnvironment{algorithm}
 
 \makeatletter
+\renewcommand{\@endalgoln}{\@endalgocfline\hfill\strut\par}
+\renewcommand{\;}{\ifmmode
+  \@mathsemicolon
+\else
+  \@endalgoln
+\fi
+}
 % Definition for the style ruled
 % First add the rules enclosing the captiom
 \DeclareCaptionFormat{algrule}{%

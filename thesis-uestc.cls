@@ -809,6 +809,9 @@ UDC\textsuperscript{ 注1} \uline{\hspace{2.5in}} \\[12bp]
 \newtheorem{corollary}[theorem]{推论}
 \newtheorem{lemma}[theorem]{引理}
 \newtheorem{definition}[theorem]{定义}
+\newtheorem{property}[theorem]{性质}
+\newtheorem{proposition}[theorem]{命题}
+\newtheorem{remark}[theorem]{结论}
 \newtheorem{example}[theorem]{例子}
 
 

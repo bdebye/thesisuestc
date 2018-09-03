@@ -258,6 +258,11 @@ FUNCTION {format.id}
     id
 }
 
+FUNCTION {format.note}
+{
+    note
+}
+
 STRINGS{replace find text}
 INTEGERS{find_length}
 FUNCTION{find.replace}
@@ -305,6 +310,16 @@ FUNCTION {add.period}
 FUNCTION {add.comma}
 {
     ", " write$
+}
+
+FUNCTION {add.lbracket}
+{
+    " (" write$
+}
+
+FUNCTION {add.rbracket}
+{
+    ")" write$
 }
 
 FUNCTION {book}
@@ -360,6 +375,13 @@ FUNCTION {conference}
     } if$
     format.year write$ add.comma
     format.pages write$
+    note missing$
+    'skip$
+    {
+        add.lbracket
+        format.note write$
+        add.rbracket
+    } if$
     newline$
 }
 
@@ -390,6 +412,13 @@ FUNCTION {article}
         "): " * write$
     } if$
     format.pages write$
+    note missing$
+    'skip$
+    {
+        add.lbracket
+        format.note write$
+        add.rbracket
+    } if$
     newline$
 }
 
@@ -406,6 +435,13 @@ FUNCTION {thesis}
     format.institution write$ add.comma
     format.year write$ add.comma
     format.pages write$
+    note missing$
+    'skip$
+    {
+        add.lbracket
+        format.note write$
+        add.rbracket
+    } if$
     newline$
 }
 
@@ -433,6 +469,13 @@ FUNCTION {newspaper}
     add.comma
 
     format.date write$
+    note missing$
+    'skip$
+    {
+        add.lbracket
+        format.note write$
+        add.rbracket
+    } if$
     newline$
 }
 
@@ -448,6 +491,13 @@ FUNCTION {techreport}
     } if$
     format.institution write$ add.comma
     format.date write$
+    note missing$
+    'skip$
+    {
+        add.lbracket
+        format.note write$
+        add.rbracket
+    } if$
     newline$
 }
 
@@ -460,6 +510,13 @@ FUNCTION {patent}
     format.type write$ add.comma
     format.id write$ add.comma
     format.date write$
+    note missing$
+    'skip$
+    {
+        add.lbracket
+        format.note write$
+        add.rbracket
+    } if$
     newline$
 }
 
@@ -472,6 +529,13 @@ FUNCTION {standard}
     format.address write$ ": " write$
     format.publisher write$ add.comma
     format.date write$
+    note missing$
+    'skip$
+    {
+        add.lbracket
+        format.note write$
+        add.rbracket
+    } if$
     newline$
 }
 
@@ -483,6 +547,13 @@ FUNCTION {digital}
     "[" format.type * "]" * write$ add.period
     format.url write$ add.comma
     format.date write$
+    note missing$
+    'skip$
+    {
+        add.lbracket
+        format.note write$
+        add.rbracket
+    } if$
     newline$
 }
 

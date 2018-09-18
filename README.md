@@ -44,7 +44,7 @@ xelatex main.tex
 xelatex main.tex
 ```
 
-在线编辑环境：使用Overleaf只需打开发布在Overleaf Gallery里的[模板](https://www.overleaf.com/latex/templates/uestc-thesis-template/nwpkhtrtjhrg)，点击OPEN AS TEMPLATE即可使用，在线自动编译和预览。
+在线编辑环境：使用Overleaf只需打开发布在Overleaf Gallery里的[模板](https://www.overleaf.com/latex/templates/uestc-thesis-template/zcybnntypfhp)，点击OPEN AS TEMPLATE即可使用，在线自动编译和预览。
 
 > Overleaf模板唯一的区别在于直接使用放置在项目根目录的字体文件。
 

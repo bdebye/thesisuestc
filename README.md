@@ -26,7 +26,7 @@
 ```bash
 latexmk main.tex
 ```
-命令即可自动调用相关程序进行编译，处理各种文件依赖并自动预览。执行`latexmk -c`命令清理所有缓存文件。使用TeXstudio、Texmaker或WinEdt等编辑环境请将编译引擎设置成latexmk。Windows平台下使用MikTeX还需要安装[Perl语言解释器](http://strawberryperl.com/)。
+命令即可自动调用相关程序进行编译，处理各种文件依赖并自动预览。执行`latexmk -c`命令清理所有缓存文件。编译文件分割结构的文档总是把文件名替换成`main_multifile.tex`即可。使用TeXstudio、Texmaker或WinEdt等编辑环境请将编译引擎设置成latexmk，如果在Windows平台下使用MikTeX还需要安装[Perl语言解释器](http://strawberryperl.com/)。
 
 手动编译：使用
 ```bash
@@ -137,12 +137,12 @@ xelatex main.tex
 
 模板提供的样例（`main.tex`）将所有内容写在同一个主文档里，若使用者认为将论文分割成多个文件更便于编辑和管理，也可以将各个章节写在不同的子文档内，最后统一包含。
 
-模板提供的另一个样例（`main_multifile.tex`）演示了如何进行论文的分割，可以用其替换`main.tex`，或者执行：
+模板提供的另一个样例（`main_multifile.tex`）演示了如何进行论文的分割，可以用其替换`main.tex`，也就是执行：
 ```bash
 latexmk main_multifile.tex
 ```
 
-模板自动导入了standalone包用于多文件项目的管理，并要求子文档遵守以下格式（也可参见`chapter/template.tex`）：
+模板自动导入了standalone包用于多文件项目的管理，并要求子文档遵守以下格式（可参考`chapter/template.tex`）：
 
 ```latex
 \documentclass{standalone}

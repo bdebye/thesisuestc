@@ -119,7 +119,7 @@ xelatex main.tex
 
 ### 定理环境
 
-请使用模板类提供的定义（definition）、公理（axiom）、证明（proof）、定理（theorem）、推论（corollary）和引理（lemma）环境。
+请使用模板类提供的定义（definition）、公理（axiom）、证明（proof）、定理（theorem）、推论（corollary）、命题（proposition）、引理（lemma）和例子（example）环境。
 
 ### 算法描述
 

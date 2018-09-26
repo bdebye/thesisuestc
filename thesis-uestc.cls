@@ -810,6 +810,7 @@ UDC\textsuperscript{ 注1} \uline{\hspace{2.5in}} \\[12bp]
 \newtheorem{lemma}[theorem]{引理}
 \newtheorem{definition}[theorem]{定义}
 \newtheorem{example}[theorem]{例子}
+\newtheorem{proposition}[theorem]{命题}
 
 
 \renewcommand{\thetheorem}{\arabic{chapter}.\arabic{theorem}}

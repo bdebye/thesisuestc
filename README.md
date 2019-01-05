@@ -142,21 +142,11 @@ xelatex main.tex
 latexmk main_multifile.tex
 ```
 
-模板自动导入了standalone包用于多文件项目的管理，并要求子文档遵守以下格式（可参考`chapter/template.tex`）：
-
-```latex
-\documentclass{standalone}
-% preamble: usepackage, etc.
-\begin{document}
-%% my chapter 1 content
-%%
-%% more of my chapter 1 content
-\end{document}
-```
+模板使用`\include`用于多文件项目的管理，每个文件对应独立的chapter（可参考`chapter/template.tex`）或独立类目（如摘要，致谢等）（见`misc/`）。
 
 分割出的文件需要使用`\input`或`\include`命令包含到主文档（参见`main_multifile.tex`），编译方法则保持不变。
 
-更详细的说明请参考[standalone宏包文档](https://mirrors.tuna.tsinghua.edu.cn/CTAN/macros/latex/contrib/standalone/standalone.pdf)。
+注意：chapter文件中应仅包含chapter（即`\chapter`）内的相关内容，若需要引用package等内容，请统一在`main_multifile.tex`完成。
 
 ### 图表目录和缩略词
 

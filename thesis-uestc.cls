@@ -139,7 +139,7 @@
 }
 \makeglossaries
 
-\RequirePackage{standalone}
+%\RequirePackage{standalone}
 \RequirePackage{indentfirst}
 \RequirePackage{calc}
 \RequirePackage{float}

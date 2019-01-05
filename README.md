@@ -135,18 +135,14 @@ xelatex main.tex
 
 ### 分割文件
 
-模板提供的样例（`main.tex`）将所有内容写在同一个主文档里，若使用者认为将论文分割成多个文件更便于编辑和管理，也可以将各个章节写在不同的子文档内，最后统一包含。
-
-模板提供的另一个样例（`main_multifile.tex`）演示了如何进行论文的分割，可以用其替换`main.tex`，也就是执行：
+模板提供的样例（`main.tex`）将所有内容写在同一个主文档里，使用者也可以将各个章节写在不同的子文件内，使用`\include`命令统一包含。另一个多文件的样例（`main_multifile.tex`）演示了如何进行论文的分割，执行相应的latexmk命令即可自动编译：
 ```bash
 latexmk main_multifile.tex
 ```
+一般每个文件对应独立的chapter（可参考`chapter/template.tex`）或独立类目（如摘要，致谢等）（见`misc/`）。
 
-模板使用`\include`用于多文件项目的管理，每个文件对应独立的chapter（可参考`chapter/template.tex`）或独立类目（如摘要，致谢等）（见`misc/`）。
+分割出的文件需要使用`\input`或`\include`命令包含到主文档（参见`main_multifile.tex`），所有需要使用的宏包在主文件导入，编译方法则保持不变。
 
-分割出的文件需要使用`\input`或`\include`命令包含到主文档（参见`main_multifile.tex`），编译方法则保持不变。
-
-注意：chapter文件中应仅包含chapter（即`\chapter`）内的相关内容，若需要引用package等内容，请统一在`main_multifile.tex`完成。
 
 ### 图表目录和缩略词
 
@@ -159,7 +155,7 @@ latexmk main_multifile.tex
 {
   name=Linux,
   description={is a generic term referring to the family of Unix-like
-               computer operating systems that use the Linux kernel},
+    computer operating systems that use the Linux kernel},
   plural=Linuces
 }
 ```

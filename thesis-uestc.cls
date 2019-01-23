@@ -301,8 +301,8 @@
 \newcommand{\chineseleftparenthesis}{\char"FF08}
 \newcommand{\chineserightparenthesis}{\char"FF09}
 
-\setcounter{secnumdepth}{4}
-\setcounter{tocdepth}{4}
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{2}
 
 \titleformat{\chapter}[block]
   {\centering\fontsize{15pt}{15pt}\selectfont\heiti\thispagestyle{fancy}}{\thechapter}{7.5pt}{}
@@ -535,7 +535,8 @@
 \thispagestyle{empty}
 \setlength{\extrarowheight}{9pt}
 \begin{center}
-  \fontsize{22pt}{22pt}\selectfont 电子科技大学 \\[7bp]
+  \fontsize{22pt}{22pt}\selectfont 电\hspace{0.5em}子\hspace{0.5em}科\hspace{0.5em}技%
+  \hspace{0.5em}大\hspace{0.5em}学 \\[7bp]
   \fontsize{12pt}{12pt}\selectfont UNIVERSITY OF ELECTRONIC SCIENCE
     AND TECHNOLOGY OF CHINA \\[36bp]
   \fontsize{42pt}{42pt}\selectfont\chinesebooktitle \\[24bp]
@@ -689,7 +690,7 @@ UDC\textsuperscript{ 注1} \uline{\hspace{2.5in}} \\[12bp]
       \newpage
   \fi
     \newpage
-  \addtocontents{toc}{\protect\setcounter{tocdepth}{4}}
+  \addtocontents{toc}{\protect\setcounter{tocdepth}{2}}
   \standardhead
   \pagenumbering{arabic}
   \setcounter{page}{1}

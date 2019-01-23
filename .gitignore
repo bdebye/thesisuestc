@@ -9,6 +9,7 @@
 *.out
 *.log
 *.pdf
+*.xdv
 *.synctex.gz
 !./example.pdf
 

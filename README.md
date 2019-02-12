@@ -44,7 +44,7 @@ xelatex main.tex
 xelatex main.tex
 ```
 
-在线编辑环境：使用Overleaf只需打开发布在Overleaf Gallery里的[模板](https://www.overleaf.com/latex/templates/uestc-thesis-template/zcybnntypfhp)，点击OPEN AS TEMPLATE即可使用，在线自动编译和预览。
+在线编辑环境：使用Overleaf只需打开发布在Overleaf Gallery里的[模板](https://www.overleaf.com/latex/templates/uestc-thesis-template/nwpkhtrtjhrg)，点击OPEN AS TEMPLATE即可使用，在线自动编译和预览。
 
 > Overleaf模板唯一的区别在于直接使用放置在项目根目录的字体文件。
 
@@ -52,7 +52,7 @@ xelatex main.tex
 
 ### 论文封面
 
-论文封面和扉页由`\makecover`命令添加，可以显示论文题目，作者，指导老师等。
+论文封面和扉页由`\makecover`命令添加，可以显示论文题目，作者，指导老师等。模版不会生成英文扉页和独创性声明，这两页包括中文封面最后正式提交时会由文印中心统一提供，无论自己排版的封面是否符合格式要求。已经包含的封面也不会影响任何前期的审核。
 
 ### 中英文摘要
 

@@ -110,7 +110,7 @@ xelatex main.tex
 ```bash
 latexmk main_multifile.tex
 ```
-其中每个文件对应独立的章（参考`chapter/template.tex`）或摘要，致谢等（见`misc/`）。分割的文件使用`\input`或`\include`命令包含到主文档内（参见`main_multifile.tex`）。所有需要使用的宏包在主文件中导入，编译方法保持不变。
+其中每个文件对应独立的章（参见`chapter/template.tex`）或摘要，致谢等（见`misc/`）。分割的文件使用`\input`或`\include`命令包含到主文档内（参见`main_multifile.tex`）。所有需要使用的宏包在主文件中导入，编译方法保持不变。
 
 ### 图表目录和缩略词
 

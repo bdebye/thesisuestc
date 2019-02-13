@@ -150,7 +150,7 @@
 \RequirePackage{cite}
 \RequirePackage[normalem]{ulem}
 \RequirePackage{enumitem}
-\RequirePackage{algorithm2e}
+\RequirePackage[algochapter]{algorithm2e}
 \RequirePackage{etoolbox}
 \RequirePackage{newfloat}
 \RequirePackage[resetlabels]{multibib}
@@ -158,44 +158,67 @@
 \RequirePackage{everypage}
 \RequirePackage{ifoddpage}
 
+% Old define of algorithm (work not good)
+% \let\algorithm\relax
+% \let\endalgorithm\relax
+% \expandafter\let\csname algorithm*\endcsname\relax
+% \expandafter\let\csname endalgorithm*\endcsname\relax
+% \let\listofalgorithms\relax
 
-\let\algorithm\relax
-\let\endalgorithm\relax
-\expandafter\let\csname algorithm*\endcsname\relax
-\expandafter\let\csname endalgorithm*\endcsname\relax
-\let\listofalgorithms\relax
+% % Define the new algorithm environment
+% \DeclareFloatingEnvironment{algorithm}
 
-% Define the new algorithm environment
-\DeclareFloatingEnvironment{algorithm}
+% \makeatletter
+% \renewcommand{\@endalgoln}{\@endalgocfline\hfill\strut\par}
+% \renewcommand{\;}{\ifmmode
+%   \@mathsemicolon
+% \else
+%   \@endalgoln
+% \fi
+% }
+% % Definition for the style ruled
+% % First add the rules enclosing the captiom
+% \DeclareCaptionFormat{algrule}{%
+%   {\@hangfrom{#1#2}%
+%      \doublespacing
+%      \small
+%      \advance\caption@parindent\hangindent
+%      \advance\caption@hangindent\hangindent
+%      \caption@@par#3\par}%
+% }
+
+% % Apply the new format to the algorithm environment
+% \captionsetup[algorithm]{format=algrule}
+
+% \makeatletter
+
+% \renewcommand{\algorithmname}{算法}
+% \renewcommand{\thealgorithm}{\arabic{chapter}-\arabic{algorithm}}
+% \captionsetup[algorithm]{aboveskip=6pt}
+% \AtBeginEnvironment{algorithm}{\vspace{6pt}}
+
+% New define of algorithm for algorithm2e (work)
+% \let\algorithm\relax
+% \let\endalgorithm\relax
+% \expandafter\let\csname algorithm*\endcsname\relax
+% \expandafter\let\csname endalgorithm*\endcsname\relax
+\let\listalgorithmcfname\relax
+
+% Set the format of the algorithm environment
+\SetAlCapSty{}
+\SetAlCapFnt{\small}
+\SetAlCapNameFnt{\small}
+\SetAlCapSkip{6pt}
+\SetAlgoCaptionSeparator{\doublespacing}
+\SetAlCapSkip{6pt}
+\IncMargin{6pt}
+\SetAlgoCaptionLayout{centerline}
 
 \makeatletter
-\renewcommand{\@endalgoln}{\@endalgocfline\hfill\strut\par}
-\renewcommand{\;}{\ifmmode
-  \@mathsemicolon
-\else
-  \@endalgoln
-\fi
-}
-% Definition for the style ruled
-% First add the rules enclosing the captiom
-\DeclareCaptionFormat{algrule}{%
-  {\@hangfrom{#1#2}%
-     \doublespacing
-     \small
-     \advance\caption@parindent\hangindent
-     \advance\caption@hangindent\hangindent
-     \caption@@par#3\par}%
-}
 
-% Apply the new format to the algorithm environment
-\captionsetup[algorithm]{format=algrule}
-
-\makeatletter
-
-\renewcommand{\algorithmname}{算法}
-\renewcommand{\thealgorithm}{\arabic{chapter}-\arabic{algorithm}}
-\captionsetup[algorithm]{aboveskip=6pt}
-\AtBeginEnvironment{algorithm}{\vspace{6pt}}
+% Something necessary
+\renewcommand{\algorithmcfname}{算法}
+\renewcommand{\thealgocf}{\arabic{chapter}-\arabic{algocf}}
 
 \graphicspath{{./pic/}}
 

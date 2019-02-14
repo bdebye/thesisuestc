@@ -198,26 +198,49 @@
 % \AtBeginEnvironment{algorithm}{\vspace{6pt}}
 
 % New define of algorithm for algorithm2e (work)
-% \let\algorithm\relax
-% \let\endalgorithm\relax
-% \expandafter\let\csname algorithm*\endcsname\relax
-% \expandafter\let\csname endalgorithm*\endcsname\relax
-\let\listalgorithmcfname\relax
 
 % Set the format of the algorithm environment
 \SetAlCapSty{}
 \SetAlCapFnt{\small}
 \SetAlCapNameFnt{\small}
 \SetAlCapSkip{6pt}
+\SetAlCapHSkip{6pt}
 \SetAlgoCaptionSeparator{\doublespacing}
-\SetAlCapSkip{6pt}
-\IncMargin{6pt}
-\SetAlgoCaptionLayout{centerline}
+% \SetVlineSkip{6pt}
+
+\makeatletter
+
+% Control the title
+% Let example as: alg 1.1: i am an alg
+% Then Cap is: alg 1.1, CapName is: i am an alg, Title used in some cases
+\newcommand{\capsty}[1]{%
+{#1}
+}
+\SetAlCapSty{capsty}
+
+\setlength\baselineskip{20pt}
+
+\newcommand{\capnamesty}[1]{%
+\leftskip=20pt
+\rightskip=20pt
+% \baselineskip=8pt\relax
+\hangindent=41pt\relax
+% \parindent=41pt\relax
+{#1}
+}
+\SetAlCapNameSty{capnamesty}
+
+% \newcommand{\titlesty}[1]{%
+% {#1}
+% }
+% \SetAlTitleSty{titlesty}
 
 \makeatletter
 
 % Something necessary
+\renewcommand{\listalgorithmcfname}{算法目录}
 \renewcommand{\algorithmcfname}{算法}
+\renewcommand{\algorithmautorefname}{算法}
 \renewcommand{\thealgocf}{\arabic{chapter}-\arabic{algocf}}
 
 \graphicspath{{./pic/}}

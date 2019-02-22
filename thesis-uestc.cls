@@ -199,14 +199,20 @@
 
 % New define of algorithm for algorithm2e (work)
 
+% Set the upper and lower rule
+\setlength{\algoheightrule}{1.5\algotitleheightrule}
+% Set the middle rule
+% \setlength\algotitleheightrule{1pt}
+% \setlength{algocf@start}{10pt}
+
 % Set the format of the algorithm environment
-\SetAlCapSty{}
 \SetAlCapFnt{\small}
 \SetAlCapNameFnt{\small}
 \SetAlCapSkip{6pt}
 \SetAlCapHSkip{6pt}
 \SetAlgoCaptionSeparator{\doublespacing}
 % \SetVlineSkip{6pt}
+\RestyleAlgo{ruled}
 
 \makeatletter
 
@@ -214,15 +220,13 @@
 % Let example as: alg 1.1: i am an alg
 % Then Cap is: alg 1.1, CapName is: i am an alg, Title used in some cases
 \newcommand{\capsty}[1]{%
-{#1}
+\textbf{#1}
 }
 \SetAlCapSty{capsty}
 
-\setlength\baselineskip{20pt}
-
 \newcommand{\capnamesty}[1]{%
-\leftskip=20pt
-\rightskip=20pt
+%\leftskip=20pt
+%\rightskip=20pt
 % \baselineskip=8pt\relax
 \hangindent=41pt\relax
 % \parindent=41pt\relax
@@ -230,10 +234,12 @@
 }
 \SetAlCapNameSty{capnamesty}
 
-% \newcommand{\titlesty}[1]{%
-% {#1}
-% }
-% \SetAlTitleSty{titlesty}
+\newcommand{\titlesty}[1]{%
+\leftline
+\flushleft
+{#1}
+}
+\SetAlTitleSty{titlesty}
 
 \makeatletter
 

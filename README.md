@@ -26,12 +26,12 @@ xelatex main.tex
 ```
 命令即可，若文档内部有交叉引用或录入参考文献则需要编译两次。
 
-使用BibTeX录入参考文献需要先运行一次xelatex，运行一次bibtex，再运行两次xelatex。使用BibTeX录入攻读学位期间的研究成果的情况下还需要额外运行一次`bibtex achievement.aux`。所以完整地编译包含两个BibTeX文献列表（一个是参考文献，一个是攻读学位期间的研究成果）的文档需要按顺序运行以下命令：
+使用BibTeX录入参考文献需要先运行一次xelatex，运行一次bibtex，再运行两次xelatex。使用BibTeX录入攻读学位期间的研究成果的情况下还需要额外运行一次`bibtex accomplish.aux`。所以完整地编译包含两个BibTeX文献列表（一个是参考文献，一个是攻读学位期间的研究成果）的文档需要按顺序运行以下命令：
 
 ```bash
 xelatex main.tex
 bibtex main.aux
-bibtex achievement.aux
+bibtex accomplish.aux
 xelatex main.tex
 xelatex main.tex
 ```
@@ -76,7 +76,7 @@ xelatex main.tex
 
 ### 攻读学位期间取得的成果
 
-将文章条目添加在`thesisachievement`环境下，方法与参考文献相同。使用BibTeX录入研究成果由`\thesisloadachievement`命令导入文献列表，参考文献风格自动设置为`thesis-uestc`。此命令没有可选参数，自动在文档中列出数据库中的所有条目。
+将文章条目添加在`thesisaccomplish`环境下，方法与参考文献相同。使用BibTeX录入研究成果由`\thesisloadaccomplish`命令导入文献列表，参考文献风格自动设置为`thesis-uestc`。此命令没有可选参数，自动在文档中列出数据库中的所有条目。
 
 ### 外文资料原文及译文
 
@@ -139,7 +139,7 @@ latexmk main_multifile.tex
 ```bash
 xelatex main.tex
 bibtex main.aux
-bibtex achievement.aux
+bibtex accomplish.aux
 makeglossaries main
 xelatex main.tex
 xelatex main.tex

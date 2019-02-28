@@ -270,6 +270,7 @@
 \captionsetup{width=\textwidth - 42pt}
 \captionsetup[figure]{aboveskip=6pt,belowskip=0pt}
 \captionsetup[table]{belowskip=6pt}
+
 \setlength{\extrarowheight}{5pt}
 \setlength{\subfigcapskip}{0pt}
 \setlength{\intextsep}{9pt}
@@ -674,12 +675,13 @@ UDC\textsuperscript{ 注1} \uline{\hspace{2.5in}} \\[12bp]
 
 \newcommand{\thesisacknowledgement}{
   \renewcommand\thesection{\arabic{section}}
-  \addtocontents{toc}{\protect\setcounter{tocdepth}{0}}
+  \addtocontents{toc}{\protect\setcounter{tocdepth}{1}}
   \setcounter{section}{0}
   \chapter*{致\hspace{12pt}谢}
   \addcontentsline{toc}{chapter}{致\hspace{12pt}谢}
   \markboth{致谢}{致谢}
   \thispagestyle{fancy}
+  \hypersetup{bookmarksdepth=0} 
 }
 
 \newcommand{\thesischapterexordium}{
@@ -704,6 +706,7 @@ UDC\textsuperscript{ 注1} \uline{\hspace{2.5in}} \\[12bp]
     \addcontentsline{toc}{chapter}{附录}
     \markboth{附录}{附录}
     \thispagestyle{fancy}
+    \hypersetup{bookmarksdepth=0} 
     \renewcommand{\theequation}{a-\arabic{equation}}
     \renewcommand{\thetable}{a-\arabic{table}}
     \renewcommand{\thefigure}{a-\arabic{figure}}
@@ -715,6 +718,7 @@ UDC\textsuperscript{ 注1} \uline{\hspace{2.5in}} \\[12bp]
     \addcontentsline{toc}{chapter}{外文资料原文}
     \markboth{外文资料原文}{外文资料原文}
     \thispagestyle{fancy}
+    \hypersetup{bookmarksdepth=0} 
     \renewcommand{\theequation}{\arabic{equation}}
     \renewcommand{\thetable}{\arabic{table}}
     \renewcommand{\thefigure}{\arabic{figure}}
@@ -728,6 +732,7 @@ UDC\textsuperscript{ 注1} \uline{\hspace{2.5in}} \\[12bp]
     \addcontentsline{toc}{chapter}{外文资料译文}
     \markboth{外文资料译文}{外文资料译文}
     \thispagestyle{fancy}
+    \hypersetup{bookmarksdepth=0} 
     \renewcommand{\theequation}{\arabic{equation}}
     \renewcommand{\thetable}{\arabic{table}}
     \renewcommand{\thefigure}{\arabic{figure}}
@@ -776,9 +781,9 @@ UDC\textsuperscript{ 注1} \uline{\hspace{2.5in}} \\[12bp]
   \bibliography{#2}
 }
 
-\newcites{achievement}{攻读\chinesedegreename{}学位期间取得的成果}
+\newcites{accomplish}{攻读\chinesedegreename{}学位期间取得的成果}
 
-\newenvironment{thesisachievement}{
+\newenvironment{thesisaccomplish}{
   \renewcommand{\bibname}{攻读\chinesedegreename{}学位期间取得的成果}
   \begin{thebibliography}{lo}
   \interlinepenalty=10000
@@ -790,13 +795,13 @@ UDC\textsuperscript{ 注1} \uline{\hspace{2.5in}} \\[12bp]
   \renewcommand{\bibname}{参考文献}
 }
 
-\newcommand{\thesisloadachievement}[1]{
-  \nociteachievement{*}
+\newcommand{\thesisloadaccomplish}[1]{
+  \nociteaccomplish{*}
   \renewcommand{\bibname}{攻读\chinesedegreename{}学位期间取得的成果}
   \thispagestyle{fancy}
   \begin{spacing}{1.667}
-  \bibliographystyleachievement{thesis-uestc}
-  \bibliographyachievement{#1}
+  \bibliographystyleaccomplish{thesis-uestc}
+  \bibliographyaccomplish{#1}
   \end{spacing}
   \renewcommand{\bibname}{参考文献}
 }

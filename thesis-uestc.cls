@@ -37,7 +37,6 @@
 \RequirePackage{lmodern}
 \RequirePackage{mathspec}
 \RequirePackage{fontspec}
-\RequirePackage{bm}
 
 \RequirePackage{xeCJK}
 \RequirePackage{ifplatform}
@@ -62,6 +61,7 @@
 \fi
 \fi
 
+\newcommand{\mb}[1]{\pmb{#1}}
 \RequirePackage{zhnumber}
 \RequirePackage{pifont}
 

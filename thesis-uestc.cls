@@ -675,7 +675,7 @@ UDC\textsuperscript{ 注1} \uline{\hspace{2.5in}} \\[12bp]
 
 \newcommand{\thesisacknowledgement}{
   \renewcommand\thesection{\arabic{section}}
-  \addtocontents{toc}{\protect\setcounter{tocdepth}{1}}
+  \addtocontents{toc}{\protect\setcounter{tocdepth}{0}}
   \setcounter{section}{0}
   \chapter*{致\hspace{12pt}谢}
   \addcontentsline{toc}{chapter}{致\hspace{12pt}谢}
@@ -701,12 +701,12 @@ UDC\textsuperscript{ 注1} \uline{\hspace{2.5in}} \\[12bp]
 }
 
 \newcommand{\thesisappendix}{
-  \chapter*{附\chinesespace 录}
+  \chapter*{附\hspace{12pt}录}
     \setcounter{section}{0}
     \addcontentsline{toc}{chapter}{附录}
     \markboth{附录}{附录}
     \thispagestyle{fancy}
-    \hypersetup{bookmarksdepth=0} 
+    \hypersetup{bookmarksdepth=0}
     \renewcommand{\theequation}{a-\arabic{equation}}
     \renewcommand{\thetable}{a-\arabic{table}}
     \renewcommand{\thefigure}{a-\arabic{figure}}

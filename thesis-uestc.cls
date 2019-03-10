@@ -35,25 +35,26 @@
 \RequirePackage{amssymb}
 \RequirePackage{amsthm}
 \RequirePackage{lmodern}
-\RequirePackage{mathspec}
+\RequirePackage{mathptmx}
+\RequirePackage{bm}
 \RequirePackage{fontspec}
 
 \RequirePackage{xeCJK}
 \RequirePackage{ifplatform}
 
 \ifwindows
-  \setallmainfonts{Times New Roman}
+  \setmainfont{Times New Roman}
   \setCJKmainfont[AutoFakeBold=true]{SimSun}
   \newCJKfontfamily{\heiti}{SimHei}
 \else
 \ifmacosx
-  \setallmainfonts{Times New Roman}
+  \setmainfont{Times New Roman}
   \setCJKmainfont[AutoFakeBold=true]{Songti SC}
   \newCJKfontfamily{\heiti}{STHeiti}
 \else
   \setCJKmainfont[AutoFakeBold=true]{simsun.ttc}
   \newCJKfontfamily{\heiti}{simhei.ttf}
-  \setallmainfonts[
+  \setmainfont[
     BoldFont=timesbd.ttf,
     ItalicFont=timesi.ttf,
     BoldItalicFont=timesbi.ttf,
@@ -77,10 +78,10 @@
   urlcolor=black
 }
 
-\makeatletter % undo the wrong changes made by mathspec
-\let\RequirePackage\original@RequirePackage
-\let\usepackage\RequirePackage
-\makeatother
+%\makeatletter % undo the wrong changes made by mathspec
+%\let\RequirePackage\original@RequirePackage
+%\let\usepackage\RequirePackage
+%\makeatother
 \RequirePackage[nopostdot]{glossaries}
 \renewcommand*{\glossarypreamble}{\vspace{-9pt}}
 

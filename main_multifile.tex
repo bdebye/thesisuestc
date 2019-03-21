@@ -8,40 +8,37 @@
 \major{无线电物理}
 \studentid{201421040223}
 
-% write all usepackage here
+% require all the usepackages here
 % \usepackage{algorithm2e}
 
 \begin{document}
 
 \makecover
 
-% this is a thesis template with mutiple files: the chapters/ and the misc/ contain related files
-% to avoid too many files in current folder.
-% template add extra direcotry: chapter/ and misc/
-% please do not change the sequence or the name of each one except the chapters themselves.
-% by FengYouzheng.
+% This is a template of mutiple files.
+% The folders chapters/ and misc/ have the related files
 
 % abstract
-\include{misc/chinese_abstract}
-\include{misc/english_abstract}
+\input{misc/chinese_abstract}
+\input{misc/english_abstract}
 
 % table of contents
 \thesistableofcontents
 
 % thesis contents
-\include{chapter/c1_exordium}
-\include{chapter/c2}
-\include{chapter/c3}
-\include{chapter/c4}
-\include{chapter/c5}
-%\include{chapter/template}
+\input{chapter/c1_exordium}
+\input{chapter/c2}
+\input{chapter/c3}
+\input{chapter/c4}
+\input{chapter/c5}
+%\input{chapter/template}
 
 % misc
-\include{misc/acknowledgement}
+\input{misc/acknowledgement}
 \thesisloadbibliography[nocite]{reference}
 
 %
-% Uncomment following codes to load bibliography database with native
+% Uncomment the following code to load bibliography database with native
 % \bibliography command.
 %
 % \nocite{*}
@@ -50,9 +47,9 @@
 %
 
 % comment while no need
-\include{misc/appendix}
+\input{misc/appendix}
 \thesisloadaccomplish{publications}
-\include{misc/translate_original}
-\include{misc/translate_chinese}
+\input{misc/translate_original}
+\input{misc/translate_chinese}
 
 \end{document}

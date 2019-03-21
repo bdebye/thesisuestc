@@ -62,7 +62,6 @@
 \fi
 \fi
 
-\newcommand{\mb}[1]{\pmb{#1}}
 \RequirePackage{zhnumber}
 \RequirePackage{pifont}
 
@@ -272,7 +271,6 @@
 \captionsetup[figure]{aboveskip=6pt,belowskip=0pt}
 \captionsetup[table]{belowskip=6pt}
 
-\setlength{\extrarowheight}{5pt}
 \setlength{\subfigcapskip}{0pt}
 \setlength{\intextsep}{9pt}
 

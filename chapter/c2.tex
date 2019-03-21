@@ -10,10 +10,10 @@
 RWG 基函数是定义在三角形单元上的最具代表性的基函数。它的具体定义如下：
 
 \begin{equation}
-f_n(\mb{r})=
+f_n(\bm{r})=
 \begin{cases}
-\frac{l_n}{2A_n^+}\mb{\rho}_n^+=\frac{l_n}{2A_n^+}(\mb{r}-\mb{r}_+)&\mb{r}\in T_n^+\\
-\frac{l_n}{2A_n^-}\mb{\rho}_n^-=\frac{l_n}{2A_n^-}(\mb{r}_--\mb{r})&\mb{r}\in T_n^-\\
+\frac{l_n}{2A_n^+}\bm{\rho}_n^+=\frac{l_n}{2A_n^+}(\bm{r}-\bm{r}_+)&\bm{r}\in T_n^+\\
+\frac{l_n}{2A_n^-}\bm{\rho}_n^-=\frac{l_n}{2A_n^-}(\bm{r}_--\bm{r})&\bm{r}\in T_n^-\\
 0&\text{otherwise}
 \end{cases}
 \end{equation}
@@ -30,11 +30,11 @@ f_n(\mb{r})=
 
 \begin{equation}
 \label{latent_binary_variable}
-\mb{r}_{i,j}=
+\bm{r}_{i,j}=
 \begin{cases}
-1,f(\mb{x}^{i};\mb{w})\cdot f(\mb{x}^{j};\mb{w})\geq u(\lambda),\\
-0,f(\mb{x}^{i};\mb{w})\cdot f(\mb{x}^{j};\mb{w})< l(\lambda), 1\leq i,j\leq n.\\
-f(\mb{x}^{i};\mb{w})\cdot f(\mb{x}^{j};\mb{w}),\text{otherwise},
+1,f(\bm{x}^{i};\bm{w})\cdot f(\bm{x}^{j};\bm{w})\geq u(\lambda),\\
+0,f(\bm{x}^{i};\bm{w})\cdot f(\bm{x}^{j};\bm{w})< l(\lambda), 1\leq i,j\leq n.\\
+f(\bm{x}^{i};\bm{w})\cdot f(\bm{x}^{j};\bm{w}),\text{otherwise},
 \end{cases}
 \end{equation}
 

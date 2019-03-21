@@ -104,13 +104,13 @@ xelatex main.tex
 
 ### 分割文件
 
-模板提供的样例（`main.tex`）将所有内容写在同一个文档里，使用者认为必要可以将各个章节写在不同的子文件内，使用`\include`命令统一包含。
+模板提供的样例（`main.tex`）将所有内容写在同一个文档里，使用者认为必要可以将各个章节写在不同的子文件内，使用`\input`命令统一包含。
 
 模版提供另一个多文件的范例（`main_multifile.tex`），执行相应的命令即可自动编译：
 ```bash
 latexmk main_multifile.tex
 ```
-其中每个文件对应独立的章（参见`chapter/template.tex`）或摘要，致谢等（见`misc/`）。分割的文件使用`\input`或`\include`命令包含到主文档内（参见`main_multifile.tex`）。所有需要使用的宏包在主文件中导入，编译方法保持不变。
+其中每个文件对应独立的章（参见`chapter/template.tex`）或摘要，致谢等（见`misc/`）。分割的文件使用`\input`命令包含到主文档内（参见`main_multifile.tex`）。所有需要使用的宏包在主文件中导入，编译方法保持不变。
 
 ### 图表目录和缩略词
 

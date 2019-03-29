@@ -650,6 +650,8 @@ UDC\textsuperscript{ 注1} \uline{\hspace{2.5in}} \\[12bp]
 \setlength{\extrarowheight}{5pt}
 }
 
+\setlength{\extrarowheight}{5pt}
+
 \ProcessOptions\relax
 
 \newcommand{\standardhead}{

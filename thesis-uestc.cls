@@ -200,7 +200,7 @@
 \graphicspath{{./pic/}}
 
 \RequirePackage[titles, subfigure]{tocloft}
-\RequirePackage{subfigure}
+\RequirePackage[small]{subfigure}
 
 
 \urlstyle{rm}

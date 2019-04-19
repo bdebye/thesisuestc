@@ -8,7 +8,6 @@
 *.toc
 *.out
 *.log
-*.pdf
 *.xdv
 *.synctex.gz
 *.lot

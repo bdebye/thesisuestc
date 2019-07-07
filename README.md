@@ -46,11 +46,11 @@ xelatex main.tex
 
 ### 中英文摘要
 
-中英文摘要应包含在`chineseabstract`和`englishabstract`环境中，对应的关键字使用`\chinesekeyword`和`\englishkeyword`命令添加，并包含在相应的环境中。模板自动设置页眉和页脚，其中中文摘要标题中间空一格，页眉不空格。根据学校的格式说明，模板自动根据摘要结束所在的页数决定是否再空一页。
+中英文摘要应包含在`chineseabstract`和`englishabstract`环境中，对应的关键字使用`\chinesekeyword`和`\englishkeyword`命令添加，并包含在相应的环境中。模板自动设置页眉和页脚，其中中文摘要标题中间空一格，页眉不空格。依照学校的格式说明，模板自动根据摘要结束所在的页数决定是否再空一页。
 
 ### 论文目录
 
-论文目录由命令`\thesistableofcontents`添加，并且自动处理标题，页眉以及缩进等问题。根据学校的格式说明，模板自动根据目录结束所在的页数决定是否再空一页。
+论文目录由命令`\thesistableofcontents`添加，并且自动处理标题，页眉以及缩进等问题。依照学校的格式说明，模板自动根据目录结束所在的页数决定是否再空一页。
 
 ### 绪论
 
@@ -62,7 +62,7 @@ xelatex main.tex
 
 ### 致谢
 
-致谢由命令`\thesisacknowledgement`开始，实际上是开始了一个无编号的章节。
+致谢部分由命令`\thesisacknowledgement`开始，实际上是开始了一个无编号的章节。
 
 ### 参考文献
 
@@ -90,11 +90,11 @@ xelatex main.tex
 
 ### 定理环境
 
-数学定理使用模板提供的定义（definition）、公理（axiom）、证明（proof）、定理（theorem）、推论（corollary）、命题（proposition）、引理（lemma）和例子（example）环境。
+数学定理请使用模板提供的定义（definition）、公理（axiom）、证明（proof）、定理（theorem）、推论（corollary）、命题（proposition）、引理（lemma）和例子（example）环境。
 
 ### 算法描述
 
-算法描述使用`algorithm`环境，具体写法可参考范例`main.tex`或`chapter\c3.tex`。
+算法描述使用`algorithm`环境，具体写法请参考范例`main.tex`或`chapter\c3.tex`。
 
 模板类自动加载`algorithm2e`宏包，详细的用法请参考[algorithm2e宏包文档](http://mirrors.ustc.edu.cn/CTAN/macros/latex/contrib/algorithm2e/doc/algorithm2e.pdf)。
 
@@ -110,7 +110,7 @@ xelatex main.tex
 ```bash
 latexmk main_multifile.tex
 ```
-其中每个文件对应独立的章（参见`chapter/template.tex`）或摘要，致谢等（见`misc/`）。分割的文件使用`\input`命令包含到主文档内（参见`main_multifile.tex`）。所有需要使用的宏包在主文件中导入，编译方法保持不变。
+其中每个文件对应独立的章（参见`chapter/template.tex`）、摘要、致谢等（见`misc/`）。分割的文件使用`\input`命令包含到主文档内（参见`main_multifile.tex`）。所有需要使用的宏包在主文件中导入，编译方法保持不变。
 
 ### 图表目录和缩略词
 

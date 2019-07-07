@@ -158,7 +158,6 @@
 \RequirePackage{everypage}
 \RequirePackage{ifoddpage}
 
-
 \let\algorithm\relax
 \let\endalgorithm\relax
 \expandafter\let\csname algorithm*\endcsname\relax
@@ -168,7 +167,6 @@
 % Define the new algorithm environment
 \DeclareFloatingEnvironment{algorithm}
 
-\makeatletter
 \renewcommand{\@endalgoln}{\@endalgocfline\hfill\strut\par}
 \renewcommand{\;}{\ifmmode
   \@mathsemicolon
@@ -190,8 +188,6 @@
 % Apply the new format to the algorithm environment
 \captionsetup[algorithm]{format=algrule}
 
-\makeatletter
-
 \renewcommand{\algorithmname}{算法}
 \renewcommand{\thealgorithm}{\arabic{chapter}-\arabic{algorithm}}
 \captionsetup[algorithm]{aboveskip=6pt}
@@ -201,7 +197,6 @@
 
 \RequirePackage[titles, subfigure]{tocloft}
 \RequirePackage[small]{subfigure}
-
 
 \urlstyle{rm}
 \raggedbottom
@@ -274,22 +269,17 @@
 \setlength{\subfigcapskip}{0pt}
 \setlength{\intextsep}{9pt}
 
-\makeatletter
 \AtBeginEnvironment{figure}{
   \def\@floatboxreset{\centering}
 }
-\makeatother
 
-\makeatletter
 \AtBeginEnvironment{table}{
   \def\@floatboxreset{\centering}
 }
-\makeatother
+
 \AtBeginEnvironment{tabular}{\small}
 
-\makeatletter
 \renewcommand{\p@subfigure}{\arabic{chapter}-\arabic{figure}}
-\makeatother
 
 \newcommand{\chinesecolon}{\char"FF1A}
 \newcommand{\chinesespace}{\char"3000}
@@ -333,7 +323,6 @@
 
 \renewcommand{\footnoterule}{\vfill\noindent\vspace{0.9mm}\hspace{27pt}\rule{5.05cm}{0.02cm}\vspace*{2.6pt}}
 
-\makeatletter
 \def\@makefntext #1{
   \ifFN@hangfoot
       \bgroup \setbox \@tempboxa \hbox {
@@ -367,7 +356,6 @@
         \footnotelayout #1\ifFN@hangfoot \par \egroup
   \fi
 }
-\makeatother
 
 \newcounter{pseudopage}
 \setcounter{pseudopage}{0}
@@ -503,9 +491,6 @@
   \renewcommand{\thestudentid}{#1}
 }
 
-
-
-
 \DeclareOption{bachelor}{
   \renewcommand{\chinesedegreename}{本科}
   \renewcommand{\chinesebooktitle}{本科学位论文}
@@ -529,7 +514,6 @@
   \renewcommand{\chinesebooktitle}{博士学位论文}
   \renewcommand{\englishbooktitle}{Doctoral Dissertation}
 }
-
 
 \newcommand{\makecover}{
 \thispagestyle{empty}
@@ -741,9 +725,7 @@ UDC\textsuperscript{ 注1} \uline{\hspace{2.5in}} \\[12bp]
     \renewcommand{\tablename}{表}
 }
 
-\makeatletter
 \renewcommand{\@biblabel}[1]{[#1]\hfill}
-\makeatother
 
 \patchcmd\thebibliography
     {\labelsep}
@@ -807,8 +789,6 @@ UDC\textsuperscript{ 注1} \uline{\hspace{2.5in}} \\[12bp]
   \renewcommand{\bibname}{参考文献}
 }
 
-
-
 \newtheoremstyle{dotless}{0pt}{0pt}{\normalfont}{24pt}{\heiti}{}{ }{}
 \theoremstyle{dotless}
 \newtheorem{theorem}{定理}[chapter]
@@ -829,7 +809,6 @@ UDC\textsuperscript{ 注1} \uline{\hspace{2.5in}} \\[12bp]
 \renewcommand{\qedsymbol}{$\blacksquare$}
 \renewcommand{\proofname}{证明}
 
-\makeatletter
 \renewenvironment{proof}[1][\proofname]{\par
   \pushQED{\qed}
   \normalfont
@@ -841,7 +820,6 @@ UDC\textsuperscript{ 注1} \uline{\hspace{2.5in}} \\[12bp]
 }{
   \popQED\endtrivlist\@endpefalse
 }
-\makeatother
 
 \newcommand{\citing}[1]{\textsuperscript{\cite{#1}}}
 \setlist{noitemsep}
@@ -853,6 +831,5 @@ UDC\textsuperscript{ 注1} \uline{\hspace{2.5in}} \\[12bp]
   \setlength{\belowdisplayshortskip}{8pt}
   \setlength{\abovedisplayshortskip}{8pt}
 }
-
 
 \endinput

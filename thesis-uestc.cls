@@ -155,7 +155,6 @@
 \SetAlgorithmName{算法}{算法}{算法列表}
 \renewcommand\thealgocf{\arabic{chapter}-\arabic{algocf}}
 \SetAlgoCaptionSeparator{\null}
-\SetAlgoCaptionLayout{hang}
 \AtBeginEnvironment{algorithm}{\vspace{9pt}}
 \AfterEndEnvironment{algorithm}{\vspace{9pt}}
 

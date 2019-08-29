@@ -150,48 +150,21 @@
 \RequirePackage{cite}
 \RequirePackage[normalem]{ulem}
 \RequirePackage{enumitem}
-\RequirePackage{algorithm2e}
+
+\RequirePackage[algochapter, boxruled, linesnumbered]{algorithm2e}
+\SetAlgorithmName{算法}{算法}{算法列表}
+\renewcommand\thealgocf{\arabic{chapter}-\arabic{algocf}}
+\SetAlgoCaptionSeparator{\null}
+\SetAlgoCaptionLayout{hang}
+\AtBeginEnvironment{algorithm}{\vspace{9pt}}
+\AfterEndEnvironment{algorithm}{\vspace{9pt}}
+
 \RequirePackage{etoolbox}
 \RequirePackage{newfloat}
 \RequirePackage[resetlabels]{multibib}
 \RequirePackage[nottoc]{tocbibind}
 \RequirePackage{everypage}
 \RequirePackage{ifoddpage}
-
-\let\algorithm\relax
-\let\endalgorithm\relax
-\expandafter\let\csname algorithm*\endcsname\relax
-\expandafter\let\csname endalgorithm*\endcsname\relax
-\let\listofalgorithms\relax
-
-% Define the new algorithm environment
-\DeclareFloatingEnvironment{algorithm}
-
-\renewcommand{\@endalgoln}{\@endalgocfline\hfill\strut\par}
-\renewcommand{\;}{\ifmmode
-  \@mathsemicolon
-\else
-  \@endalgoln
-\fi
-}
-% Definition for the style ruled
-% First add the rules enclosing the captiom
-\DeclareCaptionFormat{algrule}{%
-  {\@hangfrom{#1#2}%
-     \doublespacing
-     \small
-     \advance\caption@parindent\hangindent
-     \advance\caption@hangindent\hangindent
-     \caption@@par#3\par}%
-}
-
-% Apply the new format to the algorithm environment
-\captionsetup[algorithm]{format=algrule}
-
-\renewcommand{\algorithmname}{算法}
-\renewcommand{\thealgorithm}{\arabic{chapter}-\arabic{algorithm}}
-\captionsetup[algorithm]{aboveskip=6pt}
-\AtBeginEnvironment{algorithm}{\vspace{6pt}}
 
 \graphicspath{{./pic/}}
 

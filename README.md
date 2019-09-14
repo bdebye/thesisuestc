@@ -18,7 +18,7 @@
 ```bash
 latexmk main.tex
 ```
-命令即可自动调用相关程序进行编译，处理各种文件依赖并自动预览。执行`latexmk -c`命令清理所有缓存文件。编译多文件结构的文档将文件名替换成`main_multifile.tex`即可。使用TeXstudio、Texmaker或WinEdt等编辑环境请将编译引擎设置成latexmk，如果在Windows平台下使用MikTeX还需要安装[Perl语言解释器](http://strawberryperl.com/)。
+命令即可自动调用相关程序进行编译，处理各种文件依赖并自动预览。执行`latexmk -C`命令清理所有缓存文件。编译多文件结构的文档将文件名替换成`main_multifile.tex`即可。使用TeXstudio、Texmaker或WinEdt等编辑环境请将编译引擎设置成latexmk，如果在Windows平台下使用MikTeX还需要安装[Perl语言解释器](http://strawberryperl.com/)。
 
 手动编译的话执行
 ```bash

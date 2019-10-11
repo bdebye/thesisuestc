@@ -7,7 +7,7 @@
 ## 使用方法
 
 ### 基本环境
-使用模板需要系统安装任意一种TeX环境，如[TeXLive](http://tug.org/texlive/acquire-iso.html)、[MacTeX](https://www.tug.org/mactex/mactex-download.html)和[MiKTeX](https://miktex.org/download)（都自动带有XeLaTeX引擎，但是不推荐CTeX），安装有SimSun和SimHei字体（其实就是宋体和黑体）以及Times New Roman英文字体。字体方面也可以像在线编辑环境那样指定所使用的字体文件。在MacOS下编译会自动识别操作系统，使用Songti SC和STHeiti字体，但需要启用`--shell-escape`编译选项。
+使用模板需要系统安装任意一种TeX环境，如TeXLive、MacTeX和MiKTeX（都自动带有XeLaTeX引擎，但是不推荐CTeX），安装有SimSun和SimHei字体（其实就是宋体和黑体）以及Times New Roman英文字体。字体方面也可以像在线编辑环境那样指定所使用的字体文件。在MacOS下编译会自动识别操作系统，使用Songti SC和STHeiti字体，但需要启用`--shell-escape`编译选项。
 
 模板采用LaTeX类的形式封装，导入模板只需要把thesis-uestc.cls文件放在文档所在目录，在文档开头使用`\documentclass{thesis-uestc}`命令将文档的类设置成thesis-uestc即可。使用BibTeX录入参考文献还需要`thesis-uestc.bst`风格定义文件。
 
@@ -20,7 +20,7 @@ latexmk main.tex
 ```
 命令即可自动调用相关程序进行编译，处理各种文件依赖并自动预览。执行`latexmk -c`命令清理所有缓存文件。
 
-编译多文件结构的文档将文件名替换成`main_multifile.tex`即可。使用TeXstudio、Texmaker或WinEdt等编辑环境请将编译引擎设置成latexmk，如果在Windows平台下使用MiKTeX还需要安装[Perl语言解释器](http://strawberryperl.com/)。
+编译多文件结构的文档将文件名替换成`main_multifile.tex`即可。使用TeXstudio、Texmaker或WinEdt等编辑环境请将编译引擎设置成latexmk，如果在Windows平台下使用MikTeX还需要安装[Perl语言解释器](http://strawberryperl.com/)。
 
 手动编译的话执行
 ```bash
@@ -60,7 +60,7 @@ xelatex main.tex
 
 ### 论文主体
 
-论文主体的写作参考一般的LaTeX教程(如中文版的[lshort](https://ctan.org/pkg/lshort-zh-cn))，可以自由添加章节，章节内添加所需要的内容，分小节，插入公式、表格和图片。
+论文主体的写作参考一般的LaTeX教程，可以自由添加章节，章节内添加所需要的内容，分小节，插入公式、表格和图片。
 
 ### 致谢
 

@@ -98,7 +98,7 @@ xelatex main.tex
 
 算法描述使用`algorithm`环境，具体写法请参考范例`main.tex`或`chapter\c3.tex`。
 
-模板类自动加载`algorithm2e`宏包，详细的用法请参考[algorithm2e宏包文档](https://www.ctan.org/pkg/algorithm2ef)。
+模板类自动加载`algorithm2e`宏包，详细的用法请参考[algorithm2e宏包文档](https://www.ctan.org/pkg/algorithm2e)。
 
 ### 枚举环境和脚注
 

@@ -35,21 +35,20 @@
 \RequirePackage{amssymb}
 \RequirePackage{amsthm}
 \RequirePackage{lmodern}
-\RequirePackage{mathptmx}
-\RequirePackage{bm}
-\RequirePackage{fontspec}
+\RequirePackage[nopostdot]{glossaries}
+\RequirePackage{mathspec}
 
 \RequirePackage{xeCJK}
 \RequirePackage{ifplatform}
 
 \ifwindows
-  \setmainfont{Times New Roman}
+  \setallmainfonts{Times New Roman}
   \setCJKmainfont[AutoFakeBold=true]{SimSun}
   \newCJKfontfamily{\heiti}{SimHei}
   \newfontfamily{\heiti@letter}{SimHei}
 \else
 \ifmacosx
-  \setmainfont{Times New Roman}
+  \setallmainfonts{Times New Roman}
   \setCJKmainfont[AutoFakeBold=true]{Songti SC}
   \newCJKfontfamily{\heiti}{STHeiti}
   \newfontfamily{\heiti@letter}{STHeiti}
@@ -57,13 +56,15 @@
   \setCJKmainfont[AutoFakeBold=true]{simsun.ttc}
   \newCJKfontfamily{\heiti}{simhei.ttf}
   \newfontfamily{\heiti@letter}{simhei.ttf}
-  \setmainfont[
+  \setallmainfonts[
     BoldFont=timesbd.ttf,
     ItalicFont=timesi.ttf,
     BoldItalicFont=timesbi.ttf,
   ]{times.ttf}
 \fi
 \fi
+
+\newcommand{\bm}{\pmb}
 
 \RequirePackage{zhnumber}
 \RequirePackage{pifont}
@@ -84,7 +85,7 @@
 %\let\RequirePackage\original@RequirePackage
 %\let\usepackage\RequirePackage
 %\makeatother
-\RequirePackage[nopostdot]{glossaries}
+
 \renewcommand*{\glossarypreamble}{\vspace{-9pt}}
 
 \newacronymstyle{acronym-uestc}{

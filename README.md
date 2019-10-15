@@ -62,6 +62,10 @@ xelatex main.tex
 
 论文主体的写作参考一般的LaTeX教程（如中文版的[lshort](https://www.ctan.org/pkg/lshort-zh-cn)），可以自由添加章节，章节内添加所需要的内容，分小节，插入公式、表格和图片。
 
+### 数学环境
+
+数学环境的字体加粗可以使用`\bm`或者`\pmb`命令。由于 Times New Roman 字体的拉丁字母字形修长，偶尔会出现字符粘连的情况。这种情况下可以使用占位符波浪号调整距离，如`$f^{~l}$`和`$\hat{f~}$`。
+
 ### 致谢
 
 致谢部分由命令`\thesisacknowledgement`开始，实际上是开始了一个无编号的章节。
@@ -71,6 +75,10 @@ xelatex main.tex
 录入参考文献使用`thesisbibliography`环境，在环境中使用`\bibitem`命令添加文献条目。参考文献的引用分两种：在原文中作句法成分的为直接引用，使用`\cite`命令，否则为`\citing`命令，在文中文献编号显示为上标。
 
 使用BibTeX录入参考文献由`\thesisloadbibliography`命令导入数据库，参考文献风格自动设置为`thesis-uestc`。这个命令有一个可选参数，在为`nocite`的情况下会在文档中列出数据库中的所有条目，无论是否引用，其他情况下只列出引用过的条目。有些编辑器会识别`\bibliography`命令导入的数据库文件，并提供更好的编辑支持，所以模板也支持原生的`\bibliography`命令导入文献列表，只需要导入之前指定参考文献风格（`\bibliographystyle{thesis-uestc}`）即可。
+
+模版的文献条目处理完全兼容 IEEE Xplore 和 Google Scholar 数据库。获得参考文献条目信息只需要在文章页面点击Download Citation，选择BibTeX格式，将文本复制到 bib 文件即可。
+
+当引用中文文献，而文献作者超过三位时，后面的作者会用`et al`省略。如果想使用“等”字省略，可以在作者条目在第三个作者姓名后面加上“等”字，再后面的作者去掉。
 
 ### 附录
 

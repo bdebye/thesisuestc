@@ -46,14 +46,17 @@
   \setmainfont{Times New Roman}
   \setCJKmainfont[AutoFakeBold=true]{SimSun}
   \newCJKfontfamily{\heiti}{SimHei}
+  \newfontfamily{\heiti@letter}{SimHei}
 \else
 \ifmacosx
   \setmainfont{Times New Roman}
   \setCJKmainfont[AutoFakeBold=true]{Songti SC}
   \newCJKfontfamily{\heiti}{STHeiti}
+  \newfontfamily{\heiti@letter}{STHeiti}
 \else
   \setCJKmainfont[AutoFakeBold=true]{simsun.ttc}
   \newCJKfontfamily{\heiti}{simhei.ttf}
+  \newfontfamily{\heiti@letter}{simhei.ttf}
   \setmainfont[
     BoldFont=timesbd.ttf,
     ItalicFont=timesi.ttf,
@@ -146,6 +149,7 @@
 \RequirePackage{fancyvrb}
 \RequirePackage{fancyhdr}
 \RequirePackage{titlesec}
+\RequirePackage{appendix}
 \RequirePackage{setspace}
 \RequirePackage{cite}
 \RequirePackage[normalem]{ulem}
@@ -631,14 +635,12 @@ UDC\textsuperscript{ 注1} \uline{\hspace{2.5in}} \\[12bp]
 \renewcommand{\chaptermark}[1]{\markboth{第\zhnumber{\arabic{chapter}}章 \hspace{5.25pt}#1}{}}
 
 \newcommand{\thesisacknowledgement}{
-  \renewcommand\thesection{\arabic{section}}
   \addtocontents{toc}{\protect\setcounter{tocdepth}{0}}
   \setcounter{section}{0}
   \chapter*{致\hspace{12pt}谢}
   \addcontentsline{toc}{chapter}{致\hspace{12pt}谢}
   \markboth{致谢}{致谢}
   \thispagestyle{fancy}
-  \hypersetup{bookmarksdepth=0} 
 }
 
 \newcommand{\thesischapterexordium}{
@@ -658,19 +660,55 @@ UDC\textsuperscript{ 注1} \uline{\hspace{2.5in}} \\[12bp]
 }
 
 \newcommand{\thesisappendix}{
+  \newpage
+  \appendix
+  \addtocontents{toc}{\protect\setcounter{tocdepth}{2}}
+  \titleformat{\chapter}[block]
+    {\centering\fontsize{15pt}{15pt}\selectfont\heiti\thispagestyle{fancy}}{\thechapter}{7.5pt}{}
+  \renewcommand{\thechapter}{附录\Alph{chapter}}
+  \renewcommand{\appendixname}{附录}
+  \renewcommand{\thesection}{\Alph{chapter}.\arabic{section}}
+  
+  \renewcommand{\theequation}{\alph{chapter}-\arabic{equation}}
+  \renewcommand{\thetable}{\alph{chapter}-\arabic{table}}
+  \renewcommand{\thefigure}{\alph{chapter}-\arabic{figure}}
+  \renewcommand{\thetheorem}{\alph{chapter}.\arabic{theorem}}
+  \renewcommand{\theaxiom}{\alph{chapter}.\arabic{axiom}}
+  \renewcommand{\thecorollary}{\alph{chapter}.\arabic{corollary}}
+  \renewcommand{\thelemma}{\alph{chapter}.\arabic{lemma}}
+  \renewcommand{\thedefinition}{\alph{chapter}.\arabic{definition}}
+  \renewcommand{\theexample}{\alph{chapter}.\arabic{example}}
+}
+
+\newcommand{\thesissingleappendix}{
+  \newpage
+  \appendix
+  \addtocontents{toc}{\protect\setcounter{tocdepth}{2}}
+  \titleformat{\chapter}[block]
+    {\centering\fontsize{15pt}{15pt}\selectfont\heiti\thispagestyle{fancy}}{附\hspace{12pt}录}{7.5pt}{}
+  %\renewcommand{\thechapter}{附\hspace{12pt}录}
+  \renewcommand{\appendixname}{附录}
+  \renewcommand{\thesection}{A.\arabic{section}}
+  
+  \renewcommand{\theequation}{a-\arabic{equation}}
+  \renewcommand{\thetable}{a-\arabic{table}}
+  \renewcommand{\thefigure}{a-\arabic{figure}}
+  \renewcommand{\thetheorem}{a.\arabic{theorem}}
+  \renewcommand{\theaxiom}{a.\arabic{axiom}}
+  \renewcommand{\thecorollary}{a.\arabic{corollary}}
+  \renewcommand{\thelemma}{a.\arabic{lemma}}
+  \renewcommand{\thedefinition}{a.\arabic{definition}}
+  \renewcommand{\theexample}{a.\arabic{example}}
+
   \chapter*{附\hspace{12pt}录}
-    \setcounter{section}{0}
-    \addcontentsline{toc}{chapter}{附录}
-    \markboth{附录}{附录}
-    \thispagestyle{fancy}
-    \hypersetup{bookmarksdepth=0}
-    \renewcommand{\theequation}{a-\arabic{equation}}
-    \renewcommand{\thetable}{a-\arabic{table}}
-    \renewcommand{\thefigure}{a-\arabic{figure}}
+  \addcontentsline{toc}{chapter}{附录}
+  \markboth{附录}{附录}
 }
 
 \newcommand{\thesistranslationoriginal}{
   \chapter*{外文资料原文}
+  \addtocontents{toc}{\protect\setcounter{tocdepth}{0}}
+  \renewcommand\thesection{\arabic{section}}
     \setcounter{section}{0}
     \addcontentsline{toc}{chapter}{外文资料原文}
     \markboth{外文资料原文}{外文资料原文}
@@ -684,7 +722,9 @@ UDC\textsuperscript{ 注1} \uline{\hspace{2.5in}} \\[12bp]
 }
 
 \newcommand{\thesistranslationchinese}{
+  \addtocontents{toc}{\protect\setcounter{tocdepth}{0}}
   \chapter*{外文资料译文}
+  \renewcommand\thesection{\arabic{section}}
     \setcounter{section}{0}
     \addcontentsline{toc}{chapter}{外文资料译文}
     \markboth{外文资料译文}{外文资料译文}
@@ -763,6 +803,8 @@ UDC\textsuperscript{ 注1} \uline{\hspace{2.5in}} \\[12bp]
 
 \newtheoremstyle{dotless}{0pt}{0pt}{\normalfont}{24pt}{\heiti}{}{ }{}
 \theoremstyle{dotless}
+%\renewcommand\@upn{\selectfont\heiti@letter}
+
 \newtheorem{theorem}{定理}[chapter]
 \newtheorem{axiom}[theorem]{公理}
 \newtheorem{corollary}[theorem]{推论}

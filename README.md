@@ -60,7 +60,7 @@ xelatex main.tex
 
 ### 论文主体
 
-论文主体的写作参考一般的LaTeX教程(如中文版的[lshort](https://www.ctan.org/pkg/lshort-zh-cn))，可以自由添加章节，章节内添加所需要的内容，分小节，插入公式、表格和图片。
+论文主体的写作参考一般的LaTeX教程（如中文版的[lshort](https://www.ctan.org/pkg/lshort-zh-cn)），可以自由添加章节，章节内添加所需要的内容，分小节，插入公式、表格和图片。
 
 ### 致谢
 
@@ -74,7 +74,7 @@ xelatex main.tex
 
 ### 附录
 
-附录由命令`\thesisappendix`开始，实际上是开始了一个无编号的章节。为了书写方便，附录中可以继续分小节，但附录中的小节不会在目录中显示。
+附录部分由命令`\thesisappendix`开始，之后每一章都会被当作是一个附录，使用大写拉丁字母编号。如果只需要单独一个附录则使用`\thesissingleappendix`命令，在后面添加小节，附录本身没有编号。
 
 ### 攻读学位期间取得的成果
 
@@ -103,6 +103,22 @@ xelatex main.tex
 ### 枚举环境和脚注
 
 枚举使用标准的`enumerate`、`itemize`以及`description`环境。脚注使用标准的`\footnote`命令插入。
+
+### 其他命令
+模版提供一些有用的命令方便论文写作，其中包含一些常见的汉语字符：
+| 命令名称 | 字符 | Unicode 编号|
+|---|---|---|
+|\chinesecolon| ： | FF1A |
+|\chinesespace|    | 3000 |
+|\chineseperiod| 。| 3002 |
+|\chinesequestion| ？  | FF1F |
+|\chineseexclamation| ！  | FF01 |
+|\chinesecomma| ，  | FF0C |
+|\chinesesemicolon|  ； | FF1B |
+|\chineseleftparenthesis|（ | FF08 |
+|\chineserightparenthesis| ）| FF09 |
+
+另外`\blankpage`命令可以强制生成一页空白。
 
 ### 分割文件
 

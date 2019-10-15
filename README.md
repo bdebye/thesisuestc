@@ -72,13 +72,13 @@ xelatex main.tex
 
 ### 参考文献
 
-录入参考文献使用`thesisbibliography`环境，在环境中使用`\bibitem`命令添加文献条目。参考文献的引用分两种：在原文中作句法成分的为直接引用，使用`\cite`命令，否则为`\citing`命令，在文中文献编号显示为上标。
-
 使用BibTeX录入参考文献由`\thesisloadbibliography`命令导入数据库，参考文献风格自动设置为`thesis-uestc`。这个命令有一个可选参数，在为`nocite`的情况下会在文档中列出数据库中的所有条目，无论是否引用，其他情况下只列出引用过的条目。有些编辑器会识别`\bibliography`命令导入的数据库文件，并提供更好的编辑支持，所以模板也支持原生的`\bibliography`命令导入文献列表，只需要导入之前指定参考文献风格（`\bibliographystyle{thesis-uestc}`）即可。
 
-模版的文献条目处理完全兼容 IEEE Xplore 和 Google Scholar 数据库。获得参考文献条目信息只需要在文章页面点击Download Citation，选择BibTeX格式，将文本复制到 bib 文件即可。
+参考文献的在文中的引用分两种：在原文中作句法成分的为直接引用，使用`\cite`命令，否则为`\citing`命令，在文中文献编号显示为上标。模版的文献条目处理兼容 IEEE Xplore 和 ScienceDirect 的引用格式，还有其他主流的数据库。获得参考文献条目信息只需要在对应的文章页面点击下载引用的按钮（在 IEEE Xplore 中按钮在PDF下载旁边一个向下的箭头；在 ScienceDirect 中为文章标题上面的 Export 链接），选择BibTeX格式，将文本复制到 bib 文件即可。
 
 当引用中文文献，而文献作者超过三位时，后面的作者会用`et al`省略。如果想使用“等”字省略，可以在作者条目在第三个作者姓名后面加上“等”字，再后面的作者去掉。
+
+手动录入参考文献使用`thesisbibliography`环境，在环境中使用`\bibitem`命令添加文献条目。
 
 ### 附录
 
@@ -86,7 +86,7 @@ xelatex main.tex
 
 ### 攻读学位期间取得的成果
 
-将文章条目添加在`thesisaccomplish`环境下，方法与参考文献相同。使用BibTeX录入研究成果由`\thesisloadaccomplish`命令导入文献列表，参考文献风格自动设置为`thesis-uestc`。此命令没有可选参数，自动在文档中列出数据库中的所有条目。
+手动添加使用`\bibitem`命令将文章条目列在`thesisaccomplish`环境下，方法与参考文献相同。使用BibTeX录入研究成果由`\thesisloadaccomplish`命令导入文献列表，参考文献风格自动设置为`thesis-uestc`。此命令没有可选参数，自动在文档中列出数据库中的所有条目。
 
 ### 外文资料原文及译文
 

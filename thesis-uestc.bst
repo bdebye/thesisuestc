@@ -102,6 +102,8 @@ FUNCTION {trim} {
 FUNCTION {bbl.etal}
 { "et~al" }
 
+FUNCTION {bbl.deng}
+{ "等" }
 
 FUNCTION {bib.begin}
 {
@@ -202,9 +204,70 @@ FUNCTION {format.names}
   } if$
 }
 
+FUNCTION {format.chinese.names}
+{ 'bibinfo :=
+  duplicate$ empty$ 'skip$ {
+  's :=
+  "" 't :=
+  #1 'nameptr :=
+  s num.names$ 'numnames :=
+  numnames 'namesleft :=
+    { namesleft #0 > }
+    { s nameptr
+      "{f.~}{vv~}{ll}{, jj}"
+      format.name$
+      % bibinfo bibinfo.check
+      't :=
+      nameptr #1 >
+        {
+          nameptr #3
+          #1 + =
+          numnames #3
+          > and
+            { "others" 't :=
+              #1 'namesleft := }
+            'skip$
+          if$
+          namesleft #1 >
+            { ", " * t * }
+            {
+              s nameptr "{ll}" format.name$ duplicate$ "others" =
+                { 't := }
+                { pop$ }
+              if$
+              "others" t =
+              'skip$
+              { "," * }
+              if$
+              t "others" =
+                {
+                  " " * bbl.deng *
+                }
+                { " " * t * }
+              if$
+            }
+          if$
+        }
+        't
+      if$
+      nameptr #1 + 'nameptr :=
+      namesleft #1 - 'namesleft :=
+    }
+  while$
+  } if$
+}
+
 FUNCTION {format.authors}
 {
-    author "author" format.names
+  language missing$
+    { author "author" format.names }
+    {
+      language "zh" =
+        { author "author" format.chinese.names }
+        { author "author" format.names }
+      if$
+    }
+  if$
 }
 
 FUNCTION {format.title}

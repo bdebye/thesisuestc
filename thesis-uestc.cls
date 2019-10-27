@@ -462,11 +462,11 @@
   \addtocontents{toc}{\protect\setcounter{tocdepth}{-1}}
 }{}{}
 
-\AtBeginDocument{\ifchinesebook{
+\ifchinesebook{
   \SetAlgorithmName{算法}{算法}{算法列表}
 }{
   \SetAlgorithmName{Algorithm}{Algorithm}{List of Algorithms}
-}}
+}
 \renewcommand\thealgocf{\arabic{chapter}-\arabic{algocf}}
 \SetAlgoCaptionSeparator{\null}
 \AtBeginEnvironment{algorithm}{\vspace{9pt}}
@@ -520,13 +520,17 @@
 \newcommand{\thesisglossarylist}{
   \newpage
   \fancyhf{}
-  \fancyhead[C]{\fontsize{10.5pt}{12.6pt}\selectfont\glossarytitle}
-  \fancyfoot[CE,CO]{\fontsize{9pt}{10.8pt}\selectfont\Roman{pseudopage}}
-  \setlength\glsdescwidth{.7\textwidth}
-  \pdfbookmark{\glossarytitle}{glossary}
   \ifchinesebook{
+    \fancyhead[C]{\fontsize{10.5pt}{12.6pt}\selectfont 缩略词表}
+    \fancyfoot[CE,CO]{\fontsize{9pt}{10.8pt}\selectfont\Roman{pseudopage}}
+    \setlength\glsdescwidth{.7\textwidth}
+    \pdfbookmark{缩略词表}{glossary}
     \printglossary[style=long-uestc, title={\protect\centering 缩略词表}, nonumberlist, nogroupskip]
   }{
+    \fancyhead[C]{\fontsize{10.5pt}{12.6pt}\selectfont Glossary}
+    \fancyfoot[CE,CO]{\fontsize{9pt}{10.8pt}\selectfont\Roman{pseudopage}}
+    \setlength\glsdescwidth{.7\textwidth}
+    \pdfbookmark{Glossary}{glossary}
     \printglossary[style=long-uestc, title={\protect\centering Glossary}, nonumberlist, nogroupskip]
   }
 }

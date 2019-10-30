@@ -385,36 +385,38 @@
 }
 
 \DeclareOption{bachelor}{
-  \newcommand{\chinesedegreename}{本科}
-  \newcommand{\englishdegreename}{Bachelor}
-  \newcommand{\chinesebooktitle}{本科学位论文}
-  \newcommand{\englishbooktitle}{Bachelor Thesis}
-  \newcommand{\display@englishheader}{Bachelor Thesis of University of Electronic Science and Technology of China}
+  \def\chinesedegreename{本科}
+  \def\englishdegreename{Bachelor}
+  \def\chinesebooktitle{本科学位论文}
+  \def\englishbooktitle{Bachelor Thesis}
+  \def\display@englishheader{Bachelor Thesis of University of Electronic Science and Technology of China}
 }
 
 \DeclareOption{master}{
-  \newcommand{\chinesedegreename}{硕士}
-  \newcommand{\englishdegreename}{Master}
-  \newcommand{\chinesebooktitle}{硕士学位论文}
-  \newcommand{\englishbooktitle}{Master Thesis}
-  \newcommand{\display@englishheader}{Master Thesis of University of Electronic Science and Technology of China}
+  \def\chinesedegreename{硕士}
+  \def\englishdegreename{Master}
+  \def\chinesebooktitle{硕士学位论文}
+  \def\englishbooktitle{Master Thesis}
+  \def\display@englishheader{Master Thesis of University of Electronic Science and Technology of China}
 }
 
 \DeclareOption{promaster}{
-  \newcommand{\chinesedegreename}{专业硕士}
-  \newcommand{\englishdegreename}{Professional Master}
-  \newcommand{\chinesebooktitle}{专业学位硕士学位论文}
-  \newcommand{\englishbooktitle}{Master Thesis for Professional Degree}
-  \newcommand{\display@englishheader}{Master Thesis of University of Electronic Science and Technology of China}
+  \def\chinesedegreename{专业硕士}
+  \def\englishdegreename{Professional Master}
+  \def\chinesebooktitle{专业学位硕士学位论文}
+  \def\englishbooktitle{Master Thesis for Professional Degree}
+  \def\display@englishheader{Master Thesis of University of Electronic Science and Technology of China}
 }
 
 \DeclareOption{doctor}{
-  \newcommand{\chinesedegreename}{博士}
-  \newcommand{\englishdegreename}{Doctor}
-  \newcommand{\chinesebooktitle}{博士学位论文}
-  \newcommand{\englishbooktitle}{Doctoral Dissertation}
-  \newcommand{\display@englishheader}{Doctoral Dissertation of University of Electronic Science and Technology of China}
+  \def\chinesedegreename{博士}
+  \def\englishdegreename{Doctor}
+  \def\chinesebooktitle{博士学位论文}
+  \def\englishbooktitle{Doctoral Dissertation}
+  \def\display@englishheader{Doctoral Dissertation of University of Electronic Science and Technology of China}
 }
+
+\ExecuteOptions{master}
 
 \ProcessOptions\relax
 

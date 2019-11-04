@@ -42,16 +42,16 @@
 \RequirePackage{ifplatform}
 
 \ifwindows
-  \setallmainfonts{Times New Roman}
   \setCJKmainfont[AutoFakeBold=true]{SimSun}
   \newCJKfontfamily{\heiti}{SimHei}
   \newfontfamily{\heiti@letter}{SimHei}
+  \setallmainfonts{Times New Roman}
 \else
 \ifmacosx
-  \setallmainfonts{Times New Roman}
   \setCJKmainfont[AutoFakeBold=true]{Songti SC}
   \newCJKfontfamily{\heiti}{STHeiti}
   \newfontfamily{\heiti@letter}{STHeiti}
+  \setallmainfonts{Times New Roman}
 \else
   \setCJKmainfont[AutoFakeBold=true]{simsun.ttc}
   \newCJKfontfamily{\heiti}{simhei.ttf}
@@ -64,7 +64,8 @@
 \fi
 \fi
 
-\newcommand{\bm}{\pmb}
+\DeclareMathAlphabet{\mathbf}{\eu@enc}{\eu@mathrm}{bx}{it}
+\newcommand{\bm}{\mathbf}
 
 \RequirePackage{zhnumber}
 \RequirePackage{pifont}

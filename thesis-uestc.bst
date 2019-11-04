@@ -107,7 +107,7 @@ FUNCTION {bbl.deng}
 
 FUNCTION {bib.begin}
 {
-    "\begin{thebibliography}{lo}"
+    "\begin{thebibliography}{\bstlabelmark}"
     write$ newline$
     "\interlinepenalty=10000"
     write$ newline$

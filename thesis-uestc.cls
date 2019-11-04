@@ -849,12 +849,6 @@ UDC\textsuperscript{ 注1} \uline{\hspace{2.5in}} \\[12bp]
 \renewcommand{\bibname}{\thesisbibname}
 \renewcommand{\@biblabel}[1]{[#1]\hfill}
 
-\patchcmd\thebibliography
-    {\labelsep}
-    {\labelsep\itemsep=0pt\parsep=0pt\relax}
-    {}
-    {\typeout{Couldn't patch the command}}
-
 \newenvironment{thesisbibliography}{
   \begin{thebibliography}{lo}
     \interlinepenalty=10000
@@ -876,11 +870,13 @@ UDC\textsuperscript{ 注1} \uline{\hspace{2.5in}} \\[12bp]
   \end{spacing}
 }{}{}
 
+\newcommand{\bstlabelmark}{lo}
 \newcommand{\thesisloadbibliography}[2][]{
   \ifthenelse{
-      \equal{#1}{nocite}
+      \equal{#1}{large}
     }{
-      \nocite{*}
+      \setlength{\labelsep}{3pt}
+      \renewcommand{\bstlabelmark}{loo}
     }{}
   \bibliographystyle{thesis-uestc}
   \bibliography{#2}
@@ -903,6 +899,7 @@ UDC\textsuperscript{ 注1} \uline{\hspace{2.5in}} \\[12bp]
 \newcommand{\thesisloadaccomplish}[1]{
   \nociteaccomplish{*}
   \renewcommand{\bibname}{\thesisaccomplishtitle}
+  \renewcommand{\bstlabelmark}{lo}
   \thispagestyle{fancy}
   \begin{spacing}{1.667}
   \bibliographystyleaccomplish{thesis-uestc}

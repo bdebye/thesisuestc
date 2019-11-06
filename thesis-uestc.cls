@@ -873,15 +873,18 @@ UDC\textsuperscript{ 注1} \uline{\hspace{2.5in}} \\[12bp]
 \newcommand{\bstlabelmark}{lo}
 \newcommand{\thesisloadbibliography}[2][]{
   \ifthenelse{
-      \equal{#1}{large}
-    }{
-      \setlength{\labelsep}{3pt}
-      \renewcommand{\bstlabelmark}{loo}
-    }{}
-  \bibliographystyle{thesis-uestc}
-  \bibliography{#2}
+    \equal{#1}{large}
+  }{
+    \setlength{\labelsep}{3pt}
+    \renewcommand{\bstlabelmark}{loo}
+    \bibliographystyle{thesis-uestc}
+    \bibliography{#2}
+    \setlength{\labelsep}{6pt}
+  }{
+    \bibliographystyle{thesis-uestc}
+    \bibliography{#2}
+  }
 }
-
 \newcites{accomplish}{\thesisaccomplishtitle}
 
 \newenvironment{thesisaccomplish}{

@@ -1,4 +1,7 @@
 # ThesisUESTC-电子科技大学毕业论文模板
+![](https://img.shields.io/badge/license-LPPL-blue)
+![](https://img.shields.io/github/last-commit/x-magus/ThesisUESTC)
+![](https://img.shields.io/github/issues/x-magus/ThesisUESTC)
 
 **ThesisUESTC**提供用于排版电子科技大学毕业论文的LaTeX模板类，旨在帮助电子科技大学的毕业生高效地完成毕业论文的写作。模板提供各种方便的命令，自动化地排版论文的各个部分，使毕业论文轻易地满足学校的格式要求。为了支持更好的字体效果，模板基于XeLaTeX编写，并且放弃对CTeX的依赖，使模板更加稳定。
 

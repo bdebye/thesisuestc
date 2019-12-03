@@ -1,7 +1,7 @@
 # ThesisUESTC-电子科技大学毕业论文模板
-![](https://img.shields.io/badge/license-LPPL-blue)
-![](https://img.shields.io/github/last-commit/x-magus/ThesisUESTC)
-![](https://img.shields.io/github/issues/x-magus/ThesisUESTC)
+[![](https://img.shields.io/badge/license-LPPL-blue)](https://www.latex-project.org/lppl/)
+[![](https://img.shields.io/github/last-commit/x-magus/ThesisUESTC)](https://github.com/x-magus/ThesisUESTC/zipball/master)
+[![](https://img.shields.io/github/issues/x-magus/ThesisUESTC)](https://github.com/x-magus/ThesisUESTC/issues)
 
 **ThesisUESTC**提供用于排版电子科技大学毕业论文的LaTeX模板类，旨在帮助电子科技大学的毕业生高效地完成毕业论文的写作。模板提供各种方便的命令，自动化地排版论文的各个部分，使毕业论文轻易地满足学校的格式要求。为了支持更好的字体效果，模板基于XeLaTeX编写，并且放弃对CTeX的依赖，使模板更加稳定。
 
@@ -14,7 +14,7 @@
 
 模板采用LaTeX类的形式封装，导入模板只需要把thesis-uestc.cls文件放在文档所在目录，在文档开头使用`\documentclass{thesis-uestc}`命令将文档的类设置成thesis-uestc即可。使用BibTeX录入参考文献还需要`thesis-uestc.bst`风格定义文件。
 
-模板类有bachelor、master、promaster和doctor四个选项，对应本科、硕士、专业硕士和博士的毕业论文，默认选项为`master`。文档内容的书写参考范例`main.tex`。英语使用者可以选择`english`选项，模版会按照英语论文的格式排版。
+模板类有bachelor、master、promaster、doctor和engdoctor四个学位选项，对应本科、硕士、专业硕士和博士的毕业论文，默认选项为`master`。文档内容的书写参考范例`main.tex`。英语使用者可以启用`english`选项，模版会按照英语论文的格式排版。
 
 ### 文档编译
 编译文档请使用XeLaTeX引擎。模版提供latexmk设置文件用于自动编译。将命令行工作目录切换到项目文件夹下，执行
@@ -164,7 +164,7 @@ latexmk main_multifile.tex
 \newacronym[description=逻辑卷管理器]{lvm}{LVM}{Logical Volume Manager}
 ```
 
-正文中引用缩略词时，使用`glossaries`宏包提供的`\gls`、`\Gls`（首字母大写）或`\glspl`（复数形式）等命令引用缩略词的`<label>`。
+只有在正文使用命令恰当引用的缩略词才会在缩略词表中列出。正文中引用缩略词时，使用`glossaries`宏包提供的`\gls`、`\Gls`（首字母大写）或`\glspl`（复数形式）等命令引用缩略词的`<label>`。
 具体使用方法参考[glossaries宏包文档](https://www.ctan.org/tex-archive/macros/latex/contrib/glossaries/)。
 
 手动编译包含有缩略词表的文档，执行`xelatex`编译命令后需要执行`makeglossaries main`（注意没有.tex后缀）创建缩略词索引，再执行`xelatex`命令完成编译。所以手动编译一个包含参考文献、研究成果、缩略词表的完整文档命令为：

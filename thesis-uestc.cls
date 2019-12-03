@@ -406,7 +406,7 @@
   \def\englishdegreename{Professional Master}
   \def\chinesebooktitle{专业学位硕士学位论文}
   \def\englishbooktitle{Master Thesis for Professional Degree}
-  \def\display@englishheader{Master Thesis of University of Electronic Science and Technology of China}
+  \def\display@englishheader{Professional Master Thesis of University of Electronic Science and Technology of China}
 }
 
 \DeclareOption{doctor}{
@@ -415,6 +415,14 @@
   \def\chinesebooktitle{博士学位论文}
   \def\englishbooktitle{Doctoral Dissertation}
   \def\display@englishheader{Doctoral Dissertation of University of Electronic Science and Technology of China}
+}
+
+\DeclareOption{engdoctor}{
+  \def\chinesedegreename{工程博士}
+  \def\englishdegreename{Engineering Doctor}
+  \def\chinesebooktitle{工程博士学位论文}
+  \def\englishbooktitle{Engineering Doctoral Dissertation}
+  \def\display@englishheader{Engineering Doctoral Dissertation of University of Electronic Science and Technology of China}
 }
 
 \ExecuteOptions{master}

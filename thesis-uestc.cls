@@ -388,7 +388,7 @@
 \DeclareOption{bachelor}{
   \def\chinesedegreename{本科}
   \def\englishdegreename{Bachelor}
-  \def\chinesebooktitle{本科学位论文}
+  \def\chinesebooktitle{学士学位论文}
   \def\englishbooktitle{Bachelor Thesis}
   \def\display@englishheader{Bachelor Thesis of University of Electronic Science and Technology of China}
 }
@@ -551,14 +551,27 @@
 \thispagestyle{empty}
 \setlength{\extrarowheight}{9pt}
 \begin{center}
-  \fontsize{22pt}{22pt}\selectfont 电\hspace{0.5em}子\hspace{0.5em}科\hspace{0.5em}技%
-  \hspace{0.5em}大\hspace{0.5em}学 \\[7bp]
+  \ifthenelse{\equal{\englishdegreename}{Bachelor}}{
+    \includegraphics{bachelor_font.pdf} \\
+  }{
+    \fontsize{22pt}{22pt}\selectfont 电\hspace{0.5em}子\hspace{0.5em}科\hspace{0.5em}技%
+    \hspace{0.5em}大\hspace{0.5em}学 \\[7bp]
+  }
   \fontsize{12pt}{12pt}\selectfont UNIVERSITY OF ELECTRONIC SCIENCE
     AND TECHNOLOGY OF CHINA \\[36bp]
-  \fontsize{42pt}{42pt}\selectfont\chinesebooktitle \\[24bp]
+  \ifthenelse{\equal{\englishdegreename}{Bachelor}}{
+    \fontsize{42pt}{42pt}\selectfont{\bfseries\chinesebooktitle} \\[24bp]
+  }{
+    \fontsize{42pt}{42pt}\selectfont\chinesebooktitle \\[24bp]
+  }
   \fontsize{16pt}{16pt}\selectfont
     \textbf{\MakeUppercase{\englishbooktitle}} \\[48bp]
-  \includegraphics[width=221bp]{logo.pdf} \\[48bp]
+  \ifthenelse{\equal{\englishdegreename}{Bachelor}}{
+    \vspace{0.5cm}
+    \includegraphics[width=5cm]{logo.pdf} \\[66bp]
+  } {
+    \includegraphics[width=221bp]{logo.pdf} \\[48bp]
+  }
   \begin{tabular}{lp{4.6in}}
     \fontsize{16pt}{16pt}\selectfont 论文题目 & \multirow[t]{2}{4.6in}{
         \centering

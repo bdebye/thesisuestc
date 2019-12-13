@@ -3,7 +3,7 @@
 [![](https://img.shields.io/github/last-commit/x-magus/ThesisUESTC)](https://github.com/x-magus/ThesisUESTC/zipball/master)
 [![](https://img.shields.io/github/issues/x-magus/ThesisUESTC)](https://github.com/x-magus/ThesisUESTC/issues)
 
-**ThesisUESTC**提供用于排版电子科技大学毕业论文的LaTeX模板类，旨在帮助电子科技大学的毕业生高效地完成毕业论文的写作。模板提供各种方便的命令，自动化地排版论文的各个部分，使毕业论文轻易地满足学校的格式要求。为了支持更好的字体效果，模板基于XeLaTeX编写，并且放弃对CTeX的依赖，使模板更加稳定。
+此项目提供用于排版电子科技大学毕业论文的LaTeX模板类，旨在帮助电子科技大学的毕业生高效地完成毕业论文的写作。模板提供各种方便的命令，自动化地排版论文的各个部分，使毕业论文轻易地满足学校的格式要求。为了支持更好的字体效果，模板基于XeLaTeX编写，并且放弃对CTeX的依赖，使模板更加稳定。
 
 模板由电子科技大学物理电子学院2014级硕士研究生王稳编写，由于在毕业论文写作中遇到各种问题，希望有一个理想的解决方案，所以决定写一个模板出来。祝愿此项目能继续发展，解决各位同学毕业论文写作中的困难。
 
@@ -182,4 +182,4 @@ xelatex main.tex
 
 如果希望使用QQ即时交流可加成电LaTeX模板交流群（926297104）。验证信息请回答问题，不要空置。由于作者不怎么访问清水河畔论坛，如有问题请在项目Issue模块提出，或者邮件联系作者（wwzvd@mst.edu）。类模板完全由作者手动编写，并非由代码工具生成，相对容易修改和阅读。在此欢迎高阶的使用者分享更好的写法，提出改进的建议。
 
-![](./pic/technical_contact.jpg)
+![](https://x-magus.github.io/pic/save/technical_contact.jpg)

@@ -393,6 +393,10 @@
   \def\display@englishheader{Bachelor Thesis of University of Electronic Science and Technology of China}
 }
 
+\newcommand{\ifbachelor}[2]{
+  \ifthenelse{\equal{\englishdegreename}{Bachelor}}{#1}{#2}
+}
+
 \DeclareOption{master}{
   \def\chinesedegreename{硕士}
   \def\englishdegreename{Master}
@@ -551,27 +555,19 @@
 \thispagestyle{empty}
 \setlength{\extrarowheight}{9pt}
 \begin{center}
-  \ifthenelse{\equal{\englishdegreename}{Bachelor}}{
-    \includegraphics{bachelor_font.pdf} \\
-  }{
+  \ifbachelor{\includegraphics{bachelor_font.pdf} \\}{
     \fontsize{22pt}{22pt}\selectfont 电\hspace{0.5em}子\hspace{0.5em}科\hspace{0.5em}技%
-    \hspace{0.5em}大\hspace{0.5em}学 \\[7bp]
-  }
+    \hspace{0.5em}大\hspace{0.5em}学 \\[7bp]}
   \fontsize{12pt}{12pt}\selectfont UNIVERSITY OF ELECTRONIC SCIENCE
     AND TECHNOLOGY OF CHINA \\[36bp]
-  \ifthenelse{\equal{\englishdegreename}{Bachelor}}{
-    \fontsize{42pt}{42pt}\selectfont{\bfseries\chinesebooktitle} \\[24bp]
-  }{
-    \fontsize{42pt}{42pt}\selectfont\chinesebooktitle \\[24bp]
-  }
+  \ifbachelor{\fontsize{42pt}{42pt}\selectfont{\bfseries\chinesebooktitle} \\[24bp]}{
+    \fontsize{42pt}{42pt}\selectfont\chinesebooktitle \\[24bp]}
   \fontsize{16pt}{16pt}\selectfont
     \textbf{\MakeUppercase{\englishbooktitle}} \\[48bp]
-  \ifthenelse{\equal{\englishdegreename}{Bachelor}}{
+  \ifbachelor{
     \vspace{0.5cm}
     \includegraphics[width=5cm]{logo.pdf} \\[66bp]
-  } {
-    \includegraphics[width=221bp]{logo.pdf} \\[48bp]
-  }
+  }{\includegraphics[width=221bp]{logo.pdf} \\[48bp]}
   \begin{tabular}{lp{4.6in}}
     \fontsize{16pt}{16pt}\selectfont 论文题目 & \multirow[t]{2}{4.6in}{
         \centering
@@ -596,11 +592,19 @@
   \end{tabular}
 \end{center}
 
-\newpage
-\thispagestyle{empty}
+\ifbachelor{}{\thetitlepage}
 
-\noindent
-分类号 \uline{\hspace{2.5in}} 密级 \uline{\hspace{2.5in}} \\[12bp]
+\newpage
+\setcounter{page}{0}
+\setcounter{pseudopage}{0}
+\setlength{\extrarowheight}{5pt}
+}
+
+\newcommand{\thetitlepage}{
+  \newpage
+  \thispagestyle{empty}
+
+\noindent 分类号 \uline{\hspace{2.5in}} 密级 \uline{\hspace{2.5in}} \\[12bp]
 UDC\textsuperscript{ 注1} \uline{\hspace{2.5in}} \\[12bp]
 
 \begin{center}
@@ -671,12 +675,6 @@ UDC\textsuperscript{ 注1} \uline{\hspace{2.5in}} \\[12bp]
 \vspace{0.54in}
 \noindent
 注1：注明《国际十进分类法UDC》的类号。
-
-
-\newpage
-\setcounter{page}{0}
-\setcounter{pseudopage}{0}
-\setlength{\extrarowheight}{5pt}
 }
 
 \setlength{\extrarowheight}{5pt}

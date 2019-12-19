@@ -102,6 +102,7 @@
 \RequirePackage[nottoc]{tocbibind}
 \RequirePackage{everypage}
 \RequirePackage{ifoddpage}
+\RequirePackage{pdfpages}
 
 \graphicspath{{./pic/}}
 
@@ -677,6 +678,9 @@ UDC\textsuperscript{ 注1} \uline{\hspace{2.5in}} \\[12bp]
 注1：注明《国际十进分类法UDC》的类号。
 }
 
+\newcommand{\bindpdfcover}[1]{\includepdf[pages=-]{#1}
+  \newpage\setcounter{page}{0}\setcounter{pseudopage}{0}}
+
 \setlength{\extrarowheight}{5pt}
 
 \newcommand{\standardhead}{
@@ -907,6 +911,7 @@ UDC\textsuperscript{ 注1} \uline{\hspace{2.5in}} \\[12bp]
 \newcites{accomplish}{\thesisaccomplishtitle}
 
 \newenvironment{thesisaccomplish}{
+  \nociteaccomplish{*}
   \renewcommand{\bibname}{\thesisaccomplishtitle}
   \begin{thebibliography}{lo}
   \interlinepenalty=10000

@@ -49,6 +49,8 @@ xelatex main.tex
 
 论文封面和扉页由`\makecover`命令添加，可以显示论文题目，作者，指导老师等。模版不会生成英文扉页和独创性声明，这两页包括中文封面最后正式提交时会由文印中心统一提供，无论自己排版的封面是否符合格式要求。已经包含的封面也不会影响任何前期的审核。
 
+如果想使用自己定义的封面，可以用`\bindpdfcover`命令添加已经做好的PDF格式的封面，如`\bindpdfcover{cover.pdf}`。
+
 ### 中英文摘要
 
 中英文摘要应包含在`chineseabstract`和`englishabstract`环境中，对应的关键字使用`\chinesekeyword`和`\englishkeyword`命令添加，并包含在相应的环境中。模板自动设置页眉和页脚，其中中文摘要标题中间空一格，页眉不空格。依照学校的格式说明，模板自动根据摘要结束所在的页数决定是否再空一页。
@@ -75,7 +77,7 @@ xelatex main.tex
 
 ### 参考文献
 
-使用BibTeX录入参考文献由`\thesisloadbibliography`命令导入数据库，参考文献风格自动设置为`thesis-uestc`。当参考文献数目超过100时，可以使用`large`选项调整编号的宽度，如`\thesisloadbibliography[large]{reference}`。
+使用BibTeX录入参考文献由`\thesisloadbibliography`命令导入`*.bib`文件数据库，参考文献风格自动设置为`thesis-uestc`。当参考文献数目超过100时，可以使用`large`选项调整编号的宽度，如`\thesisloadbibliography[large]{reference}`。
 
 在这个命令之前使用`\nocite{*}`命令会在文档中列出数据库中的所有条目，无论是否引用，其他情况下只列出引用过的条目。有些编辑器会识别`\bibliography`命令导入的数据库文件，并提供更好的编辑支持，所以模板也支持原生的`\bibliography`命令导入文献列表，只需要导入之前指定参考文献风格（`\bibliographystyle{thesis-uestc}`）即可。
 
@@ -91,7 +93,7 @@ xelatex main.tex
 
 ### 攻读学位期间取得的成果
 
-手动添加使用`\bibitem`命令将文章条目列在`thesisaccomplish`环境下，方法与参考文献相同。使用BibTeX录入研究成果由`\thesisloadaccomplish`命令导入文献列表，参考文献风格自动设置为`thesis-uestc`。此命令没有可选参数，自动在文档中列出数据库中的所有条目。
+使用BibTeX录入研究成果由`\thesisloadaccomplish`命令导入`*.bib`文献列表，与参考文献的方法相同。文献列表风格自动设置为`thesis-uestc`。此命令没有可选参数，自动在文档中列出数据库中的所有条目。手动添加使用`\bibitem`命令将文章条目列在`thesisaccomplish`环境下，方法与参考文献相同。
 
 ### 外文资料原文及译文
 
@@ -109,9 +111,7 @@ xelatex main.tex
 
 ### 算法描述
 
-算法描述使用`algorithm`环境，具体写法请参考范例`main.tex`或`chapter\c3.tex`。
-
-模板类自动加载`algorithm2e`宏包，详细的用法请参考[algorithm2e宏包文档](https://www.ctan.org/pkg/algorithm2e)。
+算法描述使用`algorithm`环境，具体写法请参考范例`main.tex`或`chapter\c3.tex`。模板类自动加载`algorithm2e`宏包，详细的用法请参考[algorithm2e宏包文档](https://www.ctan.org/pkg/algorithm2e)。
 
 ### 枚举环境和脚注
 
@@ -166,6 +166,8 @@ latexmk main_multifile.tex
 
 只有在正文使用命令恰当引用的缩略词才会在缩略词表中列出。正文中引用缩略词时，使用`glossaries`宏包提供的`\gls`、`\Gls`（首字母大写）或`\glspl`（复数形式）等命令引用缩略词的`<label>`。
 具体使用方法参考[glossaries宏包文档](https://www.ctan.org/tex-archive/macros/latex/contrib/glossaries/)。
+
+若想在缩略词表中列出所有定义过的条目，无论在正文中是否引用，可以在`\thesisglossarylist`使用`\glsaddall`命令。
 
 手动编译包含有缩略词表的文档，执行`xelatex`编译命令后需要执行`makeglossaries main`（注意没有.tex后缀）创建缩略词索引，再执行`xelatex`命令完成编译。所以手动编译一个包含参考文献、研究成果、缩略词表的完整文档命令为：
 ```bash

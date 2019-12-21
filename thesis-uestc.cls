@@ -555,6 +555,7 @@
 \newcommand{\makecover}{
 \thispagestyle{empty}
 \setlength{\extrarowheight}{9pt}
+\ifchinesebook{\pdfbookmark{封面}{cover}}{\pdfbookmark{Cover}{cover}}
 \begin{center}
   \ifbachelor{\includegraphics{bachelor_font.pdf} \\}{
     \fontsize{22pt}{22pt}\selectfont 电\hspace{0.5em}子\hspace{0.5em}科\hspace{0.5em}技%
@@ -569,26 +570,26 @@
     \vspace{0.5cm}
     \includegraphics[width=5cm]{logo.pdf} \\[66bp]
   }{\includegraphics[width=221bp]{logo.pdf} \\[48bp]}
-  \begin{tabular}{lp{4.6in}}
-    \fontsize{16pt}{16pt}\selectfont 论文题目 & \multirow[t]{2}{4.6in}{
+  \begin{tabular}{lp{4.6in}p{36pt}}
+    \heiti\fontsize{16pt}{16pt}\selectfont 论文题目 & \multirow[t]{2}{4.6in}{
         \centering
-          \fontsize{16pt}{19pt}\selectfont
+          \heiti\fontsize{16pt}{19pt}\selectfont
           \thetitle
-    } \\
+    } & \\
     \cline{2-2}
             & \\
     \cline{2-2}
   \end{tabular} \\[\baselineskip]
-  \begin{tabular}{>{\fontsize{16pt}{16pt}\selectfont}l
-      >{\centering\arraybackslash\fontsize{16pt}{16pt}\selectfont}
-      p{3.77in}}
-    学科专业 & \themajor \\
+  \begin{tabular}{>{\heiti\fontsize{16pt}{16pt}\selectfont}l
+      >{\centering\arraybackslash\heiti\fontsize{16pt}{16pt}\selectfont}
+      p{3.77in}p{20pt}}
+    学科专业 & \themajor &\\
     \cline{2-2}
-    学\chinesespace\chinesespace 号 & \thestudentnumber \\
+    学\chinesespace\chinesespace 号 & \thestudentnumber & \\
     \cline{2-2}
-    作者姓名 & \theauthor \\
+    作者姓名 & \theauthor &\\
     \cline{2-2}
-    指导老师 & \theadvisor \\
+    指导老师 & \theadvisor &\\
     \cline{2-2}
   \end{tabular}
 \end{center}
@@ -678,8 +679,11 @@ UDC\textsuperscript{ 注1} \uline{\hspace{2.5in}} \\[12bp]
 注1：注明《国际十进分类法UDC》的类号。
 }
 
-\newcommand{\bindpdfcover}[1]{\includepdf[pages=-]{#1}
-  \newpage\setcounter{page}{0}\setcounter{pseudopage}{0}}
+\newcommand{\bindpdfcover}[1]{
+  \ifchinesebook{\pdfbookmark{封面}{cover}}{\pdfbookmark{Cover}{cover}}
+  \includepdf[pages=-]{#1}
+  \newpage\setcounter{page}{0}\setcounter{pseudopage}{0}
+}
 
 \setlength{\extrarowheight}{5pt}
 

@@ -167,7 +167,7 @@ latexmk main_multifile.tex
 只有在正文使用命令恰当引用的缩略词才会在缩略词表中列出。正文中引用缩略词时，使用`glossaries`宏包提供的`\gls`、`\Gls`（首字母大写）或`\glspl`（复数形式）等命令引用缩略词的`<label>`。
 具体使用方法参考[glossaries宏包文档](https://www.ctan.org/tex-archive/macros/latex/contrib/glossaries/)。
 
-若想在缩略词表中列出所有定义过的条目，无论在正文中是否引用，可以在`\thesisglossarylist`使用`\glsaddall`命令。
+若想在缩略词表中列出所有定义过的条目，无论在正文中是否引用，可以在`\thesisglossarylist`之前使用`\glsaddall`命令。
 
 手动编译包含有缩略词表的文档，执行`xelatex`编译命令后需要执行`makeglossaries main`（注意没有.tex后缀）创建缩略词索引，再执行`xelatex`命令完成编译。所以手动编译一个包含参考文献、研究成果、缩略词表的完整文档命令为：
 ```bash

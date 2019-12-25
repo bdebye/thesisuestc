@@ -12,19 +12,19 @@
 如表\ref{tablea}所示给出了时间步长分别取0.4ns、0.5ns、0.6ns 时的三种存储方式的存储量大小。
 
 \begin{table}[h]
-	\caption{计算$2m\times 2m$理想导体平板时域感应电流采用的三种存储方式的存储量比较。} 
-	\begin{tabular}{|c|c|c|c|} 
-		\hline  
-		时间步长 & 非压缩存储方式 & 完全压缩存储方式 & 基权函数压缩存储方式 \\
-		\hline 
-		0.4ns & 5.59 MB & 6.78 MB & 6.78 MB\\  
-		\hline  
-		0.5ns & 10.17 MB & 5.58 MB & 5.58 MB \\  
-		\hline  
-		0.6ns & 8.38MB & 4.98 MB & 4.98 MB \\  
-		\hline  
-	\end{tabular}
-	\label{tablea}
+\caption{计算$2m\times 2m$理想导体平板时域感应电流采用的三种存储方式的存储量比较。}
+\begin{tabular}{cccc}
+\toprule
+\multirow{2}{*}{时间步长} & \multicolumn{3}{c}{存储方式} \\
+\cmidrule{2-4}
+& 非压缩存储方式 & 完全压缩存储方式 & 基权函数压缩存储方式 \\
+\midrule
+0.4ns & 5.59 MB & 6.78 MB & 6.78 MB\\
+0.5ns & 10.17 MB & 5.58 MB & 5.58 MB \\
+0.6ns & 8.38MB & 4.98 MB & 4.98 MB \\
+\bottomrule
+\end{tabular}
+\label{tablea}
 \end{table}
 
 如图\ref{picd}所示给出了时间步长选取为0.5ns 时采用三种不同存储方式计算的平板中心处$x$方向的感应电流值与IDFT 方法计算结果的比较，……。如图\ref{pice}所示给出了存储方式为基权函数压缩存储方式，时间步长分别取0.4ns、0.5ns、0.6ns时平板中心处$x$方向的感应电流计算结果，从图中可以看出不同时间步长的计算结果基本相同。

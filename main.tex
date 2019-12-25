@@ -159,16 +159,16 @@ f(\bm{x}^{i};\bm{w})\cdot f(\bm{x}^{j};\bm{w}),\text{otherwise},
 
 \begin{table}[h]
 \caption{计算$2m\times 2m$理想导体平板时域感应电流采用的三种存储方式的存储量比较。}
-\begin{tabular}{|c|c|c|c|}
-\hline
-时间步长 & 非压缩存储方式 & 完全压缩存储方式 & 基权函数压缩存储方式 \\
-\hline
+\begin{tabular}{cccc}
+\toprule
+\multirow{2}{*}{时间步长} & \multicolumn{3}{c}{存储方式} \\
+\cmidrule{2-4}
+& 非压缩存储方式 & 完全压缩存储方式 & 基权函数压缩存储方式 \\
+\midrule
 0.4ns & 5.59 MB & 6.78 MB & 6.78 MB\\
-\hline
 0.5ns & 10.17 MB & 5.58 MB & 5.58 MB \\
-\hline
 0.6ns & 8.38MB & 4.98 MB & 4.98 MB \\
-\hline
+\bottomrule
 \end{tabular}
 \label{tablea}
 \end{table}

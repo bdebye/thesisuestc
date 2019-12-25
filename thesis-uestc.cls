@@ -29,6 +29,7 @@
 \RequirePackage[font={doublespacing, small}, labelsep=space, skip=6pt]{caption}
 
 \RequirePackage{array}
+\RequirePackage{booktabs}
 \RequirePackage{setspace}
 \RequirePackage{multirow}
 \RequirePackage[tbtags]{amsmath}
@@ -599,7 +600,7 @@
 \newpage
 \setcounter{page}{0}
 \setcounter{pseudopage}{0}
-\setlength{\extrarowheight}{5pt}
+\setlength{\extrarowheight}{2pt}
 }
 
 \newcommand{\thetitlepage}{
@@ -685,14 +686,14 @@ UDC\textsuperscript{ 注1} \uline{\hspace{2.5in}} \\[12bp]
   \newpage\setcounter{page}{0}\setcounter{pseudopage}{0}
 }
 
-\setlength{\extrarowheight}{5pt}
+\setlength{\extrarowheight}{2pt}
 
 \newcommand{\standardhead}{
   \fancyhf{}
   \ifchinesebook{
     \fancyhead[CE]{\fontsize{10.5pt}{12.6pt}\selectfont 电子科技大学\chinesebooktitle}
     \fancyhead[CO]{\fontsize{10.5pt}{12.6pt}\selectfont\leftmark}
-  } {
+  }{
     \fancyhead[CE]{\fontsize{10.5pt}{12.6pt}\selectfont\nouppercase\display@englishheader}
     \fancyhead[CO]{\fontsize{10.5pt}{12.6pt}\selectfont\nouppercase\leftmark}
   }
@@ -705,7 +706,7 @@ UDC\textsuperscript{ 注1} \uline{\hspace{2.5in}} \\[12bp]
     \fancyhead[C]{\fontsize{10.5pt}{12.6pt}\selectfont 目录}
     \fancyfoot[CE,CO]{\fontsize{9pt}{10.8pt}\selectfont\Roman{pseudopage}}
     \pdfbookmark{目录}{toc}
-  } {
+  }{
     \fancyhead[C]{\fontsize{10.5pt}{12.6pt}\selectfont Contents}
     \fancyfoot[CE,CO]{\fontsize{9pt}{10.8pt}\selectfont\Roman{pseudopage}}
     \pdfbookmark{Contents}{toc}
@@ -798,7 +799,7 @@ UDC\textsuperscript{ 注1} \uline{\hspace{2.5in}} \\[12bp]
   %\renewcommand{\thechapter}{附\hspace{12pt}录}
   \ifchinesebook{
     \renewcommand{\appendixname}{附录}
-  } {
+  }{
     \renewcommand{\appendixname}{Appendix}
   }
   
@@ -818,7 +819,7 @@ UDC\textsuperscript{ 注1} \uline{\hspace{2.5in}} \\[12bp]
     \chapter*{附\hspace{12pt}录}
     \addcontentsline{toc}{chapter}{附录}
     \markboth{附录}{附录}
-  } {
+  }{
     \chapter*{Appendix}
     \addcontentsline{toc}{chapter}{Appendix}
     \markboth{Appendix}{Appendix}
@@ -828,7 +829,7 @@ UDC\textsuperscript{ 注1} \uline{\hspace{2.5in}} \\[12bp]
 \ifchinesebook{
   \newcommand{\translation@originaltitle}{外文资料原文}
   \newcommand{\translation@chinesetitle}{外文资料译文}
-} {
+}{
   \newcommand{\translation@originaltitle}{Original Text for Translation}
   \newcommand{\translation@chinesetitle}{Translated Text in Chinese}
 }

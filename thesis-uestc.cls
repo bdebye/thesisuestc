@@ -71,7 +71,7 @@
 \RequirePackage{zhnumber}
 \RequirePackage{pifont}
 
-\RequirePackage[hyphens]{url}
+\RequirePackage[hyphens]{xurl}
 \RequirePackage[hyperfootnotes=false,
     bookmarksnumbered,
     bookmarksdepth=4
@@ -471,10 +471,10 @@
   
   \ifchinesebook{
     \addtolength{\cfttabnumwidth}{12pt}
-    \renewcommand{\cfttabpresnum}{\figurename}
+    \renewcommand{\cfttabpresnum}{\tablename}
   }{
     \addtolength{\cfttabnumwidth}{32pt}
-    \renewcommand{\cfttabpresnum}{\figurename~}
+    \renewcommand{\cfttabpresnum}{\tablename~}
   }
   \addtocontents{toc}{\protect\setcounter{tocdepth}{-1}}
 }{}{}

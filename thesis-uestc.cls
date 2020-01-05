@@ -717,11 +717,7 @@ UDC\textsuperscript{ 注1} \uline{\hspace{2.5in}} \\[12bp]
   \tableofcontents
 }
 
-\ifchinesebook{
-  \renewcommand{\chaptermark}[1]{\markboth{第\zhnumber{\arabic{chapter}}章 \hspace{5.25pt}#1}{}}
-}{
-  \renewcommand{\chaptermark}[1]{\markboth{Chapter \arabic{chapter}\hspace{5.25pt}#1}{}}
-}
+\renewcommand{\chaptermark}[1]{\markboth{\thechapter \hspace{5.25pt}#1}{}}
 
 \newcommand{\thesisacknowledgement}{
   \addtocontents{toc}{\protect\setcounter{tocdepth}{0}}

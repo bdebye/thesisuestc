@@ -634,61 +634,63 @@ UDC\textsuperscript{ 注1} \uline{\hspace{2.5in}} \\[12bp]
     学\chinesespace 位\chinesespace 论\chinesespace 文
   } \\[48bp]
 
-  \fontsize{16pt}{16pt}\selectfont\zh@thetitle \\
+  \fontsize{16pt}{16pt}\selectfont{\heiti\zh@thetitle} \\
   \vspace{-15pt}
   \rule{5.9in}{.4pt} \\
-  \fontsize{12pt}{12pt}\selectfont（题名和副题名）\\[48bp]
-  \fontsize{16pt}{16pt}\selectfont\zh@theauthor \\
+  \fontsize{12pt}{12pt}\selectfont（题名和副题名）\\[36bp]
+  \fontsize{16pt}{16pt}\selectfont{\heiti\zh@theauthor} \\
   \vspace{-15pt}
   \rule{1.63in}{.4pt} \\
-  \fontsize{12pt}{12pt}\selectfont（作者姓名） \\[48bp]
+  \fontsize{12pt}{12pt}\selectfont（作者姓名） \\[36bp]
 
-  \begin{tabular}{>{\fontsize{16pt}{16pt}\selectfont}l
+  \begin{tabular}{>{\fontsize{12pt}{12pt}\selectfont}l
       >{\centering\arraybackslash\fontsize{16pt}{16pt}\selectfont}
       p{4.45in}}
-      指导老师 & \zh@theadvisor \\
+      指导老师 & {\heiti\zh@theadvisor} \\
+    \cline{2-2}
+      & {\heiti 电子科技大学\chinesespace 成都} \\
     \cline{2-2}
     & \fontsize{12pt}{12pt}\selectfont（姓名、职称、单位名称）
-  \end{tabular}  \\[48bp]
+  \end{tabular}  \\[36bp]
 \end{center}
 
   \noindent
-  \begin{tabular}{>{\fontsize{16pt}{16pt}\selectfont}l
-      >{\centering\arraybackslash\fontsize{16pt}{16pt}\selectfont}
-      p{0.96in}
-      >{\fontsize{16pt}{16pt}\selectfont}l
-      >{\centering\arraybackslash\fontsize{16pt}{16pt}\selectfont}
+  \begin{tabular}{>{\fontsize{12pt}{12pt}\selectfont}l
+      >{\centering\arraybackslash\fontsize{16pt}{16pt}\heiti\selectfont}
+      p{1.0in}
+      >{\fontsize{12pt}{12pt}\selectfont}l
+      >{\centering\arraybackslash\fontsize{16pt}{16pt}\heiti\selectfont}
       p{2.48in}}
       申请学位级别 & \chinesedegreename &
       学科专业 & \zh@themajor \\
     \cline{2-2}
     \cline{4-4}
   \end{tabular} \\
-  \begin{tabular}{>{\fontsize{16pt}{16pt}\selectfont}l
-      >{\centering\arraybackslash\fontsize{16pt}{16pt}\selectfont}
+  \begin{tabular}{>{\fontsize{12pt}{12pt}\selectfont}l
+      >{\centering\arraybackslash\fontsize{16pt}{16pt}\heiti\selectfont}
       p{1.0in}
-      >{\fontsize{16pt}{16pt}\selectfont}l
-      >{\centering\arraybackslash\fontsize{16pt}{16pt}\selectfont}
+      >{\fontsize{12pt}{12pt}\selectfont}l
+      >{\centering\arraybackslash\fontsize{16pt}{16pt}\heiti\selectfont}
       p{2.0in}}
       提交论文日期 &  &
       论文答辩日期 & \\
     \cline{2-2}
     \cline{4-4}
   \end{tabular} \\
-  \begin{tabular}{>{\fontsize{16pt}{16pt}\selectfont}l
-      >{\centering\arraybackslash\fontsize{16pt}{16pt}\selectfont}
+  \begin{tabular}{>{\fontsize{12pt}{12pt}\selectfont}l
+      >{\centering\arraybackslash\fontsize{16pt}{16pt}\heiti\selectfont}
       p{3.97in}}
-      学位授予单位和日期 & 电子科技大学 \\
+      学位授予单位和日期 & 电子科技大学\chinesespace 年\chinesespace 月 \\
     \cline{2-2}
   \end{tabular} \\
-  \begin{tabular}{>{\fontsize{16pt}{16pt}\selectfont}l
-      >{\centering\arraybackslash\fontsize{16pt}{16pt}\selectfont}
+  \begin{tabular}{>{\fontsize{12pt}{12pt}\selectfont}l
+      >{\centering\arraybackslash\fontsize{16pt}{16pt}\heiti\selectfont}
       p{2.26in}}
       答辩委员会主席 & \\
     \cline{2-2}
   \end{tabular} \\
-  \begin{tabular}{>{\fontsize{16pt}{16pt}\selectfont}l
-      >{\centering\arraybackslash\fontsize{16pt}{16pt}\selectfont}
+  \begin{tabular}{>{\fontsize{12pt}{12pt}\selectfont}l
+      >{\centering\arraybackslash\fontsize{16pt}{16pt}\heiti\selectfont}
       p{4.89in}}
       评阅人 & \\
     \cline{2-2}
@@ -696,7 +698,7 @@ UDC\textsuperscript{ 注1} \uline{\hspace{2.5in}} \\[12bp]
 
 \vspace{0.54in}
 \noindent
-注1：注明《国际十进分类法UDC》的类号。
+\hspace{12pt}注1：注明《国际十进分类法UDC》的类号。
 
 \newpage
 \thispagestyle{empty}\null

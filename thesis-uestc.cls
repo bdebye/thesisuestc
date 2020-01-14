@@ -54,9 +54,9 @@
   \newfontfamily{\heiti@letter}{STHeiti}
   \setallmainfonts{Times New Roman}
 \else
-  \setCJKmainfont[AutoFakeBold=true]{simsun.ttc}
-  \newCJKfontfamily{\heiti}{simhei.ttf}
-  \newfontfamily{\heiti@letter}{simhei.ttf}
+  \setCJKmainfont[AutoFakeBold=true]{fzsong.ttf}
+  \newCJKfontfamily{\heiti}{fzhei.ttf}
+  \newfontfamily{\heiti@letter}{fzhei.ttf}
   \setallmainfonts[
     BoldFont=timesbd.ttf,
     ItalicFont=timesi.ttf,
@@ -741,19 +741,19 @@ School: & \en@theschool \\
 }
 
 \newcommand{\originalitydeclaration}{
-  \newpage
-  \thispagestyle{empty}
-  \begin{spacing}{2.142}
+\newpage
+\thispagestyle{empty}
+\begin{spacing}{2.142}
   \ifchinesebook{\pdfbookmark{独创性声明}{originalitydeclaration}}
     {\pdfbookmark{Originality Declaration}{originalitydeclaration}}
   \noindent\begin{center}
   \fontsize{18pt}{20pt}\selectfont\heiti 独创性声明
   \end{center}
-  \par{\fontsize{14pt}{16pt}\selectfont\noindent\null\hspace{28pt}
-  本人声明所呈交的学位论文是本人在导师指导下进行的研究工作及取得的研究成果。%
-  据我所知，除了文中特别加以标注和致谢的地方外，论文中不包含其他人已经发表或撰写过的研究成果，%
-  也不包含为获得电子科技大学或其它教育机构的学位或证书而使用过的材料。%
-  与我一同工作的同志对本研究所做的任何贡献均已在论文中作了明确的说明并表示谢意。}
+    \par{\fontsize{14pt}{16pt}\selectfont\noindent\null\hspace{28pt}
+    本人声明所呈交的学位论文是本人在导师指导下进行的研究工作及取得的研究成果。%
+    据我所知，除了文中特别加以标注和致谢的地方外，论文中不包含其他人已经发表或撰写过的研究成果，%
+    也不包含为获得电子科技大学或其它教育机构的学位或证书而使用过的材料。%
+    与我一同工作的同志对本研究所做的任何贡献均已在论文中作了明确的说明并表示谢意。}
   \\[14pt]
   \fontsize{14pt}{16pt}\selectfont\noindent\null\hspace{35pt}作者签名：\uline{\hspace{4.1cm}}\hspace{42pt}%
   日期：\chinesespace\chinesespace 年\hspace{21pt}月\hspace{21pt}日 \\
@@ -761,10 +761,10 @@ School: & \en@theschool \\
     \fontsize{18pt}{20pt}\selectfont\heiti 论文使用授权
   \end{center}
   \par{\fontsize{14pt}{16pt}\selectfont\noindent\null\hspace{28pt}%
-  本学位论文作者完全了解电子科技大学有关保留、使用学位论文的规定，%
-  有权保留并向国家有关部门或机构送交论文的复印件和磁盘，允许论文被查阅和借阅。%
-  本人授权电子科技大学可以将学位论文的全部或部分内容编入有关数据库进行检索，%
-  可以采用影印、缩印或扫描等复制手段保存、汇编学位论文。}
+    本学位论文作者完全了解电子科技大学有关保留、使用学位论文的规定，%
+    有权保留并向国家有关部门或机构送交论文的复印件和磁盘，允许论文被查阅和借阅。%
+    本人授权电子科技大学可以将学位论文的全部或部分内容编入有关数据库进行检索，%
+    可以采用影印、缩印或扫描等复制手段保存、汇编学位论文。}
   \par{\fontsize{14pt}{16pt}\selectfont\noindent\null\hspace{28pt}
   \chineseleftparenthesis%
   保密的学位论文在解密后应遵守此规定%
@@ -821,8 +821,6 @@ School: & \en@theschool \\
     \addcontentsline{toc}{chapter}{Acknowledgements}
     \markboth{Acknowledgements}{Acknowledgements}
   }
-
-
   \thispagestyle{fancy}
 }
 

@@ -10,9 +10,9 @@
 ## 使用方法
 
 ### 基本环境
-使用模板需要系统安装任意一种TeX环境，如[TeXLive](http://mirror.ctan.org/systems/texlive/Images/)、[MacTeX](https://www.tug.org/mactex/mactex-download.html)和[MiKTeX](https://miktex.org/download)（都自动带有XeLaTeX引擎，但是不推荐CTeX），安装有SimSun和SimHei字体（其实就是宋体和黑体）以及Times New Roman英文字体。字体方面也可以像在线编辑环境那样指定所使用的字体文件。在MacOS下编译会自动识别操作系统，使用Songti SC和STHeiti字体，但需要启用`--shell-escape`编译选项。
+使用模板需要系统安装任意一种TeX环境，如[TeXLive](http://mirror.ctan.org/systems/texlive/Images/)、[MacTeX](https://www.tug.org/mactex/mactex-download.html)和[MiKTeX](https://miktex.org/download)（都自动带有XeLaTeX引擎，但是不推荐CTeX），安装有 SimSun 和 SimHei 字体（其实就是宋体和黑体）以及 Times New Roman 英文字体。在 MacOS 下编译会自动识别操作系统，使用 Songti SC 和 STHeiti 字体，但需要启用`--shell-escape`编译选项。Linux 使用者可以下载[字体文件包](https://pan.baidu.com/s/1foP4Bay4Lwg4DE91b8LNjA)（提取码：swx3）解压到文档根目录。
 
-模板采用LaTeX类的形式封装，导入模板只需要把thesis-uestc.cls文件放在文档所在目录，在文档开头使用`\documentclass{thesis-uestc}`命令将文档的类设置成thesis-uestc即可。使用BibTeX录入参考文献还需要`thesis-uestc.bst`风格定义文件。
+模板采用LaTeX类的形式封装，导入模板只需要把`thesis-uestc.cls`文件放在文档所在目录，在文档开头使用`\documentclass{thesis-uestc}`命令将文档的类设置成`thesis-uestc`即可。使用BibTeX录入参考文献还需要`thesis-uestc.bst`风格定义文件。
 
 模板类有bachelor、master、promaster、doctor和engdoctor四个学位选项，对应本科、硕士、专业硕士和博士的毕业论文，默认选项为`master`。文档内容的书写参考范例`main.tex`。英语使用者可以启用`english`选项，模版会按照英语论文的格式排版。
 
@@ -93,7 +93,7 @@ xelatex main.tex
 
 ### 攻读学位期间取得的成果
 
-使用BibTeX录入研究成果由`\thesisloadaccomplish`命令导入`*.bib`文献列表，与参考文献的方法相同。文献列表风格自动设置为`thesis-uestc`。此命令没有可选参数，自动在文档中列出数据库中的所有条目。手动添加使用`\bibitem`命令将文章条目列在`thesisaccomplish`环境下，方法与参考文献相同。
+使用BibTeX录入研究成果由`\thesisloadaccomplish`命令导入`*.bib`文献列表，方法与参考文献相同。文献列表风格自动设置为`thesis-uestc`。此命令没有可选参数，自动在文档中列出数据库中的所有条目。手动添加使用`\bibitem`命令将文章条目列在`thesisaccomplish`环境下，方法与参考文献相同。
 
 ### 外文资料原文及译文
 
@@ -182,6 +182,6 @@ xelatex main.tex
 
 ## 技术交流
 
-欢迎各位同学交流技术经验，如果希望使用QQ即时交流可加成电LaTeX模板交流群（926297104）。验证信息请回答问题，不要空置。如有问题还可以在项目[Issue](https://github.com/x-magus/ThesisUESTC/issues)模块提出，或者邮件联系作者（wwzvd@mst.edu）。类模板完全由作者手动编写，并非由代码工具生成，相对容易修改和阅读。在此欢迎高阶的使用者分享更好的写法，提出改进的建议。
+欢迎各位同学交流技术经验，如果希望使用QQ即时交流可加成电LaTeX模板交流群（926297104）。验证信息请回答问题，不要空置。如有问题还可以在项目 [Issue](https://github.com/x-magus/ThesisUESTC/issues) 模块提出，或者邮件联系作者（wwzvd@mst.edu）。类模板完全由作者手动编写，并非由代码工具生成，相对容易修改和阅读。在此欢迎高阶的使用者分享更好的写法，提出改进的建议。
 
 ![](https://x-magus.github.io/pic/save/technical_contact.jpg)

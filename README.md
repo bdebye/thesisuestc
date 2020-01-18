@@ -7,6 +7,10 @@
 
 模板由电子科技大学物理电子学院2014级硕士研究生王稳编写，由于在毕业论文写作中遇到各种问题，希望有一个理想的解决方案，所以决定写一个模板出来。祝愿此项目能继续发展，解决各位同学毕业论文写作中的困难。
 
+This project provides the LaTeX template for UESTC theses, aims to help the students in UESTC efficiently complete the thesis writing task. The template provides various convenient commands, automatically typesets the portions of the thesis, render it fits the requirements of the school in a satisfactory way. To support better font effects, the template is based on XeLaTeX, and gives up the dependence on CTeX, to attain better reliability.
+
+The template is authored by Wang Wen, a 2014 master graduate of UESTC. Because of the problems that occurred in thesis writing, an ideal solution is expected, and a LaTeX template is provided overcoming such difficulties. Wishes to the further development of this project, to spare the students' overheads on this matter.
+
 ## 使用方法
 
 ### 基本环境

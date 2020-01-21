@@ -269,12 +269,8 @@
 \newcommand{\chinesekeyword}[1]{
   \vspace{\baselineskip}
   \noindent
-    \begin{minipage}[t]{48pt}
-      \noindent\textbf{关键词\chinesecolon}
-    \end{minipage}
-    \begin{minipage}[t]{\linewidth - 48pt}
-      #1
-    \end{minipage}
+  \parbox[t]{48pt}{\textbf{关键词\chinesecolon}}
+  \parbox[t]{\linewidth - 48pt}{#1}
 }
 
 \newenvironment{englishabstract}{
@@ -299,13 +295,9 @@
 
 \newcommand{\englishkeyword}[1]{
   \vspace{\baselineskip}
-  \noindent\begin{minipage}[t]{2.1cm}
-      \noindent\textbf{Keywords:}
-    \end{minipage}
-    \begin{minipage}[t]{
-      \linewidth - 2.1cm}
-        #1
-    \end{minipage}
+  \noindent
+  \parbox[t]{2.1cm}{\textbf{Keywords:}}
+  \parbox[t]{\linewidth - 2.1cm}{#1}
 }
 
 \AddEverypageHook{\addtocontents{toc}{

@@ -113,9 +113,9 @@
 
 \RequirePackage[titles]{tocloft}
 \RequirePackage[labelformat=simple]{subcaption}
-\captionsetup[sub]{font=small, belowskip=0pt}
+\captionsetup[sub]{font=small, belowskip=6pt}
 \renewcommand{\thesubfigure}{(\alph{subfigure})}
-\newcommand{\subfloatpagebreak}{\end{figure}\clearpage\begin{figure}[tb]\ContinuedFloat}
+\newcommand{\floatcontinue}{\end{figure}\clearpage\begin{figure}[tb]\ContinuedFloat}
 
 \urlstyle{rm}
 \raggedbottom
@@ -150,7 +150,6 @@
 \captionsetup[figure]{aboveskip=6pt, belowskip=0pt}
 \captionsetup[table]{aboveskip=6pt, belowskip=0pt}
 
-% \setlength{\subfigcapskip}{0pt}
 \setlength{\intextsep}{9pt}
 
 \AtBeginEnvironment{figure}{

@@ -112,9 +112,10 @@
 \graphicspath{{./pic/}}
 
 \RequirePackage[titles]{tocloft}
-\usepackage[labelformat=simple]{subcaption}
+\RequirePackage[labelformat=simple]{subcaption}
 \captionsetup[sub]{font=small, belowskip=0pt}
 \renewcommand{\thesubfigure}{(\alph{subfigure})}
+\newcommand{\subfloatpagebreak}{\end{figure}\clearpage\begin{figure}[tb]\ContinuedFloat}
 
 \urlstyle{rm}
 \raggedbottom

@@ -577,7 +577,7 @@
 \setlength{\extrarowheight}{9pt}
 \ifchinesebook{\pdfbookmark{封面}{cover}}{\pdfbookmark{Cover}{cover}}
 \begin{center}
-  \ifbachelor{\includegraphics{bachelor_font.pdf} \\}{
+  \ifbachelor{\includegraphics{pic/bachelor_font.pdf} \\}{
     \fontsize{22pt}{22pt}\selectfont 电\hspace{0.5em}子\hspace{0.5em}科\hspace{0.5em}技%
     \hspace{0.5em}大\hspace{0.5em}学 \\[7bp]}
   \fontsize{12pt}{12pt}\selectfont UNIVERSITY OF ELECTRONIC SCIENCE
@@ -588,8 +588,8 @@
     \textbf{\MakeUppercase{\englishbooktitle}} \\[48bp]
   \ifbachelor{
     \vspace{0.5cm}
-    \includegraphics[width=5cm]{logo.pdf} \\[66bp]
-  }{\includegraphics[width=221bp]{logo.pdf} \\[48bp]}
+    \includegraphics[width=5cm]{pic/logo.pdf} \\[66bp]
+  }{\includegraphics[width=221bp]{pic/logo.pdf} \\[48bp]}
   \begin{tabular}{lp{4.6in}p{36pt}}
     \heiti\fontsize{16pt}{16pt}\selectfont 论文题目 & \multirow[t]{2}{4.6in}{
         \centering

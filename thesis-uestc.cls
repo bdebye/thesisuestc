@@ -614,10 +614,10 @@
   \end{tabular}
 \end{center}
 
+\blankpage
+
 \ifbachelor{}{\thetitlepage}
 
-\newpage
-\setcounter{page}{0}
 \setcounter{pseudopage}{0}
 \setlength{\extrarowheight}{2pt}
 }
@@ -700,6 +700,8 @@ UDC\textsuperscript{ 注1} \uline{\hspace{2.5in}} \\[12bp]
 \noindent
 \hspace{12pt}注1：注明《国际十进分类法UDC》的类号。
 
+\blankpage
+
 \newpage
 \thispagestyle{empty}\null
 \par{\vspace{2.3cm}}
@@ -732,6 +734,8 @@ Supervisor: & \en@theadvisor \\
 School: & \en@theschool \\
 \cline{2-2}
 \end{tabular}
+
+\blankpage
 }
 
 \newcommand{\bindpdfcover}[1]{
@@ -773,7 +777,8 @@ School: & \en@theschool \\
   导师签名：\uline{\hspace{4.1cm}} \\
   \null\hspace{259pt} 日期：\chinesespace\chinesespace 年\hspace{21pt}月\hspace{21pt}日
 \end{spacing}
-\newpage\setcounter{page}{0}\setcounter{pseudopage}{0}
+\blankpage
+\setcounter{pseudopage}{0}
 }
 
 \setlength{\extrarowheight}{2pt}
@@ -825,24 +830,11 @@ School: & \en@theschool \\
 }
 
 \newcommand{\thesischapterexordium}{
-  \checkoddpage
-  \ifoddpage
-      \blankpage
-    \else
-      \newpage
-  \fi
-    \newpage
+  \cleardoublepage{}
   \addtocontents{toc}{\protect\setcounter{tocdepth}{2}}
   \standardhead
   \pagenumbering{arabic}
   \setcounter{page}{1}
-  \ifchinesebook{
-    \chapter{绪\hspace{6pt}论}
-    \chaptermark{绪论}
-  }{
-    \chapter{Introduction}
-    \chaptermark{Introduction}
-  }
 }
 
 %\renewcommand*{\l@chapter}{\@dottedtocline{1}{1.5em}{2.3em}}

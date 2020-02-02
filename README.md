@@ -7,6 +7,12 @@
 
 模板由电子科技大学物理电子学院2014级硕士研究生王稳编写，由于在毕业论文写作中遇到各种问题，希望有一个理想的解决方案，所以决定写一个模板出来。祝愿此项目能继续发展，解决各位同学毕业论文写作中的困难。
 
+*由于GitHub最近访问很不稳定，如果下载链接失效请使用[Gitea分支](https://gitea.com/Xmagus/ThesisUESTC)的[下载链接](https://gitea.com/Xmagus/ThesisUESTC/archive/master.zip)。*
+
+This project provides the LaTeX template for UESTC theses, aims to help the students in UESTC efficiently complete the thesis writing task. The template provides various convenient commands, automatically typesets the portions of the thesis, render it perfectly fits the requirements of the school. To support better font effects, the template is based on XeLaTeX, and gives up the dependence on CTeX, to attain better reliability.
+
+The template is authored by Wang Wen, a 2014 master graduate of UESTC. Because of the problems that occurred in thesis writing, an ideal solution is expected, and a LaTeX template is provided overcoming such difficulties. Wishes to the further development of this project, to spare the students' overheads on this matter.
+
 ## 使用方法
 
 ### 基本环境
@@ -101,7 +107,7 @@ xelatex main.tex
 
 ### 插入图片和表格
 
-插入图片使用`figure`环境，自动调整图片前后的间距。插入表格使用`table`环境，自动调整表格前后的间距和默认的字体大小。
+插入图片使用`figure`环境，自动调整图片前后的间距，添加子图则使用`\subfloat`命令。若子图过多需要跨页则在间断处插入`\floatcontinue`命令。插入表格使用`table`环境，自动调整表格前后的间距和默认的字体大小。
 
 图片文件可以统一放在`./pic`目录下。具体插入图片和表格的代码参考范例`main.tex`。
 

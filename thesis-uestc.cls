@@ -30,6 +30,10 @@
 
 \RequirePackage{array}
 \RequirePackage{booktabs}
+\setlength{\heavyrulewidth}{0.5pt}
+\setlength{\lightrulewidth}{0.5pt}
+\setlength{\arrayrulewidth}{0.5pt}
+
 \RequirePackage{setspace}
 \RequirePackage{multirow}
 \RequirePackage[tbtags]{amsmath}
@@ -107,8 +111,11 @@
 
 \graphicspath{{./pic/}}
 
-\RequirePackage[titles, subfigure]{tocloft}
+\RequirePackage[titles]{tocloft}
 \RequirePackage[font=small,subrefformat=parens,labelformat=parens]{subfig}
+\captionsetup[sub]{font=small, belowskip=6pt}
+\renewcommand{\thesubfigure}{(\alph{subfigure})}
+\newcommand{\floatcontinue}{\end{figure}\clearpage\begin{figure}[tb]\ContinuedFloat}
 
 \urlstyle{rm}
 \raggedbottom
@@ -140,8 +147,8 @@
 
 \captionsetup{format=hang}
 \captionsetup{width=\textwidth - 42pt}
-\captionsetup[figure]{aboveskip=6pt,belowskip=0pt}
-\captionsetup[table]{belowskip=6pt}
+\captionsetup[figure]{aboveskip=6pt, belowskip=0pt}
+\captionsetup[table]{aboveskip=6pt, belowskip=0pt}
 
 \setlength{\intextsep}{9pt}
 
@@ -154,7 +161,6 @@
 }
 
 \AtBeginEnvironment{tabular}{\small}
-
 
 \newcommand{\chinesecolon}{\char"FF1A}
 \newcommand{\chinesespace}{\char"3000}
@@ -267,12 +273,8 @@
 \newcommand{\chinesekeyword}[1]{
   \vspace{\baselineskip}
   \noindent
-    \begin{minipage}[t]{48pt}
-      \noindent\textbf{关键词\chinesecolon}
-    \end{minipage}
-    \begin{minipage}[t]{\linewidth - 48pt}
-      #1
-    \end{minipage}
+  \parbox[t]{48pt}{\textbf{关键词\chinesecolon}}
+  \parbox[t]{\linewidth - 48pt}{#1}
 }
 
 \newenvironment{englishabstract}{
@@ -297,13 +299,9 @@
 
 \newcommand{\englishkeyword}[1]{
   \vspace{\baselineskip}
-  \noindent\begin{minipage}[t]{2.1cm}
-      \noindent\textbf{Keywords:}
-    \end{minipage}
-    \begin{minipage}[t]{
-      \linewidth - 2.1cm}
-        #1
-    \end{minipage}
+  \noindent
+  \parbox[t]{2.1cm}{\textbf{Keywords:}}
+  \parbox[t]{\linewidth - 2.1cm}{#1}
 }
 
 \AddEverypageHook{\addtocontents{toc}{

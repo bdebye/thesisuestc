@@ -108,7 +108,7 @@
 \graphicspath{{./pic/}}
 
 \RequirePackage[titles, subfigure]{tocloft}
-\RequirePackage[small]{subfigure}
+\RequirePackage[font=small,subrefformat=parens,labelformat=parens]{subfig}
 
 \urlstyle{rm}
 \raggedbottom
@@ -143,7 +143,6 @@
 \captionsetup[figure]{aboveskip=6pt,belowskip=0pt}
 \captionsetup[table]{belowskip=6pt}
 
-\setlength{\subfigcapskip}{0pt}
 \setlength{\intextsep}{9pt}
 
 \AtBeginEnvironment{figure}{
@@ -156,7 +155,6 @@
 
 \AtBeginEnvironment{tabular}{\small}
 
-\renewcommand{\p@subfigure}{\arabic{chapter}-\arabic{figure}}
 
 \newcommand{\chinesecolon}{\char"FF1A}
 \newcommand{\chinesespace}{\char"3000}

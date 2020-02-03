@@ -837,9 +837,11 @@ School: & \en@theschool \\
 
 %\renewcommand*{\l@chapter}{\@dottedtocline{1}{1.5em}{2.3em}}
 
+\let\oldappendix\appendix
+
 \newcommand{\thesisappendix}{
   \newpage
-  \appendix
+  \oldappendix
   \ifchinesebook{}{\addtocontents{toc}{\protect\addtolength{\cftchapnumwidth}{12pt}}}
   \addtocontents{toc}{\protect\setcounter{tocdepth}{2}}
   \titleformat{\chapter}[block]
@@ -866,7 +868,7 @@ School: & \en@theschool \\
 
 \newcommand{\thesissingleappendix}{
   \newpage
-  \appendix
+  \oldappendix
   \addtocontents{toc}{\protect\setcounter{tocdepth}{2}}
   \titleformat{\chapter}[block]
     {\centering\fontsize{15pt}{15pt}\selectfont\strong\thispagestyle{fancy}}{附\hspace{12pt}录}{7.5pt}{}
@@ -899,6 +901,8 @@ School: & \en@theschool \\
     \markboth{Appendix}{Appendix}
   }
 }
+
+\renewcommand{\appendix}{\thesisappendix}
 
 \ifchinesebook{
   \newcommand{\translation@originaltitle}{外文资料原文}

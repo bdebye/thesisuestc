@@ -78,7 +78,9 @@
 \RequirePackage[hyphens]{xurl}
 \RequirePackage[hyperfootnotes=false,
     bookmarksnumbered,
-    bookmarksdepth=4
+    bookmarksdepth=4,
+    xetex,
+    unicode=true
 ]{hyperref}
 \hypersetup{
   colorlinks=true,

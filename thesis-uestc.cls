@@ -69,7 +69,7 @@
 \fi
 \fi
 
-\DeclareMathAlphabet{\mathbf}{\eu@enc}{\eu@mathrm}{bx}{it}
+\DeclareMathAlphabet{\mathbf}{\eu@enc}{\eu@mathrm}{\bfdefault}{it}
 \newcommand{\bm}{\mathbf}
 
 \RequirePackage{zhnumber}

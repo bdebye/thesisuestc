@@ -94,7 +94,6 @@
 \RequirePackage{fancyhdr}
 \RequirePackage{titlesec}
 \RequirePackage{appendix}
-\RequirePackage{setspace}
 \RequirePackage{cite}
 \RequirePackage[normalem]{ulem}
 \RequirePackage{enumitem}
@@ -113,7 +112,7 @@
 
 \RequirePackage[titles]{tocloft}
 \RequirePackage[labelformat=simple]{subfig}
-\captionsetup[sub]{font=small, belowskip=6pt}
+\captionsetup[subfigure]{font=small, belowskip=6pt, width=36pt}
 \renewcommand{\thesubfigure}{(\alph{subfigure})}
 \newcommand{\floatcontinue}{\end{figure}\clearpage\begin{figure}[tb]\ContinuedFloat}
 
@@ -148,7 +147,7 @@
 \captionsetup{format=hang}
 \captionsetup{width=\textwidth - 42pt}
 \captionsetup[figure]{aboveskip=6pt, belowskip=0pt}
-\captionsetup[table]{aboveskip=6pt, belowskip=0pt}
+\captionsetup[table]{aboveskip=9pt, belowskip=0pt}
 
 \setlength{\intextsep}{9pt}
 

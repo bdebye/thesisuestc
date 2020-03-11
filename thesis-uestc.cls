@@ -33,6 +33,7 @@
 \setlength{\heavyrulewidth}{0.5pt}
 \setlength{\lightrulewidth}{0.5pt}
 \setlength{\arrayrulewidth}{0.5pt}
+\setlength{\cmidrulewidth}{0.5pt}
 
 \RequirePackage{setspace}
 \RequirePackage{multirow}

@@ -957,7 +957,7 @@ School: & \en@theschool \\
 \renewcommand{\bibname}{\thesisbibname}
 \renewcommand{\@biblabel}[1]{[#1]\hfill}
 
-\newenvironment{thesisbibliography}{
+\newenvironment{thesisthebibliography}{
   \begin{thebibliography}{lo}
     \interlinepenalty=10000
     \begin{spacing}{1.667}
@@ -993,9 +993,12 @@ School: & \en@theschool \\
     \bibliography{#2}
   }
 }
+
+\newcommand{\thesisbibliography}{\thesisloadbibliography}
+
 \newcites{accomplish}{\thesisaccomplishtitle}
 
-\newenvironment{thesisaccomplish}{
+\newenvironment{thesistheaccomplish}{
   \nociteaccomplish{*}
   \renewcommand{\bibname}{\thesisaccomplishtitle}
   \begin{thebibliography}{lo}
@@ -1019,6 +1022,8 @@ School: & \en@theschool \\
   \end{spacing}
   \renewcommand{\bibname}{\thesisbibname}
 }
+
+\newcommand{\thesisaccomplish}{\thesisloadaccomplish}
 
 \newtheoremstyle{dotless}{0pt}{0pt}{\normalfont}{24pt}{\strong}{}{ }{}
 \theoremstyle{dotless}

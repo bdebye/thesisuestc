@@ -566,7 +566,7 @@
     \printglossary[style=long-uestc, title={\protect\centering Glossary}, nonumberlist, nogroupskip]
   }
 }
-\makeglossaries
+% \makeglossaries
 
 \newcommand{\makecover}{
 \thispagestyle{empty}
@@ -598,7 +598,7 @@
   \end{tabular} \\[\baselineskip]
   \begin{tabular}{>{\heiti\fontsize{16pt}{16pt}\selectfont}l
       >{\centering\arraybackslash\heiti\fontsize{16pt}{16pt}\selectfont}
-      p{3.77in}p{20pt}}
+      p{3.77in}p{15pt}}
     学科专业 & \zh@themajor &\\
     \cline{2-2}
     学\chinesespace\chinesespace 号 & \thestudentnumber & \\
@@ -999,15 +999,20 @@ School: & \en@theschool \\
 \newcites{accomplish}{\thesisaccomplishtitle}
 
 \newenvironment{thesistheaccomplish}{
+  \addtocontents{toc}{\protect\setcounter{tocdepth}{0}}
+  \renewcommand\thesection{\arabic{section}}
+  \setcounter{section}{0}
   \nociteaccomplish{*}
   \renewcommand{\bibname}{\thesisaccomplishtitle}
   \begin{thebibliography}{lo}
   \interlinepenalty=10000
+  \setlength{\itemsep}{0bp}\setlength{\parskip}{0pt}
   \begin{spacing}{1.667}
   \thispagestyle{fancy}
   \small
 }{
-  \end{spacing}\end{thebibliography}
+  \end{spacing}
+  \end{thebibliography}
   \renewcommand{\bibname}{\thesisbibname}
 }
 

@@ -348,6 +348,7 @@ FUNCTION{find.replace}
 FUNCTION {format.pages}
 {
     pages "--" "-" find.replace
+    " " "" find.replace
 }
 
 FUNCTION {format.institution}
@@ -442,17 +443,23 @@ FUNCTION {article}
     format.authors write$ add.period
     format.title "[J]" * write$ add.period
     format.journal write$ add.comma
-    format.year write$ add.comma
+    format.year write$
     
-    number missing$
-    {
-        volume ": " * write$
-    } {
-        volume "(" *
-        number *
-        "): " * write$
+    volume missing$ {
+      pages missing$ 'skip$
+      {
+        add.comma
+        format.pages write$
+      } if$
+    }
+    { add.comma
+      number missing$ { volume write$ }
+      {
+        volume "(" * number *
+        ")" * write$
+      } if$
+      pages missing$ 'skip$ { ": " format.pages * write$ } if$
     } if$
-    format.pages write$
     newline$
 }
 

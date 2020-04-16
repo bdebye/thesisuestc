@@ -846,6 +846,7 @@ School: & \en@theschool \\
 \newcommand{\thesisappendix}{
   \newpage
   \appendix
+  \interlinepenalty=0
   \ifchinesebook{}{\addtocontents{toc}{\protect\addtolength{\cftchapnumwidth}{12pt}}}
   \addtocontents{toc}{\protect\setcounter{tocdepth}{2}}
   \titleformat{\chapter}[block]
@@ -873,6 +874,7 @@ School: & \en@theschool \\
 \newcommand{\thesissingleappendix}{
   \newpage
   \appendix
+  \interlinepenalty=0
   \addtocontents{toc}{\protect\setcounter{tocdepth}{2}}
   \titleformat{\chapter}[block]
     {\centering\fontsize{15pt}{15pt}\selectfont\strong\thispagestyle{fancy}}{附\hspace{12pt}录}{7.5pt}{}
@@ -915,6 +917,7 @@ School: & \en@theschool \\
 }
 
 \newcommand{\thesistranslationoriginal}{
+  \interlinepenalty=0
   \chapter*{\translation@originaltitle}
   \addtocontents{toc}{\protect\setcounter{tocdepth}{0}}
   \renewcommand\thesection{\arabic{section}}
@@ -931,6 +934,7 @@ School: & \en@theschool \\
 }
 
 \newcommand{\thesistranslationchinese}{
+  \interlinepenalty=0
   \addtocontents{toc}{\protect\setcounter{tocdepth}{0}}
   \chapter*{\translation@chinesetitle}
   \renewcommand\thesection{\arabic{section}}

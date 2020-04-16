@@ -29,22 +29,22 @@
 
 如图\ref{picd}所示给出了时间步长选取为0.5ns 时采用三种不同存储方式计算的平板中心处$x$方向的感应电流值与IDFT 方法计算结果的比较，……。如图\ref{pice}所示给出了存储方式为基权函数压缩存储方式，时间步长分别取0.4ns、0.5ns、0.6ns时平板中心处$x$方向的感应电流计算结果，从图中可以看出不同时间步长的计算结果基本相同。
 
-由于时域混合场积分方程是时域电场积分方程与时域磁场积分方程的线性组合，因此时域混合场积分方程时间步进算法的阻抗矩阵特征与时域电场积分方程时间步进算法的阻抗矩阵特征相同。
-
 \begin{figure}[h]
 \subfloat[]{
-\label{picd}
-\includegraphics[width=6.77cm]{picd.pdf}}
+    \label{picd}
+    \includegraphics[width=6.77cm]{picd.pdf}
+}
 \subfloat[]{
-\label{pice}
-\includegraphics[width=7.04cm]{pice.pdf}}
-\caption{$2m\times 2m$的理想导体平板中心处感应电流$x$分量随时间的变化关系}
+    \label{pice}
+    \includegraphics[width=7.04cm]{pice.pdf}
+}
+\caption{$2m\times 2m$的理想导体平板中心处感应电流$x$分量随时间的变化关系。(a)不同存储方式的计算结果与IDFT方法的结果比较；(b)不同时间步长的计算结果比较比较比较}
 \label{fig2}
 \end{figure}
 
 由于时域混合场积分方程是时域电场积分方程与时域磁场积分方程的线性组合，因此时域混合场积分方程时间步进算法的阻抗矩阵特征与时域电场积分方程时间步进算法的阻抗矩阵特征相同。
-\section{时域积分方程时间步进算法矩阵方程的求解}
 
+\section{时域积分方程时间步进算法矩阵方程的求解}
 \begin{theorem}
 如果时域混合场积分方程是时域电场积分方程与时域磁场积分方程的线性组合。
 \end{theorem}

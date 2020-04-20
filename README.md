@@ -220,6 +220,12 @@ xelatex main.tex
 ### 如何录入专利或学位论文等文献条目？
 模版提供的`reference.bib`包含所有可用条目类型的样例，包括期刊论文，会议论文，专利、学位论文和电子出版物等，可以参考这些条目录入文献信息。
 
+### 如何给子图添加图题？
+根据学校[2016版规范](http://gr.uestc.edu.cn/attached/papers/101/201609/20160912175002_28945.doc)，子图不用图题，但是，如果评阅老师需要。按照以下方式添加：
+1. 将cls文件中`\RequirePackage[labelformat=simple]{subfig}`的subfig改为`subcaption`（需要使用最新的texlive）
+2. 将cls文件中`\captionsetup[subfigure]{font=small, belowskip=6pt, width=36pt}`的`width=36pt`去掉
+3. 用`subfigure`命令画子图
+
 ## 技术交流
 
 欢迎各位同学交流技术经验，如果希望使用QQ即时交流可加成电LaTeX模板交流群（926297104）。验证信息请回答问题，不要空置。如有问题还可以在项目 [Issue](https://github.com/x-magus/ThesisUESTC/issues) 模块提出，或者邮件联系作者（wwzvd@mst.edu）。类模板完全由作者手动编写，并非由代码工具生成，相对容易修改和阅读。在此欢迎高阶的使用者分享更好的写法，提出改进的建议。

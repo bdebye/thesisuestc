@@ -224,7 +224,7 @@ xelatex main.tex
 根据学校[2016版规范](http://gr.uestc.edu.cn/attached/papers/101/201609/20160912175002_28945.doc)，子图不用图题，但是，如果评阅老师需要。按照以下方式添加：
 1. 将cls文件中`\RequirePackage[labelformat=simple]{subfig}`的subfig改为`subcaption`（需要使用最新的texlive）
 2. 将cls文件中`\captionsetup[subfigure]{font=small, belowskip=6pt, width=36pt}`的`width=36pt`去掉
-3. 用`subfigure`命令画子图
+3. 用`subfigure`命令画子图，在`subfigure`内用`caption`
 
 ## 技术交流
 

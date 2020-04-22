@@ -92,7 +92,7 @@ xelatex main.tex
 
 ### 致谢
 
-致谢部分由命令`\thesisacknowledgement`开始，实际上是开始了一个无编号的章节。
+致谢部分由命令`\thesisacknowledgement`开始，实际上是一个无编号的章节。
 
 ### 参考文献
 
@@ -102,7 +102,7 @@ xelatex main.tex
 
 参考文献的在文中的引用分两种：在原文中作句法成分的为直接引用，使用`\cite`命令，否则为`\citing`命令，在文中文献编号显示为上标。
 
-模版支持所有常用的条目类型，文献条目处理兼容 IEEE Xplore 和 ScienceDirect 的引用格式，还有其他主流的数据库。获得参考文献条目信息，只需要在对应的文章页面点击下载引用的按钮（在 IEEE Xplore 中按钮在PDF下载旁边一个向下的箭头；在 ScienceDirect 中为文章标题上面的 Export 链接），选择BibTeX格式，将文本复制到 bib 文件即可。其他一些类型的条目如专利、学位论文等可以参考`reference.bib`提供的样例。
+模版支持所有常用的条目类型，文献条目处理兼容 Google Scholar, IEEE Xplore 和 ScienceDirect 的引用格式，还有其他主流的数据库。获得参考文献条目信息，只需要在对应的文章页面点击下载引用的按钮（Google Scholar 为文献条目下方第二个显示为双引号的按钮；在 IEEE Xplore 中是文章标题下方的 Cite This 按钮；在 ScienceDirect 中为文章标题上面的 Export 链接），选择BibTeX格式，将文本复制到 bib 文件即可。其他一些类型的条目如专利、学位论文等可以参考`reference.bib`提供的样例。
 
 当引用中文文献，而文献作者超过三位时，后面的作者想使用“等”字省略，可以在文章条目添加语言选项`language = {zh}`。模版会自动按照中文的习惯处理作者信息。
 

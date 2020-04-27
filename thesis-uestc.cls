@@ -43,6 +43,7 @@
 \RequirePackage{lmodern}
 \RequirePackage[nopostdot]{glossaries}
 \RequirePackage{mathspec}
+\RequirePackage{siunitx}
 
 \RequirePackage{xeCJK}
 \RequirePackage{ifplatform}
@@ -273,7 +274,7 @@
 \newcommand{\chinesekeyword}[1]{
   \vspace{\baselineskip}
   \noindent
-  \parbox[t]{48pt}{\textbf{关键词\chinesecolon}}
+  \parbox[t]{48pt}{\textbf{关键词\chinesecolon}}%
   \parbox[t]{\linewidth - 48pt}{#1}
 }
 
@@ -300,7 +301,7 @@
 \newcommand{\englishkeyword}[1]{
   \vspace{\baselineskip}
   \noindent
-  \parbox[t]{2.1cm}{\textbf{Keywords:}}
+  \parbox[t]{2.1cm}{\textbf{Keywords:}}%
   \parbox[t]{\linewidth - 2.1cm}{#1}
 }
 

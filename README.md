@@ -1,7 +1,5 @@
 # ThesisUESTC-电子科技大学毕业论文模板
-[![](https://img.shields.io/badge/license-LPPL-blue)](https://www.latex-project.org/lppl/)
-[![](https://img.shields.io/github/last-commit/x-magus/ThesisUESTC)](https://github.com/x-magus/ThesisUESTC/zipball/master)
-[![](https://img.shields.io/github/issues/x-magus/ThesisUESTC)](https://github.com/x-magus/ThesisUESTC/issues)
+[![](https://img.shields.io/badge/license-LPPL-blue)](https://www.latex-project.org/lppl/) [![](https://img.shields.io/github/last-commit/x-magus/ThesisUESTC)](https://github.com/x-magus/ThesisUESTC/zipball/master) [![](https://img.shields.io/github/issues/x-magus/ThesisUESTC)](https://github.com/x-magus/ThesisUESTC/issues)
 
 此项目提供用于排版电子科技大学毕业论文的LaTeX模板类，旨在帮助电子科技大学的毕业生高效地完成毕业论文的写作。模板提供各种方便的命令，自动化地排版论文的各个部分，使毕业论文轻易地满足学校的格式要求。为了支持更好的字体效果，模板基于XeLaTeX编写，并且放弃对CTeX的依赖，使模板更加稳定。
 
@@ -20,7 +18,7 @@ The template is authored by Wang Wen, a 2014 master graduate of UESTC. Because o
 
 模板采用LaTeX类的形式封装，导入模板只需要把`thesis-uestc.cls`文件放在文档所在目录，在文档开头使用`\documentclass{thesis-uestc}`命令将文档的类设置成`thesis-uestc`即可。使用BibTeX录入参考文献还需要`thesis-uestc.bst`风格定义文件。
 
-模板类有bachelor、master、promaster、doctor和engdoctor四个学位选项，对应本科、硕士、专业硕士和博士的毕业论文，默认选项为`master`。文档内容的书写参考范例`main.tex`。英语使用者可以启用`english`选项，模版会按照英语论文的格式排版。
+模板类有bachelor、master、promaster、doctor和engdoctor四个学位选项，对应本科、硕士、专业硕士、博士和工程博士的毕业论文，默认选项为`master`。文档内容的书写参考范例`main.tex`。英语使用者可以启用`english`选项，模版会按照英语论文的格式排版。
 
 ### 文档编译
 编译文档请使用XeLaTeX引擎。模版提供latexmk设置文件用于自动编译。将命令行工作目录切换到项目文件夹下，执行
@@ -88,7 +86,7 @@ xelatex main.tex
 
 ### 数学环境
 
-数学环境的字体加粗可以使用`\mathbf`或者`\bm`命令，使用斜体粗体的符号。由于 Times New Roman 字体的拉丁字母字形修长，偶尔会出现字符粘连的情况。这种情况下可以使用占位符波浪号调整距离，如`$f^{~l}$`和`$\hat{f~}$`。
+数学环境的字体加粗可以使用`\mathbf`或者`\bm`命令，使用斜体粗体的符号。使用正体加粗可以使用`\mathbd`命令。由于 Times New Roman 字体的拉丁字母字形修长，偶尔会出现字符粘连的情况。这种情况下可以使用占位符波浪号调整距离，如`$f^{~l}$`和`$\hat{f~}$`。
 
 ### 致谢
 
@@ -114,7 +112,7 @@ xelatex main.tex
 
 ### 攻读学位期间取得的成果
 
-使用BibTeX录入研究成果由`\thesisaccomplish`命令导入`*.bib`文献列表，方法与参考文献相同。文献列表风格自动设置为`thesis-uestc`。此命令没有可选参数，自动在文档中列出数据库中的所有条目。
+使用BibTeX录入研究成果由`\thesisaccomplish`命令导入`*.bib`文献列表，方法与参考文献相同。文献列表风格自动设置为`thesis-uestc`。此命令没有可选参数，自动在文档中列出数据库中的所有条目。在编译过程中需要注意所使用的编译方式正确执行`bibtex accomplish.aux`命令，否则不会生成研究成果。
 
 手动添加使用`\bibitem`命令将文章条目列在`thesistheaccomplish`环境下，方法与参考文献相同，这种方法优势在于可以在条目间加小标题区分项目或论文成果。
 

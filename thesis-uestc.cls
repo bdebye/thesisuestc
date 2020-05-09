@@ -71,6 +71,7 @@
 \fi
 
 \DeclareMathAlphabet{\mathbf}{\eu@enc}{\eu@mathrm}{\bfdefault}{it}
+\DeclareMathAlphabet{\mathbd}{\eu@enc}{\eu@mathrm}{\bfdefault}{n}
 \newcommand{\bm}{\mathbf}
 
 \RequirePackage{zhnumber}
@@ -120,6 +121,8 @@
 \urlstyle{rm}
 \raggedbottom
 
+% \AtBeginDocument{\pretocmd{\ref}{~}{}{}\apptocmd{\ref}{}{}{}}
+
 \newcommand{\thesistablelist}{
   \listoftables
 }
@@ -152,12 +155,12 @@
 
 \setlength{\intextsep}{9pt}
 
-\AtBeginEnvironment{figure}{
-  \def\@floatboxreset{\centering}
+\AtBeginEnvironment{figure}{%
+  \def\@floatboxreset{\centering}%
 }
 
-\AtBeginEnvironment{table}{
-  \def\@floatboxreset{\centering}
+\AtBeginEnvironment{table}{%
+  \def\@floatboxreset{\centering}%
 }
 
 \AtBeginEnvironment{tabular}{\small}
@@ -273,8 +276,8 @@
 \newcommand{\chinesekeyword}[1]{
   \vspace{\baselineskip}
   \noindent
-  \parbox[t]{48pt}{\textbf{关键词\chinesecolon}}
-  \parbox[t]{\linewidth - 48pt}{#1}
+  \parbox[t]{48pt}{\textbf{关键词\chinesecolon}}%
+  \parbox[t]{\linewidth - 48.06pt}{#1}
 }
 
 \newenvironment{englishabstract}{
@@ -300,8 +303,8 @@
 \newcommand{\englishkeyword}[1]{
   \vspace{\baselineskip}
   \noindent
-  \parbox[t]{2.1cm}{\textbf{Keywords:}}
-  \parbox[t]{\linewidth - 2.1cm}{#1}
+  \parbox[t]{2.1cm}{\textbf{Keywords:}}%
+  \parbox[t]{\linewidth - 2.106cm}{#1}
 }
 
 \AddEverypageHook{\addtocontents{toc}{

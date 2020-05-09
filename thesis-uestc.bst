@@ -72,7 +72,8 @@ FUNCTION{ string.length }
     pop$ l
 }
 
-FUNCTION {get.last.chr} {
+FUNCTION {get.last.chr}
+{
   duplicate$ string.length
   duplicate$ #0 = {
     pop$
@@ -81,20 +82,23 @@ FUNCTION {get.last.chr} {
   } if$
 }
 
-FUNCTION {trim.start} {
+FUNCTION {trim.start}
+{
   {duplicate$ #1 #1 substring$ " " =} {
     #2 global.max$ substring$
   } while$
 }
 
-FUNCTION {trim.end} {
+FUNCTION {trim.end}
+{
   {duplicate$ get.last.chr " " =} {
     duplicate$ string.length #1 -
     #1 swap$ substring$
   } while$
 }
 
-FUNCTION {trim} {
+FUNCTION {trim}
+{
   trim.start
   trim.end
 }

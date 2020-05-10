@@ -748,7 +748,7 @@ School: & \en@theschool \\
   \noindent\begin{center}
   \fontsize{18pt}{20pt}\selectfont\heiti 独创性声明
   \end{center}
-    \par{\fontsize{14pt}{16pt}\selectfont\noindent\null\hspace{28pt}
+    \par{\fontsize{14pt}{16pt}\selectfont\noindent\null\hspace{28pt}%
     本人声明所呈交的学位论文是本人在导师指导下进行的研究工作及取得的研究成果。%
     据我所知，除了文中特别加以标注和致谢的地方外，论文中不包含其他人已经发表或撰写过的研究成果，%
     也不包含为获得电子科技大学或其它教育机构的学位或证书而使用过的材料。%

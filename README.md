@@ -18,7 +18,7 @@ The template is authored by Wang Wen, a 2014 master graduate of UESTC. Because o
 
 模板采用LaTeX类的形式封装，导入模板只需要把`thesis-uestc.cls`文件放在文档所在目录，在文档开头使用`\documentclass{thesis-uestc}`命令将文档的类设置成`thesis-uestc`即可。使用BibTeX录入参考文献还需要`thesis-uestc.bst`风格定义文件。
 
-模板类有bachelor、master、promaster、doctor和engdoctor四个学位选项，对应本科、硕士、专业硕士、博士和工程博士的毕业论文，默认选项为`master`。文档内容的书写参考范例`main.tex`。英语使用者可以启用`english`选项，模版会按照英语论文的格式排版。
+模板类有bachelor、master、promaster、doctor和engdoctor五个学位选项，对应本科、硕士、专业硕士、博士和工程博士的毕业论文，默认选项为`master`。文档内容的书写参考范例`main.tex`。英语使用者可以启用`english`选项，模版会按照英语论文的格式排版。
 
 ### 文档编译
 编译文档请使用XeLaTeX引擎。模版提供latexmk设置文件用于自动编译。将命令行工作目录切换到项目文件夹下，执行

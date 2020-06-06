@@ -421,6 +421,7 @@
   \def\englishdegreename{Bachelor}
   \def\chinesebooktitle{学士学位论文}
   \def\englishbooktitle{Bachelor Thesis}
+  \def\display@chineseheader{电子科技大学学士学位论文}
   \def\display@englishheader{Bachelor Thesis of University of
     Electronic Science and Technology of China}
 }
@@ -434,6 +435,7 @@
   \def\englishdegreename{Master}
   \def\chinesebooktitle{硕士学位论文}
   \def\englishbooktitle{Master Thesis}
+  \def\display@chineseheader{电子科技大学硕士学位论文}
   \def\display@englishheader{Master Thesis of University of
     Electronic Science and Technology of China}
 }
@@ -443,6 +445,7 @@
   \def\englishdegreename{Professional Master}
   \def\chinesebooktitle{专业学位硕士学位论文}
   \def\englishbooktitle{Master Thesis for Professional Degree}
+  \def\display@chineseheader{电子科技大学硕士学位论文}
   \def\display@englishheader{Professional Master Thesis of University 
     of Electronic Science and Technology of China}
 }
@@ -452,6 +455,7 @@
   \def\englishdegreename{Doctor}
   \def\chinesebooktitle{博士学位论文}
   \def\englishbooktitle{Doctoral Dissertation}
+  \def\display@chineseheader{电子科技大学博士学位论文}
   \def\display@englishheader{Doctoral Dissertation of University of
     Electronic Science and Technology of China}
 }
@@ -461,6 +465,7 @@
   \def\englishdegreename{Engineering Doctor}
   \def\chinesebooktitle{工程博士学位论文}
   \def\englishbooktitle{Engineering Doctoral Dissertation}
+  \def\display@chineseheader{电子科技大学博士学位论文}
   \def\display@englishheader{Engineering Doctoral Dissertation of
     University of Electronic Science and Technology of China}
 }
@@ -796,7 +801,7 @@ School: & \en@theschool \\
 \newcommand{\standardhead}{
   \fancyhf{}
   \ifchinesebook{
-    \fancyhead[CE]{\fontsize{10.5pt}{12.6pt}\selectfont 电子科技大学\chinesebooktitle}
+    \fancyhead[CE]{\fontsize{10.5pt}{12.6pt}\selectfont\display@chineseheader}
     \fancyhead[CO]{\fontsize{10.5pt}{12.6pt}\selectfont\leftmark}
   }{
     \fancyhead[CE]{\fontsize{10.5pt}{12.6pt}\selectfont\nouppercase\display@englishheader}

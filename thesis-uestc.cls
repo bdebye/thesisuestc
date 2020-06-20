@@ -276,8 +276,7 @@
 \newcommand{\chinesekeyword}[1]{
   \vspace{\baselineskip}
   \noindent
-  \parbox[t]{48pt}{\textbf{关键词\chinesecolon}}%
-  \parbox[t]{\linewidth - 48.06pt}{#1}
+  \@hangfrom{\makebox[48pt][l]{\textbf{关键词\chinesecolon}}}#1
 }
 
 \newenvironment{englishabstract}{
@@ -303,8 +302,7 @@
 \newcommand{\englishkeyword}[1]{
   \vspace{\baselineskip}
   \noindent
-  \parbox[t]{2.1cm}{\textbf{Keywords:}}%
-  \parbox[t]{\linewidth - 2.106cm}{#1}
+  \@hangfrom{\makebox[2.1cm][l]{\textbf{Keywords:}}}#1
 }
 
 \AddEverypageHook{\addtocontents{toc}{
@@ -610,12 +608,12 @@
     \vspace{0.5cm}
     \includegraphics[width=5cm]{logo.pdf} \\[66bp]
   }{\includegraphics[width=221bp]{logo.pdf} \\[48bp]}
-  \begin{tabular}{lp{4.6in}p{36pt}}
+  \begin{tabular}{lp{4.6in}}
     \heiti\fontsize{16pt}{16pt}\selectfont 论文题目 & \multirow[t]{2}{4.6in}{
         \centering
           \heiti\fontsize{16pt}{19pt}\selectfont
           \zh@thetitle
-    } & \\
+    } \\
     \cline{2-2}
             & \\
     \cline{2-2}

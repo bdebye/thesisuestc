@@ -617,7 +617,7 @@
     \cline{2-2}
             & \\
     \cline{2-2}
-  \end{tabular} \\[\baselineskip]
+  \end{tabular}\hspace*{\fill} \\[\baselineskip]
   \begin{tabular}{>{\heiti\fontsize{16pt}{16pt}\selectfont}l
       >{\centering\arraybackslash\heiti\fontsize{16pt}{16pt}\selectfont}
       p{3.77in}p{15pt}}

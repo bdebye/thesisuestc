@@ -175,7 +175,10 @@ latexmk main_multifile.tex
 
 ### 图表目录和缩略词
 
-图目录、表目录分别对应`\thesisfigurelist`和`\thesistablelist`命令，这些列表不会出现在目录里。
+图目录、表目录分别对应`\thesisfigurelist`和`\thesistablelist`命令，这些列表不会出现在目录里。对于有多个分图的情况，如果不想在图目录中显示分图题，可以使用`\caption[<short caption>]{<full caption>}`命令的短标题选项，在图目录只会显示短标题而不是带有分图题的原始标题。例如：
+```latex
+\caption[理想导体平板中心处感应电流分量随时间的变化关系]{理想导体平板中心处感应电流分量随时间的变化关系。(a)... (b)...}
+```
 
 缩略词表使用`glossaries`宏包实现。生成缩略词表需要在文档导言区加入`\makeglossaries`命令，再在缩略词表显示的位置使用`\thesisglossarylist`命令。定义缩略词使用`\newglossaryentry{<label>}{<description>}`命令，例如：
 ```latex
@@ -231,6 +234,6 @@ xelatex main.tex
 
 ## 技术交流
 
-欢迎各位同学交流技术经验，如果希望使用QQ即时交流可加成电LaTeX模板交流群（926297104）。验证信息请回答问题，不要空置。如有问题还可以在项目 [Issue](https://github.com/x-magus/ThesisUESTC/issues) 模块提出，或者邮件联系作者（wwzvd@mst.edu）。类模板完全由作者手动编写，并非由代码工具生成，相对容易修改和阅读。在此欢迎高阶的使用者分享更好的写法，提出改进的建议。
+欢迎各位同学交流技术经验，如果希望使用QQ即时交流可加成电LaTeX模板交流群（926297104）。验证信息请回答问题，不要空置。如有问题还可以在项目 [Issue](https://github.com/x-magus/ThesisUESTC/issues) 模块提出，或者邮件联系作者（wangwen1192@outlook.com）。类模板完全由作者手动编写，并非由代码工具生成，相对容易修改和阅读。在此欢迎高阶的使用者分享更好的写法，提出改进的建议。
 
 ![](https://x-magus.github.io/pic/save/technical_contact.jpg)

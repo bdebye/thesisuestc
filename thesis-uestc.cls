@@ -832,6 +832,7 @@ Supervisor: & \en@theadvisor \\
 School: & \en@theschool \\
 \cline{2-2}
 \end{tabular}
+\renewcommand\arraystretch{1.0}
 }
 
 \newcommand{\bindpdfcover}[1]{

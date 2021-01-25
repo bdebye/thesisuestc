@@ -343,6 +343,8 @@
 \newcommand{\zh@themajor}{\chinesespace}
 \newcommand{\zh@majortype}{\chinesespace}
 \newcommand{\zh@theadvisor}{\chinesespace}
+\newcommand{\zh@theassistantadvisor}{\chinesespace}
+\newcommand{\zh@theassistantadvisoraddress}{\chinesespace}
 
 \newcommand{\en@thetitle}{\chinesespace}
 \newcommand{\en@theauthor}{\chinesespace}
@@ -387,6 +389,14 @@
 \newcommand{\advisor}[2]{
   \renewcommand{\zh@theadvisor}{#1}
   \renewcommand{\en@theadvisor}{#2}
+}
+
+\newcommand{\assistantadvisor}[1]{
+  \renewcommand{\zh@theassistantadvisor}{#1}
+}
+
+\newcommand{\assistantadvisoraddress}[1]{
+  \renewcommand{\zh@theassistantadvisoraddress}{#1}
 }
 
 \newcommand{\studentnumber}[1]{
@@ -745,9 +755,9 @@ UDC\textsuperscript{ 注1} \uline{\hspace{2.5in}} \\[0bp]
     \cline{2-2}
     \\[-24bp] & {\heiti 电子科技大学\chinesespace 成都} \\
     \cline{2-2}
-    \\[-24bp] &  \\
+    \\[-24bp] & {\heiti\zh@theassistantadvisor} \\
     \cline{2-2}
-    \\[-24bp] &  \\
+    \\[-24bp] & {\heiti\zh@theassistantadvisoraddress} \\
     \cline{2-2}
     & \fontsize{12pt}{12pt}\selectfont（姓名、职称、单位名称）
   \end{tabular}  \\[0bp]

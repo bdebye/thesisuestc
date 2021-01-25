@@ -341,6 +341,7 @@
 \newcommand{\zh@thedate}{\chinesespace}
 \newcommand{\zh@theschool}{\chinesespace}
 \newcommand{\zh@themajor}{\chinesespace}
+\newcommand{\zh@majortype}{\chinesespace}
 \newcommand{\zh@theadvisor}{\chinesespace}
 
 \newcommand{\en@thetitle}{\chinesespace}
@@ -348,6 +349,7 @@
 \newcommand{\en@thedate}{\chinesespace}
 \newcommand{\en@theschool}{\chinesespace}
 \newcommand{\en@themajor}{\chinesespace}
+\newcommand{\en@majortype}{\chinesespace}
 \newcommand{\en@theadvisor}{\chinesespace}
 
 \newcommand{\thestudentnumber}{\chinesespace}
@@ -370,6 +372,11 @@
 \newcommand{\major}[2]{
   \renewcommand{\zh@themajor}{#1}
   \renewcommand{\en@themajor}{#2}
+}
+
+\newcommand{\majortype}[2]{
+  \renewcommand{\zh@majortype}{#1}
+  \renewcommand{\en@majortype}{#2}
 }
 
 \newcommand{\school}[2]{
@@ -417,11 +424,19 @@
 \DeclareOption{bachelor}{
   \def\chinesedegreename{本科}
   \def\englishdegreename{Bachelor}
+  \def\zh@themajortype{\zh@themajor}
+  \def\en@themajortype{\en@themajor}
   \def\chinesebooktitle{学士学位论文}
   \def\englishbooktitle{Bachelor Thesis}
+  \def\englishtitle{Bachelor Thesis}
   \def\display@chineseheader{电子科技大学学士学位论文}
   \def\display@englishheader{Bachelor Thesis of University of
     Electronic Science and Technology of China}
+  \def\majortitle{学科专业}
+  \def\studentnumbertitle{学\chinesespace\chinesespace 号}
+  \def\authortitle{作者姓名}
+  \def\advisortitle{指导教师}
+  \def\majorcolwidth{2.38in}
 }
 
 \newcommand{\ifbachelor}[2]{
@@ -431,41 +446,75 @@
 \DeclareOption{master}{
   \def\chinesedegreename{硕士}
   \def\englishdegreename{Master}
+  \def\zh@themajortype{\zh@themajor}
+  \def\en@themajortype{\en@themajor}
   \def\chinesebooktitle{硕士学位论文}
   \def\englishbooktitle{Master Thesis}
+  \def\englishtitle{Master Thesis}
   \def\display@chineseheader{电子科技大学硕士学位论文}
   \def\display@englishheader{Master Thesis of University of
     Electronic Science and Technology of China}
+  \def\majortitle{学科专业}
+  \def\studentnumbertitle{学\chinesespace\chinesespace 号}
+  \def\authortitle{作者姓名}
+  \def\advisortitle{指导教师}
+  \def\majorcolwidth{2.38in}
 }
 
 \DeclareOption{promaster}{
-  \def\chinesedegreename{专业硕士}
+  \def\chinesedegreename{硕士}
   \def\englishdegreename{Professional Master}
+  \def\zh@themajortype{\zh@majortype}
+  \def\en@themajortype{\en@majortype}
   \def\chinesebooktitle{专业学位硕士学位论文}
   \def\englishbooktitle{Master Thesis for Professional Degree}
+  \def\englishtitle{Master Thesis}
   \def\display@chineseheader{电子科技大学硕士学位论文}
   \def\display@englishheader{Professional Master Thesis of University 
     of Electronic Science and Technology of China}
+  \def\studentnumbertitle{学\chinesespace\chinesespace\chinesespace\chinesespace 号}
+  \def\majortitle{专业学位类别}
+  \def\majortitleofpage{专业学位类别}
+  \def\authortitle{作\hspace{10.67pt}者\hspace{10.67pt}姓\hspace{10.67pt}名}
+  \def\advisortitle{指\hspace{10.67pt}导\hspace{10.67pt}教\hspace{10.67pt}师}
+  \def\majorcolwidth{2.05in}
 }
 
 \DeclareOption{doctor}{
   \def\chinesedegreename{博士}
   \def\englishdegreename{Doctor}
+  \def\zh@themajortype{\zh@themajor}
+  \def\en@themajortype{\en@themajor}
   \def\chinesebooktitle{博士学位论文}
   \def\englishbooktitle{Doctoral Dissertation}
+  \def\englishtitle{Doctoral Dissertation}
   \def\display@chineseheader{电子科技大学博士学位论文}
   \def\display@englishheader{Doctoral Dissertation of University of
     Electronic Science and Technology of China}
+  \def\majortitle{学科专业}
+  \def\studentnumbertitle{学\chinesespace\chinesespace 号}
+  \def\authortitle{作者姓名}
+  \def\advisortitle{指导教师}
+  \def\majorcolwidth{2.38in}
 }
 
 \DeclareOption{engdoctor}{
-  \def\chinesedegreename{工程博士}
+  \def\chinesedegreename{博士}
   \def\englishdegreename{Engineering Doctor}
+  \def\zh@themajortype{\zh@majortype}
+  \def\en@themajortype{\en@majortype}
   \def\chinesebooktitle{工程博士学位论文}
   \def\englishbooktitle{Engineering Doctoral Dissertation}
+  \def\englishtitle{Doctoral Dissertation}
   \def\display@chineseheader{电子科技大学博士学位论文}
   \def\display@englishheader{Engineering Doctoral Dissertation of
     University of Electronic Science and Technology of China}
+  \def\majortitleofpage{专业学位类别}
+  \def\majortitle{工程领域}
+  \def\studentnumbertitle{学\chinesespace\chinesespace 号}
+  \def\authortitle{作者姓名}
+  \def\advisortitle{指导教师}
+  \def\majorcolwidth{2.05in}
 }
 
 \ExecuteOptions{master}
@@ -621,14 +670,14 @@
   \begin{tabular}{>{\heiti\fontsize{16pt}{16pt}\selectfont}l
       >{\centering\arraybackslash\heiti\fontsize{16pt}{16pt}\selectfont}
       p{3.77in}p{15pt}}
-    学科专业 & \zh@themajor &\\
-    \cline{2-2}
-    学\chinesespace\chinesespace 号 & \thestudentnumber & \\
-    \cline{2-2}
-    作者姓名 & \zh@theauthor &\\
-    \cline{2-2}
-    指导老师 & \zh@theadvisor &\\
-    \cline{2-2}
+      \majortitle & \zh@themajortype &\\
+      \cline{2-2}
+      \studentnumbertitle & \thestudentnumber & \\
+      \cline{2-2}
+      \authortitle & \zh@theauthor &\\
+      \cline{2-2}
+      \advisortitle & \zh@theadvisor &\\
+      \cline{2-2}
   \end{tabular}
 \end{center}
 
@@ -640,56 +689,78 @@
 \setlength{\extrarowheight}{2pt}
 }
 
+\newcommand{\ifengineer}[1]{%
+\ifthenelse{\equal{#1}{Master of Engineering} \or \equal{#1}{Doctor of Engineering}}
+  {\begin{tabular}{>{\fontsize{12pt}{12pt}\selectfont}l
+    >{\centering\arraybackslash\fontsize{16pt}{16pt}\heiti\selectfont}
+    p{1.0in}
+    >{\fontsize{12pt}{12pt}\selectfont}l
+    >{\centering\arraybackslash\fontsize{16pt}{16pt}\heiti\selectfont}
+    p{\majorcolwidth}}
+    申请学位级别 & \chinesedegreename & \majortitleofpage & \zh@themajortype \\
+    \cline{2-2}
+    \cline{4-4}
+    工程领域名称 & \multicolumn{3}{c}{{\fontsize{16pt}{16pt}\heiti\selectfont \zh@themajor}} \\
+    \cline{2-4}
+    \end{tabular} \\
+  }
+  {\begin{tabular}{>{\fontsize{12pt}{12pt}\selectfont}l
+    >{\centering\arraybackslash\fontsize{16pt}{16pt}\heiti\selectfont}
+    p{1.0in}
+    >{\fontsize{12pt}{12pt}\selectfont}l
+    >{\centering\arraybackslash\fontsize{16pt}{16pt}\heiti\selectfont}
+    p{\majorcolwidth}}
+    申请学位级别 & \chinesedegreename & \majortitle & \zh@themajortype \\
+    \cline{2-2}
+    \cline{4-4}
+    \end{tabular} \\
+  }%
+}
+
 \newcommand{\thetitlepage}{
   \newpage
   \thispagestyle{empty}
 
 \noindent 分类号 \uline{\hspace{2.5in}} 密级 \uline{\hspace{2.5in}} \\[12bp]
-UDC\textsuperscript{ 注1} \uline{\hspace{2.5in}} \\[12bp]
+UDC\textsuperscript{ 注1} \uline{\hspace{2.5in}} \\[0bp]
 
 \begin{center}
   \fontsize{36pt}{36pt}\selectfont{\heiti
     学\chinesespace 位\chinesespace 论\chinesespace 文
-  } \\[48bp]
+  } \\[30bp]
 
   \fontsize{16pt}{16pt}\selectfont{\heiti\zh@thetitle} \\
   \vspace{-15pt}
   \rule{5.9in}{.4pt} \\
-  \fontsize{12pt}{12pt}\selectfont（题名和副题名）\\[36bp]
+  \fontsize{12pt}{12pt}\selectfont（题名和副题名）\\[30bp]
   \fontsize{16pt}{16pt}\selectfont{\heiti\zh@theauthor} \\
   \vspace{-15pt}
   \rule{1.63in}{.4pt} \\
-  \fontsize{12pt}{12pt}\selectfont（作者姓名） \\[36bp]
+  \fontsize{12pt}{12pt}\selectfont（作者姓名） \\[30bp]
 
   \begin{tabular}{>{\fontsize{12pt}{12pt}\selectfont}l
       >{\centering\arraybackslash\fontsize{16pt}{16pt}\selectfont}
       p{4.45in}}
-      指导老师 & {\heiti\zh@theadvisor} \\
+      指导教师 & {\heiti\zh@theadvisor} \\
     \cline{2-2}
-      & {\heiti 电子科技大学\chinesespace 成都} \\
+    \\[-24bp] & {\heiti 电子科技大学\chinesespace 成都} \\
+    \cline{2-2}
+    \\[-24bp] &  \\
+    \cline{2-2}
+    \\[-24bp] &  \\
     \cline{2-2}
     & \fontsize{12pt}{12pt}\selectfont（姓名、职称、单位名称）
-  \end{tabular}  \\[36bp]
+  \end{tabular}  \\[0bp]
 \end{center}
 
   \noindent
+  \ifengineer{\en@themajortype}
   \begin{tabular}{>{\fontsize{12pt}{12pt}\selectfont}l
       >{\centering\arraybackslash\fontsize{16pt}{16pt}\heiti\selectfont}
       p{1.0in}
       >{\fontsize{12pt}{12pt}\selectfont}l
       >{\centering\arraybackslash\fontsize{16pt}{16pt}\heiti\selectfont}
-      p{2.48in}}
-      申请学位级别 & \chinesedegreename &
-      学科专业 & \zh@themajor \\
-    \cline{2-2}
-    \cline{4-4}
-  \end{tabular} \\
-  \begin{tabular}{>{\fontsize{12pt}{12pt}\selectfont}l
-      >{\centering\arraybackslash\fontsize{16pt}{16pt}\heiti\selectfont}
-      p{1.0in}
-      >{\fontsize{12pt}{12pt}\selectfont}l
-      >{\centering\arraybackslash\fontsize{16pt}{16pt}\heiti\selectfont}
-      p{2.0in}}
+      p{2.05in}}
       提交论文日期 & \thedatesubmit &
       论文答辩日期 & \thedateoral \\
     \cline{2-2}
@@ -697,7 +768,7 @@ UDC\textsuperscript{ 注1} \uline{\hspace{2.5in}} \\[12bp]
   \end{tabular} \\
   \begin{tabular}{>{\fontsize{12pt}{12pt}\selectfont}l
       >{\centering\arraybackslash\fontsize{16pt}{16pt}\heiti\selectfont}
-      p{3.97in}}
+      p{3.88in}}
       学位授予单位和日期 & 电子科技大学\chinesespace{} \thedateconfer \\
     \cline{2-2}
   \end{tabular} \\
@@ -720,26 +791,27 @@ UDC\textsuperscript{ 注1} \uline{\hspace{2.5in}} \\[12bp]
 
 \newpage
 \thispagestyle{empty}\null
-\par{\vspace{2.3cm}}
+\par{\vspace{3.4cm}}
 \noindent
-\begin{minipage}[t][1.52cm][t]{\textwidth}
-  \fontsize{18pt}{20pt}\selectfont
+\begin{minipage}[t][6.0cm][t]{\textwidth}
+  \fontsize{18pt}{18pt}\selectfont
   \bfseries\centering\en@thetitle
 \end{minipage}
-\par{\vspace{7.3cm}}
+\par{\vspace{59pt}}
 \noindent
 \begin{minipage}[t][1.52cm][t]{\textwidth}
-  \fontsize{15pt}{17pt}\selectfont
-  \bfseries\centering\noindent
-  A \englishbooktitle{} Submitted to \\
+  \fontsize{15pt}{15pt}\selectfont
+  \centering\noindent
+  A \englishtitle{} Submitted to \\[7.5pt]
   University of Electronic Science and Technology of China
 \end{minipage}
-\par{\vspace{2.2cm}}
+\par{\vspace{3.4cm}}
 \noindent
-\begin{tabular}{>{\bfseries\fontsize{16pt}{16pt}\selectfont}r
-  >{\centering\arraybackslash\bfseries\fontsize{16pt}{16pt}\selectfont}
+\renewcommand\arraystretch{1.3}
+\begin{tabular}{>{\bfseries\fontsize{14pt}{14pt}\selectfont}r
+  >{\centering\arraybackslash\bfseries\fontsize{14pt}{14pt}\selectfont}
   p{10.6cm}}
-  Discipline: & \multirow[t]{2}{*}{\en@themajor} \\
+  Discipline: & \multirow[t]{2}{*}{\en@themajortype} \\
 \cline{2-2}
 & \\
 \cline{2-2}

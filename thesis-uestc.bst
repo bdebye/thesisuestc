@@ -567,6 +567,16 @@ FUNCTION {onlynote}
     newline$
 }
 
+FUNCTION {onlineprogram}
+{
+    bibitem.begin
+    format.authors write$ add.period
+    format.title "[CP/OL]" * write$ add.period
+    format.url write$ add.comma
+    format.year write$
+    newline$
+}
+
 READ
 
 EXECUTE {bib.begin}

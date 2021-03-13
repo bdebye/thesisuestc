@@ -644,8 +644,8 @@
   \newpage
   \thispagestyle{empty}
 
-\noindent 分类号 \uline{\hspace{2.5in}} 密级 \uline{\hspace{2.5in}} \\[12bp]
-UDC\textsuperscript{ 注1} \uline{\hspace{2.5in}} \\[12bp]
+\noindent 分类号 \rule[-3pt]{2.5in}{0.5pt} 密级 \rule[-3pt]{2.5in}{0.5pt} \\[12bp]
+UDC\textsuperscript{ 注1} \rule[-3pt]{2.5in}{0.5pt} \\[12bp]
 
 \begin{center}
   \fontsize{36pt}{36pt}\selectfont{\heiti
@@ -654,11 +654,11 @@ UDC\textsuperscript{ 注1} \uline{\hspace{2.5in}} \\[12bp]
 
   \fontsize{16pt}{16pt}\selectfont{\heiti\zh@thetitle} \\
   \vspace{-15pt}
-  \rule{5.9in}{.4pt} \\
+  \rule{5.9in}{.5pt} \\
   \fontsize{12pt}{12pt}\selectfont（题名和副题名）\\[36bp]
   \fontsize{16pt}{16pt}\selectfont{\heiti\zh@theauthor} \\
   \vspace{-15pt}
-  \rule{1.63in}{.4pt} \\
+  \rule{1.63in}{.5pt} \\
   \fontsize{12pt}{12pt}\selectfont（作者姓名） \\[36bp]
 
   \begin{tabular}{>{\fontsize{12pt}{12pt}\selectfont}l
@@ -773,7 +773,7 @@ School: & \en@theschool \\
     也不包含为获得电子科技大学或其它教育机构的学位或证书而使用过的材料。%
     与我一同工作的同志对本研究所做的任何贡献均已在论文中作了明确的说明并表示谢意。}
   \\[14pt]
-  \fontsize{14pt}{16pt}\selectfont\noindent\null\hspace{35pt}作者签名：\uline{\hspace{4.1cm}}\hspace{42pt}%
+  \fontsize{14pt}{16pt}\selectfont\noindent\null\hspace{35pt}作者签名：\rule[-3pt]{4.1cm}{0.5pt}\hspace{42pt}%
   日期：\chinesespace\chinesespace 年\hspace{21pt}月\hspace{21pt}日 \\
   \noindent\begin{center}
     \fontsize{18pt}{20pt}\selectfont\heiti 论文使用授权
@@ -787,8 +787,8 @@ School: & \en@theschool \\
   \chineseleftparenthesis%
   保密的学位论文在解密后应遵守此规定%
   \chineserightparenthesis} \\[14pt]
-  \fontsize{14pt}{16pt}\selectfont\noindent\null\hspace{35pt}作者签名：\uline{\hspace{4.1cm}}\hspace{12pt}%
-  导师签名：\uline{\hspace{4.1cm}} \\
+  \fontsize{14pt}{16pt}\selectfont\noindent\null\hspace{35pt}作者签名：\rule[-3pt]{4.1cm}{0.5pt}\hspace{12pt}%
+  导师签名：\rule[-3pt]{4.1cm}{0.5pt} \\
   \null\hspace{259pt} 日期：\chinesespace\chinesespace 年\hspace{21pt}月\hspace{21pt}日
 \end{spacing}
 \newpage\setcounter{page}{0}\setcounter{pseudopage}{0}

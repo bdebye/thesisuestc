@@ -1097,7 +1097,11 @@ School: & \en@theschool \\
   \trivlist
   \item[\hskip5\labelsep
     \strong
-  #1\@addpunct{:}]\ignorespaces
+    \ifchinesebook{
+      #1\@addpunct{\chinesecolon}}{
+      #1\@addpunct{:}
+    }
+  ]\ignorespaces
 }{
   \popQED\endtrivlist\@endpefalse
 }

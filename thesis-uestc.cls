@@ -765,7 +765,7 @@ School: & \en@theschool \\
   \ifchinesebook{\pdfbookmark{独创性声明}{originalitydeclaration}}
     {\pdfbookmark{Originality Declaration}{originalitydeclaration}}
   \noindent\begin{center}
-  \fontsize{18pt}{20pt}\selectfont\heiti 独创性声明
+  \fontsize{18pt}{20pt}\selectfont 独创性声明
   \end{center}
     \par{\fontsize{14pt}{16pt}\selectfont\noindent\null\hspace{28pt}%
     本人声明所呈交的学位论文是本人在导师指导下进行的研究工作及取得的研究成果。%
@@ -776,7 +776,7 @@ School: & \en@theschool \\
   \fontsize{14pt}{16pt}\selectfont\noindent\null\hspace{35pt}作者签名：\rule[-3pt]{4.1cm}{0.5pt}\hspace{42pt}%
   日期：\chinesespace\chinesespace 年\hspace{21pt}月\hspace{21pt}日 \\
   \noindent\begin{center}
-    \fontsize{18pt}{20pt}\selectfont\heiti 论文使用授权
+    \fontsize{18pt}{20pt}\selectfont 论文使用授权
   \end{center}
   \par{\fontsize{14pt}{16pt}\selectfont\noindent\null\hspace{28pt}%
     本学位论文作者完全了解电子科技大学有关保留、使用学位论文的规定，%

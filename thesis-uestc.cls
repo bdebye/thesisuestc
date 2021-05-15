@@ -344,6 +344,7 @@
 \newcommand{\zh@majortype}{\chinesespace}
 \newcommand{\zh@theadvisor}{\chinesespace}
 \newcommand{\zh@theassistantadvisor}{\chinesespace}
+\newcommand{\zh@theadvisoraddress}{\chinesespace}
 \newcommand{\zh@theassistantadvisoraddress}{\chinesespace}
 
 \newcommand{\en@thetitle}{\chinesespace}
@@ -389,6 +390,10 @@
 \newcommand{\advisor}[2]{
   \renewcommand{\zh@theadvisor}{#1}
   \renewcommand{\en@theadvisor}{#2}
+}
+
+\newcommand{\advisoraddress}[1]{
+  \renewcommand{\zh@theadvisoraddress}{#1}
 }
 
 \newcommand{\assistantadvisor}[1]{
@@ -761,7 +766,7 @@ UDC\textsuperscript{ 注1} \rule[-3pt]{2.5in}{0.5pt} \\[0bp]
       p{4.45in}}
       指导教师 & {\heiti\zh@theadvisor} \\
     \cline{2-2}
-    \\[-24bp] & {\heiti 电子科技大学\chinesespace 成都} \\
+    \\[-24bp] & {\heiti\zh@theadvisoraddress} \\
     \cline{2-2}
     \\[-24bp] & {\heiti\zh@theassistantadvisor} \\
     \cline{2-2}

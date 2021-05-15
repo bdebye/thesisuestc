@@ -130,7 +130,7 @@ xelatex main.tex
 
 ### 插入图片和表格
 
-插入图片使用`figure`环境，自动调整图片前后的间距，添加子图则使用`\subfloat`命令。若子图过多需要跨页则在间断处插入`\floatcontinue`命令。插入表格使用`table`环境，自动调整表格前后的间距和默认的字体大小。
+插入图片使用`figure`环境，自动调整图片前后的间距，添加子图则使用`\subfloat`命令。学校格式规范要求子图题写在分图题后面，不要填在分图题标号之后，具体写法请参考模版代码样例。若子图过多需要跨页则在间断处插入`\floatcontinue`命令。插入表格使用`table`环境，自动调整表格前后的间距和默认的字体大小。
 
 图片文件可以统一放在`./pic`目录下。具体插入图片和表格的代码参考范例`main.tex`。
 
@@ -177,7 +177,7 @@ latexmk main_multifile.tex
 
 图目录、表目录分别对应`\thesisfigurelist`和`\thesistablelist`命令，这些列表不会出现在目录里。对于有多个分图的情况，如果不想在图目录中显示分图题，可以使用`\caption[<short caption>]{<full caption>}`命令的短标题选项，在图目录只会显示短标题而不是带有分图题的原始标题。例如：
 ```latex
-\caption[理想导体平板中心处感应电流分量随时间的变化关系]{理想导体平板中心处感应电流分量随时间的变化关系。(a)... (b)...}
+\caption[感应电流分量随时间的变化关系]{感应电流分量随时间的变化关系。(a)... (b)...}
 ```
 
 缩略词表使用`glossaries`宏包实现。生成缩略词表需要在文档导言区加入`\makeglossaries`命令，再在缩略词表显示的位置使用`\thesisglossarylist`命令。定义缩略词使用`\newglossaryentry{<label>}{<description>}`命令，例如：

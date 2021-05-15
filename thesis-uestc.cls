@@ -1,5 +1,5 @@
 %
-%  Copyright 2016-2020 Wen Wang <wwzvd@mst.edu>
+%  Copyright 2016-2021 Wen Wang <wwzvd@mst.edu>
 %
 %  This work may be distributed and/or modified under the
 %  conditions of the LaTeX Project Public License, either version 1.3
@@ -90,7 +90,7 @@
 }
 
 \RequirePackage{indentfirst}
-\RequirePackage{calc}
+%\RequirePackage{calc}
 \RequirePackage{float}
 \RequirePackage{fancyvrb}
 \RequirePackage{fancyhdr}
@@ -344,6 +344,7 @@
 \newcommand{\zh@majortype}{\chinesespace}
 \newcommand{\zh@theadvisor}{\chinesespace}
 \newcommand{\zh@theassistantadvisor}{\chinesespace}
+\newcommand{\zh@theadvisoraddress}{\chinesespace}
 \newcommand{\zh@theassistantadvisoraddress}{\chinesespace}
 
 \newcommand{\en@thetitle}{\chinesespace}
@@ -389,6 +390,10 @@
 \newcommand{\advisor}[2]{
   \renewcommand{\zh@theadvisor}{#1}
   \renewcommand{\en@theadvisor}{#2}
+}
+
+\newcommand{\advisoraddress}[1]{
+  \renewcommand{\zh@theadvisoraddress}{#1}
 }
 
 \newcommand{\assistantadvisor}[1]{
@@ -731,8 +736,10 @@
   \newpage
   \thispagestyle{empty}
 
-\noindent 分类号 \uline{\hspace{2.5in}} 密级 \uline{\hspace{2.5in}} \\[12bp]
-UDC\textsuperscript{ 注1} \uline{\hspace{2.5in}} \\[0bp]
+% \noindent 分类号 \uline{\hspace{2.5in}} 密级 \uline{\hspace{2.5in}} \\[12bp]
+% UDC\textsuperscript{ 注1} \uline{\hspace{2.5in}} \\[0bp]
+\noindent 分类号 \rule[-3pt]{2.5in}{0.5pt} 密级 \rule[-3pt]{2.5in}{0.5pt} \\[12bp]
+UDC\textsuperscript{ 注1} \rule[-3pt]{2.5in}{0.5pt} \\[0bp]
 
 \begin{center}
   \fontsize{36pt}{36pt}\selectfont{\heiti
@@ -741,11 +748,17 @@ UDC\textsuperscript{ 注1} \uline{\hspace{2.5in}} \\[0bp]
 
   \fontsize{16pt}{16pt}\selectfont{\heiti\zh@thetitle} \\
   \vspace{-15pt}
-  \rule{5.9in}{.4pt} \\
+  % \rule{5.9in}{.4pt} \\
+  % \fontsize{12pt}{12pt}\selectfont（题名和副题名）\\[30bp]
+  % \fontsize{16pt}{16pt}\selectfont{\heiti\zh@theauthor} \\
+  % \vspace{-15pt}
+  % \rule{1.63in}{.4pt} \\
+  % \fontsize{12pt}{12pt}\selectfont（作者姓名） \\[30bp]
+  \rule{5.9in}{.5pt} \\
   \fontsize{12pt}{12pt}\selectfont（题名和副题名）\\[30bp]
   \fontsize{16pt}{16pt}\selectfont{\heiti\zh@theauthor} \\
   \vspace{-15pt}
-  \rule{1.63in}{.4pt} \\
+  \rule{1.63in}{.5pt} \\
   \fontsize{12pt}{12pt}\selectfont（作者姓名） \\[30bp]
 
   \begin{tabular}{>{\fontsize{12pt}{12pt}\selectfont}l
@@ -753,7 +766,7 @@ UDC\textsuperscript{ 注1} \uline{\hspace{2.5in}} \\[0bp]
       p{4.45in}}
       指导教师 & {\heiti\zh@theadvisor} \\
     \cline{2-2}
-    \\[-24bp] & {\heiti 电子科技大学\chinesespace 成都} \\
+    \\[-24bp] & {\heiti\zh@theadvisoraddress} \\
     \cline{2-2}
     \\[-24bp] & {\heiti\zh@theassistantadvisor} \\
     \cline{2-2}
@@ -856,7 +869,7 @@ School: & \en@theschool \\
     也不包含为获得电子科技大学或其它教育机构的学位或证书而使用过的材料。%
     与我一同工作的同志对本研究所做的任何贡献均已在论文中作了明确的说明并表示谢意。}
   \\[14pt]
-  \fontsize{14pt}{16pt}\selectfont\noindent\null\hspace{35pt}作者签名：\uline{\hspace{4.1cm}}\hspace{42pt}%
+  \fontsize{14pt}{16pt}\selectfont\noindent\null\hspace{35pt}作者签名：\rule[-3pt]{4.1cm}{0.5pt}\hspace{42pt}%
   日期：\chinesespace\chinesespace 年\hspace{21pt}月\hspace{21pt}日 \\
   \noindent\begin{center}
     \fontsize{18pt}{20pt}\selectfont\heiti 论文使用授权
@@ -870,8 +883,8 @@ School: & \en@theschool \\
   \chineseleftparenthesis%
   保密的学位论文在解密后应遵守此规定%
   \chineserightparenthesis} \\[14pt]
-  \fontsize{14pt}{16pt}\selectfont\noindent\null\hspace{35pt}作者签名：\uline{\hspace{4.1cm}}\hspace{12pt}%
-  导师签名：\uline{\hspace{4.1cm}} \\
+  \fontsize{14pt}{16pt}\selectfont\noindent\null\hspace{35pt}作者签名：\rule[-3pt]{4.1cm}{0.5pt}\hspace{12pt}%
+  导师签名：\rule[-3pt]{4.1cm}{0.5pt} \\
   \null\hspace{259pt} 日期：\chinesespace\chinesespace 年\hspace{21pt}月\hspace{21pt}日
 \end{spacing}
 \newpage\setcounter{page}{0}\setcounter{pseudopage}{0}

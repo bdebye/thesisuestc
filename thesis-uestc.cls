@@ -254,16 +254,17 @@
 }
 
 \newenvironment{chineseabstract}{
-  \fancyfoot[CE,CO]{\fontsize{9pt}{10.8pt}\selectfont\Roman{pseudopage}}
   \pagenumbering{Roman}
   \ifchinesebook{
     \pdfbookmark{中文摘要}{chineseabstract}
   }{
     \pdfbookmark{Chinese Abstract}{chineseabstract}
   }
-  \chapter*{\heiti{摘\chinesespace 要}}
-  \thispagestyle{fancy}
+  \setcounter{pseudopage}{1}
+  \chapter*{\heiti 摘\chinesespace 要}
+  \fancyhf{}
   \fancyhead[C]{\fontsize{10.5pt}{12.6pt}\selectfont 摘要}
+  \fancyfoot[CE,CO]{\fontsize{9pt}{10.8pt}\selectfont\Roman{pseudopage}}
 }{
   \checkoddpage
   \ifoddpage
@@ -280,16 +281,16 @@
 }
 
 \newenvironment{englishabstract}{
-  \fancyfoot[CE,CO]{\fontsize{9pt}{10.8pt}\selectfont\Roman{pseudopage}}
-  \pagenumbering{Roman}
+  %\pagenumbering{Roman}
   \ifchinesebook{
     \pdfbookmark{英文摘要}{englishabstract}
   }{
     \pdfbookmark{English Abstract}{englishabstract}
   }
   \chapter*{\bfseries ABSTRACT}
-    \thispagestyle{fancy}
+    \fancyhf{}
     \fancyhead[C]{\fontsize{10.5pt}{12.6pt}\selectfont ABSTRACT}
+    \fancyfoot[CE,CO]{\fontsize{9pt}{10.8pt}\selectfont\Roman{pseudopage}}
 }{
   \checkoddpage
   \ifoddpage
@@ -635,8 +636,7 @@
 \ifbachelor{}{\thetitlepage}
 
 \newpage
-\setcounter{page}{0}
-\setcounter{pseudopage}{0}
+\setcounter{page}{1}
 \setlength{\extrarowheight}{2pt}
 }
 
@@ -821,6 +821,8 @@ School: & \en@theschool \\
   }
 }{}{}
 
+\apptocmd{\tableofcontents}{\def\@TOC{\null}}{}{}
+
 \newcommand{\thesistableofcontents}{
   \tableofcontents
 }
@@ -842,7 +844,7 @@ School: & \en@theschool \\
   \thispagestyle{fancy}
 }
 
-\newcommand{\thesischapterexordium}{
+\newcommand{\thesiscontent}{
   \checkoddpage
   \ifoddpage
       \blankpage
@@ -854,12 +856,27 @@ School: & \en@theschool \\
   \standardhead
   \pagenumbering{arabic}
   \setcounter{page}{1}
+}
+
+\pretocmd{\chapter}{
+  \ifdefined\@TOC
+  \ifnum\value{chapter}=0
+    \thesiscontent
+    \fi
+  \fi
+}{}{}
+
+\apptocmd{\@chapter}{
+  \ifnum\value{chapter}=1
+    \ifchinesebook{\chaptermark{绪论}}{\chaptermark{Introduction}}
+  \fi
+}{}{}
+
+\newcommand{\thesischapterexordium}{
   \ifchinesebook{
     \chapter{绪\hspace{6pt}论}
-    \chaptermark{绪论}
   }{
     \chapter{Introduction}
-    \chaptermark{Introduction}
   }
 }
 

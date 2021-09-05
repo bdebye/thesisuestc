@@ -254,7 +254,7 @@
 }
 
 \newenvironment{chineseabstract}{
-  \pagenumbering{Roman}
+  %\pagenumbering{Roman}
   \ifchinesebook{
     \pdfbookmark{中文摘要}{chineseabstract}
   }{
@@ -527,7 +527,7 @@
 \AtBeginEnvironment{algorithm}{\vspace{9pt}}
 \AfterEndEnvironment{algorithm}{\vspace{9pt}}
 
-\renewcommand*{\glossarypreamble}{\vspace{-9pt}}
+%\renewcommand*{\glossarypreamble}{\vspace{-9pt}}
 \newacronymstyle{acronym-uestc}{
   \ifglshaslong{\glslabel}{\glsgenacfmt}{\glsgenentryfmt}
 }{
@@ -544,9 +544,29 @@
 }
 \setacronymstyle{acronym-uestc}
 
-\newglossarystyle{long-uestc}{
+\newglossarystyle{uestc-chinese}{
+  \setlength{\glsdescwidth}{.3\textwidth}
+  \setlength{\glspagelistwidth}{.3\textwidth}
   \renewenvironment{theglossary}%
-    {\begin{longtable}{lp{.7\textwidth}}}%
+  {\begin{longtable}{lp{\glsdescwidth}p{\glspagelistwidth}}}%
+    {\end{longtable}}%
+  \renewcommand*{\glossaryheader}{%
+    \heiti 缩略词 &\heiti 英文全称 &
+    \heiti 中文全称 \tabularnewline\endhead}%
+  \renewcommand*{\glsgroupheading}[1]{}%
+  \renewcommand{\glossentry}[2]{
+    \glsentryitem{##1}\glstarget{##1}{\glossentryname{##1}} &
+    \glsentrylong{##1} & \glsentrydesc{##1}\tabularnewline
+  }
+  \renewcommand*{\subglossentry}[3]{
+    \glossentry{##2}{##3}}
+}
+
+
+\newglossarystyle{uestc-english}{
+  \setlength\glsdescwidth{.7\textwidth}
+  \renewenvironment{theglossary}%
+    {\begin{longtable}{lp{\glsdescwidth}}}%
     {\end{longtable}}%
 
   \renewcommand*{\glossaryheader}{}%
@@ -573,23 +593,21 @@
 }
 
 \newcommand{\thesisglossarylist}{
-  \newpage
+  \newpage 
   \fancyhf{}
   \ifchinesebook{
     \fancyhead[C]{\fontsize{10.5pt}{12.6pt}\selectfont 缩略词表}
     \fancyfoot[CE,CO]{\fontsize{9pt}{10.8pt}\selectfont\Roman{pseudopage}}
-    \setlength\glsdescwidth{.7\textwidth}
     \pdfbookmark{缩略词表}{glossary}
-    \printglossary[style=long-uestc, title={\protect\centering 缩略词表}, nonumberlist, nogroupskip]
+    \printglossary[style=uestc-chinese, title={\protect\centering 缩略词表}, nonumberlist, nogroupskip]
   }{
     \fancyhead[C]{\fontsize{10.5pt}{12.6pt}\selectfont Glossary}
     \fancyfoot[CE,CO]{\fontsize{9pt}{10.8pt}\selectfont\Roman{pseudopage}}
-    \setlength\glsdescwidth{.7\textwidth}
     \pdfbookmark{Glossary}{glossary}
-    \printglossary[style=long-uestc, title={\protect\centering Glossary}, nonumberlist, nogroupskip]
+    \printglossary[style=uestc-english, title={\protect\centering Glossary}, nonumberlist, nogroupskip]
   }
+  \newpage
 }
-% \makeglossaries
 
 \newcommand{\makecover}{
 \thispagestyle{empty}
@@ -809,6 +827,13 @@ School: & \en@theschool \\
 }
 
 \pretocmd{\tableofcontents}{
+  \newpage
+  \checkoddpage
+  \ifoddpage
+      \newpage
+    \else
+      \blankpage
+    \fi
   \fancyhf{}
   \ifchinesebook{
     \fancyhead[C]{\fontsize{10.5pt}{12.6pt}\selectfont 目录}
@@ -845,23 +870,17 @@ School: & \en@theschool \\
 }
 
 \newcommand{\thesiscontent}{
-  \checkoddpage
-  \ifoddpage
-      \blankpage
-    \else
-      \newpage
-  \fi
-    \newpage
+  \newpage
+  \clearpage{\thispagestyle{empty}\cleardoublepage}
   \addtocontents{toc}{\protect\setcounter{tocdepth}{2}}
   \standardhead
   \pagenumbering{arabic}
-  \setcounter{page}{1}
 }
 
-\pretocmd{\chapter}{
+\pretocmd{\@chapter}{
   \ifdefined\@TOC
   \ifnum\value{chapter}=0
-    \thesiscontent
+      \thesiscontent
     \fi
   \fi
 }{}{}
@@ -869,6 +888,7 @@ School: & \en@theschool \\
 \apptocmd{\@chapter}{
   \ifnum\value{chapter}=1
     \ifchinesebook{\chaptermark{绪论}}{\chaptermark{Introduction}}
+    \setcounter{page}{1}
   \fi
 }{}{}
 

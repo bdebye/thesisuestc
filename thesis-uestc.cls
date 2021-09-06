@@ -814,7 +814,7 @@ School: & \en@theschool \\
 
 \setlength{\extrarowheight}{2pt}
 
-\newcommand{\standardhead}{
+\newcommand{\standardheader}{
   \fancyhf{}
   \ifchinesebook{
     \fancyhead[CE]{\fontsize{10.5pt}{12.6pt}\selectfont\display@chineseheader}
@@ -846,13 +846,11 @@ School: & \en@theschool \\
   }
 }{}{}
 
-\apptocmd{\tableofcontents}{\def\@TOC{\null}}{}{}
-
 \newcommand{\thesistableofcontents}{
   \tableofcontents
 }
 
-\renewcommand{\chaptermark}[1]{\markboth{\thechapter \hspace{5.25pt}#1}{}}
+\renewcommand{\chaptermark}[1]{\markboth{\thechapter\hspace{5.25pt}#1}{}}
 
 \newcommand{\thesisacknowledgement}{
   \addtocontents{toc}{\protect\setcounter{tocdepth}{0}}
@@ -873,12 +871,13 @@ School: & \en@theschool \\
   \newpage
   \clearpage{\thispagestyle{empty}\cleardoublepage}
   \addtocontents{toc}{\protect\setcounter{tocdepth}{2}}
-  \standardhead
+  \standardheader
   \pagenumbering{arabic}
 }
 
 \pretocmd{\@chapter}{
-  \ifdefined\@TOC
+  \ifdefined\@BODY
+  \else
   \ifnum\value{chapter}=0
       \thesiscontent
     \fi
@@ -886,10 +885,14 @@ School: & \en@theschool \\
 }{}{}
 
 \apptocmd{\@chapter}{
-  \ifnum\value{chapter}=1
-    \ifchinesebook{\chaptermark{绪论}}{\chaptermark{Introduction}}
-    \setcounter{page}{1}
+  \ifdefined\@BODY
+  \else
+    \ifnum\value{chapter}=1
+      \ifchinesebook{\chaptermark{绪论}}{\chaptermark{Introduction}}
+      \setcounter{page}{1}
+    \fi
   \fi
+  \def\@BODY{\null}
 }{}{}
 
 \newcommand{\thesischapterexordium}{

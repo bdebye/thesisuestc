@@ -26,7 +26,7 @@
 
 \RequirePackage[usenames,dvipsnames,svgnames,table]{xcolor}
 \RequirePackage{graphicx}
-\RequirePackage[font={doublespacing, small}, labelsep=space, skip=6pt]{caption}
+\RequirePackage[font={doublespacing, small}, labelsep=space, strut=false]{caption}
 
 \RequirePackage{array}
 \RequirePackage{booktabs}
@@ -106,7 +106,7 @@
 \RequirePackage{newfloat}
 \RequirePackage[resetlabels]{multibib}
 \RequirePackage[nottoc]{tocbibind}
-\RequirePackage{everypage}
+\RequirePackage{everypage-1x}
 \RequirePackage{ifoddpage}
 \RequirePackage{pdfpages}
 
@@ -127,9 +127,14 @@
   \listoftables
 }
 
-\RequirePackage[a4paper,
-  inner=3cm, outer=3cm, top=3cm, bottom=3cm,
-  bindingoffset=0cm]{geometry}
+\RequirePackage{geometry}
+\geometry{
+  paper       = a4paper,
+  margin      = 30mm,
+  footskip    = 10mm,
+  headheight  = 0.75cm,
+  headsep     = 0.25cm,
+}
 
 \setlength{\headheight}{15pt}
 
@@ -151,9 +156,38 @@
 \captionsetup{format=hang}
 \captionsetup{width=\textwidth - 42pt}
 \captionsetup[figure]{aboveskip=6pt, belowskip=0pt}
-\captionsetup[table]{aboveskip=9pt, belowskip=0pt}
+\captionsetup[table]{aboveskip=6pt, belowskip=0pt}
 
-\setlength{\intextsep}{9pt}
+\setlength{\floatsep}{12pt}
+\setlength{\textfloatsep}{12pt}
+\setlength{\intextsep}{12pt}
+
+% http://tex.stackexchange.com/a/40363
+\patchcmd{\@addtocurcol}%
+    {\ifnum\outputpenalty <-\@Mii \vskip -\parskip\fi}%
+    {}%
+    {\typeout{*** SUCCESS ***}}{\typeout{*** FAIL ***}}
+
+\patchcmd{\@addtocurcol}%
+    {\vskip \intextsep}%
+    {\addvspace\intextsep
+      \ifnum\outputpenalty <-\@Mii \vskip\parskip\fi}%
+    {\typeout{*** SUCCESS ***}}{\typeout{*** FAIL ***}}
+
+\patchcmd{\@addtocurcol}%
+    {\vskip\intextsep}{\fix@second@intextsep}%
+    {\typeout{*** SUCCESS ***}}%
+    {\typeout{*** FAIL ***}}
+
+\def\fix@second@intextsep {%
+% was the float seen in vertical mode?
+   \ifnum\outputpenalty <-\@Mii 
+      \aftergroup\vskip\aftergroup\intextsep
+      \aftergroup\nointerlineskip
+  \else
+      \vskip\intextsep
+  \fi
+}
 
 \AtBeginEnvironment{figure}{%
   \def\@floatboxreset{\centering}%

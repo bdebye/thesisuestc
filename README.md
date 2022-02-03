@@ -70,9 +70,9 @@ xelatex main.tex
 
 | 选项 | 例子 | 定义 |
 |---|---|---|
-| oral | \setdate[oral]{2019.4.15} | 答辩日期 |
-| submit | \setdate[submit]{2019.3.15} | 论文提交日期 |
-| confer | \setdate[confer]{2019年6月} | 学位授予日期 |
+| oral | \setdate[oral]{2019年4月15日} | 答辩日期 |
+| submit | \setdate[submit]{2019年3月15日} | 论文提交日期 |
+| confer | \setdate[confer]{2019年6月8日} | 学位授予日期 |
 
 如果想使用自己定义的封面，可以用`\bindpdfcover`命令添加已经做好的PDF格式的封面，如`\bindpdfcover{cover.pdf}`。
 

@@ -96,7 +96,7 @@
 \RequirePackage{fancyhdr}
 \RequirePackage{titlesec}
 \RequirePackage{appendix}
-\RequirePackage{cite}
+\RequirePackage{gbt7714}
 \RequirePackage[normalem]{ulem}
 \RequirePackage{enumitem}
 
@@ -1038,15 +1038,33 @@ School: & \en@theschool \\
   \end{thebibliography}
 }
 
-\pretocmd{\bibliography}{
-  \thispagestyle{fancy}
-  \interlinepenalty=10000
-  \begin{spacing}{1.667}
-}{}{}
+\renewcommand\bibpreamble{%
+  \thispagestyle{fancy}%
+  \interlinepenalty=10000%
+}
+\setlength\bibsep{0bp}
+\renewcommand\bibfont{\small\linespread{1.667}\selectfont}
 
-\apptocmd{\bibliography}{
-  \end{spacing}
-}{}{}
+\AtBeginDocument{%
+  \def\thebibliography#1{%
+    \@isnumber{#1}{%
+      \ifnum\mb@biblabelwidth=0
+        % \@tempcnta\c@NAT@ctr %% changed here to c@NAT@ctr
+        \@tempcnta=#1\relax
+        \ifcontinuouslabels
+          \advance\@tempcnta\c@NAT@ctr
+          % \advance\@tempcnta#1%
+        \fi
+        \std@thebibliography{\@arabic\@tempcnta}%
+      \else
+        \std@thebibliography{\@arabic\mb@biblabelwidth}%
+        \global\mb@biblabelwidth 0
+      \fi
+    }{%
+      \std@thebibliography{#1}%
+    }%
+  }%
+}
 
 \newcommand{\bstlabelmark}{lo}
 \newcommand{\thesisloadbibliography}[2][]{
@@ -1055,11 +1073,11 @@ School: & \en@theschool \\
   }{
     \setlength{\labelsep}{3pt}
     \renewcommand{\bstlabelmark}{loo}
-    \bibliographystyle{thesis-uestc}
+    \bibliographystyle{gbt7714-numerical}
     \bibliography{#2}
     \setlength{\labelsep}{6pt}
   }{
-    \bibliographystyle{thesis-uestc}
+    \bibliographystyle{gbt7714-numerical}
     \bibliography{#2}
   }
 }
@@ -1092,7 +1110,7 @@ School: & \en@theschool \\
   \renewcommand{\bstlabelmark}{lo}
   \thispagestyle{fancy}
   \begin{spacing}{1.667}
-  \bibliographystyleaccomplish{thesis-uestc}
+  \bibliographystyleaccomplish{gbt7714-numerical}
   \bibliographyaccomplish{#1}
   \end{spacing}
   \renewcommand{\bibname}{\thesisbibname}

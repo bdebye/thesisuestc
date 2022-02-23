@@ -556,8 +556,8 @@ FUNCTION {digital}
     format.authors write$ add.period
     format.title write$
     "[" format.type * "]" * write$ add.period
-    format.url write$ add.comma
-    format.date write$
+    format.date write$ add.comma
+    format.url write$
     newline$
 }
 

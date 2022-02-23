@@ -148,8 +148,9 @@
 \renewcommand{\thetable}{\arabic{chapter}-\arabic{table}}
 \renewcommand{\thefigure}{\arabic{chapter}-\arabic{figure}}
 
-\captionsetup{format=hang}
-\captionsetup{width=\textwidth - 42pt}
+%\captionsetup{format=hang}
+%\captionsetup{width=\textwidth - 42pt}
+\captionsetup{width=\textwidth - 84pt}
 \captionsetup[figure]{aboveskip=6pt, belowskip=0pt}
 \captionsetup[table]{aboveskip=9pt, belowskip=0pt}
 
@@ -814,6 +815,11 @@ School: & \en@theschool \\
   \null\hspace{259pt} 日期：\chinesespace\chinesespace 年\hspace{21pt}月\hspace{21pt}日
 \end{spacing}
 \newpage\setcounter{page}{0}\setcounter{pseudopage}{0}
+}
+
+\newcommand{\signatureofdeclaration}[1]{
+  \includepdf[pages=-]{#1}
+  \newpage\setcounter{page}{0}\setcounter{pseudopage}{0}
 }
 
 \setlength{\extrarowheight}{2pt}

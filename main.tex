@@ -9,23 +9,27 @@
 \school{物理电子学院}{School of Physical Electronics}
 \major{无线电物理}{Radio Physics}
 \studentnumber{201421040223}
+% \ProfessionalDegreeArea{} % 仅用于设置专业学位领域
+\ClassificationNumber{TP309.2} % 分类号
+\ClassifiedClass{公开} % 密级
+\UDCNumber{004.78} % UDC编号
 
 \begin{document}
 
 \makecover
 
 \begin{chineseabstract}
-为了适应日益增长的宽带信号和非线性系统的工程应用，用于分析瞬态电磁散射问题的时域积分方程方法研究日趋活跃。本文以时域积分方程时间步进算法及其快速算法为研究课题，重点研究了时间步进算法的数值实现技术、后时稳定性问题以及两层平面波算法加速计算等，主要研究内容分为四部分。
+    为了适应日益增长的宽带信号和非线性系统的工程应用，用于分析瞬态电磁散射问题的时域积分方程方法研究日趋活跃。本文以时域积分方程时间步进算法及其快速算法为研究课题，重点研究了时间步进算法的数值实现技术、后时稳定性问题以及两层平面波算法加速计算等，主要研究内容分为四部分。
 
-……
+    ……
 
-\chinesekeyword{时域电磁散射，时域积分方程，时间步进算法，后时不稳定性，时域平面波算法}
+    \chinesekeyword{时域电磁散射，时域积分方程，时间步进算法，后时不稳定性，时域平面波算法}
 \end{chineseabstract}
 
 \begin{englishabstract}
-With the widespread engineering applications ranging from broadband signals and non-linear systems, time-domain integral equations (TDIE) methods for analyzing transient electromagnetic scattering problems are becoming widely used nowadays. TDIE-based marching-on-in-time (MOT) scheme and its fast algorithm are researched in this dissertation, including the numerical techniques of MOT scheme, late-time stability of MOT scheme, and two-level PWTD-enhanced MOT scheme. The contents are divided into four parts shown as follows.
+    With the widespread engineering applications ranging from broadband signals and non-linear systems, time-domain integral equations (TDIE) methods for analyzing transient electromagnetic scattering problems are becoming widely used nowadays. TDIE-based marching-on-in-time (MOT) scheme and its fast algorithm are researched in this dissertation, including the numerical techniques of MOT scheme, late-time stability of MOT scheme, and two-level PWTD-enhanced MOT scheme. The contents are divided into four parts shown as follows.
 
-\englishkeyword{Time-domain Electromagnetic Scattering, Time-domain Integral Equation, Marching-on In-time (MOT) Scheme, Late-time Instability, Plane Wave Time-domain (PWTD) Algorithm}
+    \englishkeyword{Time-domain Electromagnetic Scattering, Time-domain Integral Equation, Marching-on In-time (MOT) Scheme, Late-time Instability, Plane Wave Time-domain (PWTD) Algorithm}
 \end{englishabstract}
 
 \thesistableofcontents
@@ -56,31 +60,31 @@ With the widespread engineering applications ranging from broadband signals and 
 \subsection{空间基函数}
 RWG 基函数是定义在三角形单元上的最具代表性的基函数。它的具体定义如下：
 \begin{equation}
-f_n(\bm{r})=
-\begin{cases}
-\frac{l_n}{2A_n^+}\bm{\rho}_n^+=\frac{l_n}{2A_n^+}(\bm{r}-\bm{r}_+)&\bm{r}\in T_n^+\\
-\frac{l_n}{2A_n^-}\bm{\rho}_n^-=\frac{l_n}{2A_n^-}(\bm{r}_--\bm{r})&\bm{r}\in T_n^-\\
-0&\text{otherwise}
-\end{cases}
+    f_n(\bm{r})=
+    \begin{cases}
+        \frac{l_n}{2A_n^+}\bm{\rho}_n^+=\frac{l_n}{2A_n^+}(\bm{r}-\bm{r}_+) & \bm{r}\in T_n^+  \\
+        \frac{l_n}{2A_n^-}\bm{\rho}_n^-=\frac{l_n}{2A_n^-}(\bm{r}_--\bm{r}) & \bm{r}\in T_n^-  \\
+        0                                                                   & \text{otherwise}
+    \end{cases}
 \end{equation}
 
 其中，$l_n$为三角形单元$T_n^+$和$T_n^-$公共边的长度，$A_n^+$和$A_n^-$分别为三角形单元$T_n^+$和$T_n^-$的面积（如图\ref{pica}所示）。
 
 \begin{figure}[h]
-\includegraphics{pica.pdf}
-\caption{RWG 基函数几何参数示意图}
-\label{pica}
+    \includegraphics{pica.pdf}
+    \caption{RWG 基函数几何参数示意图}
+    \label{pica}
 \end{figure}
 
 由于时域混合场积分方程是时域电场积分方程与时域磁场积分方程的线性组合，因此时域混合场积分方程时间步进算法的阻抗矩阵特征与时域电场积分方程时间步进算法的阻抗矩阵特征相同。
 \begin{equation}
-\label{latent_binary_variable}
-\bm{r}_{i,j}=
-\begin{cases}
-1,f(\bm{x}^{i};\bm{w})\cdot f(\bm{x}^{j};\bm{w})\geq u(\lambda),\\
-0,f(\bm{x}^{i};\bm{w})\cdot f(\bm{x}^{j};\bm{w})< l(\lambda), 1\leq i,j\leq n.\\
-f(\bm{x}^{i};\bm{w})\cdot f(\bm{x}^{j};\bm{w}),\text{otherwise},
-\end{cases}
+    \label{latent_binary_variable}
+    \bm{r}_{i,j}=
+    \begin{cases}
+        1,f(\bm{x}^{i};\bm{w})\cdot f(\bm{x}^{j};\bm{w})\geq u(\lambda),               \\
+        0,f(\bm{x}^{i};\bm{w})\cdot f(\bm{x}^{j};\bm{w})< l(\lambda), 1\leq i,j\leq n. \\
+        f(\bm{x}^{i};\bm{w})\cdot f(\bm{x}^{j};\bm{w}),\text{otherwise},
+    \end{cases}
 \end{equation}
 
 时域积分方程时间步进算法的阻抗元素直接影响算法的后时稳定性，因此阻抗元素的计算是算法的关键之一，采用精度高效的方法计算时域阻抗元素是时域积分方程时间步进算法研究的重点之一。
@@ -97,16 +101,16 @@ f(\bm{x}^{i};\bm{w})\cdot f(\bm{x}^{j};\bm{w}),\text{otherwise},
 如图\ref{picb}和图\ref{picc}所示分别给出了参数$E_0=\hat{x}$，$a_n=-\hat{z}$，$f_0=250MHz$，$f_w=50MHz$，$t_w=4.2\sigma$时，调制高斯脉冲的时域与频域归一化波形图。
 
 \begin{figure}[h]
-\subfloat[]{
-    \label{picb}
-    \includegraphics[width=7.3cm]{picb.pdf}
-}
-\subfloat[]{
-    \label{picc}
-    \includegraphics[width=6.41cm]{picc.pdf}
-}
-\caption{调制高斯脉冲时域与频率波形，时域阻抗元素的存储技术也是时间步进算法并行化的关键技术之一。(a)调制高斯脉冲信号的时域波形；(b)调制高斯脉冲信号的频域波形}
-\label{fig1}
+    \subfloat[]{
+        \label{picb}
+        \includegraphics[width=7.3cm]{picb.pdf}
+    }
+    \subfloat[]{
+        \label{picc}
+        \includegraphics[width=6.41cm]{picc.pdf}
+    }
+    \caption{调制高斯脉冲时域与频率波形，时域阻抗元素的存储技术也是时间步进算法并行化的关键技术之一。(a)调制高斯脉冲信号的时域波形；(b)调制高斯脉冲信号的频域波形}
+    \label{fig1}
 \end{figure}
 
 时域阻抗元素的存储技术\citing{xiao2012yi}也是时间步进算法并行化的关键技术之一，采用合适的阻抗元素存储方式可以很大的提高并行时间步进算法的计算效率。
@@ -162,50 +166,50 @@ f(\bm{x}^{i};\bm{w})\cdot f(\bm{x}^{j};\bm{w}),\text{otherwise},
 方式的存储量大小。
 
 \begin{table}[h]
-\caption{计算$2m\times 2m$理想导体平板时域感应电流采用的三种存储方式的存储量比较。}
-\begin{tabular}{cccc}
-\toprule
-\multirow{2}{*}{时间步长} & \multicolumn{3}{c}{存储方式} \\
-\cmidrule{2-4}
-& 非压缩存储方式 & 完全压缩存储方式 & 基权函数压缩存储方式 \\
-\midrule
-0.4ns & 5.59 MB & 6.78 MB & 6.78 MB\\
-0.5ns & 10.17 MB & 5.58 MB & 5.58 MB \\
-0.6ns & 8.38MB & 4.98 MB & 4.98 MB \\
-\bottomrule
-\end{tabular}
-\label{tablea}
+    \caption{计算$2m\times 2m$理想导体平板时域感应电流采用的三种存储方式的存储量比较。}
+    \begin{tabular}{cccc}
+        \toprule
+        \multirow{2}{*}{时间步长} & \multicolumn{3}{c}{存储方式}                                           \\
+        \cmidrule{2-4}
+                                  & 非压缩存储方式               & 完全压缩存储方式 & 基权函数压缩存储方式 \\
+        \midrule
+        0.4ns                     & 5.59 MB                      & 6.78 MB          & 6.78 MB              \\
+        0.5ns                     & 10.17 MB                     & 5.58 MB          & 5.58 MB              \\
+        0.6ns                     & 8.38MB                       & 4.98 MB          & 4.98 MB              \\
+        \bottomrule
+    \end{tabular}
+    \label{tablea}
 \end{table}
 
 如图\ref{picd}所示给出了时间步长选取为0.5ns 时采用三种不同存储方式计算的平板中心处$x$方向的感应电流值与IDFT 方法计算结果的比较，……。如图\ref{pice}所示给出了存储方式为基权函数压缩存储方式，时间步长分别取0.4ns、0.5ns、0.6ns时平板中心处$x$方向的感应电流计算结果，从图中可以看出不同时间步长的计算结果基本相同。
 
 \begin{figure}[h]
-\subfloat[]{
-    \label{picd}
-    \includegraphics[width=6.77cm]{picd.pdf}
-}
-\subfloat[]{
-    \label{pice}
-    \includegraphics[width=7.04cm]{pice.pdf}
-}
-\caption{$2m\times 2m$的理想导体平板中心处感应电流$x$分量随时间的变化关系。(a)不同存储方式的计算结果与IDFT方法的结果比较；(b)不同时间步长的计算结果比较比较比较}
-\label{fig2}
+    \subfloat[]{
+        \label{picd}
+        \includegraphics[width=6.77cm]{picd.pdf}
+    }
+    \subfloat[]{
+        \label{pice}
+        \includegraphics[width=7.04cm]{pice.pdf}
+    }
+    \caption{$2m\times 2m$的理想导体平板中心处感应电流$x$分量随时间的变化关系。(a)不同存储方式的计算结果与IDFT方法的结果比较；(b)不同时间步长的计算结果比较比较比较}
+    \label{fig2}
 \end{figure}
 
 由于时域混合场积分方程是时域电场积分方程与时域磁场积分方程的线性组合，因此时域混合场积分方程时间步进算法的阻抗矩阵特征与时域电场积分方程时间步进算法的阻抗矩阵特征相同。
 
 \section{时域积分方程时间步进算法矩阵方程的求解}
 \begin{theorem}
-如果时域混合场积分方程是时域电场积分方程与时域磁场积分方程的线性组合。
+    如果时域混合场积分方程是时域电场积分方程与时域磁场积分方程的线性组合。
 \end{theorem}
 \begin{proof}
-由于时域混合场积分方程是时域电场积分方程与时域磁场积分方程的线性组合，因此时域混合场积分方程时间步进算法的阻抗矩阵特征与时域电场积分方程时间步进算法的阻抗矩阵特征相同。
+    由于时域混合场积分方程是时域电场积分方程与时域磁场积分方程的线性组合，因此时域混合场积分方程时间步进算法的阻抗矩阵特征与时域电场积分方程时间步进算法的阻抗矩阵特征相同。
 \end{proof}
 \begin{corollary}
-时域积分方程方法的研究近几年发展迅速，在本文研究工作的基础上，仍有以下方向值得进一步研究。
+    时域积分方程方法的研究近几年发展迅速，在本文研究工作的基础上，仍有以下方向值得进一步研究。
 \end{corollary}
 \begin{lemma}
-因此时域混合场积分方程时间步进算法的阻抗矩阵特征与时域电场积分方程时间步进算法的阻抗矩阵特征相同。
+    因此时域混合场积分方程时间步进算法的阻抗矩阵特征与时域电场积分方程时间步进算法的阻抗矩阵特征相同。
 \end{lemma}
 
 \section{本章小结}

@@ -566,7 +566,7 @@ FUNCTION {patent}
     bibitem.begin
     format.authors write$ add.period
     format.title write$ ": " write$
-    format.id write$ "[P]" * write$ add.period
+    format.id "[P]" * write$ add.period
     format.date write$
     add.period
     newline$
@@ -577,7 +577,7 @@ FUNCTION {standard}
     bibitem.begin
     format.institution write$ add.period
     format.title write$ ": " write$
-    format.id write$ "[S]" * write$ add.period
+    format.id "[S]" * write$ add.period
     format.address write$ ": " write$
     format.publisher write$ add.comma
     format.year write$

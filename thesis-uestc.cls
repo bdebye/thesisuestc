@@ -36,6 +36,7 @@
 \setlength{\cmidrulewidth}{0.5pt}
 
 \RequirePackage{setspace}
+\RequirePackage{adjustbox}
 \RequirePackage{multirow}
 \RequirePackage[tbtags]{amsmath}
 \RequirePackage{amssymb}
@@ -43,7 +44,7 @@
 \RequirePackage{lmodern}
 \RequirePackage[nopostdot]{glossaries}
 \RequirePackage{mathspec}
-
+\RequirePackage{enumerate}
 \RequirePackage{xeCJK}
 \RequirePackage{ifplatform}
 
@@ -134,6 +135,7 @@
 \setlength{\headheight}{15pt}
 
 \pagestyle{fancy}
+\renewcommand{\headrulewidth}{0.75pt}
 \linespread{1.391}
 \setlength\parindent{24pt}
 \titlespacing{\chapter}{0pt}{0pt}{18pt}
@@ -353,6 +355,10 @@
 \newcommand{\en@theadvisor}{\chinesespace}
 
 \newcommand{\thestudentnumber}{\chinesespace}
+\newcommand{\theClassificationNumber}{\chinesespace}
+\newcommand{\theClassifiedClass}{\chinesespace}
+\newcommand{\theUDCNumber}{\chinesespace}
+\newcommand{\theProfessionalDegreeArea}{\chinesespace}
 
 \renewcommand{\title}[2]{
   \renewcommand{\zh@thetitle}{#1}
@@ -386,6 +392,22 @@
 
 \newcommand{\studentnumber}[1]{
   \renewcommand{\thestudentnumber}{#1}
+}
+
+\newcommand{\ClassificationNumber}[1]{
+  \renewcommand{\theClassificationNumber}{#1}
+}
+
+\newcommand{\ClassifiedClass}[1]{
+  \renewcommand{\theClassifiedClass}{#1}
+}
+
+\newcommand{\UDCNumber}[1]{
+  \renewcommand{\theUDCNumber}{#1}
+}
+
+\newcommand{\ProfessionalDegreeArea}[1]{
+  \renewcommand{\theProfessionalDegreeArea}{#1}
 }
 
 \newcommand{\thedateoral}{}
@@ -450,6 +472,10 @@
     of Electronic Science and Technology of China}
 }
 
+\newcommand{\ifpromaster}[2]{
+  \ifthenelse{\equal{\englishdegreename}{Professional Master}}{#1}{#2}
+}
+
 \DeclareOption{doctor}{
   \def\chinesedegreename{博士}
   \def\englishdegreename{Doctor}
@@ -501,6 +527,22 @@
 \newcommand{\thesisfigurelist}{
   \listoffigures
 }
+
+\pretocmd{\listoftables}{
+    \newpage
+  \fancyhf{}
+  \fancyhead[C]{\fontsize{10.5pt}{12.6pt}\selectfont\listtablename}
+  \fancyfoot[CE,CO]{\fontsize{9pt}{10.8pt}\selectfont\Roman{pseudopage}}
+  
+  \ifchinesebook{
+    \addtolength{\cfttabnumwidth}{12pt}
+    \renewcommand{\cfttabpresnum}{\tablename}
+  }{
+    \addtolength{\cfttabnumwidth}{32pt}
+    \renewcommand{\cfttabpresnum}{\tablename~}
+  }
+  \addtocontents{toc}{\protect\setcounter{tocdepth}{-1}}
+}{}{}
 
 \pretocmd{\listoftables}{
     \newpage
@@ -638,6 +680,23 @@
             & \\
     \cline{2-2}
   \end{tabular}\hspace*{\fill} \\[\baselineskip]
+  \ifpromaster{
+  \begin{tabular}{>{\bfseries\fontsize{16pt}{16pt}\selectfont}l
+      >{\centering\arraybackslash\bfseries\fontsize{16pt}{16pt}\selectfont}
+      p{3.77in}p{15pt}}
+    专业学位类别 & \zh@themajor &\\
+    \cline{2-2}
+    学\chinesespace\chinesespace\chinesespace\chinesespace 号 & \thestudentnumber & \\
+    \cline{2-2}
+    作\hspace{0.66em}者\hspace{0.66em}姓\hspace{0.67em}名 & \zh@theauthor &\\
+    \cline{2-2}
+    指\hspace{0.66em}导\hspace{0.66em}老\hspace{0.67em}师 & \zh@theadvisor &\\
+    \cline{2-2}
+    学\chinesespace\chinesespace\chinesespace\chinesespace 院 & \zh@theschool &\\
+    \cline{2-2}
+  \end{tabular}
+  }
+  {
   \begin{tabular}{>{\bfseries\fontsize{16pt}{16pt}\selectfont}l
       >{\centering\arraybackslash\bfseries\fontsize{16pt}{16pt}\selectfont}
       p{3.77in}p{15pt}}
@@ -652,21 +711,37 @@
     学\chinesespace\chinesespace 院 & \zh@theschool &\\
     \cline{2-2}
   \end{tabular}
+  }
 \end{center}
 
-\ifbachelor{}{\thetitlepage}
+\ifbachelor{}{\ifpromaster{\thetitlepageforpromaster}{\thetitlepage}}
 
 \newpage
 \setcounter{page}{1}
 \setlength{\extrarowheight}{2pt}
 }
 
+\newlength\myheight
+\newcommand\Mysavedprevdepth{}%
+\newcommand\UnderlineCentered[3]{%
+  \begin{adjustbox}{minipage=[t]{\dimexpr#1\relax},gstore totalheight=\myheight,margin=0pt}%
+    \centering\leavevmode#3\par\xdef\Mysavedprevdepth{\the\prevdepth}%
+  \end{adjustbox}%s
+  \hspace*{-\dimexpr#1\relax}%
+  \begin{adjustbox}{minipage=[t][\myheight]{\dimexpr#1\relax},margin=0pt}%
+    \vphantom{Eg}\lower\dimexpr#2\relax\hbox to\hsize{\leaders\hrule\hfill\kern0pt}\par
+    \kern-\dimexpr#2\relax
+    \xleaders\vbox to\baselineskip {\vfill\hbox{\lower\dimexpr#2\relax\hbox to\hsize{\leaders\hrule\hfill\kern0pt}}\kern-\dimexpr#2\relax}\vfill
+    \kern\Mysavedprevdepth
+  \end{adjustbox}%
+}%
+
 \newcommand{\thetitlepage}{
   \newpage
   \thispagestyle{empty}
 
-\noindent 分类号 \rule[-3pt]{2.5in}{0.5pt} 密级 \rule[-3pt]{2.5in}{0.5pt} \\[12bp]
-UDC\textsuperscript{ 注1} \rule[-3pt]{2.5in}{0.5pt} \\[12bp]
+\noindent 分类号 \hspace{0.5em}\UnderlineCentered{2.5in}{3pt}{\theClassificationNumber} 密级 \UnderlineCentered{2.5in}{3pt}{\theClassifiedClass} \\[12bp]
+UDC\textsuperscript{ 注1} \UnderlineCentered{2.5in}{3pt}{\theUDCNumber} \\[12bp]
 
 \begin{center}
   \fontsize{36pt}{36pt}\selectfont{
@@ -724,13 +799,13 @@ UDC\textsuperscript{ 注1} \rule[-3pt]{2.5in}{0.5pt} \\[12bp]
   \end{tabular} \\
   \begin{tabular}{>{\fontsize{12pt}{12pt}\selectfont}l
       >{\centering\arraybackslash\fontsize{14pt}{14pt}\heiti\selectfont}
-      p{2.29in}}
+      p{4.35in}}
       答辩委员会主席 & \\
     \cline{2-2}
   \end{tabular} \\
   \begin{tabular}{>{\fontsize{12pt}{12pt}\selectfont}l
       >{\centering\arraybackslash\fontsize{14pt}{14pt}\heiti\selectfont}
-      p{5.03in}}
+      p{5.01in}}
       评阅人 & \\
     \cline{2-2}
   \end{tabular}
@@ -764,9 +839,129 @@ UDC\textsuperscript{ 注1} \rule[-3pt]{2.5in}{0.5pt} \\[12bp]
 \cline{2-2}
 & \\
 \cline{2-2}
+Student ID: & \thestudentnumber \\
+\cline{2-2}
 Author: & \en@theauthor \\
 \cline{2-2}
+Supervisor: & \en@theadvisor \\
+\cline{2-2}
+School: & \en@theschool \\
+\cline{2-2}
+\end{tabular}
+}
+
+\newcommand{\thetitlepageforpromaster}{
+  \newpage
+  \thispagestyle{empty}
+
+\noindent 分类号 \hspace{0.5em}\UnderlineCentered{2.5in}{3pt}{\theClassificationNumber} 密级 \UnderlineCentered{2.5in}{3pt}{\theClassifiedClass} \\[12bp]
+UDC\textsuperscript{ 注1} \UnderlineCentered{2.5in}{3pt}{\theUDCNumber} \\[12bp]
+
+\begin{center}
+  \fontsize{36pt}{36pt}\selectfont{
+    学\chinesespace 位\chinesespace 论\chinesespace 文
+  } \\[48bp]
+
+  \fontsize{16pt}{16pt}\selectfont{\bfseries\zh@thetitle} \\
+  \vspace{-15pt}
+  \rule{5.9in}{.5pt} \\
+  \fontsize{12pt}{12pt}\selectfont（题名和副题名）\\[34bp]
+  \fontsize{16pt}{16pt}\selectfont{\bfseries\zh@theauthor} \\
+  \vspace{-15pt}
+  \rule{1.63in}{.5pt} \\
+  \fontsize{12pt}{12pt}\selectfont（作者姓名） \\[34bp]
+
+  \begin{tabular}{>{\fontsize{12pt}{12pt}\selectfont}l
+      >{\centering\arraybackslash\fontsize{16pt}{16pt}\selectfont}
+      p{4.45in}}
+      指导老师 & {\bfseries\zh@theadvisor} \\
+    \cline{2-2}
+      & {\bfseries 电子科技大学\chinesespace 成都} \\
+    \cline{2-2}
+    & \fontsize{12pt}{12pt}\selectfont（姓名、职称、单位名称）
+  \end{tabular}  \\[36bp]
+\end{center}
+
+  \noindent
+  \begin{tabular}{>{\fontsize{12pt}{12pt}\selectfont}l
+      >{\centering\arraybackslash\fontsize{14pt}{14pt}\bfseries\selectfont}
+      p{1.0in}
+      >{\fontsize{12pt}{12pt}\selectfont}l
+      >{\centering\arraybackslash\fontsize{14pt}{14pt}\bfseries\selectfont}
+      p{2.50in-2em}}
+      申请学位级别 & \chinesedegreename &
+      专业学位类别 & \zh@themajor \\
+    \cline{2-2}
+    \cline{4-4}
+  \end{tabular} \\
+  \begin{tabular}{>{\fontsize{12pt}{12pt}\selectfont}l
+      >{\centering\arraybackslash\fontsize{14pt}{14pt}\bfseries\selectfont}
+      p{4.53in}}
+      专业学位领域 & \theProfessionalDegreeArea \\
+    \cline{2-2}
+  \end{tabular} \\
+  \begin{tabular}{>{\fontsize{12pt}{12pt}\selectfont}l
+      >{\centering\arraybackslash\fontsize{14pt}{14pt}\bfseries\selectfont}
+      p{1.59in}
+      >{\fontsize{12pt}{12pt}\selectfont}l
+      >{\centering\arraybackslash\fontsize{14pt}{14pt}\bfseries\selectfont}
+      p{1.59in}}
+      提交论文日期 & \thedatesubmit &
+      论文答辩日期 & \thedateoral \\
+    \cline{2-2}
+    \cline{4-4}
+  \end{tabular} \\
+  \begin{tabular}{>{\fontsize{12pt}{12pt}\selectfont}l
+      >{\centering\arraybackslash\fontsize{14pt}{14pt}\bfseries\selectfont}
+      p{4.02in}}
+      学位授予单位和日期 & 电子科技大学\chinesespace{} \thedateconfer \\
+    \cline{2-2}
+  \end{tabular} \\
+  \begin{tabular}{>{\fontsize{12pt}{12pt}\selectfont}l
+      >{\centering\arraybackslash\fontsize{14pt}{14pt}\heiti\selectfont}
+      p{4.35in}}
+      答辩委员会主席 & \\
+    \cline{2-2}
+  \end{tabular} \\
+  \begin{tabular}{>{\fontsize{12pt}{12pt}\selectfont}l
+      >{\centering\arraybackslash\fontsize{14pt}{14pt}\heiti\selectfont}
+      p{5.01in}}
+      评阅人 & \\
+    \cline{2-2}
+  \end{tabular}
+
+\vspace{0.54in}
+\noindent
+\hspace{12pt}注1：注明《国际十进分类法UDC》的类号。
+
+\newpage
+\thispagestyle{empty}\null
+\par{\vspace{2.3cm}}
+\noindent
+\begin{minipage}[t][1.52cm][t]{\textwidth}
+  \fontsize{18pt}{20pt}\selectfont
+  \bfseries\centering\en@thetitle
+\end{minipage}
+\par{\vspace{6.3cm}}
+\noindent
+\begin{minipage}[t][1.52cm][t]{\textwidth}
+  \fontsize{15pt}{17pt}\selectfont
+  \centering\noindent
+  A \englishbooktitle{} Submitted to \\
+  University of Electronic Science and Technology of China
+\end{minipage}
+\par{\vspace{3.2cm}}
+\noindent
+\begin{tabular}{>{\fontsize{16pt}{16pt}\selectfont}r
+  >{\centering\arraybackslash\bfseries\fontsize{16pt}{16pt}\selectfont}
+  p{10.6cm}}
+  Discipline: & \multirow[t]{2}{*}{\en@themajor} \\
+\cline{2-2}
+& \\
+\cline{2-2}
 Student ID: & \thestudentnumber \\
+\cline{2-2}
+Author: & \en@theauthor \\
 \cline{2-2}
 Supervisor: & \en@theadvisor \\
 \cline{2-2}

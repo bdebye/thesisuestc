@@ -184,15 +184,15 @@
 
 \titleformat{\section}[block]
   {\fontsize{14pt}{14pt}\selectfont\strong}
-  {\thesection}{7pt}{}
+  {\textbf{\thesection}}{7pt}{}
 
 \titleformat{\subsection}[block]
   {\fontsize{14pt}{14pt}\selectfont\strong}
-  {\thesubsection}{7pt}{}
+  {\textbf{\thesubsection}}{7pt}{}
 
 \titleformat{\subsubsection}[block]
   {\fontsize{12pt}{12pt}\selectfont\strong}
-  {\thesubsubsection}{6pt}{}
+  {\textbf{\thesubsubsection}}{6pt}{}
 
 \RequirePackage[hang, perpage]{footmisc}
 \addtolength{\footnotesep}{0pt}

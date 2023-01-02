@@ -1,5 +1,5 @@
 %
-%  Copyright 2016-2022 Wen Wang <wangwen1192@outlook.com>
+%  Copyright 2016-2023 Wen Wang <wangwen1192@outlook.com>
 %
 %  This work may be distributed and/or modified under the
 %  conditions of the LaTeX Project Public License, either version 1.3
@@ -159,6 +159,101 @@ INTEGERS { nameptr namesleft numnames }
 
 STRINGS  { bibinfo}
 
+FUNCTION {format.names.old}
+{ 'bibinfo :=
+  duplicate$ empty$ 'skip$ {
+  's :=
+  "" 't :=
+  #1 'nameptr :=
+  s num.names$ 'numnames :=
+  numnames 'namesleft :=
+    { namesleft #0 > }
+    { s nameptr
+      "{ll~}{f}{vv~}{jj}"
+      format.name$
+      bibinfo bibinfo.check
+      't :=
+      nameptr #1 >
+        {
+          nameptr #3
+          #1 + =
+          numnames #3
+          > and
+            { "others" 't :=
+              #1 'namesleft := }
+            'skip$
+          if$
+          namesleft #1 >
+            { ", " * t * }
+            {
+              s nameptr "{ll}" format.name$ duplicate$ "others" =
+                { 't := }
+                { pop$ }
+              if$
+              "," *
+              t "others" =
+                {
+                  " " * bbl.etal *
+                }
+                { " " * t * }
+              if$
+            }
+          if$
+        }
+        't
+      if$
+      nameptr #1 + 'nameptr :=
+      namesleft #1 - 'namesleft :=
+    }
+  while$
+  } if$
+}
+
+STRINGS{replace find text}
+INTEGERS{find_length pos}
+FUNCTION{find.replace}
+{
+    'replace :=
+    'find :=
+    'text :=
+    find string.length 'find_length :=
+    ""
+    { text empty$ not }
+        { text #1 find_length substring$ find =
+            {
+                replace *
+                text #1 find_length + global.max$ substring$ 'text :=
+            }
+            {
+                text #1 #1 substring$ *
+                text #2 global.max$ substring$ 'text :=
+            }
+        if$
+        }
+    while$
+}
+
+FUNCTION{find.substring}
+{
+    'find :=
+    'text :=
+
+    find string.length 'find_length :=
+    #0
+    { text empty$ not }
+        { text #1 find_length substring$ find =
+            {
+                text #1 find_length + global.max$ substring$ 'text :=
+                not
+            }
+            {
+                text #2 global.max$ substring$ 'text :=
+            }
+        if$
+        }
+    while$
+}
+
 FUNCTION {format.names}
 { 'bibinfo :=
   duplicate$ empty$ 'skip$ {
@@ -169,10 +264,24 @@ FUNCTION {format.names}
   numnames 'namesleft :=
     { namesleft #0 > }
     { s nameptr
-      "{f.~}{vv~}{ll}{, jj}"
+      "{ff~}{vv~}{ll}{, jj}"
       format.name$
       bibinfo bibinfo.check
+
       't :=
+      t "\textbf" find.substring
+        {
+          t "\textbf" "" find.replace 't :=
+          t string.length 'l :=
+          t #2 l #2 - substring$ 't :=
+          t #1 "{ll~}{f}{vv~}{jj}" format.name$ 't :=
+          "\textbf{" t * "}" * 't :=
+        }
+        {
+          t #1 "{ll~}{f}{vv~}{jj}" format.name$ 't :=
+        }
+      if$
+
       nameptr #1 >
         {
           nameptr #3
@@ -219,7 +328,7 @@ FUNCTION {format.chinese.names}
   numnames 'namesleft :=
     { namesleft #0 > }
     { s nameptr
-      "{f.~}{vv~}{ll}{, jj}"
+      "{ll}"
       format.name$
       % bibinfo bibinfo.check
       't :=
@@ -324,30 +433,6 @@ FUNCTION {format.type}
 FUNCTION {format.id}
 {
     id
-}
-
-STRINGS{replace find text}
-INTEGERS{find_length}
-FUNCTION{find.replace}
-{
-    'replace :=
-    'find :=
-    'text :=
-    find string.length 'find_length :=
-    ""
-        { text empty$ not }
-        { text #1 find_length substring$ find =
-            {
-                replace *
-                text #1 find_length + global.max$ substring$ 'text :=
-            }
-            {
-                text #1 #1 substring$ *
-                text #2 global.max$ substring$ 'text :=
-            }
-        if$
-    }
-    while$
 }
 
 FUNCTION {format.pages}

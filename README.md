@@ -18,7 +18,7 @@ The template is authored by Wang Wen, a 2014 master graduate of UESTC. Because o
 
 模板采用LaTeX类的形式封装，导入模板只需要把`thesis-uestc.cls`文件放在文档所在目录，在文档开头使用`\documentclass{thesis-uestc}`命令将文档的类设置成`thesis-uestc`即可。使用BibTeX录入参考文献还需要`thesis-uestc.bst`风格定义文件。
 
-模板类有bachelor、master、promaster、doctor和engdoctor五个学位选项，对应本科、硕士、专业硕士、博士和工程博士的毕业论文，默认选项为`master`。文档内容的书写参考范例`main.tex`。英语使用者可以启用`english`选项，模版会按照英语论文的格式排版。
+模板类有bachelor、master、promaster、doctor和engdoctor五个学位选项，对应本科、硕士、专业硕士、博士和工程博士的毕业论文，默认选项为`master`。文档内容的书写参考范例`main.tex`。英语使用者可以启用`english`选项，模版会按照英语论文的格式排版。（The `english` option can be added for international students and english users; the thesis will be typesetted accordingly in english.）
 
 ### 文档编译
 编译文档请使用XeLaTeX引擎。模版提供latexmk设置文件用于自动编译。将命令行工作目录切换到项目文件夹下，执行
@@ -120,7 +120,9 @@ xelatex main.tex
 
 ### 攻读学位期间取得的成果
 
-使用BibTeX录入研究成果由`\thesisaccomplish`命令导入`*.bib`文献列表，方法与参考文献相同。文献列表风格自动设置为`thesis-uestc`。此命令没有可选参数，自动在文档中列出数据库中的所有条目。编译过程中需要注意所使用的编译方式正确执行`bibtex accomplish.aux`命令，否则不会生成研究成果。在2022年的格式规范中要求毕业论文作者的名字加粗显示，只需要在`*.bib`文件中将作者本人的姓名使用`\textbf`命令标注，如在正文中使文本加粗所使用的方式。如原先作者的条目为`author = {肖珍新}`改为`author = {\textbf{肖珍新}}`。
+使用BibTeX录入研究成果由`\thesisaccomplish`命令导入`*.bib`文献列表，方法与参考文献相同。文献列表风格自动设置为`thesis-uestc`。此命令没有可选参数，自动在文档中列出数据库中的所有条目。编译过程中需要注意所使用的编译方式正确执行`bibtex accomplish.aux`命令，否则不会生成研究成果
+
+在2022年的格式规范中要求毕业论文作者的名字加粗显示，只需要在`*.bib`文件中将作者本人的姓名使用`\textbf`命令标注，与在正文中使文本加粗所使用的方式相同。如原先作者的条目为`author = {肖珍新}`改为`author = {\textbf{肖珍新}}`。
 
 手动添加使用`\bibitem`命令将文章条目列在`thesistheaccomplish`环境下，方法与参考文献相同，这种方法优势在于可以在条目间加小标题区分项目或论文成果。
 
@@ -230,7 +232,7 @@ xelatex main.tex
 模版提供的`reference.bib`包含所有可用条目类型的样例，包括期刊论文，会议论文，专利、学位论文和电子出版物等，可以参考这些条目录入文献信息。
 
 ### 为什么从生成的PDF复制文本都是乱码，且查重无法正确识别文本内容？
-这种现象出现在2018版的TeXLive上。将TeXLive的版本更新到2019或2020即可消除这个问题。
+这种现象出现在2018版的TeXLive上，将TeXLive的版本更新到更高的版本即可消除这个问题。
 
 ## 技术交流
 

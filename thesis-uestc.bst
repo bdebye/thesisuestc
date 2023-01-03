@@ -210,7 +210,7 @@ FUNCTION {format.names.old}
 }
 
 STRINGS{replace find text}
-INTEGERS{find_length pos}
+INTEGERS{find_length}
 FUNCTION{find.replace}
 {
     'replace :=

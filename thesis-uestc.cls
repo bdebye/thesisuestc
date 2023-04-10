@@ -392,7 +392,7 @@
 \newcommand{\thedatesubmit}{}
 \newcommand{\thedateconfer}{年\chinesespace 月}
 
-\newcommand{\setdate}[2][]{ 
+\newcommand{\setdate}[2][]{
 \ifthenelse{\equal{#1}{oral}}{
   \renewcommand{\thedateoral}{#2}
 }{}
@@ -446,7 +446,7 @@
   \def\chinesebooktitle{专业学位硕士学位论文}
   \def\englishbooktitle{Master Thesis for Professional Degree}
   \def\display@chineseheader{电子科技大学硕士学位论文}
-  \def\display@englishheader{Professional Master Thesis of University 
+  \def\display@englishheader{Professional Master Thesis of University
     of Electronic Science and Technology of China}
 }
 
@@ -507,7 +507,7 @@
   \fancyhf{}
   \fancyhead[C]{\fontsize{10.5pt}{12.6pt}\selectfont\listtablename}
   \fancyfoot[CE,CO]{\fontsize{9pt}{10.8pt}\selectfont\Roman{pseudopage}}
-  
+
   \ifchinesebook{
     \addtolength{\cfttabnumwidth}{12pt}
     \renewcommand{\cfttabpresnum}{\tablename}
@@ -594,7 +594,7 @@
 }
 
 \newcommand{\thesisglossarylist}{
-  \newpage 
+  \newpage
   \fancyhf{}
   \ifchinesebook{
     \fancyhead[C]{\fontsize{10.5pt}{12.6pt}\selectfont 缩略词表}
@@ -803,12 +803,12 @@ School: & \en@theschool \\
   \end{center}
   \par{\fontsize{14pt}{16pt}\selectfont\noindent\null\hspace{28pt}%
     本学位论文作者完全了解电子科技大学有关保留、使用学位论文的规定，%
-    有权保留并向国家有关部门或机构送交论文的复印件和磁盘，允许论文被查阅和借阅。%
-    本人授权电子科技大学可以将学位论文的全部或部分内容编入有关数据库进行检索，%
-    可以采用影印、缩印或扫描等复制手段保存、汇编学位论文。}
+    同意学校有权保留并向国家有关部门或机构送交论文的复印件和数字文档，允许论文被查阅。%
+    本人授权电子科技大学可以将学位论文的全部或部分内容编入有关数据库进行检索及下载，%
+    可以采用影印、扫描等复制手段保存、汇编学位论文。}
   \par{\fontsize{14pt}{16pt}\selectfont\noindent\null\hspace{28pt}
   \chineseleftparenthesis%
-  保密的学位论文在解密后应遵守此规定%
+  涉密的学位论文须按照国家及学校相关规定管理，在解密后适用于本授权。%
   \chineserightparenthesis} \\[14pt]
   \fontsize{14pt}{16pt}\selectfont\noindent\null\hspace{35pt}作者签名：\rule[-3pt]{4.1cm}{0.5pt}\hspace{12pt}%
   导师签名：\rule[-3pt]{4.1cm}{0.5pt} \\
@@ -956,9 +956,9 @@ School: & \en@theschool \\
   }{
     \renewcommand{\appendixname}{Appendix}
   }
-  
+
   \renewcommand{\thesection}{A.\arabic{section}}
-  
+
   \renewcommand{\theequation}{a-\arabic{equation}}
   \renewcommand{\thetable}{a-\arabic{table}}
   \renewcommand{\thefigure}{a-\arabic{figure}}
@@ -968,7 +968,7 @@ School: & \en@theschool \\
   \renewcommand{\thelemma}{a.\arabic{lemma}}
   \renewcommand{\thedefinition}{a.\arabic{definition}}
   \renewcommand{\theexample}{a.\arabic{example}}
-  
+
   \ifchinesebook{
     \chapter*{附\hspace{12pt}录}
     \addcontentsline{toc}{chapter}{附录}
@@ -997,7 +997,7 @@ School: & \en@theschool \\
     \addcontentsline{toc}{chapter}{\translation@originaltitle}
     \markboth{\translation@originaltitle}{\translation@originaltitle}
     \thispagestyle{fancy}
-    \hypersetup{bookmarksdepth=0} 
+    \hypersetup{bookmarksdepth=0}
     \renewcommand{\theequation}{\arabic{equation}}
     \renewcommand{\thetable}{\arabic{table}}
     \renewcommand{\thefigure}{\arabic{figure}}
@@ -1014,7 +1014,7 @@ School: & \en@theschool \\
     \addcontentsline{toc}{chapter}{\translation@chinesetitle}
     \markboth{\translation@chinesetitle}{\translation@chinesetitle}
     \thispagestyle{fancy}
-    \hypersetup{bookmarksdepth=0} 
+    \hypersetup{bookmarksdepth=0}
     \renewcommand{\theequation}{\arabic{equation}}
     \renewcommand{\thetable}{\arabic{table}}
     \renewcommand{\thefigure}{\arabic{figure}}

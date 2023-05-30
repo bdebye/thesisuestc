@@ -106,7 +106,7 @@
 \RequirePackage{newfloat}
 \RequirePackage[resetlabels]{multibib}
 \RequirePackage[nottoc]{tocbibind}
-\RequirePackage{everypage}
+\RequirePackage{everypage-1x}
 \RequirePackage{ifoddpage}
 \RequirePackage{pdfpages}
 

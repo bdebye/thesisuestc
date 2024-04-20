@@ -1,5 +1,5 @@
 %
-%  Copyright 2016-2023 Wen Wang <wangwen1192@outlook.com>
+%  Copyright 2016-2024 Wen Wang <wangwen1192@outlook.com>
 %
 %  This work may be distributed and/or modified under the
 %  conditions of the LaTeX Project Public License, either version 1.3
@@ -274,11 +274,11 @@ FUNCTION {format.names}
           t "\textbf" "" find.replace 't :=
           t string.length 'l :=
           t #2 l #2 - substring$ 't :=
-          t #1 "{ll~}{f}{vv~}{jj}" format.name$ 't :=
+          t #1 "{ll~}{f}{vv~}{jj}" format.name$ "." "" find.replace 't :=
           "\textbf{" t * "}" * 't :=
         }
         {
-          t #1 "{ll~}{f}{vv~}{jj}" format.name$ 't :=
+          t #1 "{ll~}{f}{vv~}{jj}" format.name$ "." "" find.replace 't :=
         }
       if$
 

@@ -1,5 +1,5 @@
 %
-%  Copyright 2016-2023 Wen Wang <wangwen1192@outlook.com>
+%  Copyright 2016-2024 Wen Wang <wangwen1192@outlook.com>
 %
 %  This work may be distributed and/or modified under the
 %  conditions of the LaTeX Project Public License, either version 1.3

@@ -513,7 +513,12 @@ FUNCTION {conference}
     {
         format.address write$ add.comma
     } if$
-    format.year write$ add.comma
+    country missing$
+    'skip$
+    {
+        format.country write$ add.comma
+    } if$
+    format.year write$ ": " write$
     format.pages write$
     "." write$
     newline$

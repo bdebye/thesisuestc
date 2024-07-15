@@ -518,8 +518,8 @@ FUNCTION {conference}
     {
         format.country write$ add.comma
     } if$
-    format.year write$ ": " write$
-    format.pages write$
+    format.year write$
+    pages missing$ 'skip$ { ": " format.pages * write$ } if$
     "." write$
     newline$
 }

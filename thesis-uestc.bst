@@ -1,5 +1,5 @@
 %
-%  Copyright 2016-2024 Wen Wang <wangwen1192@outlook.com>
+%  Copyright 2016-2025 Wen Wang <wangwen1192@outlook.com>
 %
 %  This work may be distributed and/or modified under the
 %  conditions of the LaTeX Project Public License, either version 1.3
@@ -518,8 +518,13 @@ FUNCTION {conference}
     {
         format.country write$ add.comma
     } if$
-    format.year write$ ": " write$
-    format.pages write$
+    format.year write$
+    pages missing$
+    'skip$
+    {
+        ": " write$
+        format.pages write$
+    } if$
     "." write$
     newline$
 }

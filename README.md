@@ -66,6 +66,20 @@ xelatex main.tex
 |\major{#1}{#2}| 专业中文名| 专业英文名 |
 |\studentnumber{#1}| 学号 | 无 |
 
+\classificationnumber{TP309.2}
+\confidentiallevel{公开}
+\udcnumber{004.78}
+
+此外，可使用`\classificationnumber`、`\confidentiallevel`和`\udcnumber`命令设置论文的分类号、密级和UDC号。
+
+| 命令名称 | 参数#1 |
+|---|---|
+|\classificationnumber{#1}| 分类号 |
+|\confidentiallevel{#1}| 密级 |  
+|\udcnumber{#1}| UDC号 |
+
+分类可从[TP类中图分类号](https://www.arocmag.cn/info/instruction/clc)查询，密级分为公开、内部、秘密和机密四个等级，UDC号可以从[UDC在线查询](https://udcsummary.info/php/index.php?id=13358&lang=chi)查询。
+
 此外可以用`\setdate`命令设置扉页所显示的日期。这个命令的三个选项`oral`, `submit`和`confer`分别对应答辩，论文提交和学位授予的日期。
 
 | 选项 | 例子 | 定义 |

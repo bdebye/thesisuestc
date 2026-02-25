@@ -661,12 +661,21 @@
 \setlength{\extrarowheight}{2pt}
 }
 
+\newcommand{\classificationnumber}[1]{\gdef\@classificationnumber{#1}}
+\newcommand{\confidentiallevel}[1]{\gdef\@confidentiallevel{#1}}
+\newcommand{\udcnumber}[1]{\gdef\@udcnumber{#1}}
+
+\gdef\@classificationnumber{TP309.2}
+\gdef\@confidentiallevel{公开}
+\gdef\@udcnumber{004.78}
+
+
 \newcommand{\thetitlepage}{
   \newpage
   \thispagestyle{empty}
 
-\noindent 分类号 \rule[-3pt]{2.5in}{0.5pt} 密级 \rule[-3pt]{2.5in}{0.5pt} \\[12bp]
-UDC\textsuperscript{ 注1} \rule[-3pt]{2.5in}{0.5pt} \\[12bp]
+\noindent 分类号 \hspace{0.68em}\underline{\makebox[2.405in]{\@classificationnumber}} 密级 \hspace{0.50em} \underline{\makebox[2.41in]{\@confidentiallevel}} \\[5bp]
+UDC\textsuperscript{ 注1} \underline{\makebox[2.4in]{\@udcnumber}} \\[0bp]
 
 \begin{center}
   \fontsize{36pt}{36pt}\selectfont{

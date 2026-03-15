@@ -354,6 +354,13 @@
 
 \newcommand{\thestudentnumber}{\chinesespace}
 
+% 专业学位论文才有学科专业
+\newcommand{\zh@thediscipline}{\chinesespace}
+\newcommand{\en@thediscipline}{\chinesespace}
+
+\newif\if@show@discipline
+\@show@disciplinefalse
+
 \renewcommand{\title}[2]{
   \renewcommand{\zh@thetitle}{#1}
   \renewcommand{\en@thetitle}{#2}
@@ -386,6 +393,15 @@
 
 \newcommand{\studentnumber}[1]{
   \renewcommand{\thestudentnumber}{#1}
+}
+
+\newcommand{\showdiscipline}{
+  \@show@disciplinetrue
+}
+
+\newcommand{\discipinename}[2]{
+  \renewcommand{\zh@thediscipline}{#1}
+  \renewcommand{\en@thediscipline}{#2}
 }
 
 \newcommand{\thedateoral}{}
@@ -448,6 +464,7 @@
   \def\display@chineseheader{电子科技大学硕士学位论文}
   \def\display@englishheader{Professional Master Thesis of University 
     of Electronic Science and Technology of China}
+  \showdiscipline
 }
 
 \DeclareOption{doctor}{
@@ -641,7 +658,7 @@
   \begin{tabular}{>{\bfseries\fontsize{16pt}{16pt}\selectfont}l
       >{\centering\arraybackslash\bfseries\fontsize{16pt}{16pt}\selectfont}
       p{3.77in}p{15pt}}
-    学科专业 & \zh@themajor &\\
+      \if@show@discipline \scalebox{0.66}[1.0]{专业学位类别} \else 学科专业 \fi & \zh@themajor      & \\
     \cline{2-2}
     学\chinesespace\chinesespace 号 & \thestudentnumber & \\
     \cline{2-2}
@@ -709,11 +726,19 @@ UDC\textsuperscript{ 注1} \underline{\makebox[2.4in]{\@udcnumber}} \\[0bp]
       >{\fontsize{12pt}{12pt}\selectfont}l
       >{\centering\arraybackslash\fontsize{14pt}{14pt}\bfseries\selectfont}
       p{2.50in}}
-      申请学位级别 & \chinesedegreename &
-      学科专业 & \zh@themajor \\
+    申请学位级别                                    & \chinesedegreename &
+    \if@show@discipline 专业学位类别 \else 学科专业 \fi & \zh@themajor         \\
     \cline{2-2}
     \cline{4-4}
   \end{tabular} \\
+  \if@show@discipline
+    \begin{tabular}{>{\fontsize{12pt}{12pt}\selectfont}l
+        >{\centering\arraybackslash\fontsize{14pt}{14pt}\bfseries\selectfont}
+        p{4.02in}}
+      专业学位领域 & \zh@thediscipline \\
+      \cline{2-2}
+    \end{tabular} \\
+  \fi
   \begin{tabular}{>{\fontsize{12pt}{12pt}\selectfont}l
       >{\centering\arraybackslash\fontsize{14pt}{14pt}\bfseries\selectfont}
       p{1.59in}

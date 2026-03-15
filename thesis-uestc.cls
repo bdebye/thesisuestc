@@ -355,8 +355,10 @@
 \newcommand{\thestudentnumber}{\chinesespace}
 
 % 专业学位论文才有学科专业
-\newcommand{\zh@thediscipline}{\chinesespace}
-\newcommand{\en@thediscipline}{\chinesespace}
+\newcommand{\zh@thediscipline}{（此行根据实际情况保留或删除）}
+% \newcommand{\en@thediscipline}{（此行根据实际情况保留或删除）}
+\newif\if@is@professional
+\@is@professionalfalse
 
 \newif\if@show@discipline
 \@show@disciplinefalse
@@ -398,10 +400,13 @@
 \newcommand{\showdiscipline}{
   \@show@disciplinetrue
 }
+\newcommand{\hidediscipline}{
+  \@show@disciplinefalse
+}
 
-\newcommand{\discipinename}[2]{
+\newcommand{\discipline}[1]{
   \renewcommand{\zh@thediscipline}{#1}
-  \renewcommand{\en@thediscipline}{#2}
+  % \renewcommand{\en@thediscipline}{#2}
 }
 
 \newcommand{\thedateoral}{}
@@ -465,6 +470,7 @@
   \def\display@englishheader{Professional Master Thesis of University 
     of Electronic Science and Technology of China}
   \showdiscipline
+  \@is@professionaltrue
 }
 
 \DeclareOption{doctor}{
@@ -485,6 +491,8 @@
   \def\display@chineseheader{电子科技大学博士学位论文}
   \def\display@englishheader{Engineering Doctoral Dissertation of
     University of Electronic Science and Technology of China}
+  \showdiscipline
+  \@is@professionaltrue
 }
 
 \ExecuteOptions{master}
@@ -658,7 +666,7 @@
   \begin{tabular}{>{\bfseries\fontsize{16pt}{16pt}\selectfont}l
       >{\centering\arraybackslash\bfseries\fontsize{16pt}{16pt}\selectfont}
       p{3.77in}p{15pt}}
-      \if@show@discipline \scalebox{0.66}[1.0]{专业学位类别} \else 学科专业 \fi & \zh@themajor      & \\
+      \if@is@professional \scalebox{0.66}[1.0]{专业学位类别} \else 学科专业 \fi & \zh@themajor      & \\
     \cline{2-2}
     学\chinesespace\chinesespace 号 & \thestudentnumber & \\
     \cline{2-2}
@@ -727,7 +735,7 @@ UDC\textsuperscript{ 注1} \underline{\makebox[2.4in]{\@udcnumber}} \\[0bp]
       >{\centering\arraybackslash\fontsize{14pt}{14pt}\bfseries\selectfont}
       p{2.50in}}
     申请学位级别                                    & \chinesedegreename &
-    \if@show@discipline 专业学位类别 \else 学科专业 \fi & \zh@themajor         \\
+    \if@is@professional 专业学位类别 \else 学科专业 \fi & \zh@themajor         \\
     \cline{2-2}
     \cline{4-4}
   \end{tabular} \\

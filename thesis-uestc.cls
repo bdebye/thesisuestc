@@ -202,9 +202,36 @@
 \renewcommand{\small}{\fontsize{10.5pt}{12.6pt}\selectfont}
 \renewcommand\footnotelayout{\fontsize{9}{11.7}\selectfont}
 
-\renewcommand{\thefootnote}{\ifcase\value{footnote}\or\ding{172}\or
-\ding{173}\or\ding{174}\or\ding{175}\or\ding{176}\or\ding{177}\or
-\ding{178}\or\ding{179}\or\ding{180\or\ding{181}}\fi}
+%%  该部分为报错代码段。
+% \renewcommand{\thefootnote}{\ifcase\value{footnote}\or\ding{172}\or
+% \ding{173}\or\ding{174}\or\ding{175}\or\ding{176}\or\ding{177}\or
+% \ding{178}\or\ding{179}\or\ding{180\or\ding{181}}\fi}
+
+%%  该部分为修订段，修改了180之后，大括号未闭合之故障。
+% \renewcommand{\thefootnote}{
+% \ifcase\value{footnote}
+% \or\ding{172}
+% \or\ding{173}
+% \or\ding{174}
+% \or\ding{175}
+% \or\ding{176}
+% \or\ding{177}
+% \or\ding{178}
+% \or\ding{179}
+% \or\ding{180}
+% \or\ding{181}
+% \fi}
+
+%%  该部分建议改成的样式，使用循环来生成脚注符号。
+\renewcommand{\thefootnote}{
+  \ifnum\value{footnote}<1 \errmessage{Invalid footnote number}\fi
+  \ifnum\value{footnote}<100
+    \ding{\numexpr171+\value{footnote}}
+  \else
+    \arabic{footnote}% 超过99个脚注时改用阿拉伯数字
+  \fi
+}
+
 
 \renewcommand{\footnoterule}{\vfill\noindent\vspace{0.9mm}\hspace{27pt}\rule{5.05cm}{0.02cm}\vspace*{2.6pt}}
 

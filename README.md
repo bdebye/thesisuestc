@@ -1,17 +1,4 @@
-# 自用模板——修改自王稳学长的原初版本
-
-首先在此感谢学长和诸多同学为电科这一模板填砖加瓦。本人仅狗尾续貂，稍作了些修改，以适合我个人所用的开发环境；并对原模板当中的.cls文件略作删改，主要修改了某些过时的功能函数或语句表达。学长创立此模板较早，大约在2014年前后，此时已2026年；Texlive已有诸多升级改动，部分功能原本需依赖于宏包实现，现已集成于Texlive内核之中，直接调用之性能可更为高效。围绕此部分，我略作修改。
-
-以下是我修改的几处功能模块，有意者可按需取用。后续有改动我也会再添加。
-
-
-
----
-
-以下部分为原仓库的README部分，即原本的模板使用手册。我未作改动，原番保留。
-
 # ThesisUESTC-电子科技大学毕业论文模板
-
 [![](https://img.shields.io/badge/license-LPPL-blue)](https://www.latex-project.org/lppl/) [![](https://img.shields.io/github/last-commit/x-magus/ThesisUESTC)](https://github.com/x-magus/ThesisUESTC/zipball/master) [![](https://img.shields.io/github/issues/x-magus/ThesisUESTC)](https://github.com/x-magus/ThesisUESTC/issues)
 
 此项目提供用于排版电子科技大学毕业论文的LaTeX模板类，旨在帮助电子科技大学的毕业生高效地完成毕业论文的写作。模板提供各种方便的命令，自动化地排版论文的各个部分，使毕业论文轻易地满足学校的格式要求。为了支持更好的字体效果，模板基于XeLaTeX编写，并且放弃对CTeX的依赖，使模板更加稳定。

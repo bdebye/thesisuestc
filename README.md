@@ -117,7 +117,7 @@ xelatex main.tex
 
 ### 参考文献
 
-使用BibTeX录入参考文献由`\thesisbibliography`命令导入`*.bib`文件数据库，参考文献风格自动设置为`thesis-uestc`。当参考文献数目超过100时，可以使用`large`选项调整编号的宽度，如`\thesisbibliography[large]{reference}`。
+使用BibTeX录入参考文献由`\thesisbibliography`命令导入`*.bib`文件数据库，参考文献风格自动设置为`thesis-uestc`。模板会自动统计参考文献数目，当数目超过100时自动调整编号的宽度，无需手动指定选项。
 
 在这个命令之前使用`\nocite{*}`命令会在文档中列出数据库中的所有条目，无论是否引用，其他情况下只列出引用过的条目。有些编辑器会识别`\bibliography`命令导入的数据库文件，并提供更好的编辑支持，所以模板也支持原生的`\bibliography`命令导入文献列表，只需要导入之前指定参考文献风格（`\bibliographystyle{thesis-uestc}`）即可。
 

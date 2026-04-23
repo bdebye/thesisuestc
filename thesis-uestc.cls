@@ -24,7 +24,7 @@
 \RequirePackage{ifxetex}
 \RequireXeTeX
 
-\RequirePackage[usenames,dvipsnames,svgnames,table]{xcolor}
+\RequirePackage[dvipsnames,svgnames,table]{xcolor}
 \RequirePackage{graphicx}
 \RequirePackage[font={doublespacing, small}, labelsep=space, skip=6pt]{caption}
 
@@ -106,8 +106,7 @@
 \RequirePackage{newfloat}
 \RequirePackage[resetlabels]{multibib}
 \RequirePackage[nottoc]{tocbibind}
-\RequirePackage{everypage}
-\RequirePackage{ifoddpage}
+% everypage and ifoddpage replaced by LaTeX kernel hooks (\AddToHook, \ifodd)
 \RequirePackage{pdfpages}
 
 \graphicspath{{./pic/}}
@@ -152,7 +151,7 @@
 %\captionsetup{width=\textwidth - 42pt}
 \captionsetup{width=\textwidth - 84pt}
 \captionsetup[figure]{aboveskip=6pt, belowskip=0pt}
-\captionsetup[table]{aboveskip=9pt, belowskip=0pt}
+\captionsetup[table]{aboveskip=12pt, belowskip=6pt} % 段前12磅, 段后6磅
 
 \setlength{\intextsep}{9pt}
 
@@ -244,7 +243,7 @@
 
 \newcounter{pseudopage}
 \setcounter{pseudopage}{0}
-\AddEverypageHook{\stepcounter{pseudopage}}
+\AddToHook{shipout/before}{\stepcounter{pseudopage}}
 
 \newcommand\blankpage{%
   \newpage
@@ -273,12 +272,7 @@
   \fancyhead[C]{\fontsize{10.5pt}{12.6pt}\selectfont 摘要}
   \fancyfoot[CE,CO]{\fontsize{9pt}{10.8pt}\selectfont\Roman{pseudopage}}
 }{
-  \checkoddpage
-  \ifoddpage
-      \blankpage
-    \else
-      \newpage
-    \fi
+  \ifodd\value{page}\blankpage\else\newpage\fi
 }
 
 \newcommand{\chinesekeyword}[1]{
@@ -299,12 +293,7 @@
     \fancyhead[C]{\fontsize{10.5pt}{12.6pt}\selectfont ABSTRACT}
     \fancyfoot[CE,CO]{\fontsize{9pt}{10.8pt}\selectfont\Roman{pseudopage}}
 }{
-  \checkoddpage
-  \ifoddpage
-      \blankpage
-    \else
-      \newpage
-    \fi
+  \ifodd\value{page}\blankpage\else\newpage\fi
 }
 
 \newcommand{\englishkeyword}[1]{
@@ -313,15 +302,15 @@
   \@hangfrom{\makebox[2.1cm][l]{\textbf{Keywords:}}}#1
 }
 
-\AddEverypageHook{\addtocontents{toc}{
+\AddToHook{shipout/before}{\addtocontents{toc}{
   \protect\cftsetpnumwidth{\widthof{\thepage}-1pt}
 }}
 
-\AddEverypageHook{\addtocontents{lof}{
+\AddToHook{shipout/before}{\addtocontents{lof}{
   \protect\cftsetpnumwidth{\widthof{\thepage}-1pt}
 }}
 
-\AddEverypageHook{\addtocontents{lot}{
+\AddToHook{shipout/before}{\addtocontents{lot}{
   \protect\cftsetpnumwidth{\widthof{\thepage}-1pt}
 }}
 
@@ -887,12 +876,7 @@ School: & \en@theschool \\
 
 \pretocmd{\tableofcontents}{
   \newpage
-  \checkoddpage
-  \ifoddpage
-      \newpage
-    \else
-      \blankpage
-    \fi
+  \ifodd\value{page}\newpage\else\blankpage\fi
   \fancyhf{}
   \ifchinesebook{
     \fancyhead[C]{\fontsize{10.5pt}{12.6pt}\selectfont 目录}
@@ -1082,41 +1066,69 @@ School: & \en@theschool \\
 \renewcommand{\bibname}{\thesisbibname}
 \renewcommand{\@biblabel}[1]{[#1]\hfill}
 
-\newenvironment{thesisthebibliography}{
-  \begin{thebibliography}{lo}
-    \interlinepenalty=10000
-    \begin{spacing}{1.667}
-    \thispagestyle{fancy}
-    \small
-}{
-    \end{spacing}
-  \end{thebibliography}
+% ---------------------------------------------------------------
+% Auto-detect bibliography size to select correct label width.
+%
+% Strategy (standard LaTeX two-pass, same as \label/\ref):
+%   Pass 1 – \thesis@bib@prevcount is undefined → treated as 0 →
+%             labels use "lo" (width for 1–99 items).
+%             At end of document the actual \bibitem count is
+%             written to the .aux file.
+%   Pass 2 – .aux defines \thesis@bib@prevcount with the real count.
+%             If ≥ 100, labels automatically switch to "loo".
+%
+% The [large] option of \thesisloadbibliography is now DEPRECATED
+% and silently ignored; it is kept only for backward compatibility.
+% ---------------------------------------------------------------
+
+\newcounter{thesis@bib@total}  % incremented by every \bibitem
+\pretocmd{\bibitem}{\stepcounter{thesis@bib@total}}{}{}
+
+\newcommand{\bstlabelmark}{lo} % default: up to 99 references
+
+% At document start, read the count saved by the previous run and
+% configure label width + labelsep accordingly.
+\AtBeginDocument{%
+  \@ifundefined{thesis@bib@prevcount}{\def\thesis@bib@prevcount{0}}{}%
+  \ifnum\thesis@bib@prevcount>99\relax
+    \renewcommand{\bstlabelmark}{loo}%
+    \setlength{\labelsep}{3pt}%
+  \fi
 }
 
-\pretocmd{\bibliography}{
-  \thispagestyle{fancy}
-  \interlinepenalty=10000
-  \begin{spacing}{1.667}
+\newenvironment{thesisthebibliography}{%
+  \begin{thebibliography}{\bstlabelmark}%
+    \interlinepenalty=10000%
+    \begin{spacing}{1.667}%
+    \thispagestyle{fancy}%
+    \small
+}{%
+    \end{spacing}%
+  \end{thebibliography}%
+  % Save current count to .aux so the next run can read it.
+  \immediate\write\@auxout{%
+    \string\gdef\string\thesis@bib@prevcount{\the\value{thesis@bib@total}}}%
+}
+
+\pretocmd{\bibliography}{%
+  \thispagestyle{fancy}%
+  \interlinepenalty=10000%
+  \begin{spacing}{1.667}%
 }{}{}
 
-\apptocmd{\bibliography}{
-  \end{spacing}
+\apptocmd{\bibliography}{%
+  \end{spacing}%
 }{}{}
 
-\newcommand{\bstlabelmark}{lo}
-\newcommand{\thesisloadbibliography}[2][]{
-  \ifthenelse{
-    \equal{#1}{large}
-  }{
-    \setlength{\labelsep}{3pt}
-    \renewcommand{\bstlabelmark}{loo}
-    \bibliographystyle{thesis-uestc}
-    \bibliography{#2}
-    \setlength{\labelsep}{6pt}
-  }{
-    \bibliographystyle{thesis-uestc}
-    \bibliography{#2}
-  }
+% [large] is accepted but ignored – size is now auto-detected.
+\newcommand{\thesisloadbibliography}[2][]{%
+  \bibliographystyle{thesis-uestc}%
+  \bibliography{#2}%
+  % Save current count to .aux so the next run can read it.
+  \AtEndDocument{%
+    \immediate\write\@auxout{%
+      \string\gdef\string\thesis@bib@prevcount{\the\value{thesis@bib@total}}}%
+  }%
 }
 
 \newcommand{\thesisbibliography}{\thesisloadbibliography}

@@ -1,5 +1,5 @@
 %
-%  Copyright 2016-2025 Wen Wang <wangwen1192@outlook.com>
+%  Copyright 2016-2026 Wen Wang <wangwen1192@outlook.com>
 %
 %  This work may be distributed and/or modified under the
 %  conditions of the LaTeX Project Public License, either version 1.3
@@ -631,10 +631,10 @@ FUNCTION {patent}
 {
     bibitem.begin
     format.authors write$ add.period
-    format.title "[P]" * write$ add.period
-    format.country write$ add.comma
-    format.type write$ add.comma
-    format.id write$ add.comma
+    format.title write$ ": " write$
+    % format.country write$ add.comma
+    % format.type write$ add.comma
+    format.id "[P]" * write$ add.period
     format.date write$
     "." write$
     newline$

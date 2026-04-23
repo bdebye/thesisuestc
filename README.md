@@ -5,8 +5,6 @@
 
 模板由电子科技大学物理电子学院2014级硕士研究生王稳编写，由于在毕业论文写作中遇到各种问题，希望有一个理想的解决方案，所以决定写一个模板出来。祝愿此项目能继续发展，解决各位同学毕业论文写作中的困难。
 
-*由于GitHub最近访问很不稳定，如果下载链接失效请使用[Gitea分支](https://gitea.com/Xmagus/ThesisUESTC)的[下载链接](https://gitea.com/Xmagus/ThesisUESTC/archive/master.zip)。*
-
 This project provides the LaTeX template for UESTC theses, aims to help the students in UESTC efficiently complete the thesis writing task. The template provides various convenient commands, automatically typesets the portions of the thesis, render it perfectly fits the requirements of the school. To support better font effects, the template is based on XeLaTeX, and gives up the dependence on CTeX, to attain better reliability.
 
 The template is authored by Wang Wen, a 2014 master graduate of UESTC. Because of the problems that occurred in thesis writing, an ideal solution is expected, and a LaTeX template is provided overcoming such difficulties. Wishes to the further development of this project, to spare the students' overheads on this matter.
@@ -73,10 +71,6 @@ xelatex main.tex
 > 使用`\discipline{#1}` 填写你的专业学位领域（比如`计算机技术`）
 > 如果你是未设具体专业领域的专业学位研究生（专业代码的最后2位是00，例如025100金融、085400电子信息），须删除此行。在导言区添加`\hidediscipline`）
 
-\classificationnumber{TP309.2}
-\confidentiallevel{公开}
-\udcnumber{004.78}
-
 此外，可使用`\classificationnumber`、`\confidentiallevel`和`\udcnumber`命令设置论文的分类号、密级和UDC号。
 
 | 命令名称 | 参数#1 |
@@ -99,11 +93,11 @@ xelatex main.tex
 
 ### 中英文摘要
 
-中英文摘要应包含在`chineseabstract`和`englishabstract`环境中，对应的关键字使用`\chinesekeyword`和`\englishkeyword`命令添加，并包含在相应的环境中。模板自动设置页眉和页脚，其中中文摘要标题中间空一格，页眉不空格。依照学校的格式说明，模板自动根据摘要结束所在的页数决定是否再空一页。
+中英文摘要应包含在`chineseabstract`和`englishabstract`环境中，对应的关键字使用`\chinesekeyword`和`\englishkeyword`命令添加，并包含在相应的环境中。模板自动设置页眉和页脚，其中中文摘要标题中间空一格，页眉不空格。依照学校的格式说明，模板自动根据摘要结束所在的页数决定是否再空一页。如果不想让模板自动空一页，可以在导言区添加`\noforceblankpage`命令。
 
 ### 论文目录
 
-论文目录由命令`\thesistableofcontents`添加，并且自动处理标题，页眉以及缩进等问题。依照学校的格式说明，模板自动根据目录结束所在的页数决定是否再空一页。
+论文目录由命令`\thesistableofcontents`添加，并且自动处理标题，页眉以及缩进等问题。依照学校的格式说明，模板自动根据目录结束所在的页数决定是否再空一页。如果不想让模板自动空一页，可以在导言区添加`\noforceblankpage`命令。
 
 ### 绪论
 

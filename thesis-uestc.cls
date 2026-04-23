@@ -1,5 +1,5 @@
 %
-%  Copyright 2016-2025 Wen Wang <wangwen1192@outlook.com>
+%  Copyright 2016-2026 Wen Wang <wangwen1192@outlook.com>
 %
 %  This work may be distributed and/or modified under the
 %  conditions of the LaTeX Project Public License, either version 1.3
@@ -30,10 +30,10 @@
 
 \RequirePackage{array}
 \RequirePackage{booktabs}
-\setlength{\heavyrulewidth}{0.9pt}
-\setlength{\lightrulewidth}{0.5pt}
-\setlength{\arrayrulewidth}{0.5pt}
-\setlength{\cmidrulewidth}{0.5pt}
+\setlength{\heavyrulewidth}{1.5pt}  % toprule & bottomrule (三线表外框线 1.5磅)
+\setlength{\lightrulewidth}{0.75pt} % midrule (三线表内框线 0.75磅)
+\setlength{\arrayrulewidth}{0.75pt} % ordinary \hline / column rules
+\setlength{\cmidrulewidth}{0.75pt}  % \cmidrule (三线表内框线 0.75磅)
 
 \RequirePackage{setspace}
 \RequirePackage{multirow}
@@ -204,7 +204,7 @@
 
 \renewcommand{\thefootnote}{\ifcase\value{footnote}\or\ding{172}\or
 \ding{173}\or\ding{174}\or\ding{175}\or\ding{176}\or\ding{177}\or
-\ding{178}\or\ding{179}\or\ding{180\or\ding{181}}\fi}
+\ding{178}\or\ding{179}\or\ding{180}\or\ding{181}\fi}
 
 \renewcommand{\footnoterule}{\vfill\noindent\vspace{0.9mm}\hspace{27pt}\rule{5.05cm}{0.02cm}\vspace*{2.6pt}}
 
@@ -252,6 +252,12 @@
   \thispagestyle{empty}%
   \addtocounter{pseudopage}{-1}%
   \newpage
+}
+
+\newcommand{\noforceblankpage}{
+  \renewcommand{\blankpage}{
+    \newpage
+  }
 }
 
 \newenvironment{chineseabstract}{

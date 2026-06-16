@@ -801,9 +801,9 @@ UDC\textsuperscript{ 注1} \underline{\makebox[2.4in]{\@udcnumber}} \\[0bp]
 \cline{2-2}
 & \\
 \cline{2-2}
-Author: & \en@theauthor \\
-\cline{2-2}
 Student ID: & \thestudentnumber \\
+\cline{2-2}
+Author: & \en@theauthor \\
 \cline{2-2}
 Supervisor: & \en@theadvisor \\
 \cline{2-2}
